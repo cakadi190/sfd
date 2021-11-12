@@ -1,0 +1,14 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+// Bootstrap
+@import 'variables';
+@import '~bootstrap/scss/bootstrap';
+@import 'fonts';
+
+// Components
+@import 'components/forms';
+@import 'components/dropdowns';
+
+// Page Components
+@import 'pages/dashboard/index';

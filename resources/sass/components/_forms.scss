@@ -1,0 +1,13 @@
+.form-control {
+    &:focus {
+        border-color: $primary;
+    }
+}
+
+.custom-control {
+    .custom-control-label {
+        &:before {
+            border-radius: .25rem;
+        }
+    }
+}
