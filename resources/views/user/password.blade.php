@@ -79,6 +79,7 @@
                         <div class="nav nav-tabs card-header-tabs" id="nav-tab" role="tablist">
                             <a href="{{ route('edit-user') }}" class="nav-link">Edit Profile</a>
                             @if(!Auth::user()->email_verified_at) <a href="{{ route('edit-user') }}#nav-verify" class="nav-link"><div class="text-danger"><span class="mr-2">Verify Account</span><i class="fa-solid fa-exclamation-triangle"></i></div></a> @endif
+                            @if(Auth::user()->email_verified_at) <a href="{{ route('edit-user') }}#nav-social" class="nav-link"><div class="text-dark"><span class="mr-2">Social Login</span></div></a> @endif
                             <a href="{{ route('change-password') }}" class="nav-link active">Change Password</a>
                         </div>
                     </nav>

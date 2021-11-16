@@ -79,9 +79,9 @@
     <div class="error-wrapper">
         <div class="d-md-flex text-center text-md-left">
             <i class="fa-solid fa-exclamation-triangle fa-3x"></i>
-            <div class="ml-md-3 mt-3 ml-0 ml-mt-0">
+            <div class="ml-md-4 ml-0 mt-3 mt-md-0">
                 <h3>Sorry, Under Construction!</h3>
-                <p>For now, this feature currently unavailable during maintenance and improvement feature</p>
+                <p>For now, this feature currently unavailable during maintenance and improvement feature.</p>
             </div>
         </div>
     </div>

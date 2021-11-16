@@ -14,7 +14,7 @@ class BorrowerController extends Controller
      */
     public function index()
     {
-        //
+        return view('borrower.index');
     }
 
     /**

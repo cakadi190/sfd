@@ -13,7 +13,7 @@ class LateChangeController extends Controller
      */
     public function index()
     {
-        //
+        return view('late.index');
     }
 
     /**

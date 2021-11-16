@@ -44,6 +44,5 @@ Route::prefix('dashboard')->group(function () {
         Route::post('session', [\App\Http\Controllers\SessionDataController::class, 'actionLogout'])->name('sessions.logout');
 
         Route::resource('user-role', \App\Http\Controllers\UserRolesController::class);
-        Route::resource('login-history', \App\Http\Controllers\UserLoginHistoryController::class);
     });
 });

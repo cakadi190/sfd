@@ -13,7 +13,7 @@ class OverdueInstallmentController extends Controller
      */
     public function index()
     {
-        //
+        return view('overdue.index');
     }
 
     /**

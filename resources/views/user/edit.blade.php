@@ -37,6 +37,7 @@
                     <nav>
                         <div class="nav nav-tabs card-header-tabs" id="nav-tab" role="tablist">
                             <a class="nav-link active" id="nav-edit-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="true">Edit Profile</a>
+                            @if(Auth::user()->email_verified_at) <a class="nav-link" id="nav-social-tab" data-toggle="tab" href="#nav-social" role="tab" aria-controls="nav-social" aria-selected="true">Social Media</a> @endif
                             @if(!Auth::user()->email_verified_at) <a class="nav-link" id="nav-verify-tab" data-toggle="tab" href="#nav-verify" role="tab" aria-controls="nav-verify" aria-selected="false"><div class="text-danger"><span class="mr-2">Verify Account</span><i class="fa-solid fa-exclamation-triangle"></i></div></a> @endif
                             <a href="{{ route('change-password') }}" class="nav-link">Change Password</a>
                         </div>
@@ -137,6 +138,10 @@
 
                                 <button class="btn btn-success" type="submit"><i class="fa-solid fa-save mr-2"></i>Save & Update</button>
                             </form>
+                        </div>
+
+                        <div class="tab-pane fade" id="nav-social" role="tabpanel" aria-labelledby="nav-social-tab">
+                            Social Page
                         </div>
 
                         @if(!Auth::user()->email_verified_at)

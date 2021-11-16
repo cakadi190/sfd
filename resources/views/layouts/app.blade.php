@@ -129,7 +129,7 @@
                             <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
                             <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
                             <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
-                            <li class="nav-item"><a href="{{ route('login-history.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-users mr-2"></i><span>User Login History</span></a></li>
+                            <li class="nav-item"><a href="{{ route('sessions') }}" class="nav-link"><i class="fa-solid fa-fw fa-users mr-2"></i><span>User Login History</span></a></li>
                             <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower Lists</span></a></li>
                             <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
                             <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Changes</span></a></li>
@@ -153,7 +153,7 @@
                         <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
                         <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
                         <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
-                        <li class="nav-item"><a href="{{ route('login-history.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-users mr-2"></i><span>User Login History</span></a></li>
+                        <li class="nav-item"><a href="{{ route('sessions') }}" class="nav-link"><i class="fa-solid fa-fw fa-users mr-2"></i><span>User Login History</span></a></li>
                         <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower Lists</span></a></li>
                         <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
                         <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Changes</span></a></li>
