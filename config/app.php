@@ -166,6 +166,7 @@ return [
          * Package Service Providers...
          */
         Spatie\Permission\PermissionServiceProvider::class,
+        Thomaswelton\LaravelGravatar\LaravelGravatarServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -207,6 +208,7 @@ return [
         'Eloquent' => Illuminate\Database\Eloquent\Model::class,
         'Event' => Illuminate\Support\Facades\Event::class,
         'File' => Illuminate\Support\Facades\File::class,
+        'Gravatar' => Thomaswelton\LaravelGravatar\Facades\Gravatar::class,
         'Gate' => Illuminate\Support\Facades\Gate::class,
         'Hash' => Illuminate\Support\Facades\Hash::class,
         'Http' => Illuminate\Support\Facades\Http::class,
@@ -225,6 +227,7 @@ return [
         'Route' => Illuminate\Support\Facades\Route::class,
         'Schema' => Illuminate\Support\Facades\Schema::class,
         'Session' => Illuminate\Support\Facades\Session::class,
+        'Sessions' => \App\Models\Sessions::class,
         'Storage' => Illuminate\Support\Facades\Storage::class,
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,

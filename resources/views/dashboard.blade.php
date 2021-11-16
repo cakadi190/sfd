@@ -56,7 +56,7 @@
 @endsection
 
 @section('content')
-<div class="container mt-3">
+<div>
 
     <!-- Header -->
     <section id="page-title" class="mb-4 pb-2 border-bottom">

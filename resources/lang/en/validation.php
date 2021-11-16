@@ -140,6 +140,9 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'g-recaptcha-response' => [
+            'recaptchav3' => 'You must pass the captcha to continue.',
+        ],
     ],
 
     /*

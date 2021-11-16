@@ -2,7 +2,7 @@
 $('.password-floating').click(function(e) {
     e.preventDefault();
 
-    let password = $('#password');
+    let password = $(this).parent().find('input');
     if(password.attr('type') == 'password')
     {
         password.attr('type', 'text');
