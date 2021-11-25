@@ -17,9 +17,10 @@ class CreateUsersTable extends Migration
             $table->increments('id');
 
             $table->string('email')->unique();
+            $table->string('id_user')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('status', ['active', 'suspended', 'inactive'])->default('inactive');
+            $table->boolean('status')->nullable()->default(true);
 
             $table->string('fullname', 255)->nullable();
             $table->string('state', 255)->nullable();
