@@ -1,7 +1,7 @@
 <header id="responsive-header">
     <nav class="navbar navbar-light bg-cl-primary navbar-expand-md" id="responsive-nav">
         <a class="navbar-brand" href="#">
-            <img class="img-fluid ml-5 logo-size mt-1 mb-1" id="logo" src="assets/logo-brand.svg" alt="logo-brand">
+            <img class="img-fluid ml-5 logo-size mt-1 mb-1" id="logo" src="{{ asset('assets/logo-brand.svg') }}" alt="logo-brand">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon" id="icon-ham"></span>
