@@ -4,23 +4,15 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
-/* 
+/*
   New Routes
 */
-Route::get('/about', function(){
-  return view('about');
-});
-Route::get('/index', function(){
-  return view('index');
-});
-
+Route::view('/', 'index');
+Route::view('/about', 'about');
 
 /**
  * Main Routes
  */
-Route::get('/', function(){
-  return view('index');
-});
 Route::redirect('/register', url('register/v2'), 301);
 Auth::routes([
   'verify'    => true,
