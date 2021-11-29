@@ -9,7 +9,7 @@
             <h3 class="mb-0">Sales</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0 bg-transparent">
-                    <li class="breadcrumb-item"><a href="https://www.smartfunding.sg">SmartFunding Home</a></li>
+                    <li class="breadcrumb-item"><a href="{{ route('home') }}">SmartFunding Home</a></li>
                     <li class="breadcrumb-item"><a href="{{ route('dashboard.home') }}">Dashboard</a></li>
                     <li class="breadcrumb-item active" aria-current="page">Sales</li>
                 </ol>

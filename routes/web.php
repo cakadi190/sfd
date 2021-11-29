@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Route;
 /*
   New Routes
 */
-Route::view('/', 'index');
-Route::view('/about', 'about');
+Route::view('/', 'index')->name('home');
+Route::view('/about', 'about')->name('about');
 
 /**
  * Main Routes

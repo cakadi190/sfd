@@ -66,7 +66,7 @@
     <div class="col-lg-8">
       <header id="mainhead">
         <div class="text-center">
-          <a href="https://smartfunding.sg"><img src="{{ asset('images/logo/logo_sf_black.png') }}"
+          <a href="{{ route('home') }}"><img src="{{ asset('images/logo/logo_sf_black.png') }}"
               alt="{{ config('app.name') }}" class="mb-3" /></a>
         </div>
       </header>
