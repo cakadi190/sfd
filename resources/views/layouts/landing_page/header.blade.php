@@ -10,16 +10,16 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active align-self-center mt-3">
-          <a class="nav-link cl-primary font-type-secondary font-size-quaternary cl-white-mobile active-now"
+          <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile active-now"
             href="/index">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active align-self-center mt-3">
-          <a class="nav-link cl-primary font-type-secondary font-size-quaternary cl-white-mobile" href="/about">About
+          <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile" href="/about">About
             Us</a>
         </li>
         <li class="nav-item align-self-center mt-3">
           <a href="/register"
-            class="nav-link p-2 btn-nav bg-cl-secondary cl-secondary font-type-secondary font-size-quaternary"
+            class="nav-link p-2 btn-nav bg-cl-secondary cl-secondary font-type-secondary font-size-septenary"
             id="btn-responsive-mobile">Apply Loan</a>
         </li>
       </ul>

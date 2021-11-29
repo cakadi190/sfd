@@ -57,7 +57,7 @@
         Smartfunding Pte. Ltd. Regulated by Monetary Authority of Singapore (MAS). License no: CMS-100637-1 Capital
         Market Services (Dealing in Securities)</p>
       <h4 class="font-type-tertiary font-size-tertiary cl-quaternary align-self-center mt-3">Get in Touch</h4>
-      <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary align-self-center">Endokemi
+      <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary align-self-center text-center">Endokemi
         kaning. Bepir detregt. Vabel sovöpör. Milingar. Bigt seryrat. </p>
       <h4 class="font-type-tertiary font-size-tertiary cl-quaternary align-self-center mt-3">Address</h4>
       <p class="cl-secondary font-type-tertiary font-size-quaternary align-self-center text-center">71, Ayer Rajah
@@ -79,8 +79,8 @@
     </div>
     <div class="d-flex flex-column justify-content-around mt-5 bg-cl-footer p-3">
       <div class="d-flex flex-row justify-content-around align-self-center mb-3">
-        <h5 class="font-type-tertiary font-size-quaternary cl-octonary align-self-center">Privacy policy</h5>
-        <h5 class="ml-5 font-type-tertiary font-size-quaternary cl-octonary align-self-center">Terms of use</h5>
+        <h5 class="font-type-tertiary font-size-septenary cl-octonary align-self-center">Privacy policy</h5>
+        <h5 class="ml-5 font-type-tertiary font-size-septenary cl-octonary align-self-center">Terms of use</h5>
       </div>
       <h5 class="font-type-tertiary font-size-septenary cl-secondary align-self-center">© 2020 All rights reserved.</h5>
       <h5 class="font-type-tertiary font-size-septenary cl-quaternary align-self-center">Smartfunding Pte. Ltd</h5>
