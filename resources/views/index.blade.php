@@ -65,7 +65,7 @@
 
 
     <!--Mobile Section 3-->
-    <div class="container d-flex flex-column justify-content-around bg-cl-primary" id="section3-mobile">
+    <div class="container d-flex flex-column justify-content-around bg-cl-primary mb-5" id="section3-mobile">
       <h3 class="cl-quinary font-type-primary font-size-secondary width-small-container text-center align-self-center">
         How To Get Funding in 3 Simple Steps</h3>
       <div class="border-bottom-half align-self-center"></div>
@@ -285,7 +285,7 @@
         <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
         <p
           class="mr-4 ml-4 width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">
-          We will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
+          Our online application saves you the hassle of leaving the comfort of home or work.</p>
 
         <img src="{{asset('assets/review_2.svg')}}" alt="image"
           class="image-fluid img-mini-mobile align-self-center mt-5">
@@ -304,7 +304,7 @@
         <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
         <p
           class="mr-4 ml-4 width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">
-          Enjoy low-interest rates and flexible repayment tenures of up to 12 months, with multiple repayment options.
+          We focus on your business potential and want to help you grow.
         </p>
         <a href="/register"
           class="btn btn-call-to-action btn-med bg-cl-tertiary cl-secondary ml-2 mt-3 align-self-center">Apply Now</a>
@@ -346,8 +346,7 @@
               <h4 class="font-type-secondary font-size-tertiary cl-quinary">Easy and Seamless</h4>
               <h4 class="font-type-secondary font-size-tertiary cl-quinary">Application</h4>
             </div>
-            <p class="width-container-small font-type-tertiary font-size-quaternary">We will disclose the costs and fees
-              involved upfront, with no hidden fees for you to worry about.</p>
+            <p class="width-container-small font-type-tertiary font-size-quaternary">Our online application saves you the hassle of leaving the comfort of home or work.</p>
           </div>
           <img src="{{asset('assets/review_4.svg')}}" alt="image" class="image-fluid img-mini">
           <div class="d-flex flex-column justify-content-center mt-5">
@@ -355,8 +354,7 @@
               <h4 class="font-type-secondary font-size-tertiary cl-quinary">No Collateral</h4>
               <h4 class="font-type-secondary font-size-tertiary cl-quinary">Financing</h4>
             </div>
-            <p class="width-container-small font-type-tertiary font-size-quaternary">Enjoy low-interest rates and
-              flexible repayment tenures of up to 12 months, with multiple repayment options.</p>
+            <p class="width-container-small font-type-tertiary font-size-quaternary">We focus on your business potential and want to help you grow.</p>
           </div>
         </div>
         <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary ml-5 mt-5 width-btn">Apply now</a>
@@ -383,8 +381,7 @@
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Easy and
               Seamless</h4>
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
-            <p class="width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">We
-              will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
+            <p class="width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">Our online application saves you the hassle of leaving the comfort of home or work.</p>
           </div>
         </div>
         <div class="d-flex flex-row justify-content-around mt-5">
@@ -402,8 +399,7 @@
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">No Collateral
             </h4>
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
-            <p class="width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">Enjoy
-              low-interest rates and flexible repayment tenures of up to 12 months, with multiple repayment options.</p>
+            <p class="width-container-small font-type-tertiary font-size-quaternary align-self-center text-center">We focus on your business potential and want to help you grow.</p>
           </div>
         </div>
         <a href="/register"

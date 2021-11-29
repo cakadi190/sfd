@@ -65,7 +65,7 @@ nav#nav-mobile {
   padding: 3vmin;
   position: absolute;
   z-index: 2;
-  top: 55vh;
+  top: 68vh;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -247,23 +247,23 @@ div#footer-mobile {
 }
 
 .font-size-primary {
-  font-size: 2rem;
+  font-size: 1.7rem;
 }
 
 .font-size-secondary {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
 }
 
 .font-size-tertiary {
-  font-size: 1.5rem;
+  font-size: 1rem;
 }
 
 .font-size-quaternary {
-  font-size: 1.2rem;
+  font-size: 0.7rem;
 }
 
 .font-size-septenary {
-  font-size: 0.8rem;
+  font-size: 0.6rem;
 }
 
 .img-mini {
@@ -348,7 +348,7 @@ div#footer-mobile {
 
   #hero {
     padding-top: 25vmin;
-    height: 70vh;
+    height: 90vh;
     margin: 0px;
   }
 
@@ -542,7 +542,7 @@ div#footer-mobile {
     padding: 3vmin;
     position: absolute;
     z-index: 2;
-    top: 55vh;
+    top: 58vh;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -556,7 +556,7 @@ div#footer-mobile {
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 20vh;
+    padding-top: 30vh;
     position: relative;
   }
 
@@ -860,7 +860,7 @@ div#footer-mobile {
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 20rem;
+    padding-top: 30vh;
     position: relative;
   }
 
