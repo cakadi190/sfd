@@ -3,6 +3,8 @@
 @section('title', 'Register | ' . config('app.name'))
 
 @section('header')
+<link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
+
 <style>
   #mainhead {
     display: flex;
@@ -50,17 +52,20 @@
   .nav-stepper {
     justify-content: space-between;
   }
+
   .nav-stepper .nav-item .nav-link {
     padding: 0;
     display: flex;
     color: #1D2C62;
     align-items: center;
   }
+
   @media screen and (max-width: 768px) {
     .nav-stepper .nav-item .nav-link .nav-content {
       display: none;
     }
   }
+
   .nav-stepper .nav-item .nav-link .nav-number {
     display: flex;
     justify-content: center;
@@ -76,6 +81,7 @@
   .nav-stepper .nav-item .nav-link.active {
     background: transparent;
   }
+
   .nav-stepper .nav-item .nav-link.active .nav-number {
     background: #27BEFF;
     color: #FFFFFF;
@@ -118,26 +124,36 @@
   }
 
   .counter-tab {
-    background: rgba(255,255,255, .1);
+    background: rgba(255, 255, 255, .1);
     padding: .25rem 0;
     border-radius: 5rem;
   }
+
   .counter-tab .nav-link {
     color: white;
     border-radius: 5rem;
   }
+
   .counter-tab .nav-link.active {
-    background: rgb(112,190,231);
+    background: rgb(112, 190, 231);
     border-radius: 5rem;
   }
 
   .tab-container {
     min-height: 25rem;
   }
+
   @media screen and (max-width: 768px) {
-  .tab-container {
-    min-height: 100%;
+    .tab-container {
+      min-height: 100%;
+    }
   }
+
+  .dropify-wrapper {
+    border-radius: .5rem;
+  }
+  .dropify-wrapper .dropify-message p:not(p.dropify-error) {
+    font-size: 1rem;
   }
 </style>
 @endsection
@@ -182,12 +198,12 @@
               <h3>Loan Detail</h3>
 
               <div class="form-group">
-                <label for="loan">Loan Ammount</label>
+                <label class="d-flex" for="loan">Loan Ammount <div class="text-danger">*</div></label>
                 <input type="text" class="form-control" value="{{ old('loan') }}" placeholder="Enter the loan ammount" id="loan" name="loan" />
               </div>
 
               <div class="form-group">
-                <label>Period (years)</label>
+                <label class="d-flex">Period (years) <div class="text-danger">*</div></label>
 
                 <div class="period-selector">
                   <div class="period-wrapper">
@@ -214,7 +230,7 @@
               </div>
 
               <div class="form-group">
-                <label for="purpose">Purpose</label>
+                <label class="d-flex" for="purpose">Purpose <div class="text-danger">*</div></label>
                 <select name="purpose" id="purpose" class="form-control">
                   <option disabled selected="selected">Select</option>
                   <option value="01">01 - Business Venture</option>
@@ -249,22 +265,22 @@
               <h3>Income & Employment Details</h3>
 
               <div class="form-group">
-                <label for="fullname">Name as NRIC</label>
+                <label class="d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your name" />
               </div>
 
               <div class="form-group">
-                <label for="nric">NRIC</label>
+                <label class="d-flex" for="nric">NRIC <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="nric" name="nric" placeholder="Enter your NRIC" />
               </div>
 
               <div class="form-group">
-                <label for="email">E-Mail</label>
+                <label class="d-flex" for="email">E-Mail <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" />
               </div>
 
               <div class="form-group">
-                <label>Contact No.</label>
+                <label class="d-flex">Contact No. <span class="text-danger">*</span></label>
 
                 <div class="input-group">
                   <input type="text" class="form-control" name="phone_prefix" value="{{ old('phone_prefix') }}" style="width: 15%" placeholder="+64" />
@@ -283,12 +299,12 @@
               <h3>Income & Employment Details</h3>
 
               <div class="form-group">
-                <label for="tax">Annual Pre-Tax Income</label>
+                <label class="d-flex" for="tax">Annual Pre-Tax Income <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" />
               </div>
 
               <div class="form-group">
-                <label for="employment">Employment Status</label>
+                <label class="d-flex" for="employment">Employment Status <span class="text-danger">*</span></label>
                 <select name="employment" id="employment" class="form-control">
                   <option disabled selected>--[ Choose One ]--</option>
                   <option value="employeed">Employeed</option>
@@ -297,7 +313,7 @@
               </div>
 
               <div class="form-group">
-                <label for="dependants">Number of Dependants</label>
+                <label class="d-flex" for="dependants">Number of Dependants <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" />
               </div>
             </div>
@@ -312,23 +328,23 @@
               <h3>Identity Card</h3>
 
               <div class="form-group">
-                <label>Identity Card (Front)</label>
-                <input type="file" class="form-control" id="id_front" name="id_front" />
+                <label class="d-flex">Identity Card (Front) <span class="text-danger">*</span></label>
+                <input type="file" name="id_front" class="dropify" data-height="100" />
               </div>
 
               <div class="form-group">
-                <label>Identity Card (Back)</label>
-                <input type="file" class="form-control" id="id_back" name="id_back" />
+                <label class="d-flex">Identity Card (Back) <span class="text-danger">*</span></label>
+              <input type="file" name="id_back" class="dropify" data-height="100" />
               </div>
 
               <div class="form-group">
-                <label>Salary Slip</label>
-                <input type="file" class="form-control" id="salary_slip" name="salary_slip" />
+                <label class="d-flex">Salary Slip <span class="text-danger">*</span></label>
+                <input type="file" name="salary_slip" class="dropify" data-height="100" />
               </div>
 
               <div class="form-group">
-                <label>Utility Slip</label>
-                <input type="file" class="form-control" id="utilities_slip" name="utilities_slip" />
+                <label class="d-flex">Utility Slip <span class="text-danger">*</span></label>
+                <input type="file" name="utilities_slip" class="dropify" data-height="100" />
               </div>
             </div>
 
@@ -350,18 +366,19 @@
 
               <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
                 <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Total</a></li>
               </ul>
 
             </div>
           </div>
 
-          <div class="text-center tab-content mb-3">
+          <div class="text-center tab-content mb-2">
             <div class="tab-pane fade active show" id="pill-monthly">
               <h3 class="m-0 h1" id="calculator">$0</h3>
             </div>
             <div class="tab-pane fade" id="pill-total">
               <h3 class="m-0 h1" id="calc-total">$0</h3>
+              <p class="mb-1">Per Year</p>
             </div>
           </div>
 
@@ -377,7 +394,12 @@
 
 @section('footer')
 {!! RecaptchaV3::initJs() !!}
+<script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
+
 <script>
+  /**
+   * Navigation
+   */
   function prevStep(targetElement, anchorEl) {
     console.log($(`.nav-stepper #${anchorEl}`));
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
@@ -388,12 +410,13 @@
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');
   }
 
+  /**
+   * Counter
+   */
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
   });
-
-  // Form
   $('input[name="period"]').on('change', function() {
     let ammount = $('#loan').val();
     let diff = $('[name="period"]:checked').val();
@@ -423,7 +446,6 @@
     $('#calculator').text(`${formatter.format(calc)}`);
     $('#calc-total').text(`${formatter.format(calc * 12)}`);
   });
-
   $('#loan').keyup(function() {
     let ammount = $('#loan').val();
     let diff = $('[name="period"]:checked').val();
@@ -453,5 +475,10 @@
     $('#calculator').text(`${formatter.format(calc)}`);
     $('#calc-total').text(`${formatter.format(calc * 12)}`);
   });
+
+  /**
+   * Dropdzone
+   */
+  $('.dropify').dropify();
 </script>
 @endsection
