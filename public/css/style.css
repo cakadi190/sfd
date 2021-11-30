@@ -282,6 +282,13 @@ div#footer-mobile {
   font-size: 1rem;
 }
 
+.font-footer-primary{
+  font-size: 1.3rem;
+}
+.font-footer-secondary{
+  font-size: 1rem;
+}
+
 .img-mini {
   width: 15vmin;
 }
