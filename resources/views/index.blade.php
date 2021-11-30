@@ -31,7 +31,7 @@
 
     <!--Box Card for Mobile-->
     <div id="box-card-mobile">
-      <div class="d-flex flex-column justify-content-around">
+      <div class="d-flex flex-column justify-content-around pt-2">
         <h3 class="cl-tertiary align-self-center font-size-tertiary">About</h3>
         <div class="d-flex flex-row justify-content-center">
           <h3 class="cl-quaternary font-size-tertiary">Smart</h3>
@@ -50,7 +50,7 @@
     </div>
     <!--Box Card for Desktop-->
     <div id="box-card-desktop">
-      <div class="d-flex flex-row justify-content-around">
+      <div class="d-flex flex-row justify-content-around pt-3">
         <div class="d-flex flex-row font-type-primary">
           <h3 class="cl-tertiary font-size-tertiary">About</h3>
           <h3 class="ml-2 cl-quaternary border-bottom-full font-size-tertiary">SmartFunding Direct</h3>
