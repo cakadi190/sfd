@@ -9,15 +9,15 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
-        <li class="nav-item active align-self-center mt-3">
+        <li class="nav-item active align-self-center">
           <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile active-now"
             href="/index">Home<span class="sr-only">(current)</span></a>
         </li>
-        <li class="nav-item active align-self-center mt-3">
+        <li class="nav-item active align-self-center">
           <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile" href="/about">About
             Us</a>
         </li>
-        <li class="nav-item align-self-center mt-3">
+        <li class="nav-item align-self-center">
           <a href="/register"
             class="nav-link p-2 btn-nav bg-cl-secondary cl-secondary font-type-secondary font-size-septenary"
             id="btn-responsive-mobile">Apply Loan</a>

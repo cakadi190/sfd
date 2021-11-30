@@ -65,7 +65,7 @@ nav#nav-mobile {
   padding: 3vmin;
   position: absolute;
   z-index: 2;
-  top: 85vh;
+  top: 75vh;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -103,6 +103,9 @@ div#section3-mobile {
 
 .width-medium-container {
   width: 70vmin;
+}
+.width-big-container{
+  width: 85vmin;
 }
 
 .border-bottom-half {
@@ -246,8 +249,21 @@ div#footer-mobile {
   font-weight: 400;
 }
 
+.font-line-height-small{
+  line-height: 1rem;
+}
+.font-line-height-med{
+  line-height: 1.5rem;
+}
+.font-line-height-big{
+  line-height: 2rem;
+}
+.font-line-height-super-big{
+  line-height: 2.5rem;
+}
+
 .font-size-primary {
-  font-size: 2.1rem;
+  font-size: 2.2rem;
 }
 
 .font-size-secondary {
@@ -259,7 +275,7 @@ div#footer-mobile {
 }
 
 .font-size-quaternary {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 .font-size-septenary {
@@ -283,7 +299,7 @@ div#footer-mobile {
 }
 
 .width-container-small {
-  width: 20vmax;
+  width: 30vmax;
 }
 
 .border-bottom-quarter {
@@ -296,8 +312,8 @@ div#footer-mobile {
   display: inline;
 }
 
-.ml-16 {
-  margin-left: 16vw;
+.ml-10 {
+  margin-left: 10vw;
 }
 
 /*==== Media Query Responsive ====*/
@@ -348,7 +364,7 @@ div#footer-mobile {
 
   #hero {
     padding-top: 25vmin;
-    height: 105vh;
+    height: 95vh;
     margin: 0px;
   }
 
@@ -357,7 +373,7 @@ div#footer-mobile {
   }
 
   div#section3-mobile {
-    padding-top: 40vh;
+    padding-top: 30vh;
   }
 
   div#section4-tablet {
@@ -424,7 +440,7 @@ div#footer-mobile {
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 30vh;
+    padding-top: 20vh;
   }
 
   #section3-header {
@@ -556,7 +572,7 @@ div#footer-mobile {
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 30vh;
+    padding-top: 22vh;
     position: relative;
   }
 
@@ -589,7 +605,7 @@ div#footer-mobile {
     position: absolute;
     width: 30vmin;
     left: 70vw;
-    top: 75vh;
+    top: 115vh;
   }
 
   .width-btn {
@@ -638,7 +654,7 @@ div#footer-mobile {
   }
 
   .float-img-desktop-right-2 {
-    width: 60vmin;
+    width: 55vmin;
     float: right;
     position: absolute;
     top: 0vh;

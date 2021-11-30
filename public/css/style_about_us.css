@@ -18,6 +18,11 @@
     background-repeat: no-repeat;
 }
 
+#hero-about{
+    height: 75vh;
+    margin: 0px;
+}
+
 @media screen and (min-width: 300px) and (max-width: 550px){
     div#about-section1-tablet{
         display: none !important;
@@ -36,6 +41,11 @@
     }
     div#footer-desktop{
         display: none !important;
+    }
+    #hero-about{
+        padding-top: 15vh;
+        height: 95vh;
+        margin: 0px;
     }
 }
 @media screen and (min-width: 551px) and (max-width: 800px){
@@ -92,6 +102,9 @@
     }
 }
 @media screen and (min-width: 1025px) and (max-width: 1440px){
+    .ml-10{
+        margin-left: 12vw !important;
+    }
     div#about-section1-mobile{
         display: none !important;
     }

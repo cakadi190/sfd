@@ -4,30 +4,30 @@
     <div class="d-flex flex-column justify-content-center">
       <img src="{{ asset('images/logo/sfd-wh.svg') }}" alt="Logo" class="image-fluid img-small-footer">
       <h4 class="font-type-tertiary font-size-tertiary mt-3 cl-quaternary">License</h4>
-      <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary">Smartfunding Pte. Ltd.
+      <p class="width-container-small cl-secondary font-type-tertiary font-size-septenary">Smartfunding Pte. Ltd.
         Regulated by Monetary Authority of Singapore (MAS). License no: CMS-100637-1 Capital Market Services (Dealing in
         Securities)</p>
     </div>
     <div class="d-flex flex-column justify-content-around">
-      <div class="d-flex flex-column justify-content-start">
-        <h4 class="font-type-tertiary font-size-tertiary cl-quaternary">Get in Touch</h4>
-        <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary">Endokemi kaning. Bepir
+      <div class="d-flex flex-column justify-content-start ml-3">
+        <h4 class="font-type-tertiary font-size-quaternary cl-quaternary">Get in Touch</h4>
+        <p class="width-container-small cl-secondary font-type-tertiary font-size-septenary">Endokemi kaning. Bepir
           detregt. Vabel sovöpör. Milingar. Bigt seryrat. </p>
       </div>
-      <div class="d-flex flex-column justify-content-start">
-        <h4 class="font-type-tertiary font-size-tertiary cl-quaternary">Address</h4>
-        <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary">71, Ayer Rajah Crescent,
+      <div class="d-flex flex-column justify-content-start ml-3">
+        <h4 class="font-type-tertiary font-size-quaternary cl-quaternary">Address</h4>
+        <p class="width-container-small cl-secondary font-type-tertiary font-size-septenary">71, Ayer Rajah Crescent,
           <br />#06-06, Singapore <br />139951.</p>
       </div>
     </div>
     <div class="d-flex flex-column justify-content-around">
-      <div class="d-flex flex-column justify-content-start">
-        <h4 class="font-type-tertiary font-size-tertiary cl-quaternary">Hotline</h4>
-        <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary">+60 9111 3111</p>
+      <div class="d-flex flex-column justify-content-start ml-3">
+        <h4 class="font-type-tertiary font-size-quaternary cl-quaternary">Hotline</h4>
+        <p class="width-container-small cl-secondary font-type-tertiary font-size-septenary">+60 9111 3111</p>
       </div>
-      <div class="d-flex flex-column justify-content-start">
-        <h4 class="font-type-tertiary font-size-tertiary cl-quaternary">Email</h4>
-        <p class="width-container-small cl-secondary font-type-tertiary font-size-quaternary">hi@smartfunding.sg</p>
+      <div class="d-flex flex-column justify-content-start ml-3">
+        <h4 class="font-type-tertiary font-size-quaternary cl-quaternary">Email</h4>
+        <p class="width-container-small cl-secondary font-type-tertiary font-size-septenary">hi@smartfunding.sg</p>
       </div>
       <div class="d-flex flex-row justify-content-around">
         <img src="assets/Facebook.svg" alt="Facebook" class="image-fluid img-icon-mini">
@@ -39,8 +39,8 @@
   </div>
   <div class="d-flex flex-row justify-content-around bg-cl-footer p-2">
     <div class="d-flex flex-row justify-content-start">
-      <h5 class="font-type-tertiary font-size-quaternary cl-secondary">© 2020 All rights reserved.</h5>
-      <h5 class="font-type-tertiary font-size-quaternary cl-quaternary">Smartfunding Pte. Ltd</h5>
+      <h5 class="font-type-tertiary font-size-septenary cl-secondary">© 2020 All rights reserved.</h5>
+      <h5 class="font-type-tertiary font-size-septenary cl-quaternary">Smartfunding Pte. Ltd</h5>
     </div>
     <h5 class="font-type-tertiary font-size-septenary cl-octonary">Privacy policy</h5>
     <h5 class="font-type-tertiary font-size-septenary cl-octonary">Terms of use</h5>
