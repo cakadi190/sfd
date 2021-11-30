@@ -103,7 +103,7 @@
 }
 @media screen and (min-width: 1025px) and (max-width: 1440px){
     .ml-10{
-        margin-left: 12vw !important;
+        margin-left: 11vw !important;
     }
     div#about-section1-mobile{
         display: none !important;
@@ -138,6 +138,13 @@
     }
 }
 @media screen and (min-width: 1441px) and (max-width: 1650px) {
+    #hero-about{
+        height: 60vh;
+        margin: 0px;
+    }
+    .ml-10{
+        margin-left: 13vw;
+    }
     div#about-section1-mobile{
         display: none !important;
     }

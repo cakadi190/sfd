@@ -309,6 +309,10 @@ div#footer-mobile {
   width: 30vmax;
 }
 
+.width-footer-container{
+  width: 55vmin;
+}
+
 .border-bottom-quarter {
   border-bottom: 0.5vmin solid #19CDFA;
   padding-bottom: 0.8vmin;
