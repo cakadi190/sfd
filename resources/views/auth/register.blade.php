@@ -4,6 +4,7 @@
 
 @section('header')
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 
 <style>
   #mainhead {
@@ -58,6 +59,7 @@
     display: flex;
     color: #1D2C62;
     align-items: center;
+    font-weight: bold;
   }
 
   @media screen and (max-width: 768px) {
@@ -72,7 +74,9 @@
     align-items: center;
     width: 40px;
     height: 40px;
-    background: #dde5ee;
+    font-weight: bold;
+    background: linear-gradient(0, #becbd8, #CFDBE8);
+    border: 2px solid #dde6f0;
     border-radius: 50px;
     margin-right: .75rem;
     color: #1D2C62;
@@ -83,8 +87,9 @@
   }
 
   .nav-stepper .nav-item .nav-link.active .nav-number {
-    background: #27BEFF;
+    background: linear-gradient(360deg, #249acd, #27BEFF);
     color: #FFFFFF;
+    border-color: #52c8fa
   }
 
   .period-selector {
@@ -112,6 +117,7 @@
     justify-content: center;
     margin: 0;
     transition: all .2s;
+    font-weight: bold;
   }
 
   .period-selector .period-wrapper label:hover {
@@ -120,13 +126,17 @@
 
   .period-selector .period-wrapper input:checked~label {
     background: #6cb2eb;
-    color: #fff;
+    color: #003366;
   }
 
   .counter-tab {
     background: rgba(255, 255, 255, .1);
     padding: .25rem 0;
     border-radius: 5rem;
+  }
+
+  .counter-tab .nav-item {
+    flex: 1;
   }
 
   .counter-tab .nav-link {
@@ -155,11 +165,90 @@
   .dropify-wrapper .dropify-message p:not(p.dropify-error) {
     font-size: 1rem;
   }
+
+  .heading {
+    padding-bottom: 2rem;
+    font-size: 24px;
+  }
+  .btn-next {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+  }
+  .btn-prev {
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    border: 1px solid #4AA0E6;
+  }
+  .datepicker {
+    position: relative;
+  }
+  .datepicker .calendar-icon {
+    position: absolute;
+    top: 0.4rem;
+    right: 0.75rem;
+    font-size: 1.5rem;
+  }
+
+  .dropify-wrapper {
+    display: block;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: 200px;
+    padding: 5px 10px;
+    font-size: 14px;
+    line-height: 22px;
+    color: #777;
+    background-color: #F3F3F3;
+    background-image: none;
+    text-align: center;
+    border: 2px dashed #1D2C62;
+    -webkit-transition: border-color .15s linear;
+    transition: border-color .15s linear;
+  }
+  .dropify-wrapper .dropify-message {
+    top: 50%;
+    position: relative;
+    display: flex;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    align-items: center;
+    justify-content: center;
+  }
+  .dropify-wrapper .dropify-message span.file-icon {
+    font-size: 50px;
+    color: #1D2C62;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .custom-control-input:focus~.custom-control-label:before {
+    box-shadow: 0 0 0 0.2rem rgb(112 190 231 / 25%);
+  }
+  .custom-control-input:checked~.custom-control-label:before {
+    background-color: var(--info);
+    border-color: var(--info);
+    color: #fff;
+  }
+  .custom-control-input:focus:not(:checked)~.custom-control-label:before {
+    border-color: #2c54c9;
+  }
+  .custom-checkbox .custom-control-label:before {
+    border-radius: 0.25rem;
+  }
 </style>
 @endsection
 
 @section('content')
 <div class="container py-5">
+
+  <div class="heading text-primary">
+    <h3 class="h2"><span class="text-info">SMART</span>FUNDING <span class="text-info">DIRECT</span> Loan Application</h3>
+  </div>
 
   <ul class="nav nav-stepper nav-pills mb-3" id="pills-tab" role="tablist">
     <li class="nav-item" role="presentation">
@@ -189,20 +278,20 @@
   </ul>
 
   <div class="card card-body">
-    <div class="row">
-      <div class="col-md-8">
+    <div class="row justify-content-lg-between">
+      <div class="col-md-6">
 
         <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
-            <div class="tab-container">
-              <h3>Loan Detail</h3>
+            <div class="tab-container py-4 px-3">
+              <h3 class="heading">Loan Detail</h3>
 
-              <div class="form-group">
-                <label class="d-flex" for="loan">Loan Ammount <div class="text-danger">*</div></label>
-                <input type="text" class="form-control" value="{{ old('loan') }}" placeholder="Enter the loan ammount" id="loan" name="loan" />
+              <div class="form-group mb-4">
+                <label class="d-flex" for="finance_ammount">Loan Ammount <div class="text-danger">*</div></label>
+                <input type="text" class="form-control" value="{{ old('finance_ammount') }}" placeholder="Enter the loan ammount" id="finance_ammount" name="finance_ammount" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex">Period (years) <div class="text-danger">*</div></label>
 
                 <div class="period-selector">
@@ -229,7 +318,7 @@
                 </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex" for="purpose">Purpose <div class="text-danger">*</div></label>
                 <select name="purpose" id="purpose" class="form-control">
                   <option disabled selected="selected">Select</option>
@@ -255,31 +344,30 @@
             </div>
 
             <div class="d-flex mt-4 justify-content-between">
-              <a href="javascript:void()" class="btn btn-light disabled"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <a href="javascript:nextStep('pills-two')" class="btn btn-success"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+              <a href="javascript:nextStep('pills-two')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
           </div>
           <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
-            <div class="tab-container">
-              <h3>Income & Employment Details</h3>
+            <div class="tab-container py-4 px-3">
+              <h3 class="heading">Personal Details</h3>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your name" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex" for="nric">NRIC <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" id="nric" name="nric" placeholder="Enter your NRIC" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex" for="email">E-Mail <span class="text-danger">*</span></label>
                 <input type="text" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" />
               </div>
 
-              <div class="form-group">
+              <div class="form-group mb-4">
                 <label class="d-flex">Contact No. <span class="text-danger">*</span></label>
 
                 <div class="input-group">
@@ -287,16 +375,24 @@
                   <input type="text" class="form-control" name="phone" value="{{ old('phone') }}" style="width: 85%" placeholder="Enter the number phone" />
                 </div>
               </div>
+
+              <div class="form-group mb-4">
+                <label class="d-flex" for="birth_date">Date of Birth <span class="text-danger">*</span></label>
+                <div class="datepicker">
+                  <input type="text" class="form-control" value="{{ old('birth_date') }}" id="birth_date" name="birth_date" placeholder="Enter your Birth Date" />
+                  <i class="bx bx-calendar calendar-icon"></i>
+                </div>
+              </div>
             </div>
 
-            <div class="d-flex mt-4 justify-content-between">
-              <a href="javascript:prevStep('pills-one', 'pills-two')" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <a href="javascript:nextStep('pills-income')" class="btn btn-success"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+            <div class="d-flex mt-4">
+              <a href="javascript:prevStep('pills-one', 'pills-two')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+              <a href="javascript:nextStep('pills-income')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab">
             <div class="tab-container">
-              <h3>Income & Employment Details</h3>
+              <h3 class="heading">Income & Employment Details</h3>
 
               <div class="form-group">
                 <label class="d-flex" for="tax">Annual Pre-Tax Income <span class="text-danger">*</span></label>
@@ -318,47 +414,52 @@
               </div>
             </div>
 
-            <div class="d-flex mt-4 justify-content-between">
-              <a href="javascript:prevStep('pills-two', 'pills-income')" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <a href="javascript:nextStep('pills-upload')" class="btn btn-success"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+            <div class="d-flex mt-4">
+              <a href="javascript:prevStep('pills-two', 'pills-income')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+              <a href="javascript:nextStep('pills-upload')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
             <div class="tab-container">
-              <h3>Identity Card</h3>
+              <h3 class="heading">Income & Employment Details</h3>
 
-              <div class="form-group">
-                <label class="d-flex">Identity Card (Front) <span class="text-danger">*</span></label>
-                <input type="file" name="id_front" class="dropify" data-height="100" />
+              <div class="form-group mb-5">
+                <label class="d-flex">Identity Card - Front (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="id_front" class="dropify" data-height="70" />
               </div>
 
-              <div class="form-group">
-                <label class="d-flex">Identity Card (Back) <span class="text-danger">*</span></label>
-              <input type="file" name="id_back" class="dropify" data-height="100" />
+              <div class="form-group mb-5">
+                <label class="d-flex">Identity Card - Back (Max Size: 5MB) <span class="text-danger">*</span></label>
+              <input type="file" name="id_back" class="dropify" data-height="70" />
               </div>
 
-              <div class="form-group">
-                <label class="d-flex">Salary Slip <span class="text-danger">*</span></label>
-                <input type="file" name="salary_slip" class="dropify" data-height="100" />
+              <div class="form-group mb-5">
+                <label class="d-flex">Salary Slip (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="salary_slip" class="dropify" data-height="70" />
               </div>
 
-              <div class="form-group">
-                <label class="d-flex">Utility Slip <span class="text-danger">*</span></label>
-                <input type="file" name="utilities_slip" class="dropify" data-height="100" />
+              <div class="form-group mb-5">
+                <label class="d-flex">Salary of Public Lifeline/Utilities (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="utilities_slip" class="dropify" data-height="70" />
+              </div>
+
+              <div class="custom-control mb-3 custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" />
+                <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
               </div>
             </div>
 
-            <div class="d-flex mt-4 justify-content-between">
-              <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn btn-light"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <button type="submit" class="btn btn-success"><i class="fa-solid fa-user-plus mr-2"></i>Save & Register</button>
+            <div class="d-flex mt-5">
+              <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+              <button class="btn btn-info btn-next btn-lg" type="submit">Submit</button>
             </div>
           </div>
         </form>
 
       </div>
-      <div class="col-md-4">
+      <div class="col-md-5">
 
-        <div class="card card-body bg-dark text-white text-center">
+        <div class="card card-body bg-primary text-white text-center">
           <h5 class="h6">Estimated Payment</h5>
 
           <div class="row justify-content-center">
@@ -372,7 +473,7 @@
             </div>
           </div>
 
-          <div class="text-center tab-content mb-2">
+          <div class="text-center tab-content mb-2 py-5">
             <div class="tab-pane fade active show" id="pill-monthly">
               <h3 class="m-0 h1" id="calculator">$0</h3>
             </div>
@@ -395,6 +496,9 @@
 @section('footer')
 {!! RecaptchaV3::initJs() !!}
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
   /**
@@ -476,9 +580,20 @@
     $('#calc-total').text(`${formatter.format(calc * 12)}`);
   });
 
+  // Date
+  $('input#birth_date').daterangepicker({
+    singleDatePicker: true,
+    showDropdowns: true,
+  });
+
   /**
    * Dropdzone
    */
-  $('.dropify').dropify();
+  $('.dropify').dropify({
+    tpl: {
+      message: '<div class="dropify-message" style="font-size: 1.25rem"><i class="fa-solid mr-2 fa-link"></i> <strong>Drag & Drop or <u class="text-info">Browse</u></strong></div>',
+    }
+  });
 </script>
 @endsection
+
