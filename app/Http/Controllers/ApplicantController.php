@@ -5,24 +5,37 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use Illuminate\Http\Request;
 
-class RegisterBorrowerController extends Controller
+class ApplicantController extends Controller
 {
   /**
-   * Showing the Form for Register
+   * Display a listing of the resource.
    *
-   * @return Illuminate\Support\Facades\View
+   * @return \Illuminate\Http\Response
    */
-  public function register()
+  public function index()
   {
-    return view('auth.register');
+    $applicant = new Applicant();
+    $data['applies'] = $applicant->all();
+    return view('applicant.index', $data);
   }
 
   /**
-   * Processing data
+   * Show the form for creating a new resource.
    *
-   * @return void
+   * @return \Illuminate\Http\Response
    */
-  public function process(Request $request)
+  public function create()
+  {
+    return view('applicant.create');
+  }
+
+  /**
+   * Store a newly created resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @return \Illuminate\Http\Response
+   */
+  public function store(Request $request)
   {
     $this->validate($request, [
       "finance_ammount" => ["required"],
@@ -44,13 +57,14 @@ class RegisterBorrowerController extends Controller
     ]);
 
     $data['loan_id']          = uniqid('loan-');
-    $data['finance_ammount']  = htmlspecialchars(strip_tags($request->loan));
+    $data['finance_ammount']  = htmlspecialchars(strip_tags($request->finance_ammount));
     $data['period']           = htmlspecialchars(strip_tags($request->period));
     $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));
     $data['nric']             = htmlspecialchars(strip_tags($request->nric));
     $data['birthdate']        = htmlspecialchars(strip_tags($request->date));
     $data['dependants']       = htmlspecialchars(strip_tags($request->dependants));
     $data['employment']       = htmlspecialchars(strip_tags($request->employment));
+    $data['phone']            = htmlspecialchars(strip_tags($request->phone_prefix)) . htmlspecialchars(strip_tags($request->phone));
 
     $utilities = $request->utilities_slip;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
@@ -69,6 +83,50 @@ class RegisterBorrowerController extends Controller
     $data['salary_slip'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
 
     Applicant::create($data);
+  }
 
+  /**
+   * Display the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function show($id)
+  {
+    //
+  }
+
+  /**
+   * Show the form for editing the specified resource.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function edit($id)
+  {
+    //
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param  \Illuminate\Http\Request  $request
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function update(Request $request, $id)
+  {
+    //
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param  int  $id
+   * @return \Illuminate\Http\Response
+   */
+  public function destroy($id)
+  {
+    //
   }
 }
