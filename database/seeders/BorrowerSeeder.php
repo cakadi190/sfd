@@ -13,6 +13,6 @@ class BorrowerSeeder extends Seeder
      */
     public function run()
     {
-        //
+        \App\Models\Borrower::factory(20)->create();
     }
 }

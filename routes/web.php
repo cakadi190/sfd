@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\BorrowerController;
 
 /*
   New Routes
@@ -18,6 +18,13 @@ Auth::routes([
   'verify'    => true,
   'register'  => false,
 ]);
+
+/*
+  Uji Coba Notification Email
+ */
+Route::get('/sendBorrowerNotification/{id}', [BorrowerController::class, 'sendConfirmationEmail']);
+Route::get('/followUpMailNotif/{id}',[BorrowerController::class, 'followUpEmail']);
+Route::get('/activatingEMandate/{id}', [BorrowerController::class, 'activatingEMandate']);
 
 /**
  * Social Login

@@ -1,6 +1,6 @@
 <!--Desktop Footer-->
 <div id="footer-desktop">
-  <div class="d-flex flex-row justify-content-center pt-5 bg-cl-secondary p-5">
+  <div class="d-flex flex-row justify-content-around pt-5 bg-cl-secondary p-5">
     <div class="d-flex flex-column justify-content-center">
       <img src="{{ asset('images/logo/sfd-wh.svg') }}" alt="Logo" class="image-fluid img-small-footer">
       <h4 class="font-type-tertiary font-footer-primary mt-3 cl-quaternary">License</h4>
