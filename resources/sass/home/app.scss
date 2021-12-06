@@ -1,0 +1,10 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Nunito:wght@400;700&display=swap');
+
+// Bootstrap
+@import '../admin/variables';
+@import '~bootstrap/scss/bootstrap';
+@import '../admin/fonts';
+
+// Addons
+@import './smartwizard/smart_wizard_all.scss';

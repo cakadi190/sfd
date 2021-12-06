@@ -1,0 +1,11 @@
+@mixin button-social($btn-bg, $color: #fff, $background-hover: darken($btn-bg, 10%)) {
+    color: $color;
+	background-color: $btn-bg;
+	&:hover {
+        color: $color;
+		background-color: $background-hover;
+	}
+    &:focus {
+        box-shadow: 0 0 0 .2rem rgba($background-hover, .25);
+    }
+}

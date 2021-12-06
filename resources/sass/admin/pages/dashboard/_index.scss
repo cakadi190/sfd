@@ -1,0 +1,65 @@
+.navbar-top {
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .navbar-brand {
+        padding: 1rem .5rem;
+    }
+
+    .navbar-nav {
+        &.ml-auto {
+            .nav-item {
+                >.nav-link {
+                    padding: 1.25rem .5rem;
+                    color: $white;
+
+                    @include media-breakpoint-down('md') {
+                        padding: 1.5rem .5rem;
+                    }
+                }
+
+                &.dropdown {
+                    .nav-link:after {
+                        display: none;
+                    }
+
+                    @include media-breakpoint-down('md') {
+                        position: static;
+
+                        .dropdown-menu {
+                            width: calc(100% - 1rem);
+                            margin: 0 .5rem;
+                            margin-top: .5rem;
+                        }
+                    }
+                }
+
+                &.userinfo {
+                    background: rgba($white, 10%);
+                    height: 100%;
+                    margin-left: 1rem;
+                    border-right: 1px solid rgba($white, .25);
+                    border-left: 1px solid rgba($white, .25);
+
+                    .nav-link {
+                        height: 100%;
+                        padding: 1.25rem 1rem;
+
+                        @include media-breakpoint-down('md') {
+                            padding: 1.5rem 1rem;
+                        }
+
+                        &:after {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.navbar-bottom {
+    border-bottom: 1px solid $gray-300;
+    background: $white;
+}
