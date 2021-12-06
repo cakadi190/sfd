@@ -18,21 +18,21 @@
         <div class="jumbotron jumbotron-fluid height-med-jumbotron bg-hero" id="hero-about">
             <div class="container container-fluid d-flex flex-column">
                 <h2 class="font-type-primary cl-secondary text-center font-size-primary">About Us</h2>
-                <p class="text-center cl-secondary font-type-secondary font-size-quaternary width-medium-container align-self-center mt-3">At Smart Funding Direct, we aim to make alternative finance solutions through microloans more accessible to individuals.</p>
-                <p class="text-center cl-secondary font-type-secondary font-size-quaternary width-medium-container align-self-center mt-3">Our goal is to help individuals affected by the on-going pandemic through a transparent alternative financing platform. </p>
+                <p class="text-center cl-secondary font-type-secondary font-size-septenary width-container-inter1-px align-self-center mt-3">At Smart Funding Direct, we aim to make alternative finance solutions through microloans more accessible to individuals.</p>
+                <p class="text-center cl-secondary font-type-secondary font-size-septenary width-container-inter1-px align-self-center mt-3" id="container-tablet">Our goal is to help individuals affected by the on-going pandemic through a transparent alternative financing platform. </p>
             </div>
         </div>
 
         <!--Mobile Section 1-->
         <div id="about-section1-mobile">
-            <div class="d-flex flex-column justify-content-around mt-5 bg-section-1">
+            <div class="d-flex flex-column justify-content-around mt-70px bg-section-1">
                 <h3 class="align-self-center font-type-primary font-size-secondary">Who We Are</h3>
                 <div class="border-bottom-half align-self-center"></div>
-                <div class="pl-5 align-self-center">
-                    <p class="cl-senary font-type-secondary font-size-septenary font-line-height-med font-line-height-med width-medium-container align-self-center mt-5">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
-                    <p class="cl-senary font-type-secondary font-size-septenary font-line-height-med font-line-height-med width-medium-container align-self-center mt-2">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
-                    <p class="cl-senary font-type-secondary font-size-septenary font-line-height-med font-line-height-med width-medium-container align-self-center mt-2">The result? An easy, dependable digital lending platform that benefits the community</p>
-                    <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary align-self-left">Apply Now</a>
+                <div class="pl-100px align-self-start ">
+                    <p class="cl-senary font-type-tertiary font-size-quaternary font-line-height-med font-line-height-med width-container-inter3-px align-self-center mt-25px">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
+                    <p class="cl-senary font-type-tertiary font-size-quaternary font-line-height-med font-line-height-med width-container-inter3-px align-self-center mt-25px">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
+                    <p class="cl-senary font-type-tertiary font-size-quaternary font-line-height-med font-line-height-med width-container-inter3-px align-self-center mt-25px">The result? An easy, dependable digital lending platform that benefits the community</p>
+                    <a href="/register" class="btn btn-hero font-type-secondary font-size-septenary cl-secondary bg-cl-tertiary align-self-left mt-25px mb-25px">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -43,10 +43,10 @@
                 <div class="border-bottom-quarter ml-5"></div>
                 <div class="d-flex flex-row justify-content-between">
                     <div class="pl-5 align-self-center">
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-5">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-2">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-2">The result? An easy, dependable digital lending platform that benefits the community</p>
-                        <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary align-self-left">Apply Now</a>
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container-tablet font-line-height-big align-self-center mt-5">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container-tablet font-line-height-big align-self-center mt-2">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container-tablet font-line-height-big align-self-center mt-2">The result? An easy, dependable digital lending platform that benefits the community</p>
+                        <a href="/register" class="btn btn-hero font-type-secondary font-size-septenary cl-secondary bg-cl-tertiary align-self-left mt-25px mb-25px">Apply Now</a>
                     </div>
                     <img src="{{asset('assets/Frame_1000002212.svg')}}" alt="Image" class="image-fluid img-small align-self-center">
                 </div>
@@ -54,43 +54,45 @@
         </div>
         <!--Desktop Section 1-->
         <div id="about-section1-desktop">
-            <div class="d-flex flex-column justify-content-around pt-5">
-                <h3 class="font-type-primary font-size-secondary ml-10">Who We Are</h3>
-                <div class="border-bottom-quarter ml-10"></div>
-                <div class="d-flex flex-row justify-content-around">
-                    <div class="pl-5 align-self-center">
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-5">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container align-self-center mt-2">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
-                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-2">The result? An easy, dependable digital lending platform that benefits the community</p>
-                        <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary font-line-height-big align-self-left">Apply Now</a>
+            <div class="d-flex flex-row justify-content-around mt-5">
+                <div class="d-flex flex-column justify-content-start">
+                    <div class="pl-5">
+                        <h3 class="font-type-primary font-size-secondary">Who We Are</h3>
+                        <div class="border-bottom-quarter"></div>
                     </div>
-                    <img src="{{asset('assets/Frame_1000002212_desktop.svg')}}" alt="Image" class="image-fluid img-med align-self-center">
+                    <div class="pl-5 align-self-center">
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-5" id="content-big-screen">SmartFunding Direct is ASEAN's largest digital financing platform for alternative financing through microloans</p>
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container align-self-center mt-2" id="content-special-desktop">The SmartFunding Direct platform provides individuals with a fully integrated and user-friendly platform to apply for microloans quickly</p>
+                        <p class="cl-senary font-type-secondary font-size-quaternary width-medium-container font-line-height-big align-self-center mt-2" id="content-big-screen">The result? An easy, dependable digital lending platform that benefits the community</p>
+                        <a href="/register" class="btn btn-hero font-type-secondary font-size-septenary cl-secondary bg-cl-tertiary font-line-height-big align-self-left">Apply Now</a>
+                    </div>
                 </div>
+                <img src="{{asset('assets/Frame_1000002212_desktop.svg')}}" alt="Image" class="image-fluid img-med align-self-center">
             </div>
         </div>
 
         <!--Smartphone, Tablet, Desktop Section 2-->
-        <div class="d-flex flex-column justify-content-center bg-cl-primary p-5 mt-5">
-            <div class=" container d-flex flex-column justify-content-around custom-card" id="responsive-desktop">
-                <div class="d-flex flex-column justify-content-around mt-3">
+        <div class="d-flex flex-column justify-content-center bg-cl-primary pt-3 pb-3 mt-5" id="tablet-section2">
+            <div class=" container d-flex flex-column justify-content-around custom-card align-self-center" id="responsive-desktop">
+                <div class="d-flex flex-column justify-content-around mt-25px">
                     <img src="{{asset('assets/Full_transparency.svg')}}" alt="Img" class="image-fluid custom-img align-self-center">
-                    <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center text-center">Our Mission</h3>
-                    <p class="cl-senary font-type-secondary font-size-septenary align-self-center width-medium-container font-line-height-med text-center responsive-text">As a catalyst for community microloans, our mission is to empower individuals in ASEAN affected by the on-going pandemic with fast, reliable, and flexible microloans solutions </p>
+                    <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center text-center mt-10px">Our Mission</h3>
+                    <p class="cl-senary font-type-secondary font-size-septenary align-self-center width-container-inter2-px font-line-height-med text-center responsive-text mt-10px">As a catalyst for community microloans, our mission is to empower individuals in ASEAN affected by the on-going pandemic with fast, reliable, and flexible microloans solutions </p>
                 </div>
                 <img src="{{asset('assets/Line_12.svg')}}" alt="Divider" class="image-fluid divider-mini align-self-center mt-3" id="rotate-img">
-                <div class="d-flex flex-column justify-content-around mt-3">
+                <div class="d-flex flex-column justify-content-around mt-3 mb-25px">
                     <img src="{{asset('assets/Cost_effective.svg')}}" alt="Img" class="image-fluid custom-img align-self-center">
-                    <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center text-center">Our Vision</h3>
-                    <p class="cl-senary font-type-secondary font-size-septenary align-self-center width-medium-container font-line-height-med text-center responsive-text">Providing alternative financing  opportnuities to improve their standards of living and where they can contribute productively towards the overall development of the country</p>
+                    <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center text-center mt-10px">Our Vision</h3>
+                    <p class="cl-senary font-type-secondary font-size-septenary align-self-center width-container-inter2-px font-line-height-med text-center responsive-text mt-10px">Providing alternative financing  opportnuities to improve their standards of living and where they can contribute productively towards the overall development of the country</p>
                 </div>
             </div>
         </div>
 
         <!--Smartphone Section 3-->
         <div id="about-section3-mobile"> 
-            <div class="d-flex flex-column justify-content-around pt-5 bg-section-3">
+            <div class="d-flex flex-column justify-content-around pt-5 bg-section-3 mt-25px">
                 <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center text-center">Core Values</h3>
-                <div class="width-medium-container align-self-center">
+                <div class="width-medium-container align-self-center mt-10px">
                     <div class="d-flex flex-row justify-content-start">
                         <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon" class="img-fluid img-sm align-self-center pl-2">
                         <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary align-self-center">Ethical Financing Practices</p>
@@ -108,16 +110,16 @@
                         <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary align-self-center">Business Inclusivity</p>
                     </div>
                 </div>
-                <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
+                <a href="/register" class="btn btn-hero font-type-secondary font-size-septenary mt-25px cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
             </div>
         </div>
 
         <!--Tablet Section 3-->
         <div id="about-section3-tablet">
-            <div class="d-flex flex-row justify-content-evenly mt-5">
+            <div class="d-flex flex-row justify-content-between mt-5">
                 <div class="d-flex flex-column justify-content-around ml-5">
                     <h3 class="font-type-primary font-size-secondary cl-quinary align-self-left">Core Values</h3>
-                    <div class="width-medium-container align-self-center">
+                    <div class="width-medium-container-tablet align-self-center">
                         <div class="d-flex flex-row justify-content-start">
                             <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon" class="img-fluid img-sm align-self-center pl-2">
                             <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary align-self-center">Ethical Financing Practices</p>
@@ -135,9 +137,9 @@
                             <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary align-self-center">Business Inclusivity</p>
                         </div>
                     </div>
-                    <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary align-self-left ml-5">Apply Now</a>
+                    <a href="/register" class="btn btn-hero font-type-secondary font-size-septenary mt-5 cl-secondary bg-cl-tertiary align-self-start">Apply Now</a>
                 </div>
-                <img src="{{asset('assets/Group_1000002221_clear.svg')}}" alt="Image" class="image-fluid img-small align-self-left">
+                <img src="{{asset('assets/Group_1000002221_clear.svg')}}" alt="Image" class="image-fluid img-small-special align-self-right">
             </div>
         </div>
 
@@ -163,7 +165,7 @@
                         <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon" class="img-fluid img-sm align-self-center pl-2">
                         <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary align-self-center">Business Inclusivity</p>
                     </div>
-                    <a href="/register" class="btn btn-call-to-action cl-secondary bg-cl-tertiary align-self-start mt-5 ml-1">Apply Now</a>
+                    <a href="/register" class="btn btn-hero cl-secondary bg-cl-tertiary align-self-start mt-5 ml-1">Apply Now</a>
                 </div>
             </div>
         </div>
@@ -171,12 +173,16 @@
         <!--Mobile Section 4-->
         <div id="about-section4-mobile">
             <div class="d-flex flex-column justify-content-around bg-cl-primary mt-5">
-                <h3 class="cl-quaternary font-type-primary font-size-secondary align-self-center mt-5">SmartFunding Direct</h3>
+                <div class="d-flex flex-row justify-content-start align-self-center">
+                    <h3 class="cl-quaternary font-type-primary font-size-secondary align-self-center mt-5">Smart</h3>
+                    <h3 class="cl-septenary font-type-primary font-size-secondary align-self-center mt-5">Funding</h3>
+                    <h3 class="cl-quaternary font-type-primary font-size-secondary align-self-center mt-5 ml-2">Direct</h3>
+                </div>
                 <h3 class="cl-septenary font-type-primary font-size-secondary align-self-center">Backed by</h3>
                 <div class="border-bottom-half mt-3 align-self-center"></div>
                 <img src="{{asset('assets/backed_by_1.svg')}}" alt="Image" class="image-fluid custom-img mt-5 align-self-center">
                 <img src="{{asset('assets/backed_by_2.svg')}}" alt="Image" class="image-fluid custom-img mt-5 align-self-center">
-                <img src="{{asset('assets/backed_by_2.svg')}}" alt="Image" class="image-fluid custom-img mt-5 align-self-center mb-5">
+                <img src="{{asset('assets/backed_by_2.svg')}}" alt="Image" class="image-fluid custom-img mt-3 align-self-center mb-5">
             </div>
         </div>
 
@@ -204,6 +210,5 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="{{asset('js/style_about.js')}}"></script>
   </body>
 </html>
