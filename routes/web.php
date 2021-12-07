@@ -71,3 +71,5 @@ Route::prefix('dashboard')->group(function () {
     Route::resource('user-role', \App\Http\Controllers\UserRolesController::class);
   });
 });
+
+Route::view('/registration/success', 'auth.register-success');

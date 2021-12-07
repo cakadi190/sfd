@@ -25,7 +25,7 @@ class RegisterBorrowerController extends Controller
   public function process(Request $request)
   {
     $this->validate($request, [
-      "finance_ammount" => ["required"],
+      "finance_amount"  => ["required"],
       "period"          => ["required"],
       "purpose"         => ["required"],
       "fullname"        => ["required"],
@@ -33,7 +33,7 @@ class RegisterBorrowerController extends Controller
       "email"           => ["required", "email"],
       "phone_prefix"    => ["required"],
       "phone"           => ["required"],
-      "date"            => ["required"],
+      "birth_date"      => ["required"],
       "tax"             => ["required"],
       "employment"      => ["required"],
       "dependants"      => ["required"],
@@ -44,11 +44,11 @@ class RegisterBorrowerController extends Controller
     ]);
 
     $data['loan_id']          = uniqid('loan-');
-    $data['finance_ammount']  = htmlspecialchars(strip_tags($request->loan));
+    $data['finance_amount']   = (int) htmlspecialchars(strip_tags($request->finance_amount));
     $data['period']           = htmlspecialchars(strip_tags($request->period));
     $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));
     $data['nric']             = htmlspecialchars(strip_tags($request->nric));
-    $data['birthdate']        = htmlspecialchars(strip_tags($request->date));
+    $data['birthdate']        = htmlspecialchars(strip_tags($request->birth_date));
     $data['dependants']       = htmlspecialchars(strip_tags($request->dependants));
     $data['employment']       = htmlspecialchars(strip_tags($request->employment));
 
@@ -68,7 +68,10 @@ class RegisterBorrowerController extends Controller
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['salary_slip'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
 
-    Applicant::create($data);
+    $apply = new Applicant();
+    $data  = $apply->create($data);
+
+    event(new \App\Listeners\RegisterBorrowerRegisteredAct($data));
 
   }
 }

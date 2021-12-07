@@ -11,28 +11,27 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+  use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
-    protected $guarded = [];
+  protected $guarded = [];
 
-    // Get Data Borrower
-    public function borrower()
-    {
-        return $this->hasMany(Borrower::class, 'id_user');
-    }
+  // Get Data Borrower
+  public function borrower()
+  {
+    return $this->hasMany(Borrower::class, 'id_user');
+  }
 
-    // Deleting Data
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function($user) {
-            $deleting = $user->borrower();
-            if($deleting->count() > 0)
-            {
-                $deleting->each(function($delete) {
-                    $delete->delete();
-                });
-            }
+  // Deleting Data
+  public static function boot()
+  {
+    parent::boot();
+    self::deleting(function ($user) {
+      $deleting = $user->borrower();
+      if ($deleting->count() > 0) {
+        $deleting->each(function ($delete) {
+          $delete->delete();
         });
-    }
+      }
+    });
+  }
 }

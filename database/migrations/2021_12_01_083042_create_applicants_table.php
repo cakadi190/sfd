@@ -18,7 +18,7 @@ class CreateApplicantsTable extends Migration
       $table->timestamps();
 
       $table->string('loan_id')->unique()->nullable();
-      $table->bigInteger('finance_ammount')->unsigned()->nullable();
+      $table->bigInteger('finance_amount')->unsigned()->nullable();
       $table->string('period')->nullable();
       $table->string('fullname')->nullable();
       $table->string('nric')->nullable();

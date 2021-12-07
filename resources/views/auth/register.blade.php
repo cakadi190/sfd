@@ -5,6 +5,7 @@
 @section('header')
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   /* Navbar */
@@ -125,6 +126,11 @@
     .nav-stepper .nav-link .nav-content {
       display: none;
     }
+    .nav-stepper .nav-link .nav-number {
+      width: 54px;
+      height: 54px;
+      margin: 0;
+    }
   }
 
   .nav-stepper .nav-link.active {
@@ -165,6 +171,7 @@
   }
   .dropify-wrapper .dropify-message {
     font-size: 1rem !important;
+    padding: 1.75rem 0;
   }
 
   /* Card */
@@ -227,25 +234,25 @@
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4">Estimated Payment</h5>
+                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-10">
 
                     <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                      <li class="nav-item"><a href="#pill-monthly-1" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                      <li class="nav-item"><a href="#pill-total-1" data-toggle="pill" class="nav-link">Total</a></li>
                     </ul>
 
                   </div>
                 </div>
 
                 <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly">
-                    <h3 class="m-0 h1" id="calculator">$0</h3>
+                  <div class="tab-pane fade active show" id="pill-monthly-1">
+                    <h3 class="m-0 h1" id="calc-1">SGD 0</h3>
                   </div>
-                  <div class="tab-pane fade" id="pill-total">
-                    <h3 class="m-0 h1" id="calc-total">$0</h3>
+                  <div class="tab-pane fade" id="pill-total-1">
+                    <h3 class="m-0 h1" id="calc-total-1">SGD 0</h3>
                   </div>
                 </div>
 
@@ -253,8 +260,8 @@
               </div>
 
               <div class="form-group mb-5">
-                <label class="font-weight-bold d-flex" for="finance_ammount">Loan Amount <div class="text-danger">*</div></label>
-                <input type="text" class="form-control" value="{{ old('finance_ammount') }}" placeholder="Enter the loan amount" id="finance_ammount" name="finance_ammount" />
+                <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
+                <input type="text" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" />
               </div>
 
               <div class="form-group mb-5">
@@ -262,23 +269,23 @@
 
                 <div class="period-selector">
                   <div class="period-wrapper">
-                    <input type="radio" name="period"{{ old('period') == 'annually' ? ' checked' : '' }} id="annually" value="annually" />
+                    <input type="radio" data-period="1" checked onchange="loanCalc()" name="period"{{ old('period') == 'annually' ? ' checked' : '' }} id="annually" value="annually" />
                     <label for="annually">1</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" name="period"{{ old('period') == 'binneally' ? ' checked' : '' }} id="binneally" value="binneally" />
+                    <input type="radio" data-period="2" onchange="loanCalc()" name="period"{{ old('period') == 'binneally' ? ' checked' : '' }} id="binneally" value="binneally" />
                     <label for="binneally">2</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" name="period"{{ old('period') == 'trienally' ? ' checked' : '' }} id="trienally" value="trienally" />
+                    <input type="radio" data-period="3" onchange="loanCalc()" name="period"{{ old('period') == 'trienally' ? ' checked' : '' }} id="trienally" value="trienally" />
                     <label for="trienally">3</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" name="period"{{ old('period') == 'quadrennially' ? ' checked' : '' }} id="quadrennially" value="quadrennially" />
+                    <input type="radio" data-period="4" onchange="loanCalc()" name="period"{{ old('period') == 'quadrennially' ? ' checked' : '' }} id="quadrennially" value="quadrennially" />
                     <label for="quadrennially">4</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" name="period" id="quinquenially" value="quinquenially" />
+                    <input type="radio" data-period="5" onchange="loanCalc()" name="period" id="quinquenially" value="quinquenially" />
                     <label for="quinquenially">5</label>
                   </div>
                 </div>
@@ -319,25 +326,25 @@
               <h3 class="heading h4 mb-3 mb-md-5">Personal Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4">Estimated Payment</h5>
+                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-10">
 
                     <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                      <li class="nav-item"><a href="#pill-monthly-2" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                      <li class="nav-item"><a href="#pill-total-2" data-toggle="pill" class="nav-link">Total</a></li>
                     </ul>
 
                   </div>
                 </div>
 
                 <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly">
-                    <h3 class="m-0 h1" id="calculator">$0</h3>
+                  <div class="tab-pane fade active show" id="pill-monthly-2">
+                    <h3 class="m-0 h1" id="calc-2">SGD 0</h3>
                   </div>
-                  <div class="tab-pane fade" id="pill-total">
-                    <h3 class="m-0 h1" id="calc-total">$0</h3>
+                  <div class="tab-pane fade" id="pill-total-2">
+                    <h3 class="m-0 h1" id="calc-total-2">SGD 0</h3>
                   </div>
                 </div>
 
@@ -394,25 +401,25 @@
               <h3 class="heading h4 mb-3 mb-md-5">Income & Employment Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4">Estimated Payment</h5>
+                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-10">
 
                     <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                      <li class="nav-item"><a href="#pill-monthly-3" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                      <li class="nav-item"><a href="#pill-total-3" data-toggle="pill" class="nav-link">Total</a></li>
                     </ul>
 
                   </div>
                 </div>
 
                 <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly">
-                    <h3 class="m-0 h1" id="calculator">$0</h3>
+                  <div class="tab-pane fade active show" id="pill-monthly-3">
+                    <h3 class="m-0 h1" id="calc-3">SGD 0</h3>
                   </div>
-                  <div class="tab-pane fade" id="pill-total">
-                    <h3 class="m-0 h1" id="calc-total">$0</h3>
+                  <div class="tab-pane fade" id="pill-total-3">
+                    <h3 class="m-0 h1" id="calc-total-3">SGD 0</h3>
                   </div>
                 </div>
 
@@ -426,10 +433,10 @@
 
               <div class="form-group mb-5">
                 <label for="employment">Employment Status</label>
-                <select name="employment" id="employment" class="form-control">
+                <select name="employment" id="employment" class="form-control w-100">
                   <option disabled selected>--[ Choose One ]--</option>
-                  <option value="employeed">Employeed</option>
-                  <option value="unemployeed">Unemployeed</option>
+                  <option value="employed">Employed</option>
+                  <option value="unemployed">Unemployed</option>
                 </select>
               </div>
 
@@ -449,25 +456,25 @@
               <h3 class="heading h4 mb-3 mb-md-5">Upload the Documents & Submit</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4">Estimated Payment</h5>
+                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-10">
 
                     <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                      <li class="nav-item"><a href="#pill-monthly-4" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                      <li class="nav-item"><a href="#pill-total-4" data-toggle="pill" class="nav-link">Total</a></li>
                     </ul>
 
                   </div>
                 </div>
 
                 <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly">
-                    <h3 class="m-0 h1" id="calculator">$0</h3>
+                  <div class="tab-pane fade active show" id="pill-monthly-4">
+                    <h3 class="m-0 h1" id="calc-4">SGD 0</h3>
                   </div>
-                  <div class="tab-pane fade" id="pill-total">
-                    <h3 class="m-0 h1" id="calc-total">$0</h3>
+                  <div class="tab-pane fade" id="pill-total-4">
+                    <h3 class="m-0 h1" id="calc-total-4">SGD 0</h3>
                   </div>
                 </div>
 
@@ -511,25 +518,25 @@
       <div class="col-md-5 mt-3 mt-md-5 d-none d-sm-none d-md-inline order-1 order-lg-2">
 
         <div class="card none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-          <h5 class="h6 mb-4">Estimated Payment</h5>
+          <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
           <div class="row justify-content-center">
             <div class="col-12 col-md-10">
 
               <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                <li class="nav-item"><a href="#pill-monthly" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                <li class="nav-item"><a href="#pill-total" data-toggle="pill" class="nav-link">Yearly</a></li>
+                <li class="nav-item"><a href="#pill-monthly-5" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                <li class="nav-item"><a href="#pill-total-5" data-toggle="pill" class="nav-link">Total</a></li>
               </ul>
 
             </div>
           </div>
 
           <div class="text-center tab-content mb-2 py-5">
-            <div class="tab-pane fade active show" id="pill-monthly">
-              <h3 class="m-0 h1" id="calculator">$0</h3>
+            <div class="tab-pane fade active show" id="pill-monthly-5">
+              <h3 class="m-0 h1" id="calc-5">SGD 0</h3>
             </div>
-            <div class="tab-pane fade" id="pill-total">
-              <h3 class="m-0 h1" id="calc-total">$0</h3>
+            <div class="tab-pane fade" id="pill-total-5">
+              <h3 class="m-0 h1" id="calc-total-5">SGD 0</h3>
             </div>
           </div>
 
@@ -547,6 +554,7 @@
 {!! RecaptchaV3::initJs() !!}
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
@@ -582,71 +590,24 @@
     })
   }
 
+  // Select2 Initialize
+  $('select').select2({ theme: 'bootstrap4 w-100' });
+
+  // Loan Calculator
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'USD',
+    currency: 'SGD',
   });
-
-  // Form
-  $('input[name="period"]').on('change', function() {
-    let ammount = $('#loan').val();
-    let diff = $('[name="period"]:checked').val();
-    let num = parseInt(ammount);
+  function loanCalc() {
+    let num = +$('#finance_amount').val();
+    let selectedPeriod = +$('[name="period"]:checked').data('period');
     let calc;
 
-    if(diff == 'annually') {
-      calc = (((num * 0.18 * 1) + num) / (1*12));
-    } else if(diff == 'binneally') {
-      calc = (((num * 0.18 * 2) + num) / (2*12));
-    } else if(diff == 'trienally') {
-      calc = (((num * 0.18 * 3) + num) / (3*12));
-    } else if(diff == 'quadrennially') {
-      calc = (((num * 0.18 * 4) + num) / (4*12));
-    } else if(diff == 'quinquenially') {
-      calc = (((num * 0.18 * 5) + num) / (5*12));
-    } else {
-      if(num >= 0) {
-        calc = num;
-      } else {
-        calc = 0;
-      }
-    }
+    calc = (num * 0.18 * selectedPeriod) + (num / (selectedPeriod*12));
 
-    calc = Math.floor(calc);
-
-    $('#calculator').text(`${formatter.format(calc)}`);
-    $('#calc-total').text(`${formatter.format(calc * 12)}`);
-  });
-
-  $('#loan').keyup(function() {
-    let ammount = $('#loan').val();
-    let diff = $('[name="period"]:checked').val();
-    let num = parseInt(ammount);
-    let calc;
-
-    if(diff == 'annually') {
-      calc = (((num * 0.18 * 1) + num) / (1*12));
-    } else if(diff == 'binneally') {
-      calc = (((num * 0.18 * 2) + num) / (2*12));
-    } else if(diff == 'trienally') {
-      calc = (((num * 0.18 * 3) + num) / (3*12));
-    } else if(diff == 'quadrennially') {
-      calc = (((num * 0.18 * 4) + num) / (4*12));
-    } else if(diff == 'quinquenially') {
-      calc = (((num * 0.18 * 5) + num) / (5*12));
-    } else {
-      if(num >= 0) {
-        calc = num;
-      } else {
-        calc = 0;
-      }
-    }
-
-    calc = Math.floor(calc);
-
-    $('#calculator').text(`${formatter.format(calc)}`);
-    $('#calc-total').text(`${formatter.format(calc * 12)}`);
-  });
+    $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
+    $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
+  }
 
   // Date
   $('input#birth_date').daterangepicker({
