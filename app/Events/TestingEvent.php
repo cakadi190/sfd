@@ -10,8 +10,9 @@ use Illuminate\Broadcasting\PrivateChannel;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Request;
 
-class RegisteredBorrowerEvent
+class TestingEvent
 {
   use Dispatchable, InteractsWithSockets, SerializesModels;
 
@@ -20,9 +21,10 @@ class RegisteredBorrowerEvent
    *
    * @return void
    */
-  public function __construct(Applicant $apply)
+  public function __construct()
   {
-    //
+    $user = new \App\Models\User();
+    $this->user = $user;
   }
 
   /**

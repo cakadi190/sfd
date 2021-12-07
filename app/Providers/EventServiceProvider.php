@@ -19,9 +19,6 @@ class EventServiceProvider extends ServiceProvider
     Registered::class => [
       SendEmailVerificationNotification::class,
     ],
-    RegisteredBorrowerEvent::class => [
-      RegisteredBorrowerEvent::class,
-    ]
   ];
 
   /**
@@ -32,5 +29,15 @@ class EventServiceProvider extends ServiceProvider
   public function boot()
   {
     //
+  }
+
+  /**
+   * Determine if events and listeners should be automatically discovered.
+   *
+   * @return bool
+   */
+  public function shouldDiscoverEvents()
+  {
+    return true;
   }
 }

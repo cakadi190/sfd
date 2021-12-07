@@ -99,6 +99,7 @@
     background: transparent;
     color: #6c757d;
     display: flex;
+    padding: 0;
     justify-content: center;
     align-items: center;
     font-weight: bold;
@@ -219,18 +220,18 @@
     <li class="nav-item" role="presentation">
       <a class="nav-link disabled" id="pills-upload-tab" data-index="4" data-toggle="pill" href="#pills-upload" role="tab" aria-controls="pills-upload" aria-selected="false">
         <div class="nav-number">4</div>
-        <div class="nav-content">Upload and Submit</div>
+        <div class="nav-content">Upload the Documents & Submit</div>
       </a>
     </li>
   </ul>
 
   <div class="card card-body">
-    <div class="row justify-content-lg-between">
+    <div class="row justify-content-lg-between pb-3">
       <div class="col-md-6 order-2 order-lg-1">
 
         <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
-            <div class="tab-container py-4 px-3">
+            <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
@@ -262,6 +263,10 @@
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
                 <input type="text" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" />
+
+                @error('finance_amount')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
@@ -285,10 +290,18 @@
                     <label for="quadrennially">4</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" data-period="5" onchange="loanCalc()" name="period" id="quinquenially" value="quinquenially" />
+                    <input type="radio" data-period="5" onchange="loanCalc()" name="period"{{ old('period') == 'quinquenially' ? ' checked' : '' }} id="quinquenially" value="quinquenially" />
                     <label for="quinquenially">5</label>
                   </div>
                 </div>
+
+                @error('periode')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+
+              <div class="form-group">
+                {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
               </div>
 
               <div class="form-group">
@@ -313,16 +326,20 @@
                   <option value="16">16 - Investment</option>
                   <option value="17">17 - Other</option>
                 </select>
+
+                @error('purpose')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
 
-            <div class="d-flex px-3">
+            <div class="d-flex px-3 pt-2">
               <a href="javascript:nextStep('pills-two')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
 
           </div>
           <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
-            <div class="tab-container py-4 px-3">
+            <div class="tab-container pb-5 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Personal Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
@@ -353,17 +370,29 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="fullname" name="fullname" placeholder="Enter your name" />
+                <input type="text" class="form-control" value="{{ old('fullname') }}" id="fullname" name="fullname" placeholder="Enter your name" />
+
+                @error('fullname')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="nric">NRIC No <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" id="nric" name="nric" placeholder="Enter your NRIC" />
+                <input type="text" class="form-control" value="{{ old('nric') }}" id="nric" name="nric" placeholder="Enter your NRIC" />
+
+                @error('nric')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="email">E-Mail <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" />
+                <input type="text" class="form-control" value="{{ old('email') }}" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" />
+
+                @error('email')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
@@ -388,16 +417,20 @@
                     </svg>
                   </div>
                 </div>
+
+                @error('birth_date')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
 
-            <div class="d-flex px-3">
+            <div class="d-flex px-3 mt-n3 pb-3">
               <a href="javascript:prevStep('pills-one', 'pills-two')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
               <a href="javascript:nextStep('pills-income')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab">
-            <div class="tab-container py-4 px-3">
+            <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Income & Employment Details</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
@@ -429,6 +462,10 @@
               <div class="form-group mb-5">
                 <label for="tax">Annual Pre-Tax Income</label>
                 <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" />
+
+                @error('tax')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
@@ -438,21 +475,29 @@
                   <option value="employed">Employed</option>
                   <option value="unemployed">Unemployed</option>
                 </select>
+
+                @error('employment')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group">
                 <label for="dependants">Number of Dependants</label>
-                <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" />
+                <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" value="{{ old('dependants') }}" />
+
+                @error('dependants')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
             </div>
 
-            <div class="d-flex px-3">
+            <div class="d-flex px-3 pt-2">
               <a href="javascript:prevStep('pills-two', 'pills-income')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
               <a href="javascript:nextStep('pills-upload')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
           <div class="tab-pane fade" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
-            <div class="tab-container py-4 px-3">
+            <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Upload the Documents & Submit</h3>
 
               <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
@@ -484,30 +529,50 @@
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Front</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
                 <input type="file" name="id_front" class="dropify" data-height="70" />
+
+                @error('id_front')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Back</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
                 <input type="file" name="id_back" class="dropify" data-height="70" />
+
+                @error('id_back')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Salary Slip</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
                 <input type="file" name="salary_slip" class="dropify" data-height="70" />
+
+                @error('salary_slip')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Salary of Public Lifeline/Utilities</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
                 <input type="file" name="utilities_slip" class="dropify" data-height="70" />
+
+                @error('utilities_slip')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
               </div>
 
               <div class="custom-control mb-3 custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" />
                 <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
+
+                @error('agree')
+                <div class="text-danger">You must accept the privacy notice!</div>
+                @enderror
               </div>
             </div>
 
-            <div class="d-flex px-3">
+            <div class="d-flex px-3 pt-2">
               <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
               <button class="btn btn-info btn-next btn-lg" type="submit">Submit</button>
             </div>

@@ -2,12 +2,12 @@
 
 namespace App\Listeners;
 
-use App\Events\RegisteredBorrowerEvent;
+use App\Events\TestingEvent;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 
-class RegisterBorrowerRegisteredAct
+class TestingListener
 {
   /**
    * Create the event listener.
@@ -22,11 +22,12 @@ class RegisterBorrowerRegisteredAct
   /**
    * Handle the event.
    *
-   * @param  \App\Events\RegisteredBorrowerEvent  $event
+   * @param  \App\Events\TestingEvent  $event
    * @return void
    */
-  public function handle(RegisteredBorrowerEvent $event)
+  public function handle(TestingEvent $event)
   {
-    Log::alert('Testing an logs');
+    Log::error($event->user->id);
+    dd($event->user->email);
   }
 }
