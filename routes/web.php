@@ -14,7 +14,7 @@ Route::view('/about', 'about')->name('about');
 /**
  * Main Routes
  */
-Route::redirect('/register', url('register/v2'), 301);
+// Route::redirect('/register', url('register'), 301);
 Auth::routes([
   'verify'    => true,
   'register'  => false,
@@ -36,7 +36,7 @@ Route::get('auth/{provider}/process', [\App\Http\Controllers\Auth\Social\LoginCo
 /**
  * Register user to loan
  */
-Route::prefix('register/v2')->group(function () {
+Route::prefix('register')->group(function () {
   Route::get('/', [\App\Http\Controllers\RegisterBorrowerController::class, 'register'])->name('register');
   Route::post('/process', [\App\Http\Controllers\RegisterBorrowerController::class, 'process'])->name('register.process');
   Route::view('/success', 'auth.register-success')->name('register.success');
