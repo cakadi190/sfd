@@ -1,6 +1,6 @@
 <header id="responsive-header-desktop">
   <nav class="navbar navbar-light bg-cl-primary navbar-expand-md" id="responsive-nav">
-    <a class="navbar-brand" href="/index">
+    <a class="navbar-brand" href="/">
       <img class="img-fluid ml-5 logo-size mt-1 mb-1" id="logo" src="{{ asset('images/logo/sfd-bl.svg') }}" height="50px" alt="logo-brand" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
