@@ -65,7 +65,7 @@
 @section('content')
 <div class="container">
   <div class="row min-vh-100 py-5 py-md-0 align-items-center justify-content-center justify-content-center">
-    <div class="col-lg-8">
+    <div class="col-lg-5">
       <header id="mainhead">
         <div class="text-center">
           <a href="{{ route('home') }}"><img src="{{ asset('images/logo/logo_sf_black.png') }}"
@@ -103,7 +103,7 @@
           @endif
 
           <!-- Login Section -->
-          <form method="POST" action="{{ route('login') }}" class="col-md-6 border-right">
+          <form method="POST" action="{{ route('login') }}" class="col-md-12 {{-- border-right --}}">
             @csrf
 
             <div class="p-2">
@@ -167,12 +167,12 @@
           </form>
 
           <!-- Separator -->
-          <div class="col-lg-12 d-md-none">
+          {{-- <div class="col-lg-12 d-md-none">
             <hr />
-          </div>
+          </div> --}}
 
           <!-- Register Section -->
-          <div class="col-md-6">
+          {{-- <div class="col-md-6">
             <div class="text-center p-2">
               <h3 class="h4">Login with Social Media</h3>
               <p>Are you connecting your social media to your account? Let's hit the button to login more faster!</p>
@@ -189,7 +189,7 @@
               <p class="m-0 mt-md-0 mt-3">Are you new member here? <a class="text-success"
                   href="{{ route('register') }}">Register</a>!</p>
             </div>
-          </div>
+          </div> --}}
 
         </div>
       </section>
