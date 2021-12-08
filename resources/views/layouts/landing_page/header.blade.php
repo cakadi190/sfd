@@ -11,7 +11,7 @@
       <ul class="navbar-nav">
         <li class="nav-item active align-self-center">
           <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile active-now"
-            href="/index">Home<span class="sr-only">(current)</span></a>
+            href="/">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active align-self-center">
           <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile" href="/about">About
