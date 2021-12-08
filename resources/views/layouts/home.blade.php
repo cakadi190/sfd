@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -28,10 +28,7 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/fontawesome-v6/css/all.min.css') }}" rel="stylesheet" />
-<<<<<<< HEAD
-=======
     <link rel="stylesheet" href="{{asset('css/style.css')}}" />
->>>>>>> refs/remotes/origin/main
 
     <!-- Header -->
     @yield('header')
@@ -90,69 +87,7 @@
     @yield('content')
   </main>
 
-<<<<<<< HEAD
-  <footer class="footer">
-    <div id="footer-top">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-4">
-            <img src="{{ asset('images/logo/sfd-wh.svg') }}" class="mb-3" alt="SmartFunding Direct" height="40px" />
-
-            <h3 class="text-info h5">License</h3>
-            <p>
-              <span>SmartFunding Pte. Ltd.</span><br />
-              <span>Regulated by Monetary Authority of Singapore (MAS). License no: CMS-100637-1 Capital Market Services (Dealing in Secirities)</span>
-            </p>
-          </div>
-          <div class="col-md-4">
-            <div class="widget">
-              <h3 class="h5 text-info">Get in touch</h3>
-              <p>Endokemi kaning. Bepir detregt. Vabel sovöpör. Milingar. Bigt seryrat. </p>
-            </div>
-            <div class="widget my-3">
-              <h3 class="h5 text-info">Address</h3>
-              <p>71, Ayer Rajah Crescent,<br />#06-06, Singapore <br />139951.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="widget">
-              <h3 class="h5 text-info">Hotline</h3>
-              <p>+60 9111 3111</p>
-            </div>
-            <div class="widget my-3">
-              <h3 class="h5 text-info">Email</h3>
-              <p>hi@smartfunding.sg</p>
-            </div>
-
-            <div class="widget">
-              <div class="nav social-media">
-                <li class="nav-item"><a href="" class="nav-link fb"><i class="fa-brands fa-facebook"></i></a></li>
-                <li class="nav-item"><a href="" class="nav-link tw"><i class="fa-brands fa-twitter"></i></a></li>
-                <li class="nav-item"><a href="" class="nav-link in"><i class="fa-brands fa-linkedin"></i></a></li>
-                <li class="nav-item"><a href="" class="nav-link ig"><i class="fa-brands fa-instagram"></i></a></li>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div id="footer-bottom">
-      <div class="container">
-        <div class="row align-items-center">
-          <div class="col-md-6 text-center text-md-left"><span>&copy; {{ date('Y') }} All Right Reserved <a href="{{ url('/') }}" class="text-success">SmartFunding Pte. Ltd.</a></span></div>
-          <div class="col-md-6">
-            <div class="nav justify-content-md-end">
-              <li class="nav-item"><a href="{{ url('/') }}" class="nav-link text-success">Privacy Policy</a></li>
-              <li class="nav-item"><a href="{{ url('/') }}" class="nav-link text-success">Terms of Use</a></li>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </footer>
-=======
   @include('layouts.landing_page.footer')
->>>>>>> refs/remotes/origin/main
 
   <script src="{{ asset('js/home.js') }}"></script>
   @yield('footer')

@@ -18,13 +18,10 @@ li {
   list-style-type: none;
 }
 
-<<<<<<< HEAD
 .pos-relative{
   position: relative;
 }
 
-=======
->>>>>>> refs/remotes/origin/main
 /*===== Komponen Navigasi ========*/
 div#responsive-desktop {
   display: none;
@@ -62,11 +59,7 @@ nav#nav-mobile {
 .btn-hero {
   border-radius: 5vmin;   
   padding: 1vmin 2vmin 1vmin 2vmin;
-<<<<<<< HEAD
   width: 20vmin;
-=======
-  width: 27vmin;
->>>>>>> refs/remotes/origin/main
 }
 
 /*==== Komponen Card ====*/
@@ -76,11 +69,7 @@ nav#nav-mobile {
   background-color: white;
   padding: 3vmin;
   position: absolute;
-<<<<<<< HEAD
   z-index: 1;
-=======
-  z-index: 2;
->>>>>>> refs/remotes/origin/main
   top: 420px;
   left: 0;
   right: 0;
@@ -106,14 +95,8 @@ div#box-card-tablet{
 .custom-card {
   border-radius: 5vmin;
   background-color: white;
-<<<<<<< HEAD
-  width: 70vw;
   z-index: 2;
-=======
->>>>>>> refs/remotes/origin/main
 }
-
-/*==== Komponen Section 3 ==== */
 div#section3-desktop {
   display: none !important;
 }
@@ -153,13 +136,10 @@ div#section3-mobile {
   width: 10vmin;
 }
 
-<<<<<<< HEAD
 .number-count-img-mobile {
   width: 13vmin;
 }
 
-=======
->>>>>>> refs/remotes/origin/main
 .custom-img {
   width: 40vmin;
 }
@@ -169,10 +149,7 @@ div#section3-mobile {
   float: left;
   position: absolute;
   left: -15vw;
-<<<<<<< HEAD
   top: 1150px;
-=======
->>>>>>> refs/remotes/origin/main
 }
 
 /* ==== Komponen Section 4 ==== */
@@ -209,11 +186,7 @@ div#section5-mobile {
 }
 
 div#section5-mobile {
-<<<<<<< HEAD
   padding-top: 6vh;
-=======
-  padding-top: 10vh;
->>>>>>> refs/remotes/origin/main
 }
 
 .img-mini-mobile {
@@ -357,13 +330,10 @@ div#footer-mobile {
   line-height: 2rem;
 }
 
-<<<<<<< HEAD
 .font-size-navigation{
   font-size: 24px;
 }
 
-=======
->>>>>>> refs/remotes/origin/main
 .font-size-header{
   font-size: 2.7rem;
 }
@@ -436,12 +406,9 @@ div#footer-mobile {
 .width-container-inter3-px{
   width: 380px;
 }
-<<<<<<< HEAD
 .width-container-big-px{
   width: 410px;
 }
-=======
->>>>>>> refs/remotes/origin/main
 /* ============= Width Container View Port ===========*/
 .width-container-super-small{
   width: 15vmax;
@@ -463,7 +430,6 @@ div#footer-mobile {
 }
 
 /* =============== Padding Pixels ==================*/
-<<<<<<< HEAD
 .pt-20px{
   padding-top: 20px !important;
 }
@@ -476,15 +442,12 @@ div#footer-mobile {
 .pl-35px{
   padding-left: 35px !important;
 }
-=======
->>>>>>> refs/remotes/origin/main
 .pl-50px{
   padding-left: 50px !important;
 }
 .pl-70px{
   padding-left: 70px !important;
 }
-<<<<<<< HEAD
 .pl-90px{
   padding-left: 90px !important;
 }
@@ -506,16 +469,10 @@ div#footer-mobile {
 .pl-responsive{
   padding-left: 10vmin;
 }
-=======
-.pl-100px{
-  padding-left: 100px !important;
-}
->>>>>>> refs/remotes/origin/main
 /* =============== Margin Pixels ===================*/
 .mt-10px{
   margin-top: 10px;
 }
-<<<<<<< HEAD
 .mt-12px{
   margin-top: 12px;
 }
@@ -528,11 +485,6 @@ div#footer-mobile {
 .mt-32px{
   margin-top: 32px;
 }
-=======
-.mt-25px{
-  margin-top: 25px;
-}
->>>>>>> refs/remotes/origin/main
 .mt-50px{
   margin-top: 50px;
 }
@@ -545,12 +497,9 @@ div#footer-mobile {
 .mb-25px{
   margin-bottom: 25px;
 }
-<<<<<<< HEAD
 .mb-35px{
   margin-bottom: 35px;
 }
-=======
->>>>>>> refs/remotes/origin/main
 .mb-50px{
   margin-bottom: 50px;
 }
@@ -560,15 +509,12 @@ div#footer-mobile {
 .mb-100px{
   margin-bottom: 100px;
 }
-<<<<<<< HEAD
 .ml-70px{
   margin-left: 70px;
 }
 .ml-90px{
   margin-left: 90px;
 }
-=======
->>>>>>> refs/remotes/origin/main
 
 
 .border-bottom-quarter {
@@ -589,7 +535,6 @@ div#footer-mobile {
   margin-left: 10vw;
 }
 
-<<<<<<< HEAD
 a.menu-item:hover{
   border-bottom: solid 2px white;
   width: 100%;
@@ -639,12 +584,6 @@ a.menu-item:hover{
   #responsive-header-desktop{
     display: none !important;
   }
-=======
-/*==== Media Query Responsive ====*/
-
-/*DONE*/
-@media only screen and (max-width: 600px){
->>>>>>> refs/remotes/origin/main
   #section5-mobile{
     background-image: url('../assets/bg-section5-mobile.svg');
     background-repeat: no-repeat;
@@ -681,7 +620,6 @@ a.menu-item:hover{
     width: 55vw;
   }
 
-<<<<<<< HEAD
   #close-mobile{
     width: 20px;
     margin-right: 70px;
@@ -691,27 +629,6 @@ a.menu-item:hover{
 
   .cl-white-mobile {
     color: white !important;
-=======
-  #navbarNav .cl-white-mobile {
-    color: white !important;
-  }
-
-  .active-now {
-    background-color: #1B4476;
-    width: 70vw;
-    display: flex;
-    justify-content: center;
-    border-radius: 4vmin;
-  }
-
-  nav#responsive-nav {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    background-color: black;
-    background-size: cover !important;
-    background-position: right !important;
->>>>>>> refs/remotes/origin/main
   }
 
   #btn-responsive-mobile {
@@ -730,16 +647,6 @@ a.menu-item:hover{
     display: none !important;
   }
 
-<<<<<<< HEAD
-=======
-  header div#responsive-mobile {
-    display: block;
-    background-color: transparent;
-    position: absolute;
-    z-index: 2;
-  }
-
->>>>>>> refs/remotes/origin/main
   #hero {
     padding-top: 70px;
     height: 490px;
@@ -752,7 +659,6 @@ a.menu-item:hover{
 
   div#section3-mobile {
     padding-top: 220px;
-<<<<<<< HEAD
     position: relative;
     top: 0px;
   }
@@ -762,8 +668,6 @@ a.menu-item:hover{
     z-index: 1;
     top: 0;
     width: 100%;
-=======
->>>>>>> refs/remotes/origin/main
   }
 
   div#section4-tablet {
@@ -776,13 +680,8 @@ a.menu-item:hover{
 
   .btn-hero {
     border-radius: 5vmin !important;   
-<<<<<<< HEAD
     padding: 1.7vmin 2.1vmin 1.7vmin 2.1vmin !important;
     width: 14vmax !important;
-=======
-    padding: 1.7vmin 2.5vmin 1.7vmin 2.5vmin !important;
-    width: 16vmax !important;
->>>>>>> refs/remotes/origin/main
   }
 
   div#footer-tablet{
@@ -791,7 +690,6 @@ a.menu-item:hover{
 }
 
 /*DONE*/
-<<<<<<< HEAD
 @media only screen and (min-width: 600px){ 
   .img-unique{
     height: 185px;
@@ -817,9 +715,6 @@ a.menu-item:hover{
     padding-bottom: 0.8vmin;
     width: 150px;
   }
-=======
-@media only screen and (min-width: 600px){
->>>>>>> refs/remotes/origin/main
   .width-container-mini-inter1-px{
     width: 280px !important;
   }
@@ -845,11 +740,7 @@ a.menu-item:hover{
 
   .btn-hero {
     border-radius: 25vmin;
-<<<<<<< HEAD
     padding: 1.7vmax 2.3vmax 1.7vmax 2.3vmax; 
-=======
-    padding: 2vmax 2.5vmax 2vmax 2.5vmax; 
->>>>>>> refs/remotes/origin/main
   }
 
   .font-size-septenary{
@@ -921,11 +812,7 @@ a.menu-item:hover{
 
   div#box-card-tablet {
     display: block;
-<<<<<<< HEAD
     width: 85vw;
-=======
-    width: 80vw;
->>>>>>> refs/remotes/origin/main
     margin: auto;
     background-color: white;
     padding: 3vmin;
@@ -981,13 +868,8 @@ a.menu-item:hover{
     float: right;
     position: absolute;
     width: 30vmin;
-<<<<<<< HEAD
     right: 0;
     top: 170vh;
-=======
-    left: 70vw;
-    top: 230vh;
->>>>>>> refs/remotes/origin/main
   }
 
   .custom-img {
@@ -1054,7 +936,6 @@ a.menu-item:hover{
   }
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 670px) and (max-width: 768px){
   .img-unique{
     height: 235px;
@@ -1076,10 +957,6 @@ a.menu-item:hover{
   #responsive-header-mobile{
     display: none !important;
   }
-=======
-/*DONE*/
-@media only screen and (min-width: 768px){
->>>>>>> refs/remotes/origin/main
   .width-container-mini-inter1-px{
     width: 280px !important;
   }
@@ -1171,11 +1048,7 @@ a.menu-item:hover{
 
   div#box-card-tablet {
     display: block;
-<<<<<<< HEAD
     width: 85vw;
-=======
-    width: 80vw;
->>>>>>> refs/remotes/origin/main
     margin: auto;
     background-color: white;
     padding: 3vmin;
@@ -1223,25 +1096,16 @@ a.menu-item:hover{
     float: left;
     position: absolute;
     width: 35vmin;
-<<<<<<< HEAD
     top: 780px;
-=======
->>>>>>> refs/remotes/origin/main
     left: -10vw;
   }
 
   .float-img-desktop-right-1 {
     float: right;
     position: absolute;
-<<<<<<< HEAD
     width: 25vmin;
     left: 75vw;
     top: 180vh;
-=======
-    width: 30vmin;
-    left: 75vw;
-    top: 230vh;
->>>>>>> refs/remotes/origin/main
   }
 
   .custom-img {
@@ -1307,7 +1171,6 @@ a.menu-item:hover{
     display: block !important;
   }
 }
-<<<<<<< HEAD
 /*DONE*/
 @media only screen and (min-width: 992px){
   #menu-bar{
@@ -1316,11 +1179,6 @@ a.menu-item:hover{
   #responsive-header-mobile{
     display: none !important;
   }
-=======
-
-/*DONE*/
-@media only screen and (min-width: 992px){
->>>>>>> refs/remotes/origin/main
   .width-container-super-mini-px{
     width: 220px !important;
   }
@@ -1349,11 +1207,7 @@ a.menu-item:hover{
 
   .img-mini{
     width: 15vmin !important;
-<<<<<<< HEAD
     margin-top: -15vh !important;
-=======
-    margin-top: -22vh !important;
->>>>>>> refs/remotes/origin/main
   }
 
   #navbarNav {
@@ -1395,11 +1249,7 @@ a.menu-item:hover{
 
   div#box-card-desktop {
     display: block !important;
-<<<<<<< HEAD
     width: 80vw !important;
-=======
-    width: 70vw !important;
->>>>>>> refs/remotes/origin/main
     margin: auto !important;
     background-color: white !important;
     padding: 3vmin !important;
@@ -1444,15 +1294,9 @@ a.menu-item:hover{
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-<<<<<<< HEAD
     top: 880px;
     width: 250px;
     left: 35px;
-=======
-    top: 810px;
-    width: 250px;
-    left: 7vmax;
->>>>>>> refs/remotes/origin/main
   }
 
   .width-header-small {
@@ -1477,11 +1321,7 @@ a.menu-item:hover{
     position: absolute;
     width: 240px;
     left: 75vw;
-<<<<<<< HEAD
     top: 1450px;
-=======
-    top: 1350px;
->>>>>>> refs/remotes/origin/main
   }
 
   .width-btn {
@@ -1542,11 +1382,7 @@ a.menu-item:hover{
     display: block !important;
   }
   .float-img-desktop-right-2 {
-<<<<<<< HEAD
     height: 220px !important;
-=======
-    height: 370px !important;
->>>>>>> refs/remotes/origin/main
     float: right !important;
     position: absolute !important;
     top: 10vh !important;
@@ -1581,7 +1417,6 @@ a.menu-item:hover{
   }
 }
 
-<<<<<<< HEAD
 @media only screen and (min-width: 1000px){
   .float-img-desktop-right-1 {
     float: right;
@@ -1606,9 +1441,6 @@ a.menu-item:hover{
   #responsive-header-mobile{
     display: none !important;
   }
-=======
-@media only screen and (min-width: 1100px) and (max-width: 1200px){
->>>>>>> refs/remotes/origin/main
   .float-img-desktop-right-2 {
     height: 500px !important;
     float: right !important;
@@ -1616,7 +1448,6 @@ a.menu-item:hover{
     top: 0vh !important;
     right: 0 !important;
   }
-<<<<<<< HEAD
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
@@ -1633,11 +1464,6 @@ a.menu-item:hover{
   #responsive-header-mobile{
     display: none !important;
   }
-=======
-}
-
-@media only screen and (min-width: 1200px){
->>>>>>> refs/remotes/origin/main
   .width-container-super-mini-px{
     width: 220px !important;
   }
@@ -1666,11 +1492,7 @@ a.menu-item:hover{
 
   .img-mini{
     width: 15vmin !important;
-<<<<<<< HEAD
     margin-top: -15vh !important;
-=======
-    margin-top: -22vh !important;
->>>>>>> refs/remotes/origin/main
   }
 
   #navbarNav {
@@ -1712,11 +1534,7 @@ a.menu-item:hover{
 
   div#box-card-desktop {
     display: block !important;
-<<<<<<< HEAD
     width: 80vw !important;
-=======
-    width: 70vw !important;
->>>>>>> refs/remotes/origin/main
     margin: auto !important;
     background-color: white !important;
     padding: 3vmin !important;
@@ -1761,15 +1579,9 @@ a.menu-item:hover{
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-<<<<<<< HEAD
     top: 890px;
     width: 250px;
     left: 15px;
-=======
-    top: 810px;
-    width: 250px;
-    left: 7vmax;
->>>>>>> refs/remotes/origin/main
   }
 
   .width-header-small {
@@ -1794,11 +1606,7 @@ a.menu-item:hover{
     position: absolute;
     width: 240px;
     left: 75vw;
-<<<<<<< HEAD
     top: 1450px;
-=======
-    top: 1370px;
->>>>>>> refs/remotes/origin/main
   }
 
   .width-btn {
@@ -1892,7 +1700,6 @@ a.menu-item:hover{
   .width-container-small-special{
     width: 25vmax !important;
   }
-<<<<<<< HEAD
 }
 @media only screen and (min-width: 1400px){
   img.float-img-desktop-left-1 {
@@ -1914,6 +1721,4 @@ a.menu-item:hover{
     width: 250px;
     left: 15vmax;
   }
-=======
->>>>>>> refs/remotes/origin/main
 }

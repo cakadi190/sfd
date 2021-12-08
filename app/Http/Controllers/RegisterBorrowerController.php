@@ -24,14 +24,9 @@ class RegisterBorrowerController extends Controller
    */
   public function process(Request $request)
   {
-<<<<<<< HEAD
-    $this->validate($request, [
-      "finance_ammount" => ["required"],
-=======
     // dd($request->all());
     $this->validate($request, [
       "finance_amount"  => ["required"],
->>>>>>> refs/remotes/origin/main
       "period"          => ["required"],
       "purpose"         => ["required"],
       "fullname"        => ["required"],
@@ -39,12 +34,8 @@ class RegisterBorrowerController extends Controller
       "email"           => ["required", "email"],
       "phone_prefix"    => ["required"],
       "phone"           => ["required"],
-<<<<<<< HEAD
-      "date"            => ["required"],
-=======
       "agree"           => ['accepted'],
       "birth_date"      => ["required"],
->>>>>>> refs/remotes/origin/main
       "tax"             => ["required"],
       "employment"      => ["required"],
       "dependants"      => ["required"],
@@ -54,35 +45,6 @@ class RegisterBorrowerController extends Controller
       "utilities_slip"  => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
     ]);
 
-<<<<<<< HEAD
-    $data['loan_id']          = uniqid('loan-');
-    $data['finance_ammount']  = htmlspecialchars(strip_tags($request->loan));
-    $data['period']           = htmlspecialchars(strip_tags($request->period));
-    $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));
-    $data['nric']             = htmlspecialchars(strip_tags($request->nric));
-    $data['birthdate']        = htmlspecialchars(strip_tags($request->date));
-    $data['dependants']       = htmlspecialchars(strip_tags($request->dependants));
-    $data['employment']       = htmlspecialchars(strip_tags($request->employment));
-
-    $utilities = $request->utilities_slip;
-    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
-    $data['utilities_slip'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-
-    $utilities = $request->id_back;
-    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
-    $data['id_back'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-
-    $utilities = $request->id_front;
-    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
-    $data['id_front'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-
-    $utilities = $request->salary_slip;
-    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
-    $data['salary_slip'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-
-    Applicant::create($data);
-
-=======
     # Process the data
     $data['email']            = htmlspecialchars(strip_tags($request->email));
     $data['loan_id']          = uniqid('loan-');
@@ -142,6 +104,5 @@ class RegisterBorrowerController extends Controller
 
     # Redirect to success onboarding
     return redirect()->route('register.success');
->>>>>>> refs/remotes/origin/main
   }
 }

@@ -1,19 +1,11 @@
-<<<<<<< HEAD
 <header id="responsive-header-desktop">
-=======
-<header id="responsive-header">
->>>>>>> refs/remotes/origin/main
   <nav class="navbar navbar-light bg-cl-primary navbar-expand-md" id="responsive-nav">
     <a class="navbar-brand" href="/index">
       <img class="img-fluid ml-5 logo-size mt-1 mb-1" id="logo" src="{{ asset('images/logo/sfd-bl.svg') }}" height="50px" alt="logo-brand" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-<<<<<<< HEAD
       <span class="navbar-toggler-icon mr-5" id="icon-ham"></span>
-=======
-      <span class="navbar-toggler-icon" id="icon-ham"></span>
->>>>>>> refs/remotes/origin/main
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
@@ -32,7 +24,6 @@
     </div>
   </nav>
 </header>
-<<<<<<< HEAD
 
 <header id="responsive-header-mobile">
   <nav class="d-flex flex-row justify-content-between container-header p-2">
@@ -40,5 +31,3 @@
     <img src="{{ asset('assets/icon_menu_mobile.svg') }}" alt="Menu" class="img-fluid ham-mobile mr-5 mt-1 mb-1" id="toggler-menu">
   </nav>
 </header>
-=======
->>>>>>> refs/remotes/origin/main
