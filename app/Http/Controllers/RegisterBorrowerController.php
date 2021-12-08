@@ -39,10 +39,10 @@ class RegisterBorrowerController extends Controller
       "tax"             => ["required"],
       "employment"      => ["required"],
       "dependants"      => ["required"],
-      "id_front"        => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "id_back"         => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "salary_slip"     => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "utilities_slip"  => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
+      "id_front"        => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      "id_back"         => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      "salary_slip"     => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      "utilities_slip"  => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
     ]);
 
     # Process the data
