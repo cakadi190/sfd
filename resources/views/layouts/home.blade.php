@@ -75,6 +75,7 @@
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Home </a></li>
             <li class="nav-item"><a href="{{ url('/about') }}" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{{ url('/register') }}" class="btn btn-primary">Apply Loan</a></li>
           </ul>
