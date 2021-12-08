@@ -18,6 +18,10 @@ li {
   list-style-type: none;
 }
 
+.pos-relative{
+  position: relative;
+}
+
 /*===== Komponen Navigasi ========*/
 div#responsive-desktop {
   display: none;
@@ -55,7 +59,7 @@ nav#nav-mobile {
 .btn-hero {
   border-radius: 5vmin;   
   padding: 1vmin 2vmin 1vmin 2vmin;
-  width: 27vmin;
+  width: 20vmin;
 }
 
 /*==== Komponen Card ====*/
@@ -65,7 +69,7 @@ nav#nav-mobile {
   background-color: white;
   padding: 3vmin;
   position: absolute;
-  z-index: 2;
+  z-index: 1;
   top: 420px;
   left: 0;
   right: 0;
@@ -91,6 +95,8 @@ div#box-card-tablet{
 .custom-card {
   border-radius: 5vmin;
   background-color: white;
+  width: 70vw;
+  z-index: 2;
 }
 
 /*==== Komponen Section 3 ==== */
@@ -133,6 +139,10 @@ div#section3-mobile {
   width: 10vmin;
 }
 
+.number-count-img-mobile {
+  width: 13vmin;
+}
+
 .custom-img {
   width: 40vmin;
 }
@@ -142,6 +152,7 @@ div#section3-mobile {
   float: left;
   position: absolute;
   left: -15vw;
+  top: 1150px;
 }
 
 /* ==== Komponen Section 4 ==== */
@@ -178,7 +189,7 @@ div#section5-mobile {
 }
 
 div#section5-mobile {
-  padding-top: 10vh;
+  padding-top: 6vh;
 }
 
 .img-mini-mobile {
@@ -322,6 +333,10 @@ div#footer-mobile {
   line-height: 2rem;
 }
 
+.font-size-navigation{
+  font-size: 24px;
+}
+
 .font-size-header{
   font-size: 2.7rem;
 }
@@ -394,6 +409,9 @@ div#footer-mobile {
 .width-container-inter3-px{
   width: 380px;
 }
+.width-container-big-px{
+  width: 410px;
+}
 /* ============= Width Container View Port ===========*/
 .width-container-super-small{
   width: 15vmax;
@@ -415,21 +433,60 @@ div#footer-mobile {
 }
 
 /* =============== Padding Pixels ==================*/
+.pt-20px{
+  padding-top: 20px !important;
+}
+.pt-35px{
+  padding-top: 35px !important;
+}
+.pt-70px{
+  padding-top: 70px !important;
+}
+.pl-35px{
+  padding-left: 35px !important;
+}
 .pl-50px{
   padding-left: 50px !important;
 }
 .pl-70px{
   padding-left: 70px !important;
 }
+.pl-90px{
+  padding-left: 90px !important;
+}
 .pl-100px{
   padding-left: 100px !important;
+}
+.pl-150px{
+  padding-left: 150px !important;
+}
+.pb-20px{
+  padding-bottom: 20px !important;
+}
+.pb-35px{
+  padding-bottom: 35px !important;
+}
+.pb-70px{
+  padding-bottom: 70px !important;
+}
+.pl-responsive{
+  padding-left: 10vmin;
 }
 /* =============== Margin Pixels ===================*/
 .mt-10px{
   margin-top: 10px;
 }
+.mt-12px{
+  margin-top: 12px;
+}
+.mt-20px{
+  margin-top: 20px;
+}
 .mt-25px{
   margin-top: 25px;
+}
+.mt-32px{
+  margin-top: 32px;
 }
 .mt-50px{
   margin-top: 50px;
@@ -443,6 +500,9 @@ div#footer-mobile {
 .mb-25px{
   margin-bottom: 25px;
 }
+.mb-35px{
+  margin-bottom: 35px;
+}
 .mb-50px{
   margin-bottom: 50px;
 }
@@ -451,6 +511,12 @@ div#footer-mobile {
 }
 .mb-100px{
   margin-bottom: 100px;
+}
+.ml-70px{
+  margin-left: 70px;
+}
+.ml-90px{
+  margin-left: 90px;
 }
 
 
@@ -472,10 +538,55 @@ div#footer-mobile {
   margin-left: 10vw;
 }
 
+a.menu-item:hover{
+  border-bottom: solid 2px white;
+  width: 100%;
+}
 /*==== Media Query Responsive ====*/
 
+#menu-bar{
+  width: 0px;
+  height: 0px;
+  transition: 2s all;
+}
 /*DONE*/
 @media only screen and (max-width: 600px){
+  #toggler-menu{
+    cursor: pointer;
+  }
+  #menu-bar ul#container-menu{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    float: right;
+    right: 0;
+    width: 39vmax;
+    height: 100vh;
+    display: none;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    background-image: radial-gradient(rgba(37, 42, 141, 0.9), rgba(39, 44, 147, 0.9));
+    backdrop-filter: blur(42px);
+    border-radius: 3vmin 0vmin 3vmin 3vmin;
+    transition: 3s all;
+  }
+  ul#container-menu a{
+    text-decoration: none;
+  }
+  .ham-mobile{
+    width: 30px;
+  }
+  .logo-size {
+    width: 37vmin;
+  }
+
+  .img-mini-mobile {
+    width: 13vmax;
+  }
+  #responsive-header-desktop{
+    display: none !important;
+  }
   #section5-mobile{
     background-image: url('../assets/bg-section5-mobile.svg');
     background-repeat: no-repeat;
@@ -512,25 +623,15 @@ div#footer-mobile {
     width: 55vw;
   }
 
-  #navbarNav .cl-white-mobile {
+  #close-mobile{
+    width: 20px;
+    margin-right: 70px;
+    margin-bottom: 40px;
+    cursor: pointer;
+  }
+
+  .cl-white-mobile {
     color: white !important;
-  }
-
-  .active-now {
-    background-color: #1B4476;
-    width: 70vw;
-    display: flex;
-    justify-content: center;
-    border-radius: 4vmin;
-  }
-
-  nav#responsive-nav {
-    position: absolute;
-    top: 0;
-    width: 100vw;
-    background-color: black;
-    background-size: cover !important;
-    background-position: right !important;
   }
 
   #btn-responsive-mobile {
@@ -549,13 +650,6 @@ div#footer-mobile {
     display: none !important;
   }
 
-  header div#responsive-mobile {
-    display: block;
-    background-color: transparent;
-    position: absolute;
-    z-index: 2;
-  }
-
   #hero {
     padding-top: 70px;
     height: 490px;
@@ -568,6 +662,15 @@ div#footer-mobile {
 
   div#section3-mobile {
     padding-top: 220px;
+    position: relative;
+    top: 0px;
+  }
+
+  header#responsive-header-mobile{
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    width: 100%;
   }
 
   div#section4-tablet {
@@ -580,8 +683,8 @@ div#footer-mobile {
 
   .btn-hero {
     border-radius: 5vmin !important;   
-    padding: 1.7vmin 2.5vmin 1.7vmin 2.5vmin !important;
-    width: 16vmax !important;
+    padding: 1.7vmin 2.1vmin 1.7vmin 2.1vmin !important;
+    width: 14vmax !important;
   }
 
   div#footer-tablet{
@@ -590,7 +693,31 @@ div#footer-mobile {
 }
 
 /*DONE*/
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px){ 
+  .img-unique{
+    height: 185px;
+    margin-left: -80px;
+    margin-top: 80px;
+  }
+  #menu-bar{
+    display: none;
+  }
+  .bg-image-tablet{
+    background-image: url('../assets/Group_3301.svg');
+    background-size: 48vmax;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 70vmax;
+    margin-top: -10vmin;
+  }
+  #responsive-header-mobile{
+    display: none !important;
+  }
+  .border-bottom-full-px-custom{
+    border-bottom: 3px solid #19CDFA;
+    padding-bottom: 0.8vmin;
+    width: 150px;
+  }
   .width-container-mini-inter1-px{
     width: 280px !important;
   }
@@ -616,7 +743,7 @@ div#footer-mobile {
 
   .btn-hero {
     border-radius: 25vmin;
-    padding: 2vmax 2.5vmax 2vmax 2.5vmax; 
+    padding: 1.7vmax 2.3vmax 1.7vmax 2.3vmax; 
   }
 
   .font-size-septenary{
@@ -688,7 +815,7 @@ div#footer-mobile {
 
   div#box-card-tablet {
     display: block;
-    width: 80vw;
+    width: 85vw;
     margin: auto;
     background-color: white;
     padding: 3vmin;
@@ -744,8 +871,8 @@ div#footer-mobile {
     float: right;
     position: absolute;
     width: 30vmin;
-    left: 70vw;
-    top: 230vh;
+    right: 0;
+    top: 170vh;
   }
 
   .custom-img {
@@ -812,8 +939,27 @@ div#footer-mobile {
   }
 }
 
+@media only screen and (min-width: 670px) and (max-width: 768px){
+  .img-unique{
+    height: 235px;
+    margin-left: -80px;
+    margin-top: 80px;
+  }
+}
+
 /*DONE*/
 @media only screen and (min-width: 768px){
+  .img-unique{
+    height: 250px;
+    margin-left: -55px;
+    margin-top: 80px;
+  }
+  #menu-bar{
+    display: none;
+  }
+  #responsive-header-mobile{
+    display: none !important;
+  }
   .width-container-mini-inter1-px{
     width: 280px !important;
   }
@@ -905,7 +1051,7 @@ div#footer-mobile {
 
   div#box-card-tablet {
     display: block;
-    width: 80vw;
+    width: 85vw;
     margin: auto;
     background-color: white;
     padding: 3vmin;
@@ -953,15 +1099,16 @@ div#footer-mobile {
     float: left;
     position: absolute;
     width: 35vmin;
+    top: 780px;
     left: -10vw;
   }
 
   .float-img-desktop-right-1 {
     float: right;
     position: absolute;
-    width: 30vmin;
+    width: 25vmin;
     left: 75vw;
-    top: 230vh;
+    top: 180vh;
   }
 
   .custom-img {
@@ -1027,9 +1174,14 @@ div#footer-mobile {
     display: block !important;
   }
 }
-
 /*DONE*/
 @media only screen and (min-width: 992px){
+  #menu-bar{
+    display: none;
+  }
+  #responsive-header-mobile{
+    display: none !important;
+  }
   .width-container-super-mini-px{
     width: 220px !important;
   }
@@ -1058,7 +1210,7 @@ div#footer-mobile {
 
   .img-mini{
     width: 15vmin !important;
-    margin-top: -22vh !important;
+    margin-top: -15vh !important;
   }
 
   #navbarNav {
@@ -1100,7 +1252,7 @@ div#footer-mobile {
 
   div#box-card-desktop {
     display: block !important;
-    width: 70vw !important;
+    width: 80vw !important;
     margin: auto !important;
     background-color: white !important;
     padding: 3vmin !important;
@@ -1145,9 +1297,9 @@ div#footer-mobile {
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-    top: 810px;
+    top: 880px;
     width: 250px;
-    left: 7vmax;
+    left: 35px;
   }
 
   .width-header-small {
@@ -1172,7 +1324,7 @@ div#footer-mobile {
     position: absolute;
     width: 240px;
     left: 75vw;
-    top: 1350px;
+    top: 1450px;
   }
 
   .width-btn {
@@ -1233,7 +1385,7 @@ div#footer-mobile {
     display: block !important;
   }
   .float-img-desktop-right-2 {
-    height: 370px !important;
+    height: 220px !important;
     float: right !important;
     position: absolute !important;
     top: 10vh !important;
@@ -1268,7 +1420,53 @@ div#footer-mobile {
   }
 }
 
+@media only screen and (min-width: 1000px){
+  .float-img-desktop-right-1 {
+    float: right;
+    position: absolute;
+    width: 240px;
+    left: 75vw;
+    top: 1520px;
+  }
+}
+
+@media only screen and (min-width: 1100px){
+  .float-img-desktop-right-1 {
+    float: right;
+    position: absolute;
+    width: 240px;
+    left: 75vw;
+    top: 1500px;
+  }
+  #menu-bar{
+    display: none;
+  }
+  #responsive-header-mobile{
+    display: none !important;
+  }
+  .float-img-desktop-right-2 {
+    height: 500px !important;
+    float: right !important;
+    position: absolute !important;
+    top: 0vh !important;
+    right: 0 !important;
+  }
+  img.float-img-desktop-left-1 {
+    float: left;
+    position: absolute;
+    top: 880px;
+    width: 250px;
+    left: 85px !important;
+  }
+}
+
 @media only screen and (min-width: 1200px){
+  #menu-bar{
+    display: none;
+  }
+  #responsive-header-mobile{
+    display: none !important;
+  }
   .width-container-super-mini-px{
     width: 220px !important;
   }
@@ -1297,7 +1495,7 @@ div#footer-mobile {
 
   .img-mini{
     width: 15vmin !important;
-    margin-top: -22vh !important;
+    margin-top: -15vh !important;
   }
 
   #navbarNav {
@@ -1339,7 +1537,7 @@ div#footer-mobile {
 
   div#box-card-desktop {
     display: block !important;
-    width: 70vw !important;
+    width: 80vw !important;
     margin: auto !important;
     background-color: white !important;
     padding: 3vmin !important;
@@ -1384,9 +1582,9 @@ div#footer-mobile {
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-    top: 810px;
+    top: 890px;
     width: 250px;
-    left: 7vmax;
+    left: 15px;
   }
 
   .width-header-small {
@@ -1411,7 +1609,7 @@ div#footer-mobile {
     position: absolute;
     width: 240px;
     left: 75vw;
-    top: 1370px;
+    top: 1450px;
   }
 
   .width-btn {
@@ -1472,10 +1670,10 @@ div#footer-mobile {
     display: block !important;
   }
   .float-img-desktop-right-2 {
-    height: 370px !important;
+    height: 570px !important;
     float: right !important;
     position: absolute !important;
-    top: 10vh !important;
+    top: 0vh !important;
     right: 0 !important;
   }
 
@@ -1504,5 +1702,26 @@ div#footer-mobile {
   }
   .width-container-small-special{
     width: 25vmax !important;
+  }
+}
+@media only screen and (min-width: 1400px){
+  img.float-img-desktop-left-1 {
+    float: left;
+    position: absolute;
+    top: 890px;
+    width: 250px;
+    left: 175px !important;
+  }
+}
+@media only screen and (min-width: 1500px){
+  #menu-bar{
+    display: none;
+  }
+    img.float-img-desktop-left-1 {
+    float: left;
+    position: absolute;
+    top: 840px;
+    width: 250px;
+    left: 15vmax;
   }
 }

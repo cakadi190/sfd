@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <script src="{{asset('js/style.js')}}" type="application/javascript" defer></script>
   <title>SMARTFUNDING Direct</title>
 </head>
 
@@ -26,7 +27,7 @@
         <p class="text-center cl-secondary font-type-tertiary font-size-subtitle width-container-mini-px align-self-center font-line-height-mini-px mt-4">Whether it's
           furnishing your newly purchased home, saving up for a new car, or planning a surprise vacation for your spouse
           to the stunning Santorini. In just three steps, you can apply for a quick loan today.</p>
-        <a href="/register" class="btn btn-hero align-self-center font-type-secondary cl-secondary mt-4 bg-cl-tertiary font-size-septenary">Get Loans</a>
+        <a href="/register" class="btn btn-hero btn-med align-self-center font-type-primary cl-secondary mt-4 bg-cl-tertiary font-size-septenary">Get Loans</a>
       </div>
     </div>
 
@@ -38,7 +39,7 @@
         <div class="d-flex flex-row justify-content-center">
           <h3 class="cl-quaternary font-size-tertiary">Smart</h3>
           <div class="d-flex flex-column justify-content-around pt-mini">
-            <h3 class="cl-quaternary font-size-tertiary font-type-secondary">Funding</h3>
+            <h3 class="cl-tertiary font-size-tertiary font-type-secondary">Funding</h3>
             <div class="border-bottom-mini"></div>
           </div>
           <h3 class="ml-2 cl-quaternary font-size-tertiary">Direct</h3>
@@ -55,11 +56,17 @@
       <div class="d-flex flex-row justify-content-around pt-4">
         <div class="d-flex flex-row font-type-primary">
           <h3 class="cl-tertiary font-size-tertiary font-type-secodary">About</h3>
-          <div class="d-flex flex-column justify-content-start">
-            <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">SmartFunding</h3>
-            <div class="border-bottom-full align-self-center"></div>
+          <div class="d-flex flex-row justify-content-around">
+            <div class="d-flex flex-column justify-content-start">
+              <div class="d-flex flex-row justify-content-start">
+                <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">Smart</h3>
+                <h3 class="cl-tertiary font-size-tertiary font-type-tertiary">Funding</h3>
+              </div>
+              <div class="border-bottom-full-px-custom align-self-center">
+              </div>
+            </div>
+            <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">Direct</h3>
           </div>
-          <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">Direct</h3>
         </div>
       </div>
       <div class="container mt-3 width-text-card align-self-center pb-2">
@@ -74,9 +81,13 @@
         <div class="d-flex flex-row justify-content-around pt-4">
           <div class="d-flex flex-row font-type-primary">
             <h3 class="cl-tertiary font-size-tertiary font-type-secodary">About</h3>
-            <div>
-              <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">SmartFunding Direct</h3>
-              <div class="ml-2 border-bottom-full-px"></div>
+            <div class="d-flex flex-column justify-content-center">
+              <div class="d-flex flex-row justify-content-start">
+                <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">Smart</h3>
+                <h3 class="ml-2 cl-tertiary font-size-tertiary font-type-tertiary">Funding</h3>
+                <h3 class="ml-2 cl-quaternary font-size-tertiary font-type-tertiary">Direct</h3>
+              </div>
+              <div class="ml-3 border-bottom-full-px"></div>
             </div>
           </div>
         </div>
@@ -88,64 +99,82 @@
       </div>
     </div>
 
+    <!--Menu Bar-->
+    <div id="menu-bar">
+      <ul id="container-menu">
+        <li class="align-self-end mt-4">
+          <img src="{{ asset('assets/close_nav_mobile.svg') }}" alt="close" class="image-fluid" id="close-mobile">
+        </li>
+        <li class="align-self-center mt-50px">
+          <a href="/" class="cl-white-mobile font-type-secondary font-size-navigation menu-item">Home</a>
+        </li>
+        <li class="align-self-center mt-4">
+          <a href="/about" class="cl-white-mobile font-type-secondary font-size-navigation menu-item">About Us</a>
+        </li>
+        <li class="align-self-center mt-4">
+          <a href="/register" class="cl-white-mobile font-type-secondary font-size-navigation menu-item">Apply Loan</a>
+        </li>
+      </ul>
+    </div>
+
     <!--================================= SECTION "HOW TO GET FUNDING IN 3 SIMPLE STEPS" ===========================================-->
     <!--Mobile Section 3-->
     <div class="d-flex flex-column justify-content-around bg-cl-primary" id="section3-mobile">
-      <h3 class="cl-quinary font-type-primary font-size-tertiary width-container-inter1-px text-center align-self-center">
+      <h3 class="cl-quinary font-type-primary font-size-tertiary width-container-inter1-px pt-3 text-center align-self-center">
         How To Get Funding in 3 Simple Steps</h3>
       <div class="border-bottom-half-px align-self-center"></div>
       <div class="d-flex flex-column justify-content-around mt-5">
         <img src="{{asset('assets/number_count_1.png')}}" alt="1"
-          class="image-fluid number-count-img align-self-center">
+          class="image-fluid number-count-img-mobile align-self-center">
         <img src="{{asset('assets/Search_engine _Isometric.svg')}}" alt="image"
           class="image-fluid custom-img align-self-center">
-        <h3 class="align-self-center mt-3 font-type-secondary cl-senary font-size-quaternary">Submit Application</h3>
+        <h3 class="align-self-center mt-3 font-type-primary cl-senary font-size-quaternary">Submit Application</h3>
         <h4
-          class="align-self-center font-type-tertiary font-line-height-mini-px font-size-septenary cl-septenary font-size-small width-container-super-mini-px text-center">
+          class="align-self-center font-type-tertiary font-line-height-mini-px font-size-septenary cl-septenary width-container-super-mini-px text-center">
           Apply for our financing solution and submit the necessary details.</h4>
       </div>
       <div class="d-flex flex-column justify-content-around mt-5">
         <img src="{{asset('assets/number_count_2.png')}}" alt="1"
-          class="image-fluid number-count-img align-self-center">
+          class="image-fluid number-count-img-mobile align-self-center">
         <img src="{{asset('assets/Checklist_Isometric.svg')}}" alt="image"
           class="image-fluid custom-img align-self-center">
-        <h3 class="align-self-center mt-3 font-type-secondary cl-senary font-size-quaternary">Review Application</h3>
+        <h3 class="align-self-center mt-3 font-type-primary cl-senary font-size-quaternary">Review Application</h3>
         <h4
-          class="align-self-center font-type-tertiary font-size-septenary cl-septenary font-size-small width-container-super-mini-px text-center">
+          class="align-self-center font-type-tertiary font-size-septenary cl-septenary font-line-height-mini-px width-container-super-mini-px text-center">
           Upon submission, your application will be reviewed by our credit and risk team</h4>
       </div>
       <img src="{{asset('assets/Polygon_6.svg')}}" alt="Polygon" class="image-fluid image-float">
       <div class="d-flex flex-column justify-content-around mt-5">
         <img src="{{asset('assets/number_count_3.png')}}" alt="1"
-          class="image-fluid number-count-img align-self-center">
+          class="image-fluid number-count-img-mobile align-self-center">
         <img src="{{asset('assets/Money_transfer _Isometric.svg')}}" alt="image"
           class="image-fluid custom-img align-self-center">
-        <h3 class="align-self-center font-type-secondary mt-3 cl-senary font-size-quaternary">Receive Money</h3>
+        <h3 class="align-self-center font-type-primary mt-3 cl-senary font-size-quaternary">Receive Money</h3>
         <h4
-          class="align-self-center font-type-tertiary font-size-septenary cl-septenary font-size-small width-container-super-mini-px text-center">
+          class="align-self-center font-type-tertiary font-line-height-mini-px font-size-septenary cl-septenary width-container-super-mini-px text-center">
           If funding is successful, the funds will be disbursed to you within two days.</h4>
       </div>
-      <a href="/register" class="btn btn-hero font-type-secondary align-self-center cl-secondary mt-5 mb-50px bg-cl-tertiary font-size-septenary">Get Loans</a>
+      <a href="/register" class="btn btn-hero font-type-primary align-self-center cl-secondary mt-5 mb-50px bg-cl-tertiary font-size-septenary">Get Loans</a>
     </div>
     
     <!--Desktop Section 3-->
     <div class="bg-cl-primary d-flex flex-column justify-content-around" id="section3-desktop">
-      <img src="{{asset('assets/Polygon_6.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-left-1">
-      <div class="d-flex flex-column justify-content-start align-self-center">
+      <div class="d-flex flex-column justify-content-start align-self-center pt-20px">
         <h3
           class="cl-quinary font-type-primary font-line-height-super-big font-size-secondary width-container-inter1-px text-center align-self-center"
           id="section3-header">How To Get Funding in 3 Simple Steps</h3>
           <div class="border-bottom-quarter-px align-self-center"></div>
       </div>
       <div class="container d-flex flex-row justify-content-around mt-5" id="section3-main">
-        <div class="container d-flex flex-column">
+        <div class="container d-flex flex-column .pos-relative">
+          <img src="{{asset('assets/Polygon_6.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-left-1">
           <img src="{{asset('assets/number_count_1.png')}}" alt="1"
             class="image-fluid number-count-img align-self-center">
           <img src="{{asset('assets/Search_engine _Isometric.svg')}}" alt="image"
             class="image-fluid custom-img align-self-center">
           <h3 class="align-self-center font-type-primary font-size-tertiary cl-senary mt-3">Submit Application</h3>
           <h4
-            class=" pl-2 pr2 align-self-center font-type-tertiary font-line-height-med cl-septenary font-size-septenary width-container-mini-inter1-px text-center">
+            class="pl-2 pr2 align-self-center font-type-tertiary font-line-height-med cl-septenary font-size-septenary width-container-mini-inter1-px text-center">
             Apply for our financing solution and submit the necessary details.</h4>
         </div>
         <div class="container d-flex flex-column">
@@ -171,7 +200,7 @@
       </div>
       <div class="d-flex flex-column justify-content-around">
         <a href="/register"
-          class="btn btn-hero mb-70px align-self-center font-type-secondary cl-secondary mt-70px bg-cl-tertiary">Get Loans</a>
+          class="btn btn-hero btn-med mb-70px align-self-center font-type-primary font-size-septenary cl-secondary mt-70px bg-cl-tertiary">Get Loans</a>
         <img src="{{asset('assets/Polygon_5.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-right-1">
       </div>
     </div>
@@ -208,11 +237,11 @@
           <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary">No lock-in period</p>
         </div>
       </div>
-      <a href="/register" class="btn btn-hero font-size-septenary font-type-secondary mt-25px cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
+      <a href="/register" class="btn btn-hero font-size-septenary font-type-primary mt-50px cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
     </div>
     <!--Desktop Section 4-->
     <div id="section4-desktop">
-      <div class="d-flex flex-row justify-content-center mt-50px">
+      <div class="d-flex flex-row justify-content-center mt-70px">
         <img src="{{asset('assets/Group_3301.svg')}}" alt="Image" class="image-fluid img-med">
         <div class="ml-5">
           <h3 class="font-type-primary font-size-secondary cl-quinary">Personal Microloans</h3>
@@ -223,70 +252,73 @@
           <div class="d-flex flex-column justify-content-start">
             <div class="d-flex flex-row justify-content-start">
               <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center big-screen pl-2 font-type-tertiary font-size-septenary">Financing between
+                class="img-fluid img-sm align-self-center pt-3 pl-2">
+              <p class="align-self-center pt-1 big-screen pl-2 font-type-tertiary font-size-septenary">Financing between
                 <strong>SGD20,000</strong> to <strong>SGD500K</strong></p>
             </div>
             <div class="d-flex flex-row justify-content-start">
               <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center big-screen font-type-tertiary font-size-septenary pl-2">Interest rates as low as
+                class="img-fluid img-sm align-self-center pt-3 pl-2">
+              <p class="align-self-center pt-1 big-screen font-type-tertiary font-size-septenary pl-2">Interest rates as low as
                 0.5% to 1.25% per month¹</p>
             </div>
             <div class="d-flex flex-row justify-content-start">
               <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center big-screen font-type-tertiary font-size-septenary pl-2">No collateral is required
+                class="img-fluid img-sm align-self-center pt-3 pl-2">
+              <p class="align-self-center pt-1 big-screen font-type-tertiary font-size-septenary pl-2">No collateral is required
               </p>
             </div>
             <div class="d-flex flex-row justify-content-start">
               <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center big-screen font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
+                class="img-fluid img-sm align-self-center pt-3 pl-2">
+              <p class="align-self-center pt-1 big-screen font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
             </div>
-            <a href="/register" class="btn btn-hero btn-med font-type-secondary bg-cl-tertiary cl-secondary ml-2 mt-3">Apply
+            <a href="/register" class="btn btn-hero font-type-primary bg-cl-tertiary cl-secondary ml-2 mt-3">Apply
               Now</a>
           </div>
         </div>
       </div>
     </div>
+    
     <!--Tablet Section 4-->
     <div id="section4-tablet">
-      <div class="d-flex flex-column justify-content-around mt-90px">
+      <div class="d-flex flex-column justify-content-around mt-90px ml-5">
         <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center">Personal Microloans</h3>
         <div class="border-bottom-quarter align-self-center"></div>
-        <div class="d-flex flex-row justify-content-around mt-5">
-          <div class="d-flex flex-column justify-content-around ml-3 pr-5">
-            <h4 class="font-type-primary cl-quinary font-size-tertiary mt-5">Term Financing</h4>
-            <p class="lead font-type-tertiary cl-senary font-size-quaternary mt-10px">Grow with Term Financing for your business
+        <div class="d-flex flex-row justify-content-around mt-5 pl-25px">
+          <div class="d-flex flex-column justify-content-start pr-5">
+            <h4 class="font-type-primary cl-quinary font-size-tertiary mt-3">Term Financing</h4>
+            <p class="lead font-type-tertiary width-container-mini-inter1-px cl-senary font-size-quaternary mt-10px">Grow with Term Financing for your business
             </p>
-            <div class="d-flex flex-row justify-content-start">
-              <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary">Financing between
-                <strong>SGD20,000</strong> to <strong>SGD500K</strong></p>
+            <div class="d-flex flex-column justify-content-center width-container-inter2-px">
+              <div class="d-flex flex-row justify-content-start">
+                <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
+                  class="img-fluid img-sm align-self-center">
+                <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary">Financing between
+                  <strong>SGD20,000</strong> to <strong>SGD500K</strong></p>
+              </div>
+              <div class="d-flex flex-row justify-content-start">
+                <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
+                  class="img-fluid img-sm align-self-center">
+                <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">Interest rates as low as
+                  0.5% to 1.25% per month¹</p>
+              </div>
+              <div class="d-flex flex-row justify-content-start">
+                <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
+                  class="img-fluid img-sm align-self-center">
+                <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">No collateral is required
+                </p>
+              </div>
+              <div class="d-flex flex-row justify-content-start">
+                <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
+                  class="img-fluid img-sm align-self-center">
+                <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
+              </div>
+              <a href="/register" class="btn btn-hero btn-med font-type-primary font-size-septenary bg-cl-tertiary cl-secondary ml-2 mt-25px">Apply
+                Now</a>
             </div>
-            <div class="d-flex flex-row justify-content-start">
-              <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">Interest rates as low as
-                0.5% to 1.25% per month¹</p>
-            </div>
-            <div class="d-flex flex-row justify-content-start">
-              <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">No collateral is required
-              </p>
-            </div>
-            <div class="d-flex flex-row justify-content-start">
-              <img src="{{asset('assets/Polygon_small.svg')}}" alt="bullet icon"
-                class="img-fluid img-sm align-self-center pl-2">
-              <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
-            </div>
-            <a href="/register" class="btn btn-hero btn-med font-type-secondary bg-cl-tertiary cl-secondary ml-2 mt-25px">Apply
-              Now</a>
           </div>
-          <img src="{{asset('assets/Group_3301.svg')}}" alt="Image" class="image-fluid img-med">
+            <img src="{{ asset('../assets/Group_3301.svg') }}" alt="image" class="image-fluid img-unique">
         </div>
       </div>
     </div>
@@ -302,41 +334,41 @@
       </div>
       <div class="d-flex flex-column justify-content-around mt-5 mb-5">
         <img src="{{asset('assets/review_1.svg')}}" alt="image" class="image-fluid img-mini-mobile align-self-center">
-        <h4 class="mt-20 font-type-secondary font-size-tertiary cl-quinary align-self-center">Full Transparency</h4>
+        <h4 class="mt-10px font-type-primary font-size-tertiary cl-quinary align-self-center">Full Transparency</h4>
         <p
-          class="mr-4 ml-4 width-container-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
+          class="mr-4 ml-4 mt-10px width-container-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
           We will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
 
         <img src="{{asset('assets/review_3.svg')}}" alt="image"
           class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Easy and Seamless
+        <h4 class="font-type-primary mt-12px font-size-tertiary cl-quinary align-self-center text-center">Easy and Seamless
         </h4>
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
+        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
         <p
-          class="mr-4 ml-4 width-container-inter1-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
+          class="mr-4 ml-4 mt-10px width-container-inter1-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
           Our online application saves you the hassle of leaving the comfort of home or work.</p>
 
         <img src="{{asset('assets/review_2.svg')}}" alt="image"
           class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">costs-Effective &
+        <h4 class="font-type-primary mt-12px font-size-tertiary cl-quinary align-self-center text-center">costs-Effective &
         </h4>
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Flexible Repayment
+        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Flexible Repayment
         </h4>
         <p
-          class="mr-4 ml-4 width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
+          class="mr-4 ml-4 mt-10px width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
           Enjoy low-interest rates and flexible repayment tenures of up to 12 months, with multiple repayment options.
         </p>
 
         <img src="{{asset('assets/review_4.svg')}}" alt="image"
           class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">No Collateral</h4>
-        <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
+        <h4 class="mt-12px font-type-primary font-size-tertiary cl-quinary align-self-center text-center">No Collateral</h4>
+        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
         <p
-          class="mr-4 ml-4 width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
+          class="mr-4 ml-4 mt-10px width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
           We focus on your business potential and want to help you grow.
         </p>
         <a href="/register"
-          class="btn btn-hero font-size-septenary bg-cl-tertiary font-type-secondary cl-secondary mb-25px mt-25px align-self-center">Apply Now</a>
+          class="btn btn-hero font-size-septenary bg-cl-tertiary font-type-primary cl-secondary mb-25px mt-25px align-self-center">Apply Now</a>
       </div>
     </div>
 
@@ -391,7 +423,7 @@
             <p class="width-container-super-mini-px font-type-tertiary font-size-septenary">We focus on your business potential and want to help you grow.</p>
           </div>
         </div>
-        <a href="/register" class="btn btn-hero btn-med font-type-secondary cl-secondary bg-cl-tertiary ml-5 mt-5">Apply now</a>
+        <a href="/register" class="btn btn-hero btn-med font-type-primary cl-secondary bg-cl-tertiary ml-5 mt-5">Apply now</a>
         <img src="{{asset('assets/Group.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-right-2" id="img-hide">
       </div>
     </div>
@@ -406,14 +438,14 @@
         <div class="d-flex flex-row justify-content-around mt-5">
           <div class="d-flex flex-column justify-content-start">
             <img src="{{asset('assets/review_1.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Full
+            <h4 class=" mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Full
               Transparency</h4>
             <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">We
               will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
           </div>
           <div class="d-flex flex-column justify-content-start">
             <img src="{{asset('assets/review_3.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Easy and
+            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Easy and
               Seamless</h4>
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
             <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">Our online application saves you the hassle of leaving the comfort of home or work.</p>
@@ -422,7 +454,7 @@
         <div class="d-flex flex-row justify-content-around mt-5">
           <div class="d-flex flex-column justify-content-start">
             <img src="{{asset('assets/review_2.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">costs-Effective
+            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">costs-Effective
               &</h4>
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Flexible
               Repayment</h4>
@@ -431,14 +463,14 @@
           </div>
           <div class="d-flex flex-column justify-content-start">
             <img src="{{asset('assets/review_4.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">No Collateral
+            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">No Collateral
             </h4>
             <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
             <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">We focus on your business potential and want to help you grow.</p>
           </div>
         </div>
         <a href="/register"
-          class="btn btn-hero cl-secondary bg-cl-tertiary ml-5 mt-5 font-type-secondary align-self-center">Apply now</a>
+          class="btn btn-hero btn-med cl-secondary bg-cl-tertiary ml-5 mt-5 font-type-primary align-self-center">Apply now</a>
       </div>
     </div>
   </main>
@@ -456,7 +488,6 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
   </script>
-  <script src="{{asset('js/style.js')}}"></script>
 </body>
 
 </html>
