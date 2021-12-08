@@ -14,7 +14,6 @@ Route::view('/about', 'about')->name('about');
 /**
  * Main Routes
  */
-Route::redirect('/register', url('register'), 301);
 Auth::routes([
   'verify'    => true,
   'register'  => false,
