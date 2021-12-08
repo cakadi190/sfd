@@ -177,9 +177,9 @@
               <p>Are you connecting your social media to your account? Let's hit the button to login more faster!</p>
 
               <div class="btn-socials-list">
-                <a href="{{ route('social-login', 'facebook') }}" class="btn btn-block btn-facebook"><i
+                <a href="javascript::void(0)" class="btn btn-block btn-facebook"><i
                     class="fa-brands fa-fw mr-2 fa-facebook"></i>Facebook</a>
-                <a href="{{ route('social-login', 'google') }}" class="btn btn-block btn-google-plus"><i
+                <a href="javascript::void(0)" class="btn btn-block btn-google-plus"><i
                     class="fa-brands fa-fw mr-2 fa-google"></i>Google</a>
               </div>
 

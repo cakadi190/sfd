@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         Artisan::call('migrate:fresh');
         $this->call(FirstUserSeeder::class);
         $this->call(UserSeeder::class);
-        $this->call(BorrowerSeeder::class);
+        // $this->call(BorrowerSeeder::class);
+        $this->call(ApplicantSeeder::class);
     }
 }
