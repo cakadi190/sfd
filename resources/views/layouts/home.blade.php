@@ -28,6 +28,10 @@
     <link href="{{ asset('css/home.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('vendor/fontawesome-v6/css/all.min.css') }}" rel="stylesheet" />
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" href="{{asset('css/style.css')}}" />
+>>>>>>> refs/remotes/origin/main
 
     <!-- Header -->
     @yield('header')
@@ -86,6 +90,7 @@
     @yield('content')
   </main>
 
+<<<<<<< HEAD
   <footer class="footer">
     <div id="footer-top">
       <div class="container">
@@ -145,6 +150,9 @@
       </div>
     </div>
   </footer>
+=======
+  @include('layouts.landing_page.footer')
+>>>>>>> refs/remotes/origin/main
 
   <script src="{{ asset('js/home.js') }}"></script>
   @yield('footer')

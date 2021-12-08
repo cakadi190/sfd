@@ -1,5 +1,9 @@
 <?php
 
+<<<<<<< HEAD
+=======
+use App\Events\TestingEvent;
+>>>>>>> refs/remotes/origin/main
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
@@ -38,6 +42,10 @@ Route::get('auth/{provider}/process', [\App\Http\Controllers\Auth\Social\LoginCo
 Route::prefix('register/v2')->group(function () {
   Route::get('/', [\App\Http\Controllers\RegisterBorrowerController::class, 'register'])->name('register');
   Route::post('/process', [\App\Http\Controllers\RegisterBorrowerController::class, 'process'])->name('register.process');
+<<<<<<< HEAD
+=======
+  Route::view('/success', 'auth.register-success')->name('register.success');
+>>>>>>> refs/remotes/origin/main
 });
 
 /**

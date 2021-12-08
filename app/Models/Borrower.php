@@ -12,6 +12,7 @@ class Borrower extends Model
 
     protected $table = "borrowers";
 
+<<<<<<< HEAD
     protected $fillable = [
         'created_at','updated_at','loan_id','finance_amount','period','fullname','nric','email','phone','birthdate','dependants','employment','id_front','id_back','salary_slip','utilities_slip'
     ];
@@ -24,5 +25,7 @@ class Borrower extends Model
         'email_verified_at'
     ];
 
+=======
+>>>>>>> refs/remotes/origin/main
     protected $guarded = [];
 }

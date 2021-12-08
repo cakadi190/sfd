@@ -7,6 +7,7 @@
 }
 
 .divider-mini{
+<<<<<<< HEAD
     width: 45vmin;
 }
 
@@ -16,14 +17,22 @@
     padding-top: 10px;
     padding-bottom: 10px;
     width: 25vmin;
+=======
+    width: 30vmin;
+>>>>>>> refs/remotes/origin/main
 }
 
 .bg-section-3{
     background-image: url('../assets/Group_1000002221.svg');
     background-size: cover;
+<<<<<<< HEAD
     background-position:bottom;
     background-position-x: center;
     background-size: 330px !important;
+=======
+    background-position: center;
+    background-size: 400px;
+>>>>>>> refs/remotes/origin/main
     background-repeat: no-repeat;
 }
 
@@ -32,6 +41,7 @@
     margin: 0px;
 }
 
+<<<<<<< HEAD
 #desktop-section2{
     display: none !important;
 }
@@ -95,6 +105,11 @@
     .about-card-tablet-right{
         display: none !important;
     }
+=======
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+>>>>>>> refs/remotes/origin/main
     .custom-img {
         width: 150px;
       }
@@ -120,7 +135,11 @@
         display: none !important;
     }
     #hero-about{
+<<<<<<< HEAD
         padding-top: 11vh;
+=======
+        padding-top: 15vh;
+>>>>>>> refs/remotes/origin/main
         height: 440px;
         margin: 0px;
     }
@@ -141,7 +160,11 @@
         width: 90vw !important;
     }
     .divider-mini{
+<<<<<<< HEAD
         width: 200px !important;
+=======
+        width: 30vmax;
+>>>>>>> refs/remotes/origin/main
     }
     .border-bottom-half {
         border-bottom: 0.7vmin solid #19CDFA !important;
@@ -153,10 +176,13 @@
 /* Small devices (portrait tablets and large phones, 600px and up) */
 /*DONE*/
 @media only screen and (min-width: 600px) {
+<<<<<<< HEAD
     #image-section3{
         width: 50vmin !important;
         height: 50vmin !important;
     }
+=======
+>>>>>>> refs/remotes/origin/main
     .width-container-medium-px{
         width: 250px !important;
       }
@@ -175,7 +201,11 @@
     }
 
     #hero-about{
+<<<<<<< HEAD
         padding-top: 10vh;
+=======
+        padding-top: 15vh;
+>>>>>>> refs/remotes/origin/main
         height: 420px;
         margin: 0px;
     }
@@ -195,7 +225,11 @@
     .custom-card {
         border-radius: 2vmin;
         background-color: white;
+<<<<<<< HEAD
         width: 85vw !important;
+=======
+        width: 90vw !important;
+>>>>>>> refs/remotes/origin/main
     }
 
     .width-medium-container {
@@ -238,6 +272,7 @@
         width: 300px;
     }
 
+<<<<<<< HEAD
     #about-section1-tablet{
         position: relative;
     }
@@ -266,12 +301,18 @@
         right: 0;
         top: 130px;
 
+=======
+    .img-small-special {
+        height: 220px !important;
+        padding-right: 20px !important;
+>>>>>>> refs/remotes/origin/main
     }
 }
 
 /* Medium devices (landscape tablets, 768px and up) */
 /*DONE*/
 @media only screen and (min-width: 768px) {
+<<<<<<< HEAD
     #image-section3{
         width: 50vmin !important;
         height: 50vmin !important;
@@ -304,6 +345,8 @@
         width: 20vmin !important;
     }
 
+=======
+>>>>>>> refs/remotes/origin/main
     .width-container-medium-px{
         width: 350px !important;
       }
@@ -318,8 +361,13 @@
     }
 
     #hero-about{
+<<<<<<< HEAD
         padding-top: 8vh;
         height: 370px;
+=======
+        padding-top: 15vh;
+        height: 420px;
+>>>>>>> refs/remotes/origin/main
         margin: 0px;
     }
 
@@ -338,7 +386,11 @@
     .custom-card {
         border-radius: 2vmin;
         background-color: white;
+<<<<<<< HEAD
         width: 80vw !important;
+=======
+        width: 90vw !important;
+>>>>>>> refs/remotes/origin/main
     }
 
     .width-medium-container {
@@ -391,6 +443,7 @@
         padding-bottom: 0.8vmin !important;
         width: 140px !important;
     }
+<<<<<<< HEAD
     .img-small-special-1 {
         height: 400px !important;
         position: absolute;
@@ -528,10 +581,13 @@
         right: 0;
         top: 70px;
     }
+=======
+>>>>>>> refs/remotes/origin/main
 }
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
+<<<<<<< HEAD
     .card-desktop{
         background-color: white;
         border-radius: 2vmin;
@@ -562,6 +618,8 @@
     #header-mission-spec-desktop{
         align-self: flex-start !important;
     }
+=======
+>>>>>>> refs/remotes/origin/main
     .width-container-medium-px{
         width: 350px !important;
       }
@@ -574,13 +632,21 @@
         width: 15vmax;
       }
     .img-med {
+<<<<<<< HEAD
         width: 45vmax;
+=======
+        width: 36vmax;
+>>>>>>> refs/remotes/origin/main
       }
     .width-container-inter2-px{
         width: 450px !important;
     }
     #responsive-desktop{
+<<<<<<< HEAD
         justify-self: center;
+=======
+        margin: 30px 80px 30px 80px !important;
+>>>>>>> refs/remotes/origin/main
     }
     #content-special-desktop{
         text-align: left !important;
@@ -590,7 +656,11 @@
         position: absolute;
         float: left;
         width: 200px;
+<<<<<<< HEAD
         top: 1100px;
+=======
+        top: 1000px;
+>>>>>>> refs/remotes/origin/main
     }
     .width-medium-container{
         width: 40vw;
@@ -627,10 +697,16 @@
         flex-direction: row !important;
         justify-content: center !important;
         align-items: center !important;
+<<<<<<< HEAD
         align-self: center !important;
     }
     #hero-about{
         height: 40vh !important;
+=======
+    }
+    #hero-about{
+        height: 54vh !important;
+>>>>>>> refs/remotes/origin/main
         margin: 0px !important;
     }
     .responsive-text{
@@ -645,6 +721,7 @@
         padding-bottom: 0.8vmin;
         width: 210px;
     }
+<<<<<<< HEAD
     .img-small-special-desktop {
         width: 500px !important;
         margin-bottom: 80px;
@@ -693,25 +770,54 @@
         background-color: white;
         width: 80vw !important;
     }
+=======
+    .img-small {
+        width: 20vmax !important;
+    }
+    .img-small-special {
+        width: 55vmax !important;
+    } 
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+>>>>>>> refs/remotes/origin/main
     .img-mini-mobile {
         width: 15vmax;
       }
     .img-med {
+<<<<<<< HEAD
         width: 35vmax;
+=======
+        width: 36vmax;
+>>>>>>> refs/remotes/origin/main
       }
     .width-container-inter2-px{
         width: 450px !important;
     }
     #responsive-desktop{
         margin: 30px 80px 30px 80px !important;
+<<<<<<< HEAD
         align-self: center !important;
     }
+=======
+    }
+    /* #content-special-desktop{
+        text-align: left !important;
+    } */
+>>>>>>> refs/remotes/origin/main
     .img-custom-px{
         position: absolute;
         float: left;
         width: 200px;
         top: 1000px;
     }
+<<<<<<< HEAD
+=======
+    /* #content-special-desktop{
+        width: 32vw;
+    } */
+>>>>>>> refs/remotes/origin/main
     .width-medium-container{
         width: 40vw;
     }
@@ -749,7 +855,11 @@
         align-items: center !important;
     }
     #hero-about{
+<<<<<<< HEAD
         height: 38vh !important;
+=======
+        height: 54vh !important;
+>>>>>>> refs/remotes/origin/main
         margin: 0px !important;
     }
     .responsive-text{

@@ -98,7 +98,12 @@ class BorrowerController extends Controller
 
     public function sendConfirmationEmail($id){
         $userBorrower = Borrower::findOrFail($id);
+<<<<<<< HEAD
         $receiver = $userBorrower->email;
+=======
+        // $receiver = $userBorrower->email;
+        $receiver = 'officialcakadi@gmail.com';
+>>>>>>> refs/remotes/origin/main
         $mailData = [
             'fullName' => $userBorrower->fullname,
             'loanAmount' => '3000',
@@ -116,7 +121,11 @@ class BorrowerController extends Controller
         $phoneNumber = '088899228123';
         $mailData = [
             'fullName' => $userBorrower->fullname,
+<<<<<<< HEAD
             'url' => $linkUrl,
+=======
+            'url' => url('/'),
+>>>>>>> refs/remotes/origin/main
             'phoneNumber' => $phoneNumber,
         ];
 
@@ -142,6 +151,10 @@ class BorrowerController extends Controller
 
         dispatch(function() use ($mailData, $receiver, $userBorrower){
             $userBorrower->notify(new EMandateEmailNotification($mailData, $receiver));
+<<<<<<< HEAD
         });        
+=======
+        });
+>>>>>>> refs/remotes/origin/main
     }
 }
