@@ -24,7 +24,52 @@
         <a href="{{ route('applicant.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i></a>
       </div>
     </div>
-    <div class="card-body"></div>
+    <div class="card-body">
+      <div class="table-responsive card">
+          <table class="table table-striped border-top-0 mb-0">
+              <thead>
+                  <th class="border-top-0">loan_id</th>
+                  <th class="border-top-0">finance_amount</th>
+                  <th class="border-top-0">period</th>
+                  <th class="border-top-0">fullname</th>
+                  <th class="border-top-0">nric</th>
+                  <th class="border-top-0">email</th>
+                  <th class="border-top-0">phone</th>
+                  <th class="border-top-0">birthdate</th>
+                  <th class="border-top-0">dependants</th>
+                  <th class="border-top-0">employment</th>
+                  <th class="border-top-0">id_front</th>
+                  <th class="border-top-0">id_back</th>
+                  <th class="border-top-0">salary_slip</th>
+                  <th class="border-top-0">utilities_slip</th>
+                  <th class="border-top-0">status</th>
+              </thead>
+              <tbody>
+                @forelse($applicants as $applicant)
+                  <tr>
+                    <td>{{$applicant->loan_id}}</td>
+                    <td>{{$applicant->finance_amount}}</td>
+                    <td>{{$applicant->period}}</td>
+                    <td>{{$applicant->fullname}}</td>
+                    <td>{{$applicant->nric}}</td>
+                    <td>{{$applicant->email}}</td>
+                    <td>{{$applicant->phone}}</td>
+                    <td>{{$applicant->birthdate}}</td>
+                    <td>{{$applicant->dependants}}</td>
+                    <td>{{$applicant->employment}}</td>
+                    <td><a href="{{asset($applicant->id_front)}}" class="btn btn-sm btn-primary" download="true"><i class="fa fa-download"></i></a></td>
+                    <td><a href="{{asset($applicant->id_back)}}" class="btn btn-sm btn-primary" download="true"><i class="fa fa-download"></i></a></td>
+                    <td><a href="{{asset($applicant->salary_slip)}}" class="btn btn-sm btn-primary" download="true"><i class="fa fa-download"></i></a></td>
+                    <td><a href="{{asset($applicant->utilities_slip)}}" class="btn btn-sm btn-primary" download="true"><i class="fa fa-download"></i></a></td>
+                    <td>{{$applicant->status}}</td>
+                  </tr>
+                @empty
+                  <td colspan="10" class="text-center">No Data Available Now</td>
+                @endforelse
+              </tbody>
+          </table>
+      </div>
+    </div>
   </div>
 </section>
 @endsection

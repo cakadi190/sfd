@@ -3,7 +3,9 @@
 @section('title', 'Login | ' . config('app.name'))
 
 @section('header')
+{!! RecaptchaV3::initJs() !!}
 <style>
+.grecaptcha-badge { visibility: hidden !important; }
 #mainhead {
     display: flex;
     justify-content: center;
@@ -146,9 +148,6 @@
                 </div>
               </div>
 
-              <div class="form-group">
-                {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
-              </div>
 
               <div class="form-group row flex-column-reverse flex-lg-row no-gutters mb-0 align-items-center">
                 @if (Route::has('password.request'))
@@ -162,6 +161,8 @@
                 </div>
               </div>
             </div>
+            
+            {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
 
           </form>
 
@@ -200,8 +201,4 @@
     </div>
   </div>
 </div>
-@endsection
-
-@section('footer')
-{!! RecaptchaV3::initJs() !!}
 @endsection

@@ -14,9 +14,8 @@ class ApplicantController extends Controller
    */
   public function index()
   {
-    $applicant = new Applicant();
-    $data['applies'] = $applicant->all();
-    return view('applicant.index', $data);
+    $applicants = Applicant::all();
+    return view('applicant.index')->withApplicants($applicants);
   }
 
   /**
@@ -37,23 +36,24 @@ class ApplicantController extends Controller
    */
   public function store(Request $request)
   {
-    $this->validate($request, [
-      "finance_ammount" => ["required"],
-      "period"          => ["required"],
-      "purpose"         => ["required"],
-      "fullname"        => ["required"],
-      "nric"            => ["required"],
-      "email"           => ["required", "email"],
-      "phone_prefix"    => ["required"],
-      "phone"           => ["required"],
-      "date"            => ["required"],
-      "tax"             => ["required"],
-      "employment"      => ["required"],
-      "dependants"      => ["required"],
-      "id_front"        => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "id_back"         => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "salary_slip"     => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
-      "utilities_slip"  => ["required", 'file', 'max:2048', 'mimes:jpg,png,jpeg,pdf'],
+    $request->validate([
+      "finance_ammount" => "required",
+      "period"          => "required",
+      "purpose"         => "required",
+      "fullname"        => "required",
+      "nric"            => "required",
+      "email"           => "required", "email",
+      "phone_prefix"    => "required",
+      "phone"           => "required",
+      "date"            => "required",
+      "tax"             => "required",
+      "employment"      => "required",
+      "dependants"      => "required",
+      "id_front"        => "required|file|max:2048|mimes:jpg,png,jpeg,pdf",
+      "id_back"         => "required|file|max:2048|mimes:jpg,png,jpeg,pdf",
+      "salary_slip"     => "required|file|max:2048|mimes:jpg,png,jpeg,pdf",
+      "utilities_slip"  => "required|file|max:2048|mimes:jpg,png,jpeg,pdf",
+      "g-recaptcha-response" => "required|recaptchav3:register,0.5"
     ]);
 
     $data['loan_id']          = uniqid('loan-');

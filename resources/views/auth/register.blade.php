@@ -6,8 +6,9 @@
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
- 
+{!! RecaptchaV3::initJs() !!}
 <style>
+  .grecaptcha-badge { visibility: hidden !important; }
   /* Navbar */
   .navbar .btn-primary {
     padding: 0.5rem 1.25rem;
@@ -262,7 +263,7 @@
  
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
-                <input type="text" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" />
+                <input type="number" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" />
  
                 @error('finance_amount')
                 <div class="text-danger">{{ $message }}</div>
@@ -298,10 +299,6 @@
                 @error('periode')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
-              </div>
- 
-              <div class="form-group">
-                {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
               </div>
  
               <div class="form-group">
@@ -571,7 +568,7 @@
                 @enderror
               </div>
             </div>
- 
+            {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
             <div class="d-flex px-3 pt-2">
               <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
               <button class="btn btn-info btn-next btn-lg" type="submit">Submit</button>
@@ -616,7 +613,6 @@
 @endsection
  
 @section('footer')
-{!! RecaptchaV3::initJs() !!}
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
