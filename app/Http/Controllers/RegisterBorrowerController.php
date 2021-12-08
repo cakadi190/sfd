@@ -75,8 +75,7 @@ class RegisterBorrowerController extends Controller
     $data['salary_slip']      = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
 
     # Insert it to database
-    $apply = new Applicant();
-    $data  = $apply->create($data);
+    $data = Applicant::create($data);
 
     # Set Data Periode ==================================
     $period = [
@@ -98,6 +97,7 @@ class RegisterBorrowerController extends Controller
       'timeEstimation'  => (int) ($period[$sendData['period']] * 12), # <<< For this
       'phoneNumber'     => $phoneNumber,
     ];
+    
     dispatch(function() use ($mailData, $receiver, $data){
       $data->notify(new \App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
     });

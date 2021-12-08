@@ -229,7 +229,7 @@
     <div class="row justify-content-lg-between pb-3">
       <div class="col-md-6 order-2 order-lg-1">
  
-        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
+        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">@csrf
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
             <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>
@@ -308,23 +308,23 @@
                 <label class="font-weight-bold d-flex" for="purpose">Purpose <div class="text-danger">*</div></label>
                 <select name="purpose" id="purpose" class="form-control">
                   <option disabled selected="selected">Select</option>
-                  <option value="01">01 - Business Venture</option>
-                  <option value="02">02 - Debt Consolidation</option>
-                  <option value="03">03 - Wedding</option>
-                  <option value="04">04 - Special Occasion</option>
-                  <option value="05">05 - Vacation</option>
-                  <option value="06">06 - Credit Card Payment</option>
-                  <option value="07">07 - Gambling</option>
-                  <option value="08">08 - Shopping</option>
-                  <option value="09">09 - Living Cost</option>
-                  <option value="10">10 - Bill Payment</option>
-                  <option value="11">11 - Education</option>
-                  <option value="12">12 - Housing</option>
-                  <option value="13">13 - Hobby</option>
-                  <option value="14">14 - Motor Purchase</option>
-                  <option value="15">15 - Home Improvements</option>
-                  <option value="16">16 - Investment</option>
-                  <option value="17">17 - Other</option>
+                  <option value="Business Venture" {{old('purpose')=='Business Venture'?'selected':''}}>01 - Business Venture</option>
+                  <option value="Debt Consolidation" {{old('purpose')=='Debt Consolidation'?'selected':''}}>02 - Debt Consolidation</option>
+                  <option value="Wedding" {{old('purpose')=='Wedding'?'selected':''}}>03 - Wedding</option>
+                  <option value="Special Occasion" {{old('purpose')=='Special Occasion'?'selected':''}}>04 - Special Occasion</option>
+                  <option value="Vacation" {{old('purpose')=='Vacation'?'selected':''}}>05 - Vacation</option>
+                  <option value="Credit Card Payment" {{old('purpose')=='Credit Card Payment'?'selected':''}}>06 - Credit Card Payment</option>
+                  <option value="Gambling" {{old('purpose')=='Gambling'?'selected':''}}>07 - Gambling</option>
+                  <option value="Shopping" {{old('purpose')=='Shopping'?'selected':''}}>08 - Shopping</option>
+                  <option value="Living Cost" {{old('purpose')=='Living Cost'?'selected':''}}>09 - Living Cost</option>
+                  <option value="Bill Payment" {{old('purpose')=='Bill Payment'?'selected':''}}>10 - Bill Payment</option>
+                  <option value="Education" {{old('purpose')=='Education'?'selected':''}}>11 - Education</option>
+                  <option value="Housing" {{old('purpose')=='Housing'?'selected':''}}>12 - Housing</option>
+                  <option value="Hobby" {{old('purpose')=='Hobby'?'selected':''}}>13 - Hobby</option>
+                  <option value="Motor Purchase" {{old('purpose')=='Motor Purchase'?'selected':''}}>14 - Motor Purchase</option>
+                  <option value="Home Improvements" {{old('purpose')=='Home Improvements'?'selected':''}}>15 - Home Improvements</option>
+                  <option value="Investment" {{old('purpose')=='Investment'?'selected':''}}>16 - Investment</option>
+                  <option value="Other" {{old('purpose')=='Other'?'selected':''}}>17 - Other</option>
                 </select>
  
                 @error('purpose')
@@ -461,7 +461,7 @@
  
               <div class="form-group mb-5">
                 <label for="tax">Annual Pre-Tax Income</label>
-                <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" />
+                <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" value="{{old('tax')}}" />
  
                 @error('tax')
                 <div class="text-danger">{{ $message }}</div>
@@ -471,9 +471,9 @@
               <div class="form-group mb-5">
                 <label for="employment">Employment Status</label>
                 <select name="employment" id="employment" class="form-control w-100">
-                  <option disabled selected>--[ Choose One ]--</option>
-                  <option value="employed">Employed</option>
-                  <option value="unemployed">Unemployed</option>
+                  <option disabled>--[ Choose One ]--</option>
+                  <option value="employed" {{old('employment')=='employed'?'selected':''}}>Employed</option>
+                  <option value="unemployed" {{old('employment')=='unemployed'?'selected':''}}>Unemployed</option>
                 </select>
  
                 @error('employment')

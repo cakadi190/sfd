@@ -12,5 +12,20 @@ class Borrower extends Model
 
     protected $table = "borrowers";
 
-    protected $guarded = [];
+    protected $fillable = [
+		'email',
+		'loan_id',
+		'finance_amount',
+		'period',
+		'fullname',
+		'nric',
+		'birthdate',
+		'dependants',
+		'employment',
+		'phone',
+		'utilities_slip',
+		'id_back',
+		'id_front',
+		'salary_slip',
+    ]
 }

@@ -17,7 +17,7 @@ class ApplicantFactory extends Factory
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth(),
             'loan_id' => $this->faker->unique()->word(),
-            'finance_ammount' => $this->faker->randomNumber(5, true),
+            'finance_amount' => $this->faker->randomNumber(5, true),
             'period' => $this->faker->dateTimeInInterval('1 days','3 week'),
             'fullname' => $this->faker->userName(),
             'nric' => $this->faker->word(),
