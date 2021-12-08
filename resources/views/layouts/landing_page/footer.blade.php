@@ -30,10 +30,10 @@
         <p class="width-container-small cl-secondary font-type-tertiary font-footer-secondary">hi@smartfunding.sg</p>
       </div>
       <div class="d-flex flex-row justify-content-around">
-        <img src="assets/Facebook.svg" alt="Facebook" class="image-fluid img-icon-mini">
-        <img src="assets/Twitter.svg" alt="Twitter" class="image-fluid img-icon-mini">
-        <img src="assets/Linkedin.svg" alt="Linkedin" class="image-fluid img-icon-mini">
-        <img src="assets/Instagram.svg" alt="instagram" class="image-fluid img-icon-mini">
+        <img src="{{ asset('assets/Facebook.svg') }}" alt="Facebook" class="image-fluid img-icon-mini">
+        <img src="{{ asset('assets/Twitter.svg') }}" alt="Twitter" class="image-fluid img-icon-mini">
+        <img src="{{ asset('assets/Linkedin.svg') }}" alt="Linkedin" class="image-fluid img-icon-mini">
+        <img src="{{ asset('assets/Instagram.svg') }}" alt="instagram" class="image-fluid img-icon-mini">
       </div>
     </div>
   </div>
