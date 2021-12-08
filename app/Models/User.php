@@ -11,32 +11,6 @@ use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-<<<<<<< HEAD
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
-
-    protected $guarded = [];
-
-    // Get Data Borrower
-    public function borrower()
-    {
-        return $this->hasMany(Borrower::class, 'id_user');
-    }
-
-    // Deleting Data
-    public static function boot()
-    {
-        parent::boot();
-        self::deleting(function($user) {
-            $deleting = $user->borrower();
-            if($deleting->count() > 0)
-            {
-                $deleting->each(function($delete) {
-                    $delete->delete();
-                });
-            }
-        });
-    }
-=======
   use HasApiTokens, HasFactory, Notifiable, HasRoles;
 
   protected $guarded = [];
@@ -60,5 +34,4 @@ class User extends Authenticatable implements MustVerifyEmail
       }
     });
   }
->>>>>>> refs/remotes/origin/main
 }
