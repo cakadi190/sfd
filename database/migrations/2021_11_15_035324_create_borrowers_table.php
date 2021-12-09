@@ -29,6 +29,7 @@ class CreateBorrowersTable extends Migration
       $table->string('id_back')->nullable();
       $table->string('id_front')->nullable();
       $table->string('salary_slip')->nullable();
+      $table->string('status')->nullable(); // 'active', 'blacklist'
       $table->timestamps();
     });
   }
