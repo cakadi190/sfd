@@ -63,7 +63,17 @@
     <div class="row">
       <p class="col-sm-5">Loan Period</p>
       <p class="col-sm-1">:</p>
-      <p class="col-sm-6">{{ $userBorrower->period }}</p>
+      @if($userBorrower->period == 'annually')
+        <p class="col-sm-6">1</p>
+      @elseif($userBorrower->period == 'binneally')
+        <p class="col-sm-6">2</p>
+      @elseif($userBorrower->period == 'trienally')
+        <p class="col-sm-6">3</p>
+      @elseif($userBorrower->period == 'quadrennially')
+        <p class="col-sm-6">4</p>
+      @elseif($userBorrower->period == 'quinquenially')
+      <p class="col-sm-6">5</p>
+      @endif
     </div>
   </div>
 </div>

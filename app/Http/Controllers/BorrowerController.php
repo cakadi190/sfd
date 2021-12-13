@@ -354,7 +354,11 @@ class BorrowerController extends Controller
 
     public function getDataModalMonthlyPayment($id){
         $userBorrower = Borrower::findOrFail($id);
-        return view('borrower._modal_monthly_payment', compact('userBorrower'));
+        $data = [
+            'borrower' => $userBorrower,
+            'payment_seq' => $userBorrower->payment_seq()->get()->first(),
+        ];
+        return view('borrower._modal_monthly_payment', ['data' => $data]);
     }
 
     public function monthlyPaymentSuccess($id, Request $request){
@@ -371,11 +375,13 @@ class BorrowerController extends Controller
         $filename = $borrower->fullname.'-TransferReceipt-'.'Payment Sequence '.$request->sequenceNumber.'-'.$direktori->extension();
         $direktori->move(public_path('upload/'), $filename);
 
-        $birthday = Birthday::findOrFail($id);
-        $birthday->nama = $request->nama;
-        $birthday->ttl = $request->ttl;
-        $birthday->foto = $filename;
-        $birthday->jenis_kelamin = $request->jenis_kelamin;
-        $birthday->save();
+        $payment_seq = $borrower->payment_seq()->get()->first();
+        dd($payment_seq);
+        // $birthday = Birthday::findOrFail($id);
+        // $birthday->nama = $request->nama;
+        // $birthday->ttl = $request->ttl;
+        // $birthday->foto = $filename;
+        // $birthday->jenis_kelamin = $request->jenis_kelamin;
+        // $birthday->save();
     }
 }

@@ -62,8 +62,8 @@ Route::prefix('dashboard')->group(function () {
   Route::get('getModalPaymentCompleted/{id}',[App\Http\Controllers\BorrowerController::class, 'getDataModalPaymentCompleted']);
   Route::get('paymentCompleted/{id}', [App\Http\Controllers\BorrowerController::class, 'paymentCompletedConfirmation']);
   Route::get('getModalMonthlyPayment/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalMonthlyPayment']);
-  Route::get('monthlyPaymentSuccess/{id}', [App\Http\Controllers\BorrowerController::class, 'monthlyPaymentSuccess']);
-  Route::get('checkPaySequence/{borrId}', [App\Http\Controllers\BorrowerController::class, 'checkPaySeq']);
+  Route::post('monthlyPaymentSuccess/{id}', [App\Http\Controllers\BorrowerController::class, 'monthlyPaymentSuccess']);
+  // Route::get('checkPaySequence/{borrId}', [App\Http\Controllers\BorrowerController::class, 'checkPaySeq']);
 
 
   Route::resource('collection', \App\Http\Controllers\CollectionController::class);
