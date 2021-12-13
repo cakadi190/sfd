@@ -13,6 +13,7 @@ class PaymentSequence extends Migration
      */
     public function up()
     {
+        Schema::dropIfExists('payment_sequence');
         Schema::create('payment_sequence', function(Blueprint $table){
             $table->engine = 'InnoDB';
             $table->id();
