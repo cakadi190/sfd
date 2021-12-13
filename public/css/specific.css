@@ -1,0 +1,46 @@
+.fixed-height-custom{
+    height: 600px;
+    overflow-y: auto;
+    overflow-x: auto;
+}
+
+.font-mini{
+    font-size: 0.8rem;
+    font-weight:600;
+}
+.btn-mini{
+    width: 120px !important;
+}
+.btn-med{
+    width: 150px !important;
+}
+.btn-long{
+    width: 200px !important;
+}
+
+.font-notes-warning{
+    font-size: 0.7rem;
+    color: red;
+    font-weight: 600;
+}
+
+.dropdown-menu{
+    background-color: #152860 !important;
+}
+
+.dropdown-item{
+    color: white !important;
+}
+
+.dropdown-item:hover{
+    background-color: #0d1a40 !important;
+    color: white;
+}
+
+.pointer{
+    cursor: pointer !important;
+}
+
+.cl-red{
+    color: red;
+}

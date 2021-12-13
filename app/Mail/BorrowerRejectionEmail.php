@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class BlacklistNotificationEmail extends Mailable
+class BorrowerRejectionEmail extends Mailable
 {
     use Queueable, SerializesModels;
     private $mailData;
@@ -29,7 +29,7 @@ class BlacklistNotificationEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Blacklist From SmartFunding Direct')
-                    ->view('mail.blacklist-notification-email', ['mailData' => $this->mailData]);
+        return $this->subject($this->mailData['subject_email'])
+                    ->view('mail.borrower-rejection-email', ['mailData' => $this->mailData]);
     }
 }

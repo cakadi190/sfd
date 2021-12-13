@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notifiable;
+use App\Models\PaymentSequence;
 
 class Borrower extends Model
 {
@@ -27,5 +28,9 @@ class Borrower extends Model
 		'id_back',
 		'id_front',
 		'salary_slip',
-    ]
+	];
+
+	public function payment_seq(){
+		return $this->hasMany(PaymentSequence::class, 'borrower_loan_id' ,'loan_id');
+	}
 }

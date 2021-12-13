@@ -16,7 +16,7 @@ class CreateBorrowersTable extends Migration
     Schema::create('borrowers', function (Blueprint $table) {
       $table->id();
       $table->string('email')->nullable();
-      $table->string('loan_id')->nullable();
+      $table->string('loan_id')->unique();
       $table->string('finance_amount')->nullable();
       $table->string('period')->nullable();
       $table->string('fullname')->nullable();
@@ -29,7 +29,9 @@ class CreateBorrowersTable extends Migration
       $table->string('id_back')->nullable();
       $table->string('id_front')->nullable();
       $table->string('salary_slip')->nullable();
-      $table->string('status')->nullable(); // 'active', 'blacklist'
+      $table->date('disbursed_at')->nullable();
+      $table->date('due_date')->nullable();
+      $table->string('status')->nullable(); // 'waiting', 'disbursed', 'blacklist'
       $table->timestamps();
     });
   }

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Borrower;
+use App\Models\PaymentSequence;
+use Carbon\Carbon;
 
 class OverdueInstallmentController extends Controller
 {
@@ -16,6 +19,7 @@ class OverdueInstallmentController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +27,25 @@ class OverdueInstallmentController extends Controller
      */
     public function index()
     {
-        return view('overdue.index');
+        $borrowers = Borrower::all();
+        $userOverdue = [];
+        $current_date = Carbon::now();
+
+        foreach($borrowers as $b){
+            if($b->payment_seq()->get()->first()->status == 'overdue'){
+                $day_overdue = $current_date->diffInDays($b->payment_seq()->get()->first()->due_date);
+                $item = [
+                    'borrower' => $b,
+                    'payment_sequence' => $b->payment_seq()->get()->first(),
+                    'overdue' => $day_overdue,
+                    'late_charge' => ($b->payment_seq()->get()->first()->ammount * 0.08) * ($day_overdue / 365),
+                    'waived' => 0,
+                ];
+                $userOverdue[] = $item;
+            }
+        }
+        // dd($userOverdue);
+        return view('overdue.index', ['data' => $userOverdue]);
     }
 
     /**

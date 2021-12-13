@@ -1,6 +1,5 @@
 <?php
 
-use App\Events\TestingEvent;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
@@ -47,7 +46,28 @@ Route::prefix('register')->group(function () {
 Route::prefix('dashboard')->group(function () {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.home');
 
+  Route::post('reject-applicant/{id}', [App\Http\Controllers\ApplicantController::class, 'sendRejectionEmail'])->name('dashboard.reject-applicant');
+  Route::get('approve-applicant/{id}', [App\Http\Controllers\ApplicantController::class, 'approveApplicant'])->name('dashboard.approve-applicant');
+  Route::get('getModalApprove/{id}', [App\Http\Controllers\ApplicantController::class,'getDataModalApprove'])->name('dashboard.modal-approve');
+  Route::get('getModalDetail/{id}', [App\Http\Controllers\ApplicantController::class, 'getDataModalDetail'])->name('dashboard.modal-detail');
+  Route::get('getModalReject/{id}', [App\Http\Controllers\ApplicantController::class, 'getDataModalReject'])->name('dashboard.modal-reject');
+  
+  Route::get('getModalDisbursement/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalDisbursement'])->name('dashboard.modal-disbursement');
+  Route::get('loan-disburse/{id}', [App\Http\Controllers\BorrowerController::class, 'loanDisbursementConfirm'])->name('dashboard.loan-disbursement');
+  Route::get('getModalDetailBorrower/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalDetail'])->name('dashboard.modal-detail-borrower');
+  Route::get('getModalMonthlyEmail/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalMonthlyEmail']);
+  Route::post('sendMonthlyEmail/{id}', [App\Http\Controllers\BorrowerController::class, 'sendMonthlyEmail']);
+  Route::get('getModalBlacklistBorrower/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalBlacklistBorrower']);
+  Route::get('blacklistBorrower/{id}', [App\Http\Controllers\BorrowerController::class, 'blacklistBorrower']);
+  Route::get('getModalPaymentCompleted/{id}',[App\Http\Controllers\BorrowerController::class, 'getDataModalPaymentCompleted']);
+  Route::get('paymentCompleted/{id}', [App\Http\Controllers\BorrowerController::class, 'paymentCompletedConfirmation']);
+  Route::get('getModalMonthlyPayment/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalMonthlyPayment']);
+  Route::get('monthlyPaymentSuccess/{id}', [App\Http\Controllers\BorrowerController::class, 'monthlyPaymentSuccess']);
+  Route::get('checkPaySequence/{borrId}', [App\Http\Controllers\BorrowerController::class, 'checkPaySeq']);
+
+
   Route::resource('collection', \App\Http\Controllers\CollectionController::class);
+  Route::get('search-collection', [\App\Http\Controllers\SearchCollectionController::class, 'search'])->name('collection.search');
   Route::resource('overdue-installment', \App\Http\Controllers\OverdueInstallmentController::class);
   Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
   Route::resource('borrower', \App\Http\Controllers\BorrowerController::class);

@@ -11,7 +11,7 @@
 
     <p>Loan Reference Number: {{ $mailData['loanReferenceNumber'] }}</p>
     <br/>
-    <p>You have a total of RM (amount) overdue amount, which is accumulated over three months.</p>
+    <p>You have a total of RM {{ $mailData['loanAmmount'] }} overdue amount, which is accumulated over three months.</p>
     <br/>
     <p>We strongly urge you to make immediate payment. Otherwise, other collection methods will take effect including uploading the records to CCRIS & CTOS. </p>
     <br/>

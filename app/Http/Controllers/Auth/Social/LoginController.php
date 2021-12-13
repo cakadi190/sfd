@@ -20,7 +20,6 @@ class LoginController extends Controller
             'google'   => 'gl_id',
             'facebook' => 'fb_id',
         ];
-
         try {
             $users  = new User();
             $social = Socialite::driver($provider)->user();

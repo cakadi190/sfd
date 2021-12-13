@@ -29,7 +29,7 @@ class MonthlyStatementEmail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Monthly Statement Email')
+        return $this->subject($this->mailData['subjectEmail'])
                     ->view('mail.monthly-statement-email', ['mailData' => $this->mailData]);
     }
 }

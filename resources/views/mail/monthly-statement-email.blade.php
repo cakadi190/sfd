@@ -9,7 +9,7 @@
 <body>
     <h1>Hi {{ $mailData['fullName'] }},</h1>
 
-    <p>Attached is your loan statement for the period of (Month). To view, please follow the instructions below: </p>
+    <p>Attached is your loan statement for the period of {{ $mailData['period'] }}. To view, please follow the instructions below: </p>
     <br/>
     <p>Step 1: Open the attachment</p>
     <br/>
@@ -20,6 +20,9 @@
     <br/>
     <p>Regards,</p>
     <p>Celest</p>
-
+    <br/>
+    <br/>
+    <br/>
+    <a href="" download="">Download Attachment File</a>
 </body>
 </html>

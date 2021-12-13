@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
+use App\Models\RejectedApplicant;
+use App\Models\PaymentSequence;
+use App\Models\Borrower;
 use Illuminate\Http\Request;
+use App\Notifications\BorrowerRejectionNotification;
+use App\Notifications\EMandateEmailNotification;
 
 class ApplicantController extends Controller
 {
@@ -127,6 +132,156 @@ class ApplicantController extends Controller
    */
   public function destroy($id)
   {
-    //
+    $applicant = Applicant::findOrFail($id);
+    if($applicant->delete()){
+      return 'Applicant has been deleted';
+    }
+    else{
+      return 'Error, check your connection and try again!';
+    }
+  }
+
+  public function sendRejectionEmail($id, Request $request){
+    $request->validate([
+      'subjectEmail' => 'required',
+      'bodyEmail' => 'required'
+    ]);
+
+    // Find selected applicant based on 'id', then update the status
+    $applicant = Applicant::findOrFail($id);
+    $applicant->status = 'canceled';
+    $applicant->save();
+
+    // $receiver = $applicant->email; // Line code for production
+    $receiver = 'rakha.rozaqtama@gmail.com'; // Line code for testing
+    $mailData = [
+      'fullname' => $applicant->fullname,
+      'subject_email' => htmlspecialchars(strip_tags($request->subjectEmail)),
+      'body_email' => htmlspecialchars(strip_tags($request->bodyEmail)),
+    ];
+
+    //Storing data on the database table
+    $data_db['applicants_id'] = $applicant->id;
+    $data_db['reject_reason'] = $mailData['body_email'];
+    $data_db['reject_status'] = $mailData['subject_email'];
+    RejectedApplicant::create($data_db); 
+
+    // Sending Email Notification using Laravel Queues
+    dispatch(function() use ($mailData, $receiver, $applicant) {
+      $applicant->notify(new BorrowerRejectionNotification($mailData, $receiver));
+    });
+
+    $sessionMsg = 'Selected Applicant has been rejected';
+
+    // Redirect with message
+    return redirect('/dashboard/applicant')->with('message', $sessionMsg);
+  }
+
+  public function activatingEMandate($applicant){
+    $urlAuthorized = 'https://www.quora.com/';
+    $urlRegister = 'https://www.quora.com/';
+    $phoneNumber = '09988188272';
+    $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
+    // $receiver = $applicant->email; // Code for mail production
+    $mailData = [
+        'fullName' => $applicant->fullname,
+        'loanAmount' => '5000',
+        'urlAuthorized' => $urlAuthorized,
+        'urlRegister' => $urlRegister,
+        'phoneNumber' => $phoneNumber,
+    ];
+
+    dispatch(function() use ($mailData, $receiver, $applicant){
+        $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
+    });
+  }
+
+  public function getDataModalApprove($id){
+    $applicant = Applicant::find($id);
+    return view('applicant._modal_approve', compact('applicant'));
+  }
+
+  public function approveApplicant($id){
+    //Storing selected applicant data into 'borrowers' table
+    $applicant = Applicant::findOrFail($id);
+    $data_borrower = [
+      'email' => $applicant->email,
+      'loan_id' => $applicant->loan_id,
+      'finance_amount' => $applicant->finance_amount,
+      'period' => $applicant->period,
+      'fullname' => $applicant->fullname,
+      'nric' => $applicant->nric,
+      'birthdate' => $applicant->birthdate,
+      'dependants' => $applicant->dependants,
+      'employment' => $applicant->employment,
+      'phone' => $applicant->phone,
+      'utilities_slip' => $applicant->utilities_slip,
+      'id_back' => $applicant->id_back,
+      'id_front' => $applicant->id_front,
+      'salary_slip' => $applicant->salary_slip,
+      'status' => 'waiting',
+    ];
+    $borrower = Borrower::create($data_borrower);
+
+    if($data_borrower['period'] == 'annually'){
+      $max_payment = 1;
+    }else if($data_borrower['period'] == 'binneally'){
+      $max_payment = 2;
+    }else if($data_borrower['period'] == 'trienally'){
+      $max_payment = 3;
+    }else if($data_borrower['period'] == 'quadrennially'){
+      $max_payment = 4;
+    }else{
+      $max_payment = 5;
+    }
+
+    $payment_seq_data = [
+      'borrower_loan_id' => $applicant->loan_id,
+      'current_payment_seq' => 1,
+      'max_payment_seq' => $max_payment,
+      'ammount' => ($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)),
+    ];
+    $payment_seq = PaymentSequence::create($payment_seq_data);
+
+    $this->activatingEMandate($applicant);
+
+    // Destroy selected applicant from 'applicants' table
+    $deleteStatus = $applicant->delete();
+
+    // Build particular message based on database condition
+    if($deleteStatus){
+      $sessionMsg = 'Selected Applicant Successfuly Approved';
+    }else {
+      $sessionMsg = 'Error Approving Data. Check Your Connection & Try Again!';
+    }
+    
+    // Redirect with message
+    return redirect('/dashboard/applicant')->with('message', $sessionMsg);
+  }
+
+
+  public function getDataModalDetail($id){
+    $applicant = Applicant::findOrFail($id);
+    return view('applicant._modal_detail', compact('applicant'));
+  }
+
+
+  public function getDataModalReject($id){
+    $applicant = Applicant::findOrFail($id);
+    $mailData = $applicant->rejected_applicants()->get()->first();
+    if ($mailData) {
+      $data = [
+        'is_rejected' => true,
+        'applicant' => $applicant,
+        'subject_email' => $mailData->reject_status,
+        'body_email' => $mailData->reject_reason,
+      ];
+    } else {
+      $data = [
+        'is_rejected' => false,
+        'applicant' => $applicant,
+      ];
+    }
+    return view('applicant._modal_reject', ['data' => $data]);
   }
 }
