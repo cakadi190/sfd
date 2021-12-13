@@ -31,7 +31,7 @@
                     <th class="border-top-0">Due Date</th>
                     <th class="border-top-0">Paid At</th>
                     <th class="border-top-0">Payment Method</th>
-                    <th class="border-top-0">Mark</th>
+                    <th class="border-top-0">Officer</th>
                     <th class="border-top-0">Status</th>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                         <td>{{ $dp->payment_seq()->get()->first()->due_date }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->paid_at }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->payment_method }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->mark }}</td>
+                        <td>{{ $dp->payment_seq()->get()->first()->officer }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->status }}</td>
                     </tr>
                     @empty

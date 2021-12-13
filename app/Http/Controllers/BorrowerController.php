@@ -362,26 +362,21 @@ class BorrowerController extends Controller
     }
 
     public function monthlyPaymentSuccess($id, Request $request){
-        $request->validate([
-            'sequenceNumber' => 'required',
-            'paymentAmount' => 'required',
-            'transferReceipt' => 'required|file|max:2048|mimes:png,jpg,pdf,jpeg',
-            'paymentMethod' => 'required',
-            'remark' => 'required',
-        ]);
+        // $request->validate([
+        //     'sequenceNumber' => 'required',
+        //     'paymentAmount' => 'required',
+        //     'transferReceipt' => 'required|file|max:2048|mimes:png,jpg,pdf,jpeg',
+        //     'paymentMethod' => 'required',
+        //     'remark' => 'required',
+        // ]);
 
         $borrower = Borrower::findOrFail($id);
         $direktori = $request->transferReceipt;
-        $filename = $borrower->fullname.'-TransferReceipt-'.'Payment Sequence '.$request->sequenceNumber.'-'.$direktori->extension();
-        $direktori->move(public_path('upload/'), $filename);
+        $filename = $borrower->fullname.'-TransferReceipt-'.'Payment Sequence '.$request->sequenceNumber.$direktori->extension();
+        $direktori->move(public_path('upload'), $filename);
 
         $payment_seq = $borrower->payment_seq()->get()->first();
         dd($payment_seq);
-        // $birthday = Birthday::findOrFail($id);
-        // $birthday->nama = $request->nama;
-        // $birthday->ttl = $request->ttl;
-        // $birthday->foto = $filename;
-        // $birthday->jenis_kelamin = $request->jenis_kelamin;
-        // $birthday->save();
+        return 0;
     }
 }

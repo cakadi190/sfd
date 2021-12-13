@@ -24,7 +24,7 @@ class PaymentSequence extends Migration
             $table->date('due_date')->nullable();
             $table->date('paid_at')->nullable();
             $table->string('payment_method')->nullable();
-            $table->string('mark')->nullable(); // Column to indicate which admin accept the payment from borrower
+            $table->string('officer')->nullable(); // Column to indicate which admin accept the payment from borrower
             $table->string('status')->nullable(); // 'waiting', 'paid off', 'overdue'
             $table->longText('remark')->nullable();
             $table->string('file_receipt')->nullable();

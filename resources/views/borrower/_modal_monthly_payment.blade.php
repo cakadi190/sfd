@@ -25,7 +25,7 @@
         </div>
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="remark" class="h6">Remark</label>
-            <textarea class="form-control" name="remark" id="remark" cols="30" rows="10" placeholder="Remark for this payment"></textarea>
+            <textarea class="form-control" name="remark" id="remark" cols="30" rows="10" placeholder="Remark for this payment">{{ $data['payment_seq']->remark }}</textarea>
         </div>
     </div>
     <div class="modal-footer">
