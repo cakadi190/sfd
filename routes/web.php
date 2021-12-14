@@ -99,13 +99,14 @@ Route::prefix('dashboard')->group(function () {
 Route::get('test-email',function(){
   $applicant = App\Models\Applicant::first();
   $mailData = [
-      'fullName' => 'Eko Erwanda',
+      'fullName' => 'Erwin',
       'loanAmount' => '5000',
       'urlAuthorized' => 'https:app.sf-direct.tri-niche.com',
       'urlRegister' => 'https:app.sf-direct.tri-niche.com',
       'phoneNumber' => '081081081081',
-  ]; $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
-  dispatch(function() use ($mailData, $receiver, $applicant){
-      $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, 'eko@aseanfintechgroup.com'));
+  ];
+
+  dispatch(function() use ($mailData, $applicant){
+      $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, 'erwin@aseanfintechgroup.com'));
   });
 });
