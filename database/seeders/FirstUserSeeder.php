@@ -24,6 +24,8 @@ class FirstUserSeeder extends Seeder
       'status' => true,
       'fullname' => 'System Administrator',
       'email_verified_at' => now(),
-    ])->assignRole('admin');
+    ]);
+
+    User::first()->assignRole('admin');
   }
 }
