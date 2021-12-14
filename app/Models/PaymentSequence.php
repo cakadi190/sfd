@@ -24,6 +24,11 @@ class PaymentSequence extends Model
         'status',
     ];
 
+    protected $dates = [
+        'due_date',
+        'paid_at'
+    ];
+
     public function borrower(){
         return $this->belongsTo(Borrower::class, 'borrower_loan_id', 'loan_id');
     }

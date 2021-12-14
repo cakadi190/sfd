@@ -168,7 +168,7 @@ class ApplicantController extends Controller
 
     // Sending Email Notification using Laravel Queues
     dispatch(function() use ($mailData, $receiver, $applicant) {
-      $applicant->notify(new BorrowerRejectionNotification($mailData, $receiver));
+      $applicant->notify(new App\Notifications\BorrowerRejectionNotification($mailData, $receiver));
     });
 
     $sessionMsg = 'Selected Applicant has been rejected';
@@ -189,7 +189,7 @@ class ApplicantController extends Controller
     ];
 
     dispatch(function() use ($mailData, $receiver, $applicant){
-        $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
+        $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, $receiver));
     });
   }
 
@@ -216,7 +216,7 @@ class ApplicantController extends Controller
       'id_back' => $applicant->id_back,
       'id_front' => $applicant->id_front,
       'salary_slip' => $applicant->salary_slip,
-      'status' => 'waiting',
+      'status' => "waiting",
     ];
     $borrower = Borrower::create($data_borrower);
 

@@ -30,6 +30,11 @@ class Borrower extends Model
 		'salary_slip',
 	];
 
+	protected $dates = [
+		'disbursed_at',
+		'due_date',
+	];
+
 	public function payment_seq(){
 		return $this->hasMany(PaymentSequence::class, 'borrower_loan_id' ,'loan_id');
 	}

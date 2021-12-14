@@ -141,7 +141,6 @@
                                     </td>
                                 @endif
                             @else
-                                <!--DONE-->
                                 <td>
                                     <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
                                 </td>

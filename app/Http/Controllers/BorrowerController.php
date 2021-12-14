@@ -45,7 +45,7 @@ class BorrowerController extends Controller
             /*
                 Due Date Calculation
              */
-            $current_payment_seq = $borrower->payment_seq()->get()->first()->current_payment_seq;
+            $current_payment_seq = $borrower->payment_seq()->get()->last()->current_payment_seq;
             if($borrower->due_date){
                 $due_date = Carbon::createFromDate($borrower->due_date);
                 $day_due_date = (int)Carbon::createFromDate($borrower->due_date)->day;
@@ -192,7 +192,7 @@ class BorrowerController extends Controller
         ];
 
         dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new BorrowerConfirmationNotification($mailData, $receiver));
+            $userBorrower->notify(new App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
         });
     }
 
@@ -207,7 +207,7 @@ class BorrowerController extends Controller
         ];
 
         dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new FollowUpEmailNotification($mailData, $receiver));
+            $userBorrower->notify(new App\Notifications\FollowUpEmailNotification($mailData, $receiver));
         });
     }
 
@@ -304,7 +304,7 @@ class BorrowerController extends Controller
         ];
 
         dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new MonthlyStatementNotification($mailData, $receiver));
+            $userBorrower->notify(new App\Notifications\MonthlyStatementNotification($mailData, $receiver));
         });
 
         $sessionMsg = 'Email Monthly Statement has been Sent';
@@ -330,7 +330,7 @@ class BorrowerController extends Controller
         $userBorrower->save();
         
         dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new BlackListNotification($mailData, $receiver));
+            $userBorrower->notify(new App\Notifications\BlackListNotification($mailData, $receiver));
         });
 
         $sessionMsg = 'Email Blacklist has been Sent';
@@ -361,20 +361,64 @@ class BorrowerController extends Controller
         return view('borrower._modal_monthly_payment', ['data' => $data]);
     }
 
+    public function checkForOverdue($date){
+        $day_due_date = $date->day;
+        $month_due_date = $date->month;
+        $year_due_date = $date->year;
+
+        $current_date = Carbon::now();
+        $current_day = $current_date->day;
+        $current_month = $current_date->month;
+        $current_year = $current_date->year;
+
+        if($current_year > $year_due_date){
+            return 1;
+        }
+        if($current_year == $year_due_date){
+            if($current_month > $month_due_date){
+                return 1;
+            }else if ($current_month == $month_due_date){
+                if($current_day > $day_due_date){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+        }
+    }
+
     public function monthlyPaymentSuccess($id){
         $borrower = Borrower::findOrFail($id);
+        $payment_seq = $borrower->payment_seq()->get()->last();
 
         $direktori = Request()->transferReceipt;
         $filename = $borrower->fullname.'-TransferReceipt'.'-Payment Sequence_'.Request()->sequenceNumber.'.'.$direktori->extension();
         $direktori->move(public_path('upload/'), $filename);
 
-        $payment_seq = $borrower->payment_seq()->get()->first();
+        $due_date = $this->checkForDueDate($payment_seq->due_date);
+        $borrower->status = 'On Payment Sequence';
+        $borrower->due_date = $due_date;
+        $borrower->save();
+
+        $is_overdue = $this->checkForOverdue($payment_seq->due_date);
         $payment_seq->paid_at = Carbon::now();
         $payment_seq->payment_method = Request()->paymentMethod;
-        $payment_seq->status = "paid";
+        $payment_seq->status = ($is_overdue) ? "overdue" : "paid";
         $payment_seq->remark = Request()->remark;
         $payment_seq->file_receipt = $filename;
         $payment_seq->save();
+        
+        $data_new_payment_seq = [
+            'borrower_loan_id' => $borrower->loan_id,
+            'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
+            'max_payment_seq' => $payment_seq->max_payment_seq,
+            'ammount' => ($borrower->finance_amount * 0.18 * $max_payment) + ($borrower->finance_amount / ($max_payment * 12)),
+            'due_date' => $due_date,
+            'status' => "waiting",
+        ];
+        $new_payment_seq = PaymentSequence::create($data_new_payment_seq);
 
         $msg = 'Current Condition Successfuly Saved';
         return redirect('/dashboard/borrower')->with('message', $msg);
