@@ -21,13 +21,12 @@
         <div class="table-responsive card">
             <table class="table table-striped border-top-0 mb-0">
                 <thead>
-                    <th class="border-top-0">Week</th>
-                    <th class="border-top-0">Gross Transaction Value (GTV)</th>
-                    <th class="border-top-0">Avg Transaction Value</th>
-                    <th class="border-top-0">Merchant Onboarded</th>
-                    <th class="border-top-0">Shopper Sign Up</th>
-                    <th class="border-top-0">Shopper Validated</th>
-                    <th class="border-top-0">Active Shopper</th>
+                    <th class="border-top-0">Total Application</th>
+                    <th class="border-top-0">Total Loan Applied (RM)</th>
+                    <th class="border-top-0">Total Loan Approved (RM)</th>
+                    <th class="border-top-0">Total Loan Rejected (RM)</th>
+                    <th class="border-top-0">Total Loan Disbursed (RM)</th>
+                    <th class="border-top-0">Total Bad Debt (RM)</th>
                 </thead>
                 <tbody>
                     <td colspan="7" class="text-center">No Data Available Now</td>

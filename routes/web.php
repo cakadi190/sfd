@@ -66,7 +66,6 @@ Route::prefix('dashboard')->group(function () {
 
 
   Route::resource('collection', \App\Http\Controllers\CollectionController::class);
-  Route::get('search-collection', [\App\Http\Controllers\SearchCollectionController::class, 'search'])->name('collection.search');
   Route::resource('overdue-installment', \App\Http\Controllers\OverdueInstallmentController::class);
   Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
   Route::resource('borrower', \App\Http\Controllers\BorrowerController::class);
@@ -89,5 +88,9 @@ Route::prefix('dashboard')->group(function () {
 
   Route::prefix('settings')->group(function () {
     Route::resource('user-role', \App\Http\Controllers\UserRolesController::class);
+    Route::get('getDataModalPW/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalPW']);
+    Route::post('changeUserPW/{id}', [App\Http\Controllers\UserRolesController::class, 'changePW'])->name('settings.change-pw');
+    Route::get('getDataModalEdit/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalEdit']);
+    Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
   });
 });

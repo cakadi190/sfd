@@ -1,6 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
+
+@if(session('message'))
+<div class="alert alert-success">
+  {{ session('message') }}
+</div>
+@endif
+
 <!-- Header -->
 <section id="page-title" class="mb-4 pb-2 border-bottom">
   <div class="d-md-flex align-items-center justify-content-between">

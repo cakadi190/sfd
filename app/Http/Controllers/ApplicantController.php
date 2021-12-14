@@ -178,17 +178,14 @@ class ApplicantController extends Controller
   }
 
   public function activatingEMandate($applicant){
-    $urlAuthorized = 'https://www.quora.com/';
-    $urlRegister = 'https://www.quora.com/';
-    $phoneNumber = '09988188272';
     $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
     // $receiver = $applicant->email; // Code for mail production
     $mailData = [
         'fullName' => $applicant->fullname,
-        'loanAmount' => '5000',
-        'urlAuthorized' => $urlAuthorized,
-        'urlRegister' => $urlRegister,
-        'phoneNumber' => $phoneNumber,
+        'loanAmount' => $applicant->finance_amount,
+        'urlAuthorized' => 'https://www.quora.com/',
+        'urlRegister' => 'https://www.quora.com/',
+        'phoneNumber' => $applicant->phone,
     ];
 
     dispatch(function() use ($mailData, $receiver, $applicant){

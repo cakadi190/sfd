@@ -361,22 +361,22 @@ class BorrowerController extends Controller
         return view('borrower._modal_monthly_payment', ['data' => $data]);
     }
 
-    public function monthlyPaymentSuccess($id, Request $request){
-        // $request->validate([
-        //     'sequenceNumber' => 'required',
-        //     'paymentAmount' => 'required',
-        //     'transferReceipt' => 'required|file|max:2048|mimes:png,jpg,pdf,jpeg',
-        //     'paymentMethod' => 'required',
-        //     'remark' => 'required',
-        // ]);
-
+    public function monthlyPaymentSuccess($id){
         $borrower = Borrower::findOrFail($id);
-        $direktori = $request->transferReceipt;
-        $filename = $borrower->fullname.'-TransferReceipt-'.'Payment Sequence '.$request->sequenceNumber.$direktori->extension();
-        $direktori->move(public_path('upload'), $filename);
+
+        $direktori = Request()->transferReceipt;
+        $filename = $borrower->fullname.'-TransferReceipt'.'-Payment Sequence_'.Request()->sequenceNumber.'.'.$direktori->extension();
+        $direktori->move(public_path('upload/'), $filename);
 
         $payment_seq = $borrower->payment_seq()->get()->first();
-        dd($payment_seq);
-        return 0;
+        $payment_seq->paid_at = Carbon::now();
+        $payment_seq->payment_method = Request()->paymentMethod;
+        $payment_seq->status = "paid";
+        $payment_seq->remark = Request()->remark;
+        $payment_seq->file_receipt = $filename;
+        $payment_seq->save();
+
+        $msg = 'Current Condition Successfuly Saved';
+        return redirect('/dashboard/borrower')->with('message', $msg);
     }
 }
