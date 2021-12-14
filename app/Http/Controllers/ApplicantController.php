@@ -3,12 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
-use App\Models\RejectedApplicant;
-use App\Models\PaymentSequence;
-use App\Models\Borrower;
 use Illuminate\Http\Request;
-use App\Notifications\BorrowerRejectionNotification;
-use App\Notifications\EMandateEmailNotification;
 
 class ApplicantController extends Controller
 {
