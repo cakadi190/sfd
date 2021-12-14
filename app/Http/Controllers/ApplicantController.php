@@ -184,7 +184,7 @@ class ApplicantController extends Controller
     ];
 
     dispatch(function() use ($mailData, $receiver, $applicant){
-        $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
+        $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, $receiver));
     });
   }
 
