@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class UserRolesController extends Controller
 {
@@ -23,7 +25,8 @@ class UserRolesController extends Controller
      */
     public function index()
     {
-        //
+        $users = User::all();
+        return view('roles.index', ['users' => $users]);
     }
 
     /**
@@ -90,5 +93,67 @@ class UserRolesController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function getDataModalPW($id){
+        $user = User::findOrFail($id);
+        return view('roles._modal_change_pw', compact('user'));
+    }
+
+    public function changePW(Request $request, $id){
+        $user = User::findOrFail($id);
+        $request->validate([
+            'oldpassword' => 'required|min:8',
+            'retypeoldpassword' => 'required|min:8',
+            'newpassword' => 'required|min:8'
+        ]);
+
+        if($request->oldpassword == $request->retypeoldpassword){
+            $user->password = Hash::make($request->newpassword);
+            $user->save();
+
+            $msg = 'Password updated';
+            return redirect('/dashboard/settings/user-role')->with('message', $msg);
+        }else{
+            $msg = 'Old Password didn\'t correct';
+            return redirect('/dashboard/settings/user-role')->with('message', $msg);
+        }
+    }
+
+    public function getDataModalEdit($id){
+        $user = User::findOrFail($id);
+        return view('roles._modal_edit_user', compact('user'));
+    }
+
+    public function editDataUserDetail(Request $request, $id){
+        $request->validate([
+            'iduser' => 'required',
+            'name' => 'required',
+            'nric' => 'required',
+            'email' => 'required|email',
+            'phone' => 'required',
+            'status' => 'required|numeric',
+        ]);
+
+        if($request->has('finance')){
+            $state = 'finance';
+        }else if($request->has('sales')){
+            $state = 'sales';
+        }else{
+            $state = 'management';
+        }
+
+        $data = [
+            'id' => $request->iduser,
+            'email' => $request->email,
+            'status' => $request->status,
+            'fullname' => $request->name,
+            'state' => $state,
+            'nric' => $request->nric,
+            'phone' => $request->phone,
+        ];
+
+        // dd($data);
+        echo $data;
     }
 }

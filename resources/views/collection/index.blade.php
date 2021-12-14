@@ -19,7 +19,7 @@
 
     <section id="main-content">
         <div class="table-responsive card p-3">
-            <table class="table table-striped border-top-0 mb-0 display" id="tableid">
+            <table class="table table-striped table-bordered mb-0" id="tableid">
                 <thead>
                     <th class="border-top-0 ">Loan ID</th>
                     <th class="border-top-0">Full Name</th>
@@ -31,7 +31,7 @@
                     <th class="border-top-0">Due Date</th>
                     <th class="border-top-0">Paid At</th>
                     <th class="border-top-0">Payment Method</th>
-                    <th class="border-top-0">Mark</th>
+                    <th class="border-top-0">Officer</th>
                     <th class="border-top-0">Status</th>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@
                         <td>{{ $dp->payment_seq()->get()->first()->due_date }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->paid_at }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->payment_method }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->mark }}</td>
+                        <td>{{ $dp->payment_seq()->get()->first()->officer }}</td>
                         <td>{{ $dp->payment_seq()->get()->first()->status }}</td>
                     </tr>
                     @empty
