@@ -23,16 +23,18 @@ class PaymentSequence extends Migration
             $table->integer('max_payment_seq')->nullable();
             $table->double('ammount')->nullable();
             $table->date('due_date')->nullable();
-            $table->date('paid_at')->nullable();
+            $table->dateTime('paid_at')->nullable();
             $table->string('payment_method')->nullable();
             $table->string('officer')->nullable(); // Column to indicate which admin accept the payment from borrower
-            $table->string('status')->nullable(); // 'waiting', 'paid off', 'overdue'
+            $table->string('status')->default('pending'); // 'pending', 'paid', 'overdue'
+            $table->boolean('is_late')->default(false);
+            $table->double('late_charge')->default(0.0);
             $table->longText('remark')->nullable();
             $table->string('file_receipt')->nullable();
             $table->timestamps();
         });
     }
-
+    
     /**
      * Reverse the migrations.
      *

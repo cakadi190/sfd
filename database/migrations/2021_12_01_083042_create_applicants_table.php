@@ -26,9 +26,10 @@ class CreateApplicantsTable extends Migration
       $table->string('birthdate')->nullable();
       $table->string('dependants')->nullable();
       $table->string('employment')->nullable();
-      $table->string('id_front', 255)->nullable();
-      $table->string('id_back', 255)->nullable();
-      $table->string('salary_slip', 255)->nullable();
+      $table->string('id_front')->nullable();
+      $table->string('id_back')->nullable();
+      $table->string('salary_slip')->nullable();
+      $table->string('bank_statement')->nullable();
       $table->string('utilities_slip', 255)->nullable();
       $table->enum('status', ['applied', 'canceled', 'waiting'])->default('waiting');
 

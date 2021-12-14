@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
+use App\Models\PaymentSequence;
+use Carbon\Carbon;
+
+Route::get('/testing-functionality', [App\Http\Controllers\TestingFunctionality::class, 'index']);
+Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'success']);
+Route::get('/testing-overdue/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'overdue']);
 
 /*
   New Routes
@@ -92,21 +98,5 @@ Route::prefix('dashboard')->group(function () {
     Route::post('changeUserPW/{id}', [App\Http\Controllers\UserRolesController::class, 'changePW'])->name('settings.change-pw');
     Route::get('getDataModalEdit/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalEdit']);
     Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
-  });
-});
-
-
-Route::get('test-email',function(){
-  $applicant = App\Models\Applicant::first();
-  $mailData = [
-      'fullName' => 'Erwin',
-      'loanAmount' => '5000',
-      'urlAuthorized' => 'https:app.sf-direct.tri-niche.com',
-      'urlRegister' => 'https:app.sf-direct.tri-niche.com',
-      'phoneNumber' => '081081081081',
-  ];
-
-  dispatch(function() use ($mailData, $applicant){
-      $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, 'erwin@aseanfintechgroup.com'));
   });
 });

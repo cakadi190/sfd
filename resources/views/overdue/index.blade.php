@@ -32,21 +32,22 @@
                 </thead>
                 <tbody>
                     @forelse($data as $d)
-                        <td>{{ $d['borrower']->disbursed_at }}</td>
-                        <td>{{ $d['payment_sequence']->due_date }}</td>
-                        <td>{{ $d['borrower']->fullname }}</td>
+                    <tr>
+                        <td>{{ $d['date_joined'] }}</td>
+                        <td>{{ $d['date_overdue'] }}</td>
+                        <td>{{ $d['name'] }}</td>
                         <td>
                             <div>
-                                {{ $d['borrower']->nric }}
+                                {{ $d['nric'] }}
                             </div>
                             <div>
-                                {{ $d['borrower']->phone }}
+                                {{ $d['phone'] }}
                             </div>
                             <div>
-                                {{ $d['borrower']->email }}
+                                {{ $d['email'] }}
                             </div>
                         </td>
-                        <td>{{ $d['overdue'] }}</td>
+                        <td>{{ $d['day_overdue'] }} Day</td>
                         <td>{{ $d['late_charge'] }}</td>
                         <td>{{ $d['waived'] }}</td>
                         <td>
@@ -54,6 +55,7 @@
                         </td>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
+                    </tr>
                     @endforelse
                 </tbody>
             </table>

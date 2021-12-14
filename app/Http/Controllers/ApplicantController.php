@@ -221,15 +221,15 @@ class ApplicantController extends Controller
     $borrower = Borrower::create($data_borrower);
 
     if($data_borrower['period'] == 'annually'){
-      $max_payment = 1;
+      $max_payment = 1 * 12;
     }else if($data_borrower['period'] == 'binneally'){
-      $max_payment = 2;
+      $max_payment = 2 * 12;
     }else if($data_borrower['period'] == 'trienally'){
-      $max_payment = 3;
+      $max_payment = 3 * 12;
     }else if($data_borrower['period'] == 'quadrennially'){
-      $max_payment = 4;
+      $max_payment = 4 * 12;
     }else{
-      $max_payment = 5;
+      $max_payment = 5 * 12;
     }
 
     $payment_seq_data = [

@@ -53,7 +53,7 @@ class BorrowerController extends Controller
                 $year_due_date = (int)Carbon::createFromDate($borrower->due_date)->year;
                 if ($current_year == $year_due_date) {
                     $count_due_date = $current_date->diffInDays($due_date);
-                    if ($count_due_date == 14) {
+                    if ($count_due_date <= 14) {
                         $item['is_payment_due'] = true;
                         $item['note'] = $count_due_date.' days left to due date Sequence Payment '.$current_payment_seq;
                     } else {
@@ -356,7 +356,7 @@ class BorrowerController extends Controller
         $userBorrower = Borrower::findOrFail($id);
         $data = [
             'borrower' => $userBorrower,
-            'payment_seq' => $userBorrower->payment_seq()->get()->first(),
+            'payment_seq' => $userBorrower->payment_seq()->get()->last(),
         ];
         return view('borrower._modal_monthly_payment', ['data' => $data]);
     }
@@ -394,7 +394,7 @@ class BorrowerController extends Controller
         $payment_seq = $borrower->payment_seq()->get()->last();
 
         $direktori = Request()->transferReceipt;
-        $filename = $borrower->fullname.'-TransferReceipt'.'-Payment Sequence_'.Request()->sequenceNumber.'.'.$direktori->extension();
+        $filename = $borrower->fullname.'-TransferReceipt'.'-Payment Sequence_'.Request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
         $direktori->move(public_path('upload/'), $filename);
 
         $due_date = $this->checkForDueDate($payment_seq->due_date);
@@ -410,15 +410,17 @@ class BorrowerController extends Controller
         $payment_seq->file_receipt = $filename;
         $payment_seq->save();
         
-        $data_new_payment_seq = [
-            'borrower_loan_id' => $borrower->loan_id,
-            'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
-            'max_payment_seq' => $payment_seq->max_payment_seq,
-            'ammount' => ($borrower->finance_amount * 0.18 * $max_payment) + ($borrower->finance_amount / ($max_payment * 12)),
-            'due_date' => $due_date,
-            'status' => "waiting",
-        ];
-        $new_payment_seq = PaymentSequence::create($data_new_payment_seq);
+        if(($payment_seq->current_payment_seq + 1) <= $payment_seq->max_payment_seq){
+            $data_new_payment_seq = [
+                'borrower_loan_id' => $borrower->loan_id,
+                'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
+                'max_payment_seq' => $payment_seq->max_payment_seq,
+                'ammount' => ($borrower->finance_amount * 0.18 * $borrower->finance_amount) + ($borrower->finance_amount / ($borrower->finance_amount * 12)),
+                'due_date' => $due_date,
+                'status' => "pending",
+            ];
+            $new_payment_seq = PaymentSequence::create($data_new_payment_seq);
+        }
 
         $msg = 'Current Condition Successfuly Saved';
         return redirect('/dashboard/borrower')->with('message', $msg);

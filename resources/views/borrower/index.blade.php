@@ -130,8 +130,6 @@
                                                 More..
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <button class="dropdown-item font-mini btn-disburse pointer" data-toggle="modal" data-target="#modalDisbursement" data-id="{{ $borrower['id'] }}" disabled>Disbursed</button>
-                                                <button class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}" disabled>Monthly Statement</button>
                                                 <button class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}">Sequence Payment</button>
                                                 <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
                                                 <a class="dropdown-item font-mini btn-payment-completed pointer" data-toggle="modal" data-target="#modalPaymentCompleted" data-id="{{ $borrower['id'] }}">Payment Completed</a>
@@ -140,6 +138,26 @@
                                         </div>
                                     </td>
                                 @endif
+                            @elseif($borrower['status'] == 'On Payment Sequence')
+                                <td>
+                                    <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                                        <div class="btn-group" role="group">
+                                        <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            More..
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                                            <button class="dropdown-item font-mini btn-disburse pointer" data-toggle="modal" data-target="#modalDisbursement" data-id="{{ $borrower['id'] }}" disabled>Disbursed</button>
+                                            <a class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}">Monthly Statement</a>
+                                            <a class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}">Sequence Payment</a>
+                                            <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
+                                            <a class="dropdown-item font-mini btn-payment-completed pointer" data-toggle="modal" data-target="#modalPaymentCompleted" data-id="{{ $borrower['id'] }}">Payment Completed</a>
+                                        </div>
+                                        </div>
+                                    </div>
+                                </td>
                             @else
                                 <td>
                                     <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>

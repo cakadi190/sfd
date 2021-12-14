@@ -35,20 +35,20 @@
                     <th class="border-top-0">Status</th>
                 </thead>
                 <tbody>
-                    @forelse($detailPayment as $dp)
+                    @forelse($collection as $c)
                     <tr>
-                        <td>{{ $dp->loan_id }}</td>
-                        <td>{{ $dp->fullname }}</td>
-                        <td>{{ $dp->email }}</td>
-                        <td>{{ $dp->nric }}</td>
-                        <td>{{ $dp->finance_amount }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->current_payment_seq }} of {{ $dp->payment_seq()->get()->first()->max_payment_seq }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->ammount }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->due_date }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->paid_at }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->payment_method }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->officer }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->status }}</td>
+                        <td>{{ $c['loan_id'] }}</td>
+                        <td>{{ $c['fullname'] }}</td>
+                        <td>{{ $c['email'] }}</td>
+                        <td>{{ $c['nric'] }}</td>
+                        <td>{{ $c['total_loan'] }}</td>
+                        <td>{{ $c['current_payment_seq'] }} of {{ $c['current_payment_seq'] }}</td>
+                        <td>{{ $c['payment_ammount'] }}</td>
+                        <td>{{ $c['due_date'] }}</td>
+                        <td>{{ $c['paid_at'] }}</td>
+                        <td>{{ $c['payment_method'] }}</td>
+                        <td>{{ $c['officer'] }}</td>
+                        <td>{{ $c['status'] }}</td>
                     </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>

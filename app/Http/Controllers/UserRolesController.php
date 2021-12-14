@@ -125,35 +125,44 @@ class UserRolesController extends Controller
         return view('roles._modal_edit_user', compact('user'));
     }
 
-    public function editDataUserDetail(Request $request, $id){
-        $request->validate([
-            'iduser' => 'required',
-            'name' => 'required',
-            'nric' => 'required',
-            'email' => 'required|email',
-            'phone' => 'required',
-            'status' => 'required|numeric',
-        ]);
+    public function editDataUserDetail($id){
+        // request()->validate([
+        //     'iduser' => 'required',
+        //     'name' => 'required',
+        //     'nric' => 'required',
+        //     'email' => 'required|email',
+        //     'phone' => 'required',
+        //     'status' => 'required',
+        // ]);
 
-        if($request->has('finance')){
+        if(request()->has('finance')){
             $state = 'finance';
-        }else if($request->has('sales')){
+        }else if(request()->has('sales')){
             $state = 'sales';
         }else{
             $state = 'management';
         }
 
         $data = [
-            'id' => $request->iduser,
-            'email' => $request->email,
-            'status' => $request->status,
-            'fullname' => $request->name,
+            'id' => $id,
+            'email' => request()->email,
+            'status' => request()->status,
+            'fullname' => request()->name,
             'state' => $state,
-            'nric' => $request->nric,
-            'phone' => $request->phone,
+            'nric' => request()->nric,
+            'phone' => request()->phone,
         ];
 
-        // dd($data);
-        echo $data;
+        $user = User::findOrFail($id);
+        $user->email = request()->email;
+        $user->status = request()->status;
+        $user->fullname = request()->name;
+        $user->state = $state;
+        $user->nric = request()->nric;
+        $user->phone = request()->phone;
+        $user->save();
+
+        $msg = 'User data updated';
+        return redirect('/dashboard/settings/user-role')->with('message', $msg);
     }
 }

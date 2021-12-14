@@ -31,11 +31,14 @@ class CreateBorrowersTable extends Migration
       $table->string('salary_slip')->nullable();
       $table->date('disbursed_at')->nullable();
       $table->date('due_date')->nullable();
-      $table->string('status')->nullable(); // 'waiting', 'disbursed', 'blacklist'
+      $table->string('status')->default('waiting'); // 'waiting', 'disbursed', 'blacklist'
       $table->timestamps();
     });
   }
 
+  protected $dates = [
+    'due_date'
+  ];
   /**
    * Reverse the migrations.
    *

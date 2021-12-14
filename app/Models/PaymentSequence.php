@@ -22,6 +22,8 @@ class PaymentSequence extends Model
         'payment_method',
         'mark',
         'status',
+        'is_late',
+        'late_charge'
     ];
 
     protected $dates = [
@@ -31,5 +33,12 @@ class PaymentSequence extends Model
 
     public function borrower(){
         return $this->belongsTo(Borrower::class, 'borrower_loan_id', 'loan_id');
+    }
+
+    public function getAmmountAttribute($value){
+        if($this->is_late){
+            return $value + $this->late_charge;
+        }
+        return $value;
     }
 }
