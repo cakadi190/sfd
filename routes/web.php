@@ -94,3 +94,19 @@ Route::prefix('dashboard')->group(function () {
     Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
   });
 });
+
+
+Route::get('test-email',function(){
+  $applicant = App\Models\Applicant::first();
+  $mailData = [
+      'fullName' => 'Erwin',
+      'loanAmount' => '5000',
+      'urlAuthorized' => 'https:app.sf-direct.tri-niche.com',
+      'urlRegister' => 'https:app.sf-direct.tri-niche.com',
+      'phoneNumber' => '081081081081',
+  ];
+
+  dispatch(function() use ($mailData, $applicant){
+      $applicant->notify(new App\Notifications\EMandateEmailNotification($mailData, 'erwin@aseanfintechgroup.com'));
+  });
+});
