@@ -164,7 +164,7 @@ class ApplicantController extends Controller
     $data_db['applicants_id'] = $applicant->id;
     $data_db['reject_reason'] = $mailData['body_email'];
     $data_db['reject_status'] = $mailData['subject_email'];
-    RejectedApplicant::create($data_db); 
+    RejectedApplicant::create($data_db);
 
     // Sending Email Notification using Laravel Queues
     dispatch(function() use ($mailData, $receiver, $applicant) {
@@ -205,23 +205,23 @@ class ApplicantController extends Controller
     //Storing selected applicant data into 'borrowers' table
     $applicant = Applicant::findOrFail($id);
     $data_borrower = [
-      'email' => $applicant->email,
-      'loan_id' => $applicant->loan_id,
-      'finance_amount' => $applicant->finance_amount,
-      'period' => $applicant->period,
-      'fullname' => $applicant->fullname,
-      'nric' => $applicant->nric,
-      'birthdate' => $applicant->birthdate,
-      'dependants' => $applicant->dependants,
-      'employment' => $applicant->employment,
-      'phone' => $applicant->phone,
-      'utilities_slip' => $applicant->utilities_slip,
-      'id_back' => $applicant->id_back,
-      'id_front' => $applicant->id_front,
-      'salary_slip' => $applicant->salary_slip,
-      'status' => 'waiting',
+      'email'           => $applicant->email,
+      'loan_id'         => $applicant->loan_id,
+      'finance_amount'  => $applicant->finance_amount,
+      'period'          => $applicant->period,
+      'fullname'        => $applicant->fullname,
+      'nric'            => $applicant->nric,
+      'birthdate'       => $applicant->birthdate,
+      'dependants'      => $applicant->dependants,
+      'employment'      => $applicant->employment,
+      'phone'           => $applicant->phone,
+      'utilities_slip'  => $applicant->utilities_slip,
+      'id_back'         => $applicant->id_back,
+      'id_front'        => $applicant->id_front,
+      'salary_slip'     => $applicant->salary_slip,
+      'status'          => 'waiting',
     ];
-    $borrower = Borrower::create($data_borrower);
+    Borrower::create($data_borrower);
 
     if($data_borrower['period'] == 'annually'){
       $max_payment = 1;
@@ -236,12 +236,12 @@ class ApplicantController extends Controller
     }
 
     $payment_seq_data = [
-      'borrower_loan_id' => $applicant->loan_id,
+      'borrower_loan_id'    => $applicant->loan_id,
       'current_payment_seq' => 1,
-      'max_payment_seq' => $max_payment,
-      'ammount' => ($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)),
+      'max_payment_seq'     => $max_payment,
+      'ammount'             => ($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)),
     ];
-    $payment_seq = PaymentSequence::create($payment_seq_data);
+    PaymentSequence::create($payment_seq_data);
 
     $this->activatingEMandate($applicant);
 
@@ -249,12 +249,12 @@ class ApplicantController extends Controller
     $deleteStatus = $applicant->delete();
 
     // Build particular message based on database condition
-    if($deleteStatus){
+    if($deleteStatus) {
       $sessionMsg = 'Selected Applicant Successfuly Approved';
     }else {
       $sessionMsg = 'Error Approving Data. Check Your Connection & Try Again!';
     }
-    
+
     // Redirect with message
     return redirect('/dashboard/applicant')->with('message', $sessionMsg);
   }

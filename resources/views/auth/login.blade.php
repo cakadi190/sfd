@@ -161,35 +161,10 @@
                 </div>
               </div>
             </div>
-            
+
             {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
 
           </form>
-
-          <!-- Separator -->
-          {{-- <div class="col-lg-12 d-md-none">
-            <hr />
-          </div> --}}
-
-          <!-- Register Section -->
-          {{-- <div class="col-md-6">
-            <div class="text-center p-2">
-              <h3 class="h4">Login with Social Media</h3>
-              <p>Are you connecting your social media to your account? Let's hit the button to login more faster!</p>
-
-              <div class="btn-socials-list">
-                <a href="javascript::void(0)" class="btn btn-block btn-facebook"><i
-                    class="fa-brands fa-fw mr-2 fa-facebook"></i>Facebook</a>
-                <a href="javascript::void(0)" class="btn btn-block btn-google-plus"><i
-                    class="fa-brands fa-fw mr-2 fa-google"></i>Google</a>
-              </div>
-
-              <hr class="d-none d-md-block d-sm-none" />
-
-              <p class="m-0 mt-md-0 mt-3">Are you new member here? <a class="text-success"
-                  href="{{ route('register') }}">Register</a>!</p>
-            </div>
-          </div> --}}
 
         </div>
       </section>

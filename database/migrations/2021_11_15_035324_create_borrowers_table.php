@@ -31,7 +31,7 @@ class CreateBorrowersTable extends Migration
       $table->string('salary_slip')->nullable();
       $table->date('disbursed_at')->nullable();
       $table->date('due_date')->nullable();
-      $table->string('status')->nullable(); // 'waiting', 'disbursed', 'blacklist'
+      $table->enum('status', ['waiting', 'disbursed', 'blacklist'])->nullable(); // 'waiting', 'disbursed', 'blacklist'
       $table->timestamps();
     });
   }

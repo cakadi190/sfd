@@ -46,17 +46,22 @@
                 @forelse($applicants as $applicant)
                   <tr>
                     <td>{{ $applicant->loan_id }}</td>
-                    <td>{{ $applicant->finance_amount }}</td>
-                    <td>{{ $applicant->created_at }}</td>
-                    <td>{{ $applicant->status }}</td>
+                    <td>SGD {{ number_format($applicant->finance_amount, 2, '.', ',') }}</td>
+                    <td>{{ \Carbon\Carbon::parse($applicant->created_at)->format('F j, Y h:i:s a') }}</td>
+                    {{-- <td>{{ $applicant->status }}</td> --}}
+                    @if ($applicant->status == 'waiting')
+                    <td><span class="badge badge-warning">{{ Str::ucfirst($applicant->status) }}</span></td>
+                    @else
+
+                    @endif
                     <td>
-                      <a href="#" class="btn btn-primary font-mini btn-detail" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $applicant->id }}">Detail</a>
+                      <a href="javsacript:void()" class="btn btn-primary font-mini d-flex align-items-center btn-detail" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $applicant->id }}"><i class="fa-solid fa-info-circle mr-2"></i>Detail</a>
                     </td>
                     <td>
                       <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
                         <div class="btn-group" role="group">
                           <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                            More..
+                            More
                           </button>
                           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             @if($applicant->status == "canceled")
@@ -107,7 +112,7 @@
     </div>
   </div>
 </div>
-                    
+
 <!-- Modal for Detail Data-->
 <div class="modal fade" id="modalDetailData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
