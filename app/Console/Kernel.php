@@ -5,7 +5,7 @@ namespace App\Console;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 use Carbon\Carbon;
-use App\Models\Borrower;
+use App\Models\PaymentSequence;
 
 class Kernel extends ConsoleKernel
 {
@@ -30,19 +30,19 @@ class Kernel extends ConsoleKernel
         $current_year = $current_date->year;
 
         if($current_year > $year_due_date){
-            return 1;
+            return true;
         }
         if($current_year == $year_due_date){
             if($current_month > $month_due_date){
-                return 1;
+                return true;
             }else if ($current_month == $month_due_date){
                 if($current_day > $day_due_date){
-                    return 1;
+                    return true;
                 }else{
-                    return 0;
+                    return false;
                 }
             }else{
-                return 0;
+                return false;
             }
         }
     }
@@ -56,15 +56,20 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            $payment_seq = PaymentSequence::all();
+            $payment_seq = PaymentSequence::where('status','pending')->get(); 
             foreach($payment_seq as $p){
                 $is_overdue = checkForOverdue($p->due_date);
                 if($is_overdue){
-                    $p->status = 'overdue';
+                    $p->is_late = true; 
+                    $current_date = Carbon::now();
+                    $late_day = $current_date->diffInDays($p->due_date);
+                    $sequence_ammount = $p->ammount - $p->late_charge;
+                    $p->late_charge = ($sequence_ammount * 0.08) * ($late_day / 365);
                 }
-                $p->save();
+                // $p->save();
             }
-        })->daily();
+            $payment_seq->save();
+        })->everyMinute();
     }
 
     /**

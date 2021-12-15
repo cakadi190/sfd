@@ -21,13 +21,12 @@
         <div class="table-responsive card">
             <table class="table table-striped border-top-0 mb-0">
                 <thead>
-                    <th class="border-top-0">Date</th>
-                    <th class="border-top-0">ID</th>
+                    <th class="border-top-0">Date, Time</th>
+                    <th class="border-top-0">Loan ID</th>
                     <th class="border-top-0">Status</th>
-                    <th class="border-top-0">Shopper</th>
+                    <th class="border-top-0">Borrower Name</th>
                     <th class="border-top-0">Ammount</th>
-                    <th class="border-top-0">Late Change</th>
-                    <th class="border-top-0">Adjust</th>
+                    <th class="border-top-0">Late Charge</th>
                     <th class="border-top-0">Installment</th>
                 </thead>
                 <tbody>

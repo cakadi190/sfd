@@ -19,7 +19,7 @@
 
     <section id="main-content">
         <div class="table-responsive card p-3">
-            <table class="table table-striped border-top-0 mb-0 display" id="tableid">
+            <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
                     <th class="border-top-0 ">Loan ID</th>
                     <th class="border-top-0">Full Name</th>
@@ -31,24 +31,24 @@
                     <th class="border-top-0">Due Date</th>
                     <th class="border-top-0">Paid At</th>
                     <th class="border-top-0">Payment Method</th>
-                    <th class="border-top-0">Mark</th>
+                    <th class="border-top-0">Officer</th>
                     <th class="border-top-0">Status</th>
                 </thead>
                 <tbody>
-                    @forelse($detailPayment as $dp)
+                    @forelse($collection as $c)
                     <tr>
-                        <td>{{ $dp->loan_id }}</td>
-                        <td>{{ $dp->fullname }}</td>
-                        <td>{{ $dp->email }}</td>
-                        <td>{{ $dp->nric }}</td>
-                        <td>{{ $dp->finance_amount }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->current_payment_seq }} of {{ $dp->payment_seq()->get()->first()->max_payment_seq }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->ammount }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->due_date }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->paid_at }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->payment_method }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->mark }}</td>
-                        <td>{{ $dp->payment_seq()->get()->first()->status }}</td>
+                        <td>{{ $c['loan_id'] }}</td>
+                        <td>{{ $c['fullname'] }}</td>
+                        <td>{{ $c['email'] }}</td>
+                        <td>{{ $c['nric'] }}</td>
+                        <td>{{ $c['total_loan'] }}</td>
+                        <td>{{ $c['current_payment_seq'] }} of {{ $c['current_payment_seq'] }}</td>
+                        <td>{{ $c['payment_ammount'] }}</td>
+                        <td>{{ $c['due_date'] }}</td>
+                        <td>{{ $c['paid_at'] }}</td>
+                        <td>{{ $c['payment_method'] }}</td>
+                        <td>{{ $c['officer'] }}</td>
+                        <td>{{ $c['status'] }}</td>
                     </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
@@ -67,6 +67,6 @@
     <script>
         $(document).ready( function () {
             $('#tableid').DataTable();
-        } );
+        });
     </script>
 @endpush

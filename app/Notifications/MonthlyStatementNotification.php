@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\MonthlyStatementEmail;
 
-class MonthlyStatementNotification extends Notification
+class MonthlyStatementNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;

@@ -1,5 +1,5 @@
 <div class="d-flex flex-column justify-content-start mt-1">
-    <h2>General Information</h2>
+    <h5>General Information</h5>
     <div class="container ml-2">
       <div class="row">
         <p class="col-sm-5">Loan Id</p>
@@ -37,7 +37,7 @@
     </div>
 </div>
 <div class="d-flex flex-column justify-content-start mt-1">
-  <h2>Required Information</h2>
+  <h5>Required Information</h5>
   <div class="container ml-2">
     <div class="row">
       <p class="col-sm-5">Dependants</p>
@@ -63,12 +63,22 @@
     <div class="row">
       <p class="col-sm-5">Loan Period</p>
       <p class="col-sm-1">:</p>
-      <p class="col-sm-6">{{ $userBorrower->period }}</p>
+      @if($userBorrower->period == 'annually')
+        <p class="col-sm-6">1 Year</p>
+      @elseif($userBorrower->period == 'binneally')
+        <p class="col-sm-6">2 Year</p>
+      @elseif($userBorrower->period == 'trienally')
+        <p class="col-sm-6">3 Year</p>
+      @elseif($userBorrower->period == 'quadrennially')
+        <p class="col-sm-6">4 Year</p>
+      @elseif($userBorrower->period == 'quinquenially')
+      <p class="col-sm-6">5 Year</p>
+      @endif
     </div>
   </div>
 </div>
 <div class="d-flex flex-column justify-content-start mt-1">
-  <h2>File Data</h2>
+  <h5>File Data</h5>
   <div class="container ml-2">
     <div class="row">
       <p class="col-sm-5">ID Card (Front Side)</p>

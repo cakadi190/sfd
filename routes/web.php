@@ -3,6 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
+use App\Models\PaymentSequence;
+use Carbon\Carbon;
+
+Route::get('/testing-functionality', [App\Http\Controllers\TestingFunctionality::class, 'index']);
+Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'success']);
+Route::get('/testing-overdue/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'overdue']);
 
 /*
   New Routes
@@ -62,12 +68,10 @@ Route::prefix('dashboard')->group(function () {
   Route::get('getModalPaymentCompleted/{id}',[App\Http\Controllers\BorrowerController::class, 'getDataModalPaymentCompleted']);
   Route::get('paymentCompleted/{id}', [App\Http\Controllers\BorrowerController::class, 'paymentCompletedConfirmation']);
   Route::get('getModalMonthlyPayment/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalMonthlyPayment']);
-  Route::get('monthlyPaymentSuccess/{id}', [App\Http\Controllers\BorrowerController::class, 'monthlyPaymentSuccess']);
-  Route::get('checkPaySequence/{borrId}', [App\Http\Controllers\BorrowerController::class, 'checkPaySeq']);
+  Route::post('monthlyPaymentSuccess/{id}', [App\Http\Controllers\BorrowerController::class, 'monthlyPaymentSuccess']);
 
 
   Route::resource('collection', \App\Http\Controllers\CollectionController::class);
-  Route::get('search-collection', [\App\Http\Controllers\SearchCollectionController::class, 'search'])->name('collection.search');
   Route::resource('overdue-installment', \App\Http\Controllers\OverdueInstallmentController::class);
   Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
   Route::resource('borrower', \App\Http\Controllers\BorrowerController::class);
@@ -90,5 +94,9 @@ Route::prefix('dashboard')->group(function () {
 
   Route::prefix('settings')->group(function () {
     Route::resource('user-role', \App\Http\Controllers\UserRolesController::class);
+    Route::get('getDataModalPW/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalPW']);
+    Route::post('changeUserPW/{id}', [App\Http\Controllers\UserRolesController::class, 'changePW'])->name('settings.change-pw');
+    Route::get('getDataModalEdit/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalEdit']);
+    Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
   });
 });

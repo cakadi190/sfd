@@ -18,22 +18,43 @@
     </section>
 
     <section id="main-content">
-        <div class="table-responsive card">
-            <table class="table table-striped border-top-0 mb-0">
-                <thead>
-                    <th class="border-top-0">Week</th>
-                    <th class="border-top-0">Gross Transaction Value (GTV)</th>
-                    <th class="border-top-0">Avg Transaction Value</th>
-                    <th class="border-top-0">Merchant Onboarded</th>
-                    <th class="border-top-0">Shopper Sign Up</th>
-                    <th class="border-top-0">Shopper Validated</th>
-                    <th class="border-top-0">Active Shopper</th>
-                </thead>
-                <tbody>
-                    <td colspan="7" class="text-center">No Data Available Now</td>
-                </tbody>
-            </table>
-        </div>
+        {{-- <div class="table-responsive card">
+            
+        </div> --}}
+        <table class="display" id="tableid">
+            <thead>
+                <th class="border-top-0">Week</th>
+                <th class="border-top-0">Total Application</th>
+                <th class="border-top-0">Total Loan Applied (RM)</th>
+                <th class="border-top-0">Total Loan Approved (RM)</th>
+                <th class="border-top-0">Total Loan Rejected (RM)</th>
+                <th class="border-top-0">Total Loan Disbursed (RM)</th>
+                <th class="border-top-0">Total Bad Debt (RM)</th>
+            </thead>
+            <tbody>
+                <tr>
+                    @forelse ($data as $d)
+                        <td class="text-center">{{ $d['week'] }}</td>
+                        <td class="text-center">{{ $d['total_applications'] }}</td>
+                        <td class="text-center">{{ $d['total_loan_applied'] }}</td>
+                        <td class="text-center">{{ $d['total_loan_approve'] }}</td>
+                        <td class="text-center">{{ $d['total_loan_rejected'] }}</td>
+                        <td class="text-center">{{ $d['total_loan_disbursed'] }}</td>
+                        <td class="text-center">{{ $d['total_bad_debt'] }}</td>
+                    @empty
+                        <td colspan="7" class="text-center">No Data Available Now</td>
+                    @endforelse
+                </tr>
+            </tbody>
+        </table>
     </section>
 </div>
 @endsection
+
+@push('js')
+    <script>
+        $(document).ready( function () {
+            $('#tableid').DataTable();
+        });   
+    </script>
+@endpush

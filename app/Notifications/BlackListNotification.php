@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\BlacklistNotificationEmail;
 
-class BlackListNotification extends Notification
+class BlackListNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;

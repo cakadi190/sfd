@@ -19,12 +19,13 @@ class FirstUserSeeder extends Seeder
     Role::create(['name' => 'employee']);
 
     User::create([
-      'id' => uniqid('admin-'),
       'email' => 'admin@smartfunding.sg',
       'password' => bcrypt('sysadmin123'),
       'status' => true,
       'fullname' => 'System Administrator',
       'email_verified_at' => now(),
-    ])->assignRole('admin');
+    ]);
+
+    User::first()->assignRole('admin');
   }
 }

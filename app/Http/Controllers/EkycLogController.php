@@ -23,7 +23,8 @@ class EkycLogController extends Controller
      */
     public function index()
     {
-        //
+        $data = [];
+        return view('ekyc.index', ['users' => $data]);
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\EMandateEmail;
 
-class EMandateEmailNotification extends Notification
+class EMandateEmailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
