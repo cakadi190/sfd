@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Applicant;
+use App\Models\Borrower;
+use App\Models\PaymentSequence;
+use Carbon\Carbon;
 
 class SalesController extends Controller
 {
@@ -16,6 +20,20 @@ class SalesController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
+    private function parsingDateFromRange($from, $to){
+        $value = 0;
+        if(Carbon::createFromDate($from->year, $from->month, $from->day)->toDateTimeString() == Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)){
+            $value = false;
+        }else {
+            if(Carbon::createFromDate($to->year, $to->month, $to->day)->toDateTimeString() > Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)) {
+                $value =  false;
+            }else if(Carbon::createFromDate($to->year, $to->month, $to->day)->toDateTimeString() == Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)){
+                $value =  true;
+            }
+        }
+        return $value;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +41,40 @@ class SalesController extends Controller
      */
     public function index()
     {
-        return view('sales.index');
+        $firstApplicant = Applicant::first();
+        $row = array();
+        $firstDate = $firstApplicant->created_at;
+        $nextDate = $firstApplicant->created_at->addDays(7);
+        if($this->parsingDateFromRange($firstDate, $nextDate)){
+            while($this->parsingDateFromRange($firstDate, $nextDate)){
+                $item = array();
+                $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
+                $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
+                $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+                $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+                $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
+                $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "disbursed")->get());
+                $item['total_bad_debt'] = count(PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get());
+    
+                $row[] = $item;
+    
+                $firstDate = $nextDate;
+                $nextDate = $nextDate->addDays(7);
+            }
+        }else {
+            $item = array();
+            $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
+            $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
+            $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+            $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+            $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
+            $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "disbursed")->get());
+            $item['total_bad_debt'] = count(PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get());
+    
+            $row[] = $item;
+        }
+
+        return view('sales.index', ['data' => $row]);
     }
 
     /**

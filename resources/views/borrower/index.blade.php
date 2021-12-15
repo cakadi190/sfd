@@ -33,7 +33,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive card">
-        <table class="table table-striped border-top-0 mb-0">
+        <table class="table table-striped border-top-0 mb-0 display" id="tableid">
             <thead>
                 <th class="border-top-0">Loan ID</th>
                 <th class="border-top-0">Finance Ammount</th>
@@ -56,46 +56,13 @@
                         <td>{{ $borrower['created_at'] }}</td>
                         <td>{{ $borrower['status'] }}</td>
                         @if($borrower['status'] == 'Blacklisted')
-                            <!--Done-->
                             <td>
                                 <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                    <div class="btn-group" role="group">
-                                      <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        More..
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <button class="dropdown-item font-mini btn-disburse" data-toggle="modal" data-target="#modalDisbursement" disabled>Disbursed</button>
-                                        <button class="dropdown-item font-mini btn-monthly-email" data-toggle="modal" data-target="#modalMonthlyEmail" disabled>Monthly Statement</button>
-                                        <button class="dropdown-item font-mini btn-monthly-payment" data-toggle="modal" data-target="#modalMonthlyPayment" disabled>Sequence Payment</button>
-                                        <button class="dropdown-item font-mini btn-blacklist" data-toggle="modal" data-target="#modalBlacklist" disabled>Blacklist</button>
-                                        <button class="dropdown-item font-mini btn-payment-completed" data-toggle="modal" data-target="#modalPaymentCompleted" disabled>Payment Completed</button>
-                                      </div>
-                                    </div>
-                                </div>
                             </td>
                         @elseif($borrower['status'] == 'Payment Completed')
                             <!--Done-->
                             <td>
                                 <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
-                            </td>
-                            <td>
-                                <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-                                    <div class="btn-group" role="group">
-                                      <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                        More..
-                                      </button>
-                                      <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                        <button class="dropdown-item font-mini btn-disburse" data-toggle="modal" data-target="#modalDisbursement" disabled>Disbursed</button>
-                                        <button class="dropdown-item font-mini btn-monthly-email" data-toggle="modal" data-target="#modalMonthlyEmail" disabled>Monthly Statement</button>
-                                        <button class="dropdown-item font-mini btn-monthly-payment" data-toggle="modal" data-target="#modalMonthlyPayment" disabled>Sequence Payment</button>
-                                        <button class="dropdown-item font-mini btn-blacklist" data-toggle="modal" data-target="#modalBlacklist" disabled>Blacklist</button>
-                                        <button class="dropdown-item font-mini btn-payment-completed" data-toggle="modal" data-target="#modalPaymentCompleted" disabled>Payment Completed</button>
-                                      </div>
-                                    </div>
-                                </div>
                             </td>
                         @else
                             @if($borrower['status'] == 'Disbursed')
@@ -110,7 +77,6 @@
                                                 More..
                                             </button>
                                             <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <button class="dropdown-item font-mini btn-disburse pointer" data-toggle="modal" data-target="#modalDisbursement" data-id="{{ $borrower['id'] }}" disabled>Disbursed</button>
                                                 <a class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}">Monthly Statement</a>
                                                 <a class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}">Sequence Payment</a>
                                                 <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
@@ -138,7 +104,7 @@
                                         </div>
                                     </td>
                                 @endif
-                            @elseif($borrower['status'] == 'On Payment Sequence')
+                            @elseif($borrower['status'] == 'active')
                                 <td>
                                     <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
                                 </td>
@@ -149,7 +115,6 @@
                                             More..
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                            <button class="dropdown-item font-mini btn-disburse pointer" data-toggle="modal" data-target="#modalDisbursement" data-id="{{ $borrower['id'] }}" disabled>Disbursed</button>
                                             <a class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}">Monthly Statement</a>
                                             <a class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}">Sequence Payment</a>
                                             <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
@@ -170,10 +135,7 @@
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                             <a class="dropdown-item font-mini btn-disburse pointer" data-toggle="modal" data-target="#modalDisbursement" data-id="{{ $borrower['id'] }}">Disbursed</a>
-                                            <button class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}" disabled>Monthly Statement</button>
-                                            <button class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}" disabled>Sequence Payment</button>
                                             <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
-                                            <button class="dropdown-item font-mini btn-payment-completed pointer" data-toggle="modal" data-target="#modalPaymentCompleted" data-id="{{ $borrower['id'] }}" disabled>Payment Completed</button>
                                         </div>
                                         </div>
                                     </div>
@@ -286,7 +248,7 @@
 @push('js')
     <script>
         $(document).ready(function(){
-
+            $('#tableid').DataTable();
             $('.btn-disburse').on('click',function(){
             let id = $(this).data('id');
             $.ajax({

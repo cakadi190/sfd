@@ -13,7 +13,7 @@
         </div>
         <div class="d-flex flex-column justify-content-start mt-4">
           <label for="paymentAmmount" class="h6">Ammount</label>
-          <input class="form-control" type="text" name="paymentAmmount" id="paymentAmmount" placeholder="Payment Ammount" value="{{ $data['payment_seq']->ammount }}">
+          <input class="form-control" type="text" name="paymentAmmount" id="paymentAmmount" placeholder="Payment Ammount" value="{{ round($data['payment_seq']->ammount, 2) }}">
         </div>
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="transferReceipt" class="h6">Transfer Receipt</label>

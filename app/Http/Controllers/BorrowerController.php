@@ -22,6 +22,81 @@ class BorrowerController extends Controller
         $this->middleware(['auth', 'verified']);
     }
 
+
+    /* ===== Helper Function ===== */
+    public function checkForOverdue($date){
+        $day_due_date = $date->day;
+        $month_due_date = $date->month;
+        $year_due_date = $date->year;
+
+        $current_date = Carbon::now();
+        $current_day = $current_date->day;
+        $current_month = $current_date->month;
+        $current_year = $current_date->year;
+
+        if($current_year > $year_due_date){
+            return 1;
+        }
+        if($current_year == $year_due_date){
+            if($current_month > $month_due_date){
+                return 1;
+            }else if ($current_month == $month_due_date){
+                if($current_day > $day_due_date){
+                    return 1;
+                }else{
+                    return 0;
+                }
+            }else{
+                return 0;
+            }
+        }
+    }
+
+    private function checkForDueDate($date){
+        // Parsing date class into day, month, and year
+        $date = $date->addMonths(1);
+        $day = (int)$date->day;
+        $month = (int)$date->month;
+        $year = (int)$date->year;
+
+        // Checking maximum day at particular month & year
+        if($month <= 7){
+            if($month % 2 != 0){
+                $due_day = 31;
+            }else{
+                if($month == 2){
+                    if($year % 4 != 0 && $year % 400 != 0){
+                        $due_day = 29;
+                    }else{
+                        $due_day = 28;
+                    }
+                }else{
+                    $due_day = 30;
+                }
+            }
+        }else{
+            if($month % 2 != 0){
+                $due_day = 30;
+            }else{
+                if($month == 2){
+                    if($year % 4 != 0 && $year % 400 != 0){
+                        $due_day = 29;
+                    }else{
+                        $due_day = 28;
+                    }
+                }else{
+                    $due_day = 31;
+                }
+            }
+        }
+
+        $day = ($day > $due_day) ? $due_day : $day;
+        return $year.'-'.$month.'-'.$day;
+    }
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -211,51 +286,11 @@ class BorrowerController extends Controller
         });
     }
 
+
+    /* ====== Disbursement Feature ====== */
     public function getDataModalDisbursement($id){
         $userBorrower = Borrower::findOrFail($id);
         return view('borrower._modal_disbursement', compact('userBorrower'));
-    }
-
-    private function checkForDueDate($date){
-        // Parsing date class into day, month, and year
-        $date = $date->addMonths(1);
-        $day = (int)$date->day;
-        $month = (int)$date->month;
-        $year = (int)$date->year;
-
-        // Checking maximum day at particular month & year
-        if($month <= 7){
-            if($month % 2 != 0){
-                $due_day = 31;
-            }else{
-                if($month == 2){
-                    if($year % 4 != 0 && $year % 400 != 0){
-                        $due_day = 29;
-                    }else{
-                        $due_day = 28;
-                    }
-                }else{
-                    $due_day = 30;
-                }
-            }
-        }else{
-            if($month % 2 != 0){
-                $due_day = 30;
-            }else{
-                if($month == 2){
-                    if($year % 4 != 0 && $year % 400 != 0){
-                        $due_day = 29;
-                    }else{
-                        $due_day = 28;
-                    }
-                }else{
-                    $due_day = 31;
-                }
-            }
-        }
-
-        $day = ($day > $due_day) ? $due_day : $day;
-        return $year.'-'.$month.'-'.$day;
     }
 
     public function loanDisbursementConfirm($id){
@@ -276,42 +311,51 @@ class BorrowerController extends Controller
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);
     }
 
+
+    /* ===== Detail Borrower Feature ===== */
     public function getDataModalDetail($id){
         $userBorrower = Borrower::findOrFail($id);
         return view('borrower._modal_detail', compact('userBorrower'));
     }
 
+
+    /* ===== Monthly Email Feature ===== */
     public function getDataModalMonthlyEmail($id){
-        $userBorrower = Borrower::findOrFail($id);
-        return view('borrower._modal_monthly_email', compact('userBorrower'));
+        $borrower = Borrower::findOrFail($id);
+        return view('borrower._modal_monthly_email', compact('borrower'));
     }
 
-    public function sendMonthlyEmail($id, Request $request){
-        $request->validate([
+    public function sendMonthlyEmail($id){
+        request()->validate([
             'subjectEmail' => 'required',
-            'loanPeriod' => 'required',
-            'attachmentFile' => 'required |file|max:2048|mimes:jpg,png,jpeg,pdf',
+            'paymentSeq' => 'required',
+            'attachmentFile' => 'required||file|max:2048|mimes:jpg,png,jpeg,pdf',
         ]);
 
-        $userBorrower = Borrower::findOrFail($id);
+
+        $borrower = Borrower::findOrFail($id);
         $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
         // $receiver = $userBorrower->email; Code for mail production
+
         $mailData = [
-            'fullname' => $userBorrower->fullname,
-            'period' => $userBorrower->period,
-            'attachment' => $request->attachmentFile,
-            'subjectEmail' => $request->subjectEmail,
+            'fullname' => $borrower->fullname,
+            'period' => request()->paymentSeq,
+            'attachment' => request()->attachmentFile,
+            'subjectEmail' => request()->subjectEmail,
         ];
 
-        dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new App\Notifications\MonthlyStatementNotification($mailData, $receiver));
-        });
+        $userBorrower->notify(new MonthlyStatementNotification($mailData, $receiver));
+        // dispatch(function() use ($mailData, $receiver, $userBorrower){
+        //     $userBorrower->notify(new App\Notifications\MonthlyStatementNotification($mailData, $receiver));
+        // });
 
         $sessionMsg = 'Email Monthly Statement has been Sent';
 
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);
     }
 
+
+    /* ===== Blacklist Borrower Feature ==== */
     public function getDataModalBlacklistBorrower($id){
         $userBorrower = Borrower::findOrFail($id);
         return view('borrower._modal_blacklist_borrower', compact('userBorrower'));
@@ -329,14 +373,17 @@ class BorrowerController extends Controller
         $userBorrower->status = 'Blacklisted';
         $userBorrower->save();
         
-        dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new App\Notifications\BlackListNotification($mailData, $receiver));
-        });
+        $userBorrower->notify(new BlackListNotification($mailData, $receiver));
+        // dispatch(function() use ($mailData, $receiver, $userBorrower){
+        //     $userBorrower->notify(new App\Notifications\BlackListNotification($mailData, $receiver));
+        // });
 
         $sessionMsg = 'Email Blacklist has been Sent';
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);
     }
 
+
+    /* ==== Payment Completed Feature ===== */
     public function getDataModalPaymentCompleted($id){
         $userBorrower = Borrower::findOrFail($id);
         return view('borrower._modal_payment_completed', compact('userBorrower'));
@@ -352,6 +399,8 @@ class BorrowerController extends Controller
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);
     }
 
+
+    /* ==== Monthly Payment Feature ==== */
     public function getDataModalMonthlyPayment($id){
         $userBorrower = Borrower::findOrFail($id);
         $data = [
@@ -359,34 +408,6 @@ class BorrowerController extends Controller
             'payment_seq' => $userBorrower->payment_seq()->get()->last(),
         ];
         return view('borrower._modal_monthly_payment', ['data' => $data]);
-    }
-
-    public function checkForOverdue($date){
-        $day_due_date = $date->day;
-        $month_due_date = $date->month;
-        $year_due_date = $date->year;
-
-        $current_date = Carbon::now();
-        $current_day = $current_date->day;
-        $current_month = $current_date->month;
-        $current_year = $current_date->year;
-
-        if($current_year > $year_due_date){
-            return 1;
-        }
-        if($current_year == $year_due_date){
-            if($current_month > $month_due_date){
-                return 1;
-            }else if ($current_month == $month_due_date){
-                if($current_day > $day_due_date){
-                    return 1;
-                }else{
-                    return 0;
-                }
-            }else{
-                return 0;
-            }
-        }
     }
 
     public function monthlyPaymentSuccess($id){
@@ -398,7 +419,7 @@ class BorrowerController extends Controller
         $direktori->move(public_path('upload/'), $filename);
 
         $due_date = $this->checkForDueDate($payment_seq->due_date);
-        $borrower->status = 'On Payment Sequence';
+        $borrower->status = 'active';
         $borrower->due_date = $due_date;
         $borrower->save();
 
@@ -415,7 +436,7 @@ class BorrowerController extends Controller
                 'borrower_loan_id' => $borrower->loan_id,
                 'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
                 'max_payment_seq' => $payment_seq->max_payment_seq,
-                'ammount' => ($borrower->finance_amount * 0.18 * $borrower->finance_amount) + ($borrower->finance_amount / ($borrower->finance_amount * 12)),
+                'ammount' => round(($borrower->finance_amount * 0.18 * $borrower->finance_amount) + ($borrower->finance_amount / ($borrower->finance_amount * 12)), 2),
                 'due_date' => $due_date,
                 'status' => "pending",
             ];

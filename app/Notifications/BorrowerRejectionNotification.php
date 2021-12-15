@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\BorrowerRejectionEmail;
 
-class BorrowerRejectionNotification extends Notification
+class BorrowerRejectionNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;

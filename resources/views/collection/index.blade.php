@@ -19,7 +19,7 @@
 
     <section id="main-content">
         <div class="table-responsive card p-3">
-            <table class="table table-striped table-bordered mb-0" id="tableid">
+            <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
                     <th class="border-top-0 ">Loan ID</th>
                     <th class="border-top-0">Full Name</th>
@@ -67,6 +67,6 @@
     <script>
         $(document).ready( function () {
             $('#tableid').DataTable();
-        } );
+        });
     </script>
 @endpush

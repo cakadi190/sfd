@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Borrower;
-use App\Models\PaymentSequence;
-use DataTables;
 
 class CollectionController extends Controller
 {
@@ -40,7 +38,7 @@ class CollectionController extends Controller
                 $item['current_payment_seq'] = $bc->current_payment_seq;
                 $item['max_payment_seq'] = $bc->max_payment_seq;
                 $item['payment_ammount'] = $bc->ammount;
-                $item['due_date'] = $bc->due_date;
+                $item['due_date'] = ($bc->due_date) ? $bc->due_date : '-';
                 $item['paid_at'] = ($bc->paid_at) ? $bc->paid_at : '-';
                 $item['payment_method'] = ($bc->payment_method) ? $bc->payment_method : '-';
                 $item['officer'] = ($bc->officer) ? $bc->officer : '-';
@@ -49,11 +47,12 @@ class CollectionController extends Controller
                 }else if($bc->status == 'paid'){
                     $item['status'] = "Paid";
                 }else {
-                    if($bc->is_late){
-                        $item['status'] = "Overdue";
-                    }else{
-                        $item['status'] = "Paid Overdue";
-                    }
+                    // if($bc->is_late){
+                    //     $item['status'] = "Overdue";
+                    // }else{
+                    //     $item['status'] = "Paid Overdue";
+                    // }
+                    $item['status'] = "Overdue";
                 }
                 $all_collection[] = $item;
             }
