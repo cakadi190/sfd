@@ -25,7 +25,7 @@
                     <th class="border-top-0 text-danger">Date Overdue</th>
                     <th class="border-top-0">Name</th>
                     <th class="border-top-0">Details</th>
-                    <th class="border-top-0">Overdue</th>
+                    <th class="border-top-0 text-danger">Overdue</th>
                     <th class="border-top-0">Late Charge</th>
                     <th class="border-top-0">Total</th>
                 </thead>
@@ -46,7 +46,7 @@
                                 {{ $d['email'] }}
                             </div>
                         </td>
-                        <td>{{ $d['day_overdue'] }} Day</td>
+                        <td class="text-danger">{{ $d['day_overdue'] }} Day</td>
                         <td>{{ $d['late_charge'] }}</td>
                         <td>{{ $d['total'] }}</td>
                     </tr>
