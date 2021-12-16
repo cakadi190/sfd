@@ -437,7 +437,7 @@ class BorrowerController extends Controller
                 'borrower_loan_id' => $borrower->loan_id,
                 'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
                 'max_payment_seq' => $payment_seq->max_payment_seq,
-                'ammount' => round(($borrower->finance_amount * 0.18 * $borrower->finance_amount) + ($borrower->finance_amount / ($borrower->finance_amount * 12)), 2),
+                'ammount' => round((($applicant->finance_amount) + ($applicant->finance_amount * 0.18)) / $max_payment, 2),
                 'due_date' => $due_date,
                 'status' => "pending",
             ];

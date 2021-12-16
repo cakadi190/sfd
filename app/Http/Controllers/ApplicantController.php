@@ -213,7 +213,7 @@ class ApplicantController extends Controller
       'borrower_loan_id'    => $applicant->loan_id,
       'current_payment_seq' => 1,
       'max_payment_seq' => $max_payment,
-      'ammount' => round(($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)), 2),
+      'ammount' => round((($applicant->finance_amount) + ($applicant->finance_amount * 0.18)) / $max_payment, 2),
     ];
     PaymentSequence::create($payment_seq_data);
 

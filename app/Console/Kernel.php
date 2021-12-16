@@ -56,19 +56,18 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->call(function(){
-            $payment_seq = PaymentSequence::where('status','pending')->get(); 
+            $payment_seq = PaymentSequence::where("status", "pending")->get(); 
             foreach($payment_seq as $p){
-                $is_overdue = checkForOverdue($p->due_date);
+                $is_overdue = $this->checkForOverdue($p->due_date);
                 if($is_overdue){
                     $p->is_late = true; 
                     $current_date = Carbon::now();
                     $late_day = $current_date->diffInDays($p->due_date);
                     $sequence_ammount = $p->ammount - $p->late_charge;
-                    $p->late_charge = ($sequence_ammount * 0.08) * ($late_day / 365);
+                    $p->late_charge = round(($sequence_ammount * 0.08) * ($late_day / 365), 2);
                 }
-                // $p->save();
+                $p->save();
             }
-            $payment_seq->save();
         })->everyMinute();
     }
 

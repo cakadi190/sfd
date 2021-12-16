@@ -40,7 +40,7 @@ class OverdueInstallmentController extends Controller
                     $item['phone'] = $b->phone;
                     $item['email'] = $b->email;
                     $item['day_overdue'] = Carbon::now()->diffInDays($d->due_date);
-                    $item['late_charge'] = round(($b->payment_seq()->get()->first()->ammount * 0.08) * (Carbon::now()->diffInDays($d->due_date) / 365), 2);
+                    $item['late_charge'] = $d->late_charge;
                     $item['waived'] = 0;
                     $data_collection_overdue[] = $item;
                 }

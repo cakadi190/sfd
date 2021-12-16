@@ -55,7 +55,8 @@ class LateChangeController extends Controller
                 $item['status'] = "Overdue";
                 $item['name'] = $b->fullname;
                 $item['finance_ammount'] = $b->finance_amount;
-                $item['late_charge'] = $this->checkForLateCharge($b);
+                // $item['late_charge'] = $this->checkForLateCharge($b);
+                $item['late_charge'] = ($b->payment_seq()->get()->last())->late_charge;
                 $item['installment'] = $b->payment_seq()->get()->all();
                 $data_late_charge[] = $item;
             }
