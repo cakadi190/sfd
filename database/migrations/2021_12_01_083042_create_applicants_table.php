@@ -31,8 +31,7 @@ class CreateApplicantsTable extends Migration
       $table->string('salary_slip')->nullable();
       $table->string('bank_statement')->nullable();
       $table->string('utilities_slip', 255)->nullable();
-      $table->enum('status', ['applied', 'canceled', 'waiting'])->default('waiting');
-
+      $table->enum('status', ['applied', 'canceled', 'pending'])->default('pending');
       $table->timestamps();
     });
   }

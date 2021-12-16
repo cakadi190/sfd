@@ -9,8 +9,9 @@ use App\Models\RejectedApplicant;
 
 class Applicant extends Model
 {
-  protected $table= "applicants";
   use HasFactory, Notifiable;
+
+  protected $table= "applicants";
 
   protected $guarded = [];
 

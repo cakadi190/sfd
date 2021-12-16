@@ -165,36 +165,7 @@ class ApplicantController extends Controller
   /* ===== Detail Applicant Feature ===== */
   public function getDataModalDetail($id){
     $applicant = Applicant::findOrFail($id);
-<<<<<<< HEAD
-    $applicant->status = 'canceled';
-    $applicant->save();
-
-    // $receiver = $applicant->email; // Line code for production
-    $receiver = 'rakha.rozaqtama@gmail.com'; // Line code for testing
-    $mailData = [
-      'fullname' => $applicant->fullname,
-      'subject_email' => htmlspecialchars(strip_tags($request->subjectEmail)),
-      'body_email' => htmlspecialchars(strip_tags($request->bodyEmail)),
-    ];
-
-    //Storing data on the database table
-    $data_db['applicants_id'] = $applicant->id;
-    $data_db['reject_reason'] = $mailData['body_email'];
-    $data_db['reject_status'] = $mailData['subject_email'];
-    RejectedApplicant::create($data_db);
-
-    // Sending Email Notification using Laravel Queues
-    dispatch(function() use ($mailData, $receiver, $applicant) {
-      $applicant->notify(new BorrowerRejectionNotification($mailData, $receiver));
-    });
-
-    $sessionMsg = 'Selected Applicant has been rejected';
-
-    // Redirect with message
-    return redirect('/dashboard/applicant')->with('message', $sessionMsg);
-=======
     return view('applicant._modal_detail', compact('applicant'));
->>>>>>> 7ead0595887abe33cc5ea415dd74539742d6feab
   }
 
 
@@ -208,23 +179,6 @@ class ApplicantController extends Controller
     //Storing selected applicant data into 'borrowers' table
     $applicant = Applicant::findOrFail($id);
     $data_borrower = [
-<<<<<<< HEAD
-      'email'           => $applicant->email,
-      'loan_id'         => $applicant->loan_id,
-      'finance_amount'  => $applicant->finance_amount,
-      'period'          => $applicant->period,
-      'fullname'        => $applicant->fullname,
-      'nric'            => $applicant->nric,
-      'birthdate'       => $applicant->birthdate,
-      'dependants'      => $applicant->dependants,
-      'employment'      => $applicant->employment,
-      'phone'           => $applicant->phone,
-      'utilities_slip'  => $applicant->utilities_slip,
-      'id_back'         => $applicant->id_back,
-      'id_front'        => $applicant->id_front,
-      'salary_slip'     => $applicant->salary_slip,
-      'status'          => 'waiting',
-=======
       'email' => $applicant->email,
       'loan_id' => $applicant->loan_id,
       'finance_amount' => $applicant->finance_amount,
@@ -240,7 +194,6 @@ class ApplicantController extends Controller
       'id_front' => $applicant->id_front,
       'salary_slip' => $applicant->salary_slip,
       'status' => "waiting",
->>>>>>> 7ead0595887abe33cc5ea415dd74539742d6feab
     ];
     Borrower::create($data_borrower);
 
@@ -259,13 +212,8 @@ class ApplicantController extends Controller
     $payment_seq_data = [
       'borrower_loan_id'    => $applicant->loan_id,
       'current_payment_seq' => 1,
-<<<<<<< HEAD
-      'max_payment_seq'     => $max_payment,
-      'ammount'             => ($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)),
-=======
       'max_payment_seq' => $max_payment,
       'ammount' => round(($data_borrower['finance_amount'] * 0.18 * $max_payment) + ($data_borrower['finance_amount'] / ($max_payment * 12)), 2),
->>>>>>> 7ead0595887abe33cc5ea415dd74539742d6feab
     ];
     PaymentSequence::create($payment_seq_data);
 

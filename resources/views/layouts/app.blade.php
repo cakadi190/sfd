@@ -137,7 +137,7 @@
           <div class="collapse navbar-collapse" id="navbarMenus">
             <ul class="navbar-nav mr-auto">
               <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
-              <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Application</span></a></li>
+              <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
               <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower Lists</span></a></li>
               <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
               <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
@@ -160,7 +160,7 @@
 
           <ul class="nav flex-column">
             <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
-            <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Application List</span></a></li>
+            <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
             <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower List</span></a></li>
             <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
             <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
@@ -198,23 +198,12 @@
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+  {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css"> --}}
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-  {{-- <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-    <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script> --}}
-  {{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> --}}
 
+  <!--Modal-->
+  @yield('modal')
   <!-- Footer -->
   @yield('footer')
   @stack('js')

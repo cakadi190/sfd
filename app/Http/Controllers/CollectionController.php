@@ -37,9 +37,9 @@ class CollectionController extends Controller
                 $item['total_loan'] = $b->finance_amount;
                 $item['current_payment_seq'] = $bc->current_payment_seq;
                 $item['max_payment_seq'] = $bc->max_payment_seq;
-                $item['payment_ammount'] = $bc->ammount;
-                $item['due_date'] = ($bc->due_date) ? $bc->due_date : '-';
-                $item['paid_at'] = ($bc->paid_at) ? $bc->paid_at : '-';
+                $item['payment_ammount'] = round($bc->ammount, 2);
+                $item['due_date'] = ($bc->due_date) ? $bc->due_date->toFormattedDateString() : '-';
+                $item['paid_at'] = ($bc->paid_at) ? $bc->paid_at->toFormattedDateString() : '-';
                 $item['payment_method'] = ($bc->payment_method) ? $bc->payment_method : '-';
                 $item['officer'] = ($bc->officer) ? $bc->officer : '-';
                 if($bc->status == 'pending'){
@@ -47,11 +47,6 @@ class CollectionController extends Controller
                 }else if($bc->status == 'paid'){
                     $item['status'] = "Paid";
                 }else {
-                    // if($bc->is_late){
-                    //     $item['status'] = "Overdue";
-                    // }else{
-                    //     $item['status'] = "Paid Overdue";
-                    // }
                     $item['status'] = "Overdue";
                 }
                 $all_collection[] = $item;

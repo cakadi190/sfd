@@ -19,7 +19,7 @@
 
     <section id="main-content">
         <div class="table-responsive card p-3">
-            <table class="table table-striped border-top-0 mb-0">
+            <table class="table display" id="tableid">
                 <thead>
                     <th class="border-top-0 ">#</th>
                     <th class="border-top-0 ">Username</th>
@@ -28,7 +28,7 @@
                     <th class="border-top-0">Finance</th>
                     <th class="border-top-0">Sales</th>
                     <th class="border-top-0">Management</th>
-                    <th class="border-top-0" colspan="3"></th>
+                    <th class="border-top-0"></th>
                 </thead>
                 <tbody>
                     @forelse($users as $user)
@@ -62,27 +62,11 @@
                             </div>
                         </td>
                         <td>
-                            <a class="btn btn-primary font-mini btn-edit-data" data-toggle="modal" data-target="#modalEditData" data-id="{{ $user->id }}">Edit</a>
-                        </td>
-                        <td>
-                            <a class="btn btn-primary font-mini btn-mini btn-change-pw" data-toggle="modal" data-target="#modalChangePW" data-id="{{ $user->id }}">Change PW</a>
-                        </td>
-
-                        <!-- Modal for Change Password -->
-                        <div class="modal fade" id="modalChangePW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                </div>
+                            <div class="d-flex flex-row justify-content-around">
+                                <a class="btn btn-primary font-mini btn-edit-data" data-toggle="modal" data-target="#modalEditData" data-id="{{ $user->id }}">Edit</a>
+                                <a class="ml-1 btn btn-primary font-mini btn-mini btn-change-pw" data-toggle="modal" data-target="#modalChangePW" data-id="{{ $user->id }}">Change PW</a>
                             </div>
-                        </div>
-
-                        <!-- Modal for Change Password -->
-                        <div class="modal fade" id="modalEditData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                </div>
-                            </div>
-                        </div>
+                        </td>
                     </tr>
                     <?php
                         $count++;
@@ -91,13 +75,30 @@
                         <td colspan="14" class="text-center">No Data Available Now</td>
                     @endforelse
                 </tbody>
-            </table>
-            
+            </table>            
         </div>
     </section>
 
 </div>
 
+@endsection
+
+@section('modal')
+<!-- Modal for Change Password -->
+<div class="modal fade" id="modalChangePW" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Change Password -->
+<div class="modal fade" id="modalEditData" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')

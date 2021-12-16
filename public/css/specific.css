@@ -44,3 +44,7 @@
 .cl-red{
     color: red;
 }
+
+.box-custom{
+    border-radius: 10px;
+}

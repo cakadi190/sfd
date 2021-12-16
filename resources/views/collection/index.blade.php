@@ -48,7 +48,21 @@
                         <td>{{ $c['paid_at'] }}</td>
                         <td>{{ $c['payment_method'] }}</td>
                         <td>{{ $c['officer'] }}</td>
-                        <td>{{ $c['status'] }}</td>
+                        <td>
+                            @if($c['status'] == 'Paid')
+                                <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-light align-self-center">Paid</div>
+                                </div>
+                            @elseif($c['status'] == 'Pending')
+                                <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-dark align-self-center">Pending</div>
+                                </div>
+                            @else
+                                <div class="bg-danger box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-light align-self-center">Overdue</div>
+                                </div>
+                            @endif
+                        </td>
                     </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
