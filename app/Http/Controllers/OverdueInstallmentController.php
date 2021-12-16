@@ -34,14 +34,14 @@ class OverdueInstallmentController extends Controller
             foreach($data_collection as $d){
                 $item = array();
                 if($d->is_late){
-                    $item['date_joined'] = $b->disbursed_at;
-                    $item['date_overdue'] = $d->due_date;
+                    $item['date_joined'] = $b->disbursed_at->toFormattedDateString();
+                    $item['date_overdue'] = $d->due_date->toFormattedDateString();
                     $item['name'] = $b->fullname;
                     $item['nric'] = $b->nric;
                     $item['phone'] = $b->phone;
                     $item['email'] = $b->email;
                     $item['day_overdue'] = Carbon::now()->diffInDays($d->due_date);
-                    $item['late_charge'] = ($b->payment_seq()->get()->first()->ammount * 0.08) * (Carbon::now()->diffInDays($d->due_date) / 365);
+                    $item['late_charge'] = round(($b->payment_seq()->get()->first()->ammount * 0.08) * (Carbon::now()->diffInDays($d->due_date) / 365), 2);
                     $item['waived'] = 0;
                     $data_collection_overdue[] = $item;
                 }

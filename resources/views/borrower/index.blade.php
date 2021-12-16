@@ -33,7 +33,7 @@
     </div>
     <div class="card-body">
       <div class="table-responsive card">
-        <table class="table table-striped border-top-0 mb-0 display" id="tableid">
+        <table class="table table-striped border-top-0 mb-0">
             <thead>
                 <th class="border-top-0">Loan ID</th>
                 <th class="border-top-0">Finance Ammount</th>
@@ -248,7 +248,6 @@
 @push('js')
     <script>
         $(document).ready(function(){
-            $('#tableid').DataTable();
             $('.btn-disburse').on('click',function(){
             let id = $(this).data('id');
             $.ajax({

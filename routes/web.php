@@ -3,8 +3,6 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
-use App\Models\PaymentSequence;
-use Carbon\Carbon;
 
 Route::get('/testing-functionality', [App\Http\Controllers\TestingFunctionality::class, 'index']);
 Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'success']);
@@ -77,6 +75,7 @@ Route::prefix('dashboard')->group(function () {
   Route::resource('borrower', \App\Http\Controllers\BorrowerController::class);
   Route::resource('sales', \App\Http\Controllers\SalesController::class);
   Route::resource('late-changes', \App\Http\Controllers\LateChangeController::class);
+  Route::get('getModalDetailInstallment/{id}', [App\Http\Controllers\LateChangeController::class, 'modalDetailInstallment']);
   Route::resource('ekyc-log', \App\Http\Controllers\EkycLogController::class);
   Route::resource('users', \App\Http\Controllers\UserManagement::class);
 

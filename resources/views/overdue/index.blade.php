@@ -18,8 +18,8 @@
     </section>
 
     <section id="main-content">
-        <div class="table-responsive card">
-            <table class="table table-striped border-top-0 mb-0">
+        <div class="table-responsive card p-3">
+            <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
                     <th class="border-top-0">Date Joined</th>
                     <th class="border-top-0 cl-red">Date Overdue</th>
@@ -53,9 +53,9 @@
                         <td>
                             <a href="#" class="btn btn-primary">Transaction</a>
                         </td>
+                    </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
-                    </tr>
                     @endforelse
                 </tbody>
             </table>
@@ -63,3 +63,11 @@
     </section>
 </div>
 @endsection
+
+@push('js')
+<script>
+    $(document).ready( function () {
+        $('#tableid').DataTable();
+    });
+</script>
+@endpush

@@ -23,8 +23,52 @@
 </section>
 
 <!-- Main Content -->
-<section id="main-container" class="mt-3">
-  <div class="card">
+<section id="main-content">
+  <div class="table-responsive card p-3">
+    <table class="table table-striped table-bordered mb-0 display" id="tableid">
+      <thead>
+          <th class="border-top-0">Loan Id</th>
+          <th class="border-top-0">Finance Ammount</th>
+          <th class="border-top-0">Application Date</th>
+          <th class="border-top-0">Status</th>
+          <th class="border-top-0" colspan="3">Action</th>
+      </thead>
+      <tbody>
+        @forelse($applicants as $applicant)
+          <tr>
+            <td>{{ $applicant->loan_id }}</td>
+            <td>{{ $applicant->finance_amount }}</td>
+            <td>{{ $applicant->created_at }}</td>
+            <td>{{ $applicant->status }}</td>
+            <td>
+              <a href="#" class="btn btn-primary font-mini btn-detail" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $applicant->id }}">Detail</a>
+            </td>
+            <td>
+              <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+                <div class="btn-group" role="group">
+                  <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    More..
+                  </button>
+                  <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                    @if($applicant->status == "canceled")
+                      <button class="dropdown-item font-mini btn-approve" data-toggle="modal" data-target="#modalAlertApprove" disabled>Approve</button>
+                    @else
+                    <a class="dropdown-item font-mini btn-approve pointer" data-toggle="modal" data-target="#modalAlertApprove" data-id="{{ $applicant->id }}">Approve</a>
+                    @endif
+
+                    <a class="dropdown-item font-mini btn-reject pointer" data-toggle="modal" data-target="#modalRejection" data-id="{{ $applicant->id }}">Reject</a>
+                  </div>
+                </div>
+              </div>
+            </td>
+          </tr>
+        @empty
+          <td colspan="10" class="text-center">No Data Available Now</td>
+        @endforelse
+      </tbody>
+    </table>
+  </div>
+  {{--  <div class="card">
     <div class="card-header bg-white">
       <div class="d-flex justify-content-between">
         <h3 class="m-0"></h3>
@@ -78,7 +122,7 @@
           </table>
       </div>
     </div>
-  </div>
+  </div>  --}}
 </section>
 
 <!-- Modal for Reject Applicant-->
@@ -164,6 +208,8 @@
           }
         });
       });
+
+      $('#tableid').DataTable();
     });
   </script>
 @endpush

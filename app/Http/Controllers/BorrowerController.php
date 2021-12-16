@@ -299,7 +299,7 @@ class BorrowerController extends Controller
         $due_date = $this->checkForDueDate($due_calculation);
 
         $userBorrower = Borrower::findOrFail($id);
-        $userBorrower->status = 'Disbursed';
+        $userBorrower->status = 'disbursed';
         $userBorrower->disbursed_at = $current_date;
         $userBorrower->due_date = $due_date;
         $userBorrower->save();

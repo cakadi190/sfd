@@ -50,11 +50,18 @@ class SalesController extends Controller
                 $item = array();
                 $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
                 $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
-                $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
-                $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+                $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+                $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
                 $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
-                $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "disbursed")->get());
+                $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=","waiting")->get());
                 $item['total_bad_debt'] = count(PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get());
+                // $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
+                // $item['total_applications'] = Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get();
+                // $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+                // $item['total_loan_approve'] = Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get();
+                // $item['total_loan_rejected'] = Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get();
+                // $item['total_loan_disbursed'] = Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=","waiting")->get();
+                // $item['total_bad_debt'] = PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get();
     
                 $row[] = $item;
     
@@ -65,15 +72,22 @@ class SalesController extends Controller
             $item = array();
             $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
             $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
-            $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
-            $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+            $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+            $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
             $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
-            $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "disbursed")->get());
+            $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=", "waiting")->get());
             $item['total_bad_debt'] = count(PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get());
+            // $item['total_applications'] = Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get();
+            // $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "waiting")->get());
+            // $item['total_loan_approve'] = Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get();
+            // $item['total_loan_rejected'] = Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get();
+            // $item['total_loan_disbursed'] = Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=", "waiting")->get();
+            // $item['total_bad_debt'] = PaymentSequence::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("is_late", true)->get();
     
             $row[] = $item;
         }
 
+        // dd($row);
         return view('sales.index', ['data' => $row]);
     }
 

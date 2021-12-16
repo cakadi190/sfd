@@ -143,7 +143,7 @@
               <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
               <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
               <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
-              <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Changes</span></a></li>
+              <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Charges</span></a></li>
               <li class="nav-item"><a href="{{ route('ekyc-log.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Ekyc Log</span></a></li>
             </ul>
           </div>
