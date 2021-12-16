@@ -335,17 +335,6 @@ class BorrowerController extends Controller
     }
 
     public function sendMonthlyEmail($id){
-      // echo "OKE";
-      // $direktori = request()->attachmentFile;
-      // $filename = $borrower->fullname.'-AttachmentReminder'.'-Payment Sequence_'.request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
-      // $direktori->move(public_path('upload/'), $filename);
-      // echo "SELESAI";
-      //   request()->validate([
-      //       'subjectEmail' => 'required',
-      //       'paymentSeq' => 'required',
-      //       'attachmentFile' => 'required||file|max:2048|mimes:jpg,png,jpeg,pdf',
-      //   ]);
-
         $borrower = Borrower::findOrFail($id);
         $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
         // $receiver = $userBorrower->email; Code for mail production
@@ -362,9 +351,6 @@ class BorrowerController extends Controller
         ];
 
         $borrower->notify(new MonthlyStatementNotification($mailData, $receiver));
-        // dispatch(function() use ($mailData, $receiver, $userBorrower){
-        //     $userBorrower->notify(new App\Notifications\MonthlyStatementNotification($mailData, $receiver));
-        // });
 
         $sessionMsg = 'Email Monthly Statement has been Sent';
 
@@ -391,9 +377,6 @@ class BorrowerController extends Controller
         $userBorrower->save();
         
         $userBorrower->notify(new BlackListNotification($mailData, $receiver));
-        // dispatch(function() use ($mailData, $receiver, $userBorrower){
-        //     $userBorrower->notify(new App\Notifications\BlackListNotification($mailData, $receiver));
-        // });
 
         $sessionMsg = 'Email Blacklist has been Sent';
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);
@@ -455,7 +438,7 @@ class BorrowerController extends Controller
                 'borrower_loan_id' => $borrower->loan_id,
                 'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
                 'max_payment_seq' => $payment_seq->max_payment_seq,
-                'ammount' => $payment_seq->current_payment_seq,
+                'ammount' => round((($borrower->finance_amount) + ($borrower->finance_amount * 0.18)) / $payment_seq->max_payment_seq, 2),
                 'due_date' => $due_date,
                 'status' => "pending",
             ];
