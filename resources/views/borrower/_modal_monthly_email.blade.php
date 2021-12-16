@@ -4,7 +4,7 @@
       <span aria-hidden="true">&times;</span>
   </button>
 </div>
-<form action="sendMonthlyEmail/{{ $borrower->id }}" method="POST" enctype="multipart/form-data">
+<form action="/dashboard/sendMonthlyEmail/{{ $borrower->id }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="modal-body">
         <div class="d-flex flex-column justify-content-start mt-1">

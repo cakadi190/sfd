@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\LoanDisbursementEmail;
 
-class LoanDisbursementNotification extends Notification
+class LoanDisbursementNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;

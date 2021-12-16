@@ -9,6 +9,7 @@ use App\Notifications\BorrowerConfirmationNotification;
 use App\Notifications\FollowUpEmailNotification;
 use App\Notifications\BlackListNotification;
 use App\Notifications\MonthlyStatementNotification;
+use App\Notifications\LoanDisbursementNotification;
 use Carbon\Carbon;
 
 class BorrowerController extends Controller
@@ -131,15 +132,15 @@ class BorrowerController extends Controller
                     $count_due_date = $current_date->diffInDays($due_date);
                     if ($count_due_date <= 14) {
                         $item['is_payment_due'] = true;
-                        $item['note'] = $count_due_date.' days left to due date Sequence Payment '.$current_payment_seq;
+                        $item['note'] = $count_due_date.' days before due date on payment sequence '.$current_payment_seq;
                     } else {
                         $item['is_payment_due'] = false;
-                        $item['note'] = $count_due_date.' days left to due date Sequence Payment '.$current_payment_seq;
+                        $item['note'] = $count_due_date.' days before due date on payment sequence '.$current_payment_seq;
                     }
-                 } else if ($current_year > $year_due_date) {
+                 } else if (($current_year == $year_due_date) && ($current_month > $month_due_date) && ($current_day > $day_due_date)) {
                     $count_due_date = $current_date->diffInDays($due_date);
                     $item['is_payment_due'] = true;
-                    $item['note'] = 'Sequence Payment '.$current_payment_seq.' Overdue '.$count_due_date;
+                    $item['note'] = 'Sequence Payment '.$current_payment_seq.' late '.$count_due_date.' days';
                  } else {
                     $item['is_payment_due'] = false;
                     $item['note'] = 'Waiting for Sequence Payment '.$current_payment_seq;
@@ -303,6 +304,13 @@ class BorrowerController extends Controller
         $userBorrower->status = 'disbursed';
         $userBorrower->disbursed_at = $current_date;
         $userBorrower->due_date = $due_date;
+        // $receiver = $userBorrower->email;
+        $receiver = 'rakha.rozaqtama@gmail.com';
+        $mailData = [
+          'fullName' => $userBorrower->fullname,
+          'ammount' => $userBorrower->finance_amount,
+        ];
+        $userBorrower->notify(new LoanDisbursementNotification($mailData, $receiver));
         $userBorrower->save();
         $payment_seq = PaymentSequence::findOrFail($userBorrower->payment_seq()->get()->first()->id);
         $payment_seq->due_date = $due_date;
@@ -327,25 +335,33 @@ class BorrowerController extends Controller
     }
 
     public function sendMonthlyEmail($id){
-        request()->validate([
-            'subjectEmail' => 'required',
-            'paymentSeq' => 'required',
-            'attachmentFile' => 'required||file|max:2048|mimes:jpg,png,jpeg,pdf',
-        ]);
-
+      // echo "OKE";
+      // $direktori = request()->attachmentFile;
+      // $filename = $borrower->fullname.'-AttachmentReminder'.'-Payment Sequence_'.request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
+      // $direktori->move(public_path('upload/'), $filename);
+      // echo "SELESAI";
+      //   request()->validate([
+      //       'subjectEmail' => 'required',
+      //       'paymentSeq' => 'required',
+      //       'attachmentFile' => 'required||file|max:2048|mimes:jpg,png,jpeg,pdf',
+      //   ]);
 
         $borrower = Borrower::findOrFail($id);
         $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
         // $receiver = $userBorrower->email; Code for mail production
 
+        $direktori = request()->attachmentFile;
+        $filename = $borrower->fullname.'-AttachmentReminder'.'-Payment Sequence_'.request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
+        $direktori->move(public_path('upload/'), $filename);
+
         $mailData = [
-            'fullname' => $borrower->fullname,
+            'fullName' => $borrower->fullname,
             'period' => request()->paymentSeq,
-            'attachment' => request()->attachmentFile,
+            'attachment' => $filename,
             'subjectEmail' => request()->subjectEmail,
         ];
 
-        $userBorrower->notify(new MonthlyStatementNotification($mailData, $receiver));
+        $borrower->notify(new MonthlyStatementNotification($mailData, $receiver));
         // dispatch(function() use ($mailData, $receiver, $userBorrower){
         //     $userBorrower->notify(new App\Notifications\MonthlyStatementNotification($mailData, $receiver));
         // });
@@ -419,11 +435,6 @@ class BorrowerController extends Controller
         $filename = $borrower->fullname.'-TransferReceipt'.'-Payment Sequence_'.Request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
         $direktori->move(public_path('upload/'), $filename);
 
-        $due_date = $this->checkForDueDate($payment_seq->due_date);
-        $borrower->status = 'active';
-        $borrower->due_date = $due_date;
-        $borrower->save();
-
         $is_overdue = $this->checkForOverdue($payment_seq->due_date);
         $payment_seq->paid_at = Carbon::now();
         $payment_seq->payment_method = Request()->paymentMethod;
@@ -431,13 +442,20 @@ class BorrowerController extends Controller
         $payment_seq->remark = Request()->remark;
         $payment_seq->file_receipt = $filename;
         $payment_seq->save();
+
+        $due_date = $this->checkForDueDate($payment_seq->due_date);
+        if($payment_seq->current_payment_seq == $payment_seq->max_payment_seq){
+          $borrower->status = 'completed';
+        }
+        $borrower->due_date = $due_date;
+        $borrower->save();
         
         if(($payment_seq->current_payment_seq + 1) <= $payment_seq->max_payment_seq){
             $data_new_payment_seq = [
                 'borrower_loan_id' => $borrower->loan_id,
                 'current_payment_seq' => ($payment_seq->current_payment_seq + 1),
                 'max_payment_seq' => $payment_seq->max_payment_seq,
-                'ammount' => round((($applicant->finance_amount) + ($applicant->finance_amount * 0.18)) / $max_payment, 2),
+                'ammount' => $payment_seq->current_payment_seq,
                 'due_date' => $due_date,
                 'status' => "pending",
             ];

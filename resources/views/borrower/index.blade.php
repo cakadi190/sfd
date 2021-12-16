@@ -55,7 +55,6 @@
                         <td>{{ $borrower['finance_ammount'] }}</td>
                         <td>{{ $borrower['created_at'] }}</td>
                         <td>
-                            {{-- {{ $borrower['status'] }} --}}
                             @if ($borrower['status'] == 'blacklist')
                                 <div class="bg-dark box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-dark align-self-center">Blacklist</div>
@@ -64,23 +63,31 @@
                                 <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-light align-self-center">Disbursed</div>
                                 </div>
+                            @elseif($borrower['status'] == 'active')
+                                <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-light align-self-center">Active</div>
+                                </div>
+                            @elseif($borrower['status'] == 'completed')
+                                <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-light align-self-center">Completed</div>
+                                </div>
                             @else
                                 <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-dark align-self-center">Pending</div>
                                 </div>
                             @endif
                         </td>
-                        @if($borrower['status'] == 'Blacklist')
+                        @if($borrower['status'] == 'blacklist')
                             <td colspan="3">
                                 <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
                             </td>
-                        @elseif($borrower['status'] == 'Payment Completed')
+                        @elseif($borrower['status'] == 'completed')
                             <!--Done-->
                             <td colspan="3">
                                 <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
                             </td>
                         @else
-                            @if($borrower['status'] == 'Disbursed')
+                            @if($borrower['status'] == 'disbursed')
                                 @if($borrower['is_payment_due'])
                                     <td colspan="3">
                                         <div class="d-flex flex-row justify-content-around">

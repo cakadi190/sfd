@@ -23,6 +23,6 @@
     <br/>
     <br/>
     <br/>
-    <a href="" download="">Download Attachment File</a>
+    <a href="{{ asset($mailData['attachment']) }}" download="ReminderFile">Download Attachment File</a>
 </body>
 </html>

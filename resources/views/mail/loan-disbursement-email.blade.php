@@ -9,7 +9,7 @@
 <body>
     <h1>Hi {{ $mailData['fullName'] }},</h1>
 
-    <p>We have transferred the RM (amount) to your preferred bank account.</p>
+    <p>We have transferred the RM {{ $mailData['ammount'] }} to your preferred bank account.</p>
     <br/>
     <p>Have a nice day!</p>
     
