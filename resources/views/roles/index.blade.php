@@ -19,7 +19,7 @@
 
     <section id="main-content">
         <div class="table-responsive card p-3">
-            <table class="table display" id="tableid">
+            <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
                     <th class="border-top-0 ">#</th>
                     <th class="border-top-0 ">Username</th>

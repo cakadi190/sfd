@@ -22,7 +22,7 @@
             <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
                     <th class="border-top-0">Date Joined</th>
-                    <th class="border-top-0 cl-red">Date Overdue</th>
+                    <th class="border-top-0 text-danger">Date Overdue</th>
                     <th class="border-top-0">Name</th>
                     <th class="border-top-0">Details</th>
                     <th class="border-top-0">Overdue</th>
