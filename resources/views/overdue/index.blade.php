@@ -48,7 +48,7 @@
                         </td>
                         <td>{{ $d['day_overdue'] }} Day</td>
                         <td>{{ $d['late_charge'] }}</td>
-                        <td>{{ $d['late_charge'] }}</td>
+                        <td>{{ $d['total'] }}</td>
                     </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
