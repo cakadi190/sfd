@@ -64,7 +64,7 @@ class Kernel extends ConsoleKernel
                     $current_date = Carbon::now();
                     $late_day = $current_date->diffInDays($p->due_date);
                     $sequence_ammount = $p->ammount - $p->late_charge;
-                    $p->late_charge = round(($sequence_ammount * 0.08) * ($late_day / 365), 2);
+                    $p->late_charge = round((($sequence_ammount * 0.08) * ($late_day / 365)), 2);
                 }
                 $p->save();
             }

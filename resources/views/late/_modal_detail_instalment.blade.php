@@ -6,7 +6,7 @@
                 <div class="row">
                   <p class="col-sm-4">Status</p>
                   <p class="col-sm-1">:</p>
-                  <p class="col-sm-4">{{ $item['status'] }}</p>
+                  <p class="col-sm-4 {{ ($item['status'] == 'Overdue') ? 'text-danger' : '' }}">{{ $item['status'] }}</p>
                 </div>
             </div>
             <div class="container ml-2">
@@ -18,7 +18,7 @@
             </div>
             <div class="container ml-2">
                 <div class="row">
-                  <p class="col-sm-4">Status</p>
+                  <p class="col-sm-4">Due Date</p>
                   <p class="col-sm-1">:</p>
                   <p class="col-sm-4">{{ $item['due_date'] }}</p>
                 </div>

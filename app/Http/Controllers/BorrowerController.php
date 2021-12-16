@@ -128,7 +128,7 @@ class BorrowerController extends Controller
                 $day_due_date = (int)Carbon::createFromDate($borrower->due_date)->day;
                 $month_due_date = (int)Carbon::createFromDate($borrower->due_date)->month;
                 $year_due_date = (int)Carbon::createFromDate($borrower->due_date)->year;
-                if (($current_year == $year_due_date) && ($current_month <= $month_due_date)) {
+                if (($current_year == $year_due_date) && ($current_month <= $month_due_date) && ($current_day < $day_due_date)) {
                     $count_due_date = $current_date->diffInDays($due_date);
                     if ($count_due_date <= 14) {
                         $item['is_payment_due'] = true;
@@ -137,7 +137,7 @@ class BorrowerController extends Controller
                         $item['is_payment_due'] = false;
                         $item['note'] = $count_due_date.' days before due date on payment sequence '.$current_payment_seq;
                     }
-                 } else if (($current_year == $year_due_date) && ($current_month > $month_due_date)) {
+                 } else if (($current_year == $year_due_date) && ($current_month >= $month_due_date) && ($current_day > $day_due_date)) {
                     $count_due_date = $current_date->diffInDays($due_date);
                     $item['is_payment_due'] = true;
                     $item['note'] = 'Sequence Payment '.$current_payment_seq.' late '.$count_due_date.' days';
@@ -153,7 +153,7 @@ class BorrowerController extends Controller
             $item['id'] = $borrower->id;
             $item['loan_id'] = $borrower->loan_id;
             $item['finance_ammount'] = $borrower->finance_amount;
-            $item['created_at'] = $borrower->created_at;
+            $item['created_at'] = $borrower->created_at->toFormattedDateString();
             $item['status'] = $borrower->status;
             $data[] = $item;
         }

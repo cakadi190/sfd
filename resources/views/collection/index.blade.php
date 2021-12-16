@@ -60,6 +60,10 @@
                                 <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-dark align-self-center">Pending</div>
                                 </div>
+                            @elseif($c['status'] == 'Late')
+                                <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-dark align-self-center">Late</div>
+                                </div>
                             @else
                                 <div class="bg-danger box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-light align-self-center">Overdue</div>

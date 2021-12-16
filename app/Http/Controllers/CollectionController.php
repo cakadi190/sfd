@@ -48,6 +48,8 @@ class CollectionController extends Controller
                     $item['status'] = "Pending";
                 }else if($bc->status == 'paid'){
                     $item['status'] = "Paid";
+                }else if($bc->status == 'pending' && $bc->is_late){
+                    $item['status'] = "Late";
                 }else {
                     $item['status'] = "Overdue";
                 }
