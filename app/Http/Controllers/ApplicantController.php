@@ -193,7 +193,7 @@ class ApplicantController extends Controller
       'id_back' => $applicant->id_back,
       'id_front' => $applicant->id_front,
       'salary_slip' => $applicant->salary_slip,
-      'status' => "waiting",
+      'status' => 'pending',
     ];
     Borrower::create($data_borrower);
 

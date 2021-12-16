@@ -56,21 +56,21 @@
                         <td>{{ $borrower['created_at'] }}</td>
                         <td>
                             {{-- {{ $borrower['status'] }} --}}
-                            @if ($borrower['status'] == 'waiting')
-                                <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
-                                    <div class="text-dark align-self-center">Waiting</div>
+                            @if ($borrower['status'] == 'blacklist')
+                                <div class="bg-dark box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-dark align-self-center">Blacklist</div>
                                 </div>
                             @elseif($borrower['status'] == 'disbursed')
                                 <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">
                                     <div class="text-light align-self-center">Disbursed</div>
                                 </div>
                             @else
-                                <div class="bg-dark box-custom d-flex flex-column p-1 justify-content-center">
-                                    <div class="text-light align-self-center">Blacklist</div>
+                                <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
+                                    <div class="text-dark align-self-center">Pending</div>
                                 </div>
                             @endif
                         </td>
-                        @if($borrower['status'] == 'Blacklisted')
+                        @if($borrower['status'] == 'Blacklist')
                             <td colspan="3">
                                 <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
                             </td>
@@ -119,25 +119,6 @@
                                         </div>
                                     </td>
                                 @endif
-                            @elseif($borrower['status'] == 'active')
-                                <td colspan="3">
-                                    <div class="d-flex flex-row justify-content-around">
-                                        <a class="btn btn-primary font-mini btn-detail-borrower" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $borrower['id'] }}">Detail</a>
-                                        <div class="btn-group ml-1" role="group" aria-label="Button group with nested dropdown">
-                                            <div class="btn-group" role="group">
-                                            <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                                More..
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                                                <a class="dropdown-item font-mini btn-monthly-email pointer" data-toggle="modal" data-target="#modalMonthlyEmail" data-id="{{ $borrower['id'] }}">Monthly Statement</a>
-                                                <a class="dropdown-item font-mini btn-monthly-payment pointer" data-toggle="modal" data-target="#modalMonthlyPayment" data-id="{{ $borrower['id'] }}">Sequence Payment</a>
-                                                <a class="dropdown-item font-mini btn-blacklist pointer" data-toggle="modal" data-target="#modalBlacklist" data-id="{{ $borrower['id'] }}">Blacklist</a>
-                                                <a class="dropdown-item font-mini btn-payment-completed pointer" data-toggle="modal" data-target="#modalPaymentCompleted" data-id="{{ $borrower['id'] }}">Payment Completed</a>
-                                            </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </td>
                             @else
                                 <td colspan="3">
                                     <div class="d-flex flex-row justify-content-around">

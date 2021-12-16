@@ -48,7 +48,7 @@
                     </div>
                   @else
                     <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
-                      <div class="text-dark align-self-center">Waiting</div>
+                      <div class="text-dark align-self-center">Pending</div>
                     </div>
                   @endif
                 </td>

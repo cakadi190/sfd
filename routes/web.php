@@ -70,6 +70,7 @@ Route::prefix('dashboard')->group(function () {
 
 
   Route::resource('collection', \App\Http\Controllers\CollectionController::class);
+  Route::get('/collection/export-csv', [App\Http\Controllers\CollectionController::class, 'exportCSV']);
   Route::resource('overdue-installment', \App\Http\Controllers\OverdueInstallmentController::class);
   Route::resource('applicant', \App\Http\Controllers\ApplicantController::class);
   Route::resource('borrower', \App\Http\Controllers\BorrowerController::class);

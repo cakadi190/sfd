@@ -6,7 +6,7 @@
     <!-- Header -->
     <section id="page-title" class="mb-4 pb-2 border-bottom">
         <div class="d-md-flex align-items-center justify-content-between">
-            <h3 class="mb-0">Sales</h3>
+            <h3 class="mb-0">Sales Dashboard</h3>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb p-0 bg-transparent">
                     <li class="breadcrumb-item"><a href="{{ route('home') }}">SmartFunding Home</a></li>

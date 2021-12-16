@@ -371,7 +371,7 @@ class BorrowerController extends Controller
             'loanAmmount' => $userBorrower->loan_amount,
             'phoneNumber' => $userBorrower->phone,
         ];
-        $userBorrower->status = 'Blacklisted';
+        $userBorrower->status = 'blacklist';
         $userBorrower->save();
         
         $userBorrower->notify(new BlackListNotification($mailData, $receiver));

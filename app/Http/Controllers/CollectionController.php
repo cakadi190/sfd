@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Borrower;
+use App\Exports\CollectionExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class CollectionController extends Controller
 {
@@ -119,5 +121,10 @@ class CollectionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function exportCSV(){
+        $filename = 'CollectionReport'.Carbon::now()->toFormattedDateString().'.csv';
+        return Excel::download(new CollectionExport, $filename);
     }
 }

@@ -27,8 +27,7 @@
                     <th class="border-top-0">Details</th>
                     <th class="border-top-0">Overdue</th>
                     <th class="border-top-0">Late Charge</th>
-                    <th class="border-top-0">Waived</th>
-                    <th class="border-top-0">Transaction</th>
+                    <th class="border-top-0">Total</th>
                 </thead>
                 <tbody>
                     @forelse($data as $d)
@@ -49,10 +48,7 @@
                         </td>
                         <td>{{ $d['day_overdue'] }} Day</td>
                         <td>{{ $d['late_charge'] }}</td>
-                        <td>{{ $d['waived'] }}</td>
-                        <td>
-                            <a href="#" class="btn btn-primary">Transaction</a>
-                        </td>
+                        <td>{{ $d['late_charge'] }}</td>
                     </tr>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
