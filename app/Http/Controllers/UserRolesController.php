@@ -26,7 +26,20 @@ class UserRolesController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('roles.index', ['users' => $users]);
+        $collection = array();
+        $count = 1;
+        foreach($users as $usr){
+            $item = array();
+            $item['id'] = $usr->id;
+            $item['counter'] = $count;
+            $item['username'] = $usr->fullname;
+            $item['date_joined'] = $usr->created_at->toFormattedDateString();
+            $item['status'] = $usr->status;
+            $roles = explode(" ", $usr->state);
+            $item['roles'] = $roles;
+            $collection[] = $item;
+        }
+        return view('roles.index', ['users' => $collection]);
     }
 
     /**
@@ -126,21 +139,15 @@ class UserRolesController extends Controller
     }
 
     public function editDataUserDetail($id){
-        // request()->validate([
-        //     'iduser' => 'required',
-        //     'name' => 'required',
-        //     'nric' => 'required',
-        //     'email' => 'required|email',
-        //     'phone' => 'required',
-        //     'status' => 'required',
-        // ]);
-
+        $state = "";
         if(request()->has('finance')){
-            $state = 'finance';
-        }else if(request()->has('sales')){
-            $state = 'sales';
-        }else{
-            $state = 'management';
+            $state .= 'finance';
+        }
+        if(request()->has('sales')){
+            $state .= ' sales';
+        }
+        if(request()->has('management')){
+            $state .= ' management';
         }
 
         $data = [

@@ -32,45 +32,77 @@
                 </thead>
                 <tbody>
                     @forelse($users as $user)
-                    <?php
-                        $count = 1;
-                    ?>
                     <tr>
-                        <td><?php echo $count; ?></td>
-                        <td>{{ $user->fullname }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        <td>{{ $user['counter'] }}</td>
+                        <td>{{ $user['username'] }}</td>
+                        <td>{{ $user['date_joined'] }}</td>
                         <td>
-                            @if($user->status == 1)
-                                <a href="#">Active</a>
+                            @if($user['status'] == 1)
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="#" class="align-self-center text-success">Active</a>
+                                </div>
                             @else
-                                <a href="#">Inactive</a>
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="#" class="align-self-center text-danger">Inactive</a>
+                                </div>
                             @endif
                         </td>
-                        <td>
-                            <div class="d-flex flex-row justify-content-center mt-1">
-                                <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user->state == 'finance') ? 'checked' : ''}}>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="d-flex flex-row justify-content-center mt-1">
-                                <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user->state == 'sales') ? 'checked' : '' }}>
-                            </div> 
-                        </td>
-                        <td>
-                            <div class="d-flex flex-row justify-content-center mt-1">
-                                <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user->state == 'management') ? 'checked' : '' }}>
-                            </div>
-                        </td>
+                        @if(count($user['roles']) == 3)
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][2] == 'management') ? 'checked' : '' }}>
+                                </div>
+                            </td>
+                        @elseif(count($user['roles']) == 2)
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
+                                </div>
+                            </td>
+                        @elseif(count($user['roles']) == 1)
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales">
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
+                                </div>
+                            </td>
+                        @endif
                         <td>
                             <div class="d-flex flex-row justify-content-around">
-                                <a class="btn btn-primary font-mini btn-edit-data" data-toggle="modal" data-target="#modalEditData" data-id="{{ $user->id }}">Edit</a>
-                                <a class="ml-1 btn btn-primary font-mini btn-mini btn-change-pw" data-toggle="modal" data-target="#modalChangePW" data-id="{{ $user->id }}">Change PW</a>
+                                <a class="btn btn-primary font-mini btn-edit-data" data-toggle="modal" data-target="#modalEditData" data-id="{{ $user['id'] }}">Edit</a>
+                                <a class="ml-1 btn btn-primary font-mini btn-mini btn-change-pw" data-toggle="modal" data-target="#modalChangePW" data-id="{{ $user['id'] }}">Change PW</a>
                             </div>
                         </td>
                     </tr>
-                    <?php
-                        $count++;
-                    ?>
                     @empty
                         <td colspan="14" class="text-center">No Data Available Now</td>
                     @endforelse

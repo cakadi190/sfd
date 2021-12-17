@@ -97,7 +97,6 @@ class TestingFunctionality extends Controller
         $payment_seq = $borrower->payment_seq()->get()->last();
         
         $due_date = $this->checkForDueDate($payment_seq->due_date);
-        // $borrower->status = 'On Payment Sequence';
         $borrower->due_date = $due_date;
         $borrower->save();
 
