@@ -18,6 +18,9 @@
     </section>
 
     <section id="main-content">
+        <div>
+            <a href="#" class="btn btn-primary btn-sm mb-3 btn-add-new-user" data-toggle="modal" data-target="#modalAddUser">Add New User</a>
+        </div>
         <div class="table-responsive card p-3">
             <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
@@ -37,13 +40,18 @@
                         <td>{{ $user['username'] }}</td>
                         <td>{{ $user['date_joined'] }}</td>
                         <td>
-                            @if($user['status'] == 1)
+                            @if($user['status'])
                                 <div class="d-flex flex-column justify-content-center">
                                     <a href="#" class="align-self-center text-success">Active</a>
                                 </div>
                             @else
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="#" class="align-self-center text-danger">Inactive</a>
+                                    <a href="#" class="align-self-center text-dark">Inactive</a>
+                                </div>
+                            @endif
+                            @if($user['status'] == null)
+                                <div class="d-flex flex-column justify-content-center">
+                                    <a href="#" class="align-self-center text-dark">-</a>
                                 </div>
                             @endif
                         </td>
@@ -95,6 +103,21 @@
                                     <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
                                 </div>
                             </td>
+                        @else
+                            <div class="d-flex flex-row justify-content-start">
+                                <div>
+                                    <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" >
+                                    <label for="finance" class="align-self-center">Finance</label>
+                                </div>
+                                <div class="ml-2">
+                                    <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" >
+                                    <label for="sales" class="align-self-center">Sales</label>
+                                </div>
+                                <div class="ml-2">
+                                    <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" >
+                                    <label for="management" class="align-self-center">Management</label>
+                                </div>
+                            </div>
                         @endif
                         <td>
                             <div class="d-flex flex-row justify-content-around">
@@ -131,6 +154,14 @@
         </div>
     </div>
 </div>
+
+<!-- Modal for Add New User -->
+<div class="modal fade" id="modalAddUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        </div>
+    </div>
+</div>
 @endsection
 
 @push('js')
@@ -161,6 +192,18 @@
                     }
                 });
             });
+
+            // $('.btn-add-new-user').on('click', function(){
+            //     let id = $(this).data('id');
+            //     $.ajax({
+            //         url: `/dashboard/settings/getDataModalAdd`,
+            //         type: 'GET',
+            //         success: function(data){
+            //             $('#modalAddUser').find('.modal-content').html(data);
+            //             $('#modalAddUser').modal('show');
+            //         }
+            //     });
+            // });
         } );
     </script>
 @endpush

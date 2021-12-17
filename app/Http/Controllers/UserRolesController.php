@@ -38,6 +38,7 @@ class UserRolesController extends Controller
             $roles = explode(" ", $usr->state);
             $item['roles'] = $roles;
             $collection[] = $item;
+            $count += 1;
         }
         return view('roles.index', ['users' => $collection]);
     }
@@ -135,6 +136,7 @@ class UserRolesController extends Controller
 
     public function getDataModalEdit($id){
         $user = User::findOrFail($id);
+        $roles = explode(" ", $user->state);
         return view('roles._modal_edit_user', compact('user'));
     }
 
@@ -171,5 +173,9 @@ class UserRolesController extends Controller
 
         $msg = 'User data updated';
         return redirect('/dashboard/settings/user-role')->with('message', $msg);
+    }
+
+    public function getDataModalAdd(){
+        return view('roles._modal_add_user');
     }
 }

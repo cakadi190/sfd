@@ -30,32 +30,90 @@
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="header" class="h6">Status</label>
             <div class="d-flex flex-row">
-                <div>
-                    <input type="radio" name="status" id="active" value="1">
-                    <label for="active">Active</label>
-                </div>
-                <div class="ml-2">
-                    <input type="radio" name="status" id="inactive" value="0">
-                    <label for="inactive">Inactive</label>
-                </div>
+                @if($user['status'])
+                    <div>
+                        <input type="radio" name="status" id="active" value="1" checked>
+                        <label for="active">Active</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="radio" name="status" id="inactive" value="0">
+                        <label for="inactive">Inactive</label>
+                    </div>
+                @else
+                    <div>
+                        <input type="radio" name="status" id="active" value="1">
+                        <label for="active">Active</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="radio" name="status" id="inactive" value="0" checked>
+                        <label for="inactive">Inactive</label>
+                    </div>
+                @endif
             </div>
         </div>
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="state" class="h6">Roles</label>
-            <div class="d-flex flex-row justify-content-start">
-                <div>
-                    <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" {{ ($user->state == 'finance') ? 'checked' : '' }}>
-                    <label for="finance" class="align-self-center">Finance</label>
+            @if(count(explode(" ", $user->state)) == 3)
+                <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" {{ (explode(" ", $user->state)[0] == 'finance') ? 'checked' : '' }}>
+                        <label for="finance" class="align-self-center">Finance</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" {{ (explode(" ", $user->state)[1] == 'sales') ? 'checked' : '' }}>
+                        <label for="sales" class="align-self-center">Sales</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" {{ (explode(" ", $user->state)[2] == 'management') ? 'checked' : '' }}>
+                        <label for="management" class="align-self-center">Management</label>
+                    </div>
                 </div>
-                <div class="ml-2">
-                    <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" {{ ($user->state == 'sales') ? 'checked' : '' }}>
-                    <label for="sales" class="align-self-center">Sales</label>
+            @elseif(count(explode(" ", $user->state)) == 2)
+                <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" {{ (explode(" ", $user->state)[0] == 'finance') ? 'checked' : '' }}>
+                        <label for="finance" class="align-self-center">Finance</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" {{ (explode(" ", $user->state)[1] == 'sales') ? 'checked' : '' }}>
+                        <label for="sales" class="align-self-center">Sales</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management">
+                        <label for="management" class="align-self-center">Management</label>
+                    </div>
                 </div>
-                <div class="ml-2">
-                    <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" {{ ($user->state == 'management') ? 'checked' : '' }}>
-                    <label for="management" class="align-self-center">Management</label>
+            @elseif(count(explode(" ", $user->state)) == 1)
+                <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" {{ (explode(" ", $user->state)[0] == 'finance') ? 'checked' : '' }}>
+                        <label for="finance" class="align-self-center">Finance</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales">
+                        <label for="sales" class="align-self-center">Sales</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management">
+                        <label for="management" class="align-self-center">Management</label>
+                    </div>
                 </div>
-            </div>
+            @else
+                <div class="d-flex flex-row justify-content-start">
+                    <div>
+                        <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" >
+                        <label for="finance" class="align-self-center">Finance</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" >
+                        <label for="sales" class="align-self-center">Sales</label>
+                    </div>
+                    <div class="ml-2">
+                        <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" >
+                        <label for="management" class="align-self-center">Management</label>
+                    </div>
+                </div>
+            @endif
         </div>
     </div>
     <div class="modal-footer">
