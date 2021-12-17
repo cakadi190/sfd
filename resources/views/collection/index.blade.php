@@ -18,9 +18,6 @@
     </section>
 
     <section id="main-content">
-        {{-- <div class="mb-2">
-            <a href="/dashboard/collection/export-csv" class="btn btn-primary btn-sm">Export to csv</a>
-        </div> --}}
         <div class="table-responsive card p-3">
             <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
