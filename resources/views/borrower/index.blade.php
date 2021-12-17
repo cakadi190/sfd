@@ -57,7 +57,7 @@
                         <td>
                             @if ($borrower['status'] == 'blacklist')
                                 <div class="bg-dark box-custom d-flex flex-column p-1 justify-content-center">
-                                    <div class="text-dark align-self-center">Blacklist</div>
+                                    <div class="text-light align-self-center">Blacklist</div>
                                 </div>
                             @elseif($borrower['status'] == 'disbursed')
                                 <div class="bg-success box-custom d-flex flex-column p-1 justify-content-center">

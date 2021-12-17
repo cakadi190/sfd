@@ -122,20 +122,21 @@
                                 </div>
                             </td>
                         @else
-                            <div class="d-flex flex-row justify-content-start">
-                                <div>
-                                    <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" >
-                                    <label for="finance" class="align-self-center">Finance</label>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;">
                                 </div>
-                                <div class="ml-2">
-                                    <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" >
-                                    <label for="sales" class="align-self-center">Sales</label>
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;">
+                                </div> 
+                            </td>
+                            <td>
+                                <div class="d-flex flex-row justify-content-center mt-1">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
                                 </div>
-                                <div class="ml-2">
-                                    <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" >
-                                    <label for="management" class="align-self-center">Management</label>
-                                </div>
-                            </div>
+                            </td>
                         @endif
                         <td>
                             <div class="d-flex flex-row justify-content-around">

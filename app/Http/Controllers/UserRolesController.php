@@ -40,7 +40,6 @@ class UserRolesController extends Controller
             $collection[] = $item;
             $count += 1;
         }
-        // dd($collection);
         return view('roles.index', ['users' => $collection]);
     }
 
