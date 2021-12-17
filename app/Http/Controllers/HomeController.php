@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Applicant;
 use App\Models\Borrower;
 use Carbon\Carbon;
-use Carbon\CarbonPeriod;
-use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
@@ -52,8 +50,6 @@ class HomeController extends Controller
     $data['counter_borrow_month']  = $borrow_month->count();
     $data['counter_borrow_year']   = $borrow_year->count();
     $data['counter_borrow_all']    = $borrow->all()->count();
-
-    // dd($data);
 
     return view('dashboard', $data);
   }

@@ -24,7 +24,6 @@ class RegisterBorrowerController extends Controller
    */
   public function process(Request $request)
   {
-    // dd($request->all());
     $this->validate($request, [
       "finance_amount"  => ["required"],
       "period"          => ["required"],

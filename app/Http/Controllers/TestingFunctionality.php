@@ -2,9 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\BorrowerController;
-use App\Http\COntrollers\OverdueController;
+
 use App\Models\Borrower;
 use App\Models\PaymentSequence;
 use Carbon\Carbon;

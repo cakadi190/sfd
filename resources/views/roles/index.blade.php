@@ -59,17 +59,18 @@
                         <td>
                             @if($user['status'])
                                 <div class="d-flex flex-column justify-content-center">
-                                    <a href="#" class="align-self-center text-success">Active</a>
+                                    <p href="#" class="align-self-center text-success">Active</p>
                                 </div>
                             @else
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="#" class="align-self-center text-dark">Inactive</a>
-                                </div>
-                            @endif
-                            @if($user['status'] == null)
-                                <div class="d-flex flex-column justify-content-center">
-                                    <a href="#" class="align-self-center text-dark">-</a>
-                                </div>
+                                @if(!$user['status'])
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <p href="#" class="align-self-center text-danger">Inactive</p>
+                                    </div>
+                                @else
+                                    <div class="d-flex flex-column justify-content-center">
+                                        <p href="#" class="align-self-center text-dark">-</p>
+                                    </div>
+                                @endif
                             @endif
                         </td>
                         @if(count($user['roles']) == 3)
