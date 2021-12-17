@@ -1,6 +1,23 @@
 @extends('layouts.app')
 
 @section('content')
+<style>
+    form i{
+        cursor: pointer;
+    }
+    input.unique{
+        width: 90% !important;
+        border-top-right-radius: 0px !important;
+        border-bottom-right-radius: 0px !important;
+    }
+    .width-super-mini{
+        width: 10% !important;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px
+    }
+</style>
+
+
 <div>
 
     <!-- Header -->
@@ -18,9 +35,9 @@
     </section>
 
     <section id="main-content">
-        <div>
-            <a href="#" class="btn btn-primary btn-sm mb-3 btn-add-new-user" data-toggle="modal" data-target="#modalAddUser">Add New User</a>
-        </div>
+        <button type="button" class="btn btn-primary mb-2 btn-sm" data-toggle="modal" data-target="#exampleModal">
+            Add New User
+        </button>
         <div class="table-responsive card p-3">
             <table class="table table-striped table-bordered mb-0 display" id="tableid">
                 <thead>
@@ -95,12 +112,12 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][0] == 'sales') ? 'checked' : ''}}>
                                 </div> 
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][0] == 'management') ? 'checked' : ''}}>
                                 </div>
                             </td>
                         @else
@@ -155,11 +172,92 @@
     </div>
 </div>
 
-<!-- Modal for Add New User -->
-<div class="modal fade" id="modalAddUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
+<!--Modal Add New User-->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add New User</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
+        <div class="modal-body">
+            <form action="/dashboard/settings/addDataUser" method="POST">
+                @csrf
+                <div class="modal-body">
+                    <div class="d-flex flex-column justify-content-start">
+                        <label for="name" class="h6">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" placeholder="Type your Full Name">
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="nric" class="h6">NRIC</label>
+                        <input class="form-control" type="text" name="nric" id="nric" placeholder="Type your NRIC">
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                      <label for="email" class="h6">Email</label>
+                      <input class="form-control" type="text" name="email" id="email" placeholder="Type your Email">
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="password" class="h6">Password</label>
+                        <div class="d-flex flex-row justify-content-start">
+                            <input class="form-control unique" type="password" name="password" id="password" placeholder="Type Your Password">
+                            <div class="form-control width-super-mini">
+                                <i class="bi bi-eye-slash align-self-center" id="togglePassword"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="retypePassword" class="h6">Retype Password</label>
+                        <div class="d-flex flex-row justify-content-start">
+                            <input class="form-control unique" type="password" name="retypePassword" id="retypePassword" placeholder="Retype Your Password">
+                            <div class="form-control width-super-mini">
+                                <i class="bi bi-eye-slash align-self-center" id="toggleRetypePassword"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="phone" class="h6">Phone</label>
+                        <input class="form-control" type="text" name="phone" id="phone" placeholder="Type your Phone">
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="header" class="h6">Status</label>
+                        <div class="d-flex flex-row">
+                                <div>
+                                    <input type="radio" name="status" id="active" value="1">
+                                    <label for="active">Active</label>
+                                </div>
+                                <div class="ml-2">
+                                    <input type="radio" name="status" id="inactive" value="0">
+                                    <label for="inactive">Inactive</label>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-column justify-content-start mt-4">
+                        <label for="state" class="h6">Roles</label>
+                            <div class="d-flex flex-row justify-content-start">
+                                <div>
+                                    <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" >
+                                    <label for="finance" class="align-self-center">Finance</label>
+                                </div>
+                                <div class="ml-2">
+                                    <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" >
+                                    <label for="sales" class="align-self-center">Sales</label>
+                                </div>
+                                <div class="ml-2">
+                                    <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" >
+                                    <label for="management" class="align-self-center">Management</label>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                  <a href="#" class="btn btn-primary" data-dismiss="modal">Cancel</a>
+                  <button type="submit" class="btn btn-primary">Confirm</button>
+                </div>
+            </form>
+        </div>
+      </div>
     </div>
 </div>
 @endsection
@@ -193,17 +291,25 @@
                 });
             });
 
-            // $('.btn-add-new-user').on('click', function(){
-            //     let id = $(this).data('id');
-            //     $.ajax({
-            //         url: `/dashboard/settings/getDataModalAdd`,
-            //         type: 'GET',
-            //         success: function(data){
-            //             $('#modalAddUser').find('.modal-content').html(data);
-            //             $('#modalAddUser').modal('show');
-            //         }
-            //     });
-            // });
+            const togglePassword1 = document.querySelector('#togglePassword');
+            const togglePassword2 = document.querySelector('#toggleRetypePassword');
+            const password = document.querySelector('#password');
+            const retypePassword = document.querySelector('#retypePassword');
+
+            togglePassword1.addEventListener('click', function (e) {
+                // toggle the type attribute
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                // toggle the eye / eye slash icon
+                this.classList.toggle('bi-eye');
+            });
+            togglePassword2.addEventListener('click', function(e){
+                // toggle the type attribute
+                const type = retypePassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                retypePassword.setAttribute('type', type);
+                // toggle the eye / eye slash icon
+                this.classList.toggle('bi-eye');
+            });
         } );
     </script>
 @endpush

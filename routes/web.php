@@ -98,7 +98,6 @@ Route::prefix('dashboard')->group(function () {
     Route::post('changeUserPW/{id}', [App\Http\Controllers\UserRolesController::class, 'changePW'])->name('settings.change-pw');
     Route::get('getDataModalEdit/{id}', [\App\Http\Controllers\UserRolesController::class, 'getDataModalEdit']);
     Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
-    Route::get('getDataModalAdd', [App\Http\Controllers\UserRolesContrller::class, 'getDataModalAdd']);
-    Route::post('addDataUser', [App\Http\Controllers\UserRoleController::class, 'addNewUser']);
+    Route::post('addDataUser', [App\Http\Controllers\UserRolesController::class, 'addNewUser']);
   });
 });

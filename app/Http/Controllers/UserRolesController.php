@@ -35,7 +35,7 @@ class UserRolesController extends Controller
             $item['username'] = $usr->fullname;
             $item['date_joined'] = $usr->created_at->toFormattedDateString();
             $item['status'] = $usr->status;
-            $roles = explode(" ", $usr->state);
+            $roles = explode(",", $usr->state);
             $item['roles'] = $roles;
             $collection[] = $item;
             $count += 1;
@@ -136,20 +136,20 @@ class UserRolesController extends Controller
 
     public function getDataModalEdit($id){
         $user = User::findOrFail($id);
-        $roles = explode(" ", $user->state);
+        $roles = explode(",", $user->state);
         return view('roles._modal_edit_user', compact('user'));
     }
 
     public function editDataUserDetail($id){
         $state = "";
         if(request()->has('finance')){
-            $state .= 'finance';
+            $state .= 'finance,';
         }
         if(request()->has('sales')){
-            $state .= ' sales';
+            $state .= 'sales,';
         }
         if(request()->has('management')){
-            $state .= ' management';
+            $state .= 'management';
         }
 
         $data = [
@@ -177,5 +177,46 @@ class UserRolesController extends Controller
 
     public function getDataModalAdd(){
         return view('roles._modal_add_user');
+    }
+
+    public function addNewUser(Request $request){
+        $request->validate([
+            'name' => 'required',
+            'nric' => 'required',
+            'email' => 'required',
+            'password' => 'required|min:8',
+            'retypePassword' => 'required|min:8',
+            'phone' => 'required',
+        ]);
+
+        if($request->password == $request->retypePassword){
+            $state = "";
+            if(request()->has('finance')){
+                $state .= 'finance,';
+            }
+            if(request()->has('sales')){
+                $state .= 'sales,';
+            }
+            if(request()->has('management')){
+                $state .= 'management';
+            }
+            $data = [
+                'fullname' => $request->name,
+                'nric' => $request->nric,
+                'email' => $request->email,
+                'password' => $request->password,
+                'phone' => $request->phone,
+                'status' => $request->status,
+                'state' => $state,
+            ];
+
+            User::create($data);
+
+            $msg = 'Sucessfuly add new user';
+            return redirect('/dashboard/settings/user-role')->with('message', $msg);
+        }else{
+            $msg = 'Error, check your data again';
+            return redirect('/dashboard/settings/user-role')->with('message', $msg);
+        }
     }
 }
