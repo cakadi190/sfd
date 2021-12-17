@@ -5,6 +5,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+  {!! RecaptchaV3::initJs() !!}
+
   <!-- CSRF Token -->
   <meta name="csrf-token" content="{{ csrf_token() }}" />
 
@@ -197,6 +199,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
+  <script src="https://www.google.com/recaptcha/api.js"></script>
   {{-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.css">
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script> --}}
   {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css"> --}}

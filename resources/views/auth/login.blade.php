@@ -3,7 +3,6 @@
 @section('title', 'Login | ' . config('app.name'))
 
 @section('header')
-{!! RecaptchaV3::initJs() !!}
 <style>
 .grecaptcha-badge { visibility: hidden !important; }
 #mainhead {
@@ -103,7 +102,7 @@
           @endif
 
           <!-- Login Section -->
-          <form method="POST" action="{{ route('login') }}" class="col-md-12 {{-- border-right --}}">
+          <form method="POST" action="{{ route('login') }}" class="col-md-12" id="form-login">
             @csrf
 
             <div class="p-2">
@@ -156,14 +155,25 @@
                 </div>
                 @endif
                 <div class="col-lg-4 mb-2 mb-lg-0">
-                  <button type="submit" class="btn btn-primary btn-block">Log-In<i
-                      class="fa-solid fa-sign-in-alt ml-2"></i></button>
+                  <button type="submit" class="btn btn-primary btn-block">Log-In<i class="fa-solid fa-sign-in-alt ml-2"></i></button>
                 </div>
               </div>
             </div>
 
+            {{--  <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
+              <div class="col-md-6">
+                  {!! RecaptchaV3::field('register') !!}
+                  @if ($errors->has('g-recaptcha-response'))
+                      <span class="help-block">
+                          <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                      </span>
+                  @endif
+              </div>
+            </div>  --}}
+            {{-- @error('g-recaptcha-response')
+            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
+            @enderror  --}}
             {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
-
           </form>
 
         </div>
