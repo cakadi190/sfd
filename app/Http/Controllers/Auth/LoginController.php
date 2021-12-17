@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 use \Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -62,7 +61,7 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
+            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
         ]);
     }
 }

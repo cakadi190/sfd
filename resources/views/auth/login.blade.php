@@ -159,23 +159,8 @@
                 </div>
               </div>
             </div>
-
-            {{--  <div class="form-group{{ $errors->has('g-recaptcha-response') ? ' has-error' : '' }}">
-              <div class="col-md-6">
-                  {!! RecaptchaV3::field('register') !!}
-                  @if ($errors->has('g-recaptcha-response'))
-                      <span class="help-block">
-                          <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
-                      </span>
-                  @endif
-              </div>
-            </div>  --}}
-            {{-- @error('g-recaptcha-response')
-            <div class="alert alert-danger mt-1 mb-1">{{ $message }}</div>
-            @enderror  --}}
-            {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
+            {!! RecaptchaV3::field('login', $name='g-recaptcha-response') !!}
           </form>
-
         </div>
       </section>
 

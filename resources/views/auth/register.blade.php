@@ -241,7 +241,8 @@
     <div class="row justify-content-lg-between pb-3">
       <div class="col-md-6 order-2 order-lg-1">
 
-        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">@csrf
+        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
+          @csrf
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
             <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>

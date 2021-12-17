@@ -42,6 +42,7 @@ class RegisterBorrowerController extends Controller
       "id_back"         => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "salary_slip"     => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "utilities_slip"  => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      'g-recaptcha-response' => 'required|recaptchav3:register,0.5',
     ]);
 
     # Process the data
