@@ -204,7 +204,7 @@ class UserRolesController extends Controller
                 'fullname' => $request->name,
                 'nric' => $request->nric,
                 'email' => $request->email,
-                'password' => $request->password,
+                'password' => Hash::make($request->password),
                 'phone' => $request->phone,
                 'status' => $request->status,
                 'state' => $state,
