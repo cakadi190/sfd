@@ -40,6 +40,7 @@ class UserRolesController extends Controller
             $collection[] = $item;
             $count += 1;
         }
+        // dd($collection);
         return view('roles.index', ['users' => $collection]);
     }
 
@@ -143,10 +144,16 @@ class UserRolesController extends Controller
     public function editDataUserDetail($id){
         $state = "";
         if(request()->has('finance')){
-            $state .= 'finance,';
+            $state .= 'finance';
+            if(request()->has('sales')){
+                $state .= ',';
+            }
         }
         if(request()->has('sales')){
-            $state .= 'sales,';
+            $state .= 'sales';
+            if(request()->has('management')){
+                $state .= ',';
+            }
         }
         if(request()->has('management')){
             $state .= 'management';
@@ -192,10 +199,16 @@ class UserRolesController extends Controller
         if($request->password == $request->retypePassword){
             $state = "";
             if(request()->has('finance')){
-                $state .= 'finance,';
+                $state .= 'finance';
+                if(request()->has('sales')){
+                    $state .= ',';
+                }
             }
             if(request()->has('sales')){
-                $state .= 'sales,';
+                $state .= 'sales';
+                if(request()->has('management')){
+                    $state .= ',';
+                }
             }
             if(request()->has('management')){
                 $state .= 'management';
