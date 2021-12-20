@@ -48,3 +48,7 @@
 .box-custom{
     border-radius: 10px;
 }
+
+.border-bt{
+    border-bottom: 2px #152860;
+}

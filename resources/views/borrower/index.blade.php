@@ -25,12 +25,6 @@
 <!-- Main Content -->
 <section id="main-container">
   <div class="card">
-    <div class="card-header bg-white">
-      <div class="d-flex justify-content-between">
-        <h3 class="m-0"></h3>
-        <a href="{{ route('applicant.create') }}" class="btn btn-primary"><i class="fa-solid fa-plus"></i></a>
-      </div>
-    </div>
     <div class="card-body">
       <div class="table-responsive card p-3">
           <table class="table table-striped table-bordered display" id="tableid">

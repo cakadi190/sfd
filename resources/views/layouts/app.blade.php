@@ -46,6 +46,10 @@
       }
     }
 
+    .selected{
+      color: black !important;
+    }
+
   </style>
 </head>
 
@@ -136,15 +140,14 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarMenus">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
-              <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
-              <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower Lists</span></a></li>
-              <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
-              <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
-              <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
-              <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
-              <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Charges</span></a></li>
-              <li class="nav-item"><a href="{{ route('ekyc-log.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Ekyc Log</span></a></li>
+              <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link {{ (Route::is("dashboard.home")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
+              <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link {{ (Route::is("applicant.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
+              <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link {{ (Route::is("borrower.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower Lists</span></a></li>
+              <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link {{ (Route::is("collection.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
+              <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link {{ (Route::is("overdue-installment.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
+              <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link {{ (Route::is("user-role.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
+              <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link {{ (Route::is("sales.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
+              <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link {{ (Route::is("late-changes.index")) ? "selected" : "" }}"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Charges</span></a></li>
             </ul>
           </div>
         </div>
@@ -159,15 +162,14 @@
           <h3>Navigation</h3>
 
           <ul class="nav flex-column">
-            <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
-            <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
-            <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower List</span></a></li>
-            <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
-            <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
-            <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
-            <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
-            <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Charges</span></a></li>
-            <li class="nav-item"><a href="{{ route('ekyc-log.index') }}" class="nav-link"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Ekyc Log</span></a></li>
+            <li class="nav-item"><a href="{{ route('dashboard.home') }}" class="nav-link {{ (Route::is("dashboard.home")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-tachometer mr-2"></i><span>Dashboard</span></a></li>
+            <li class="nav-item"><a href="{{ route('applicant.index') }}" class="nav-link {{ (Route::is("applicant.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-box mr-2"></i><span>Applicant List</span></a></li>
+            <li class="nav-item"><a href="{{ route('borrower.index') }}" class="nav-link {{ (Route::is("borrower.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-list mr-2"></i><span>Borrower List</span></a></li>
+            <li class="nav-item"><a href="{{ route('collection.index') }}" class="nav-link {{ (Route::is("collection.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Collection Report</span></a></li>
+            <li class="nav-item"><a href="{{ route('overdue-installment.index') }}" class="nav-link {{ (Route::is("overdue-installment.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-coins mr-2"></i><span>Overdue Installment</span></a></li>
+            <li class="nav-item"><a href="{{ route('user-role.index') }}" class="nav-link {{ (Route::is("user-role.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-user mr-2"></i><span>User Role</span></a></li>
+            <li class="nav-item"><a href="{{ route('sales.index') }}" class="nav-link {{ (Route::is("sales.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Sales Dashboard</span></a></li>
+            <li class="nav-item"><a href="{{ route('late-changes.index') }}" class="nav-link {{ (Route::is("late-changes.index")) ? "ml-2" : "" }}"><i class="fa-solid fa-fw fa-bullhorn mr-2"></i><span>Late Charges</span></a></li>
           </ul>
         </div>
         <div class="col-md-9">
