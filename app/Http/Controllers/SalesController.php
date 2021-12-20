@@ -21,17 +21,11 @@ class SalesController extends Controller
     }
 
     private function parsingDateFromRange($from, $to){
-        $value = 0;
-        if(Carbon::createFromDate($from->year, $from->month, $from->day)->toDateTimeString() == Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)){
-            $value = false;
-        }else {
-            if(Carbon::createFromDate($to->year, $to->month, $to->day)->toDateTimeString() > Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)) {
-                $value =  false;
-            }else if(Carbon::createFromDate($to->year, $to->month, $to->day)->toDateTimeString() == Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)){
-                $value =  true;
-            }
+        $iteration = false;
+        if(Carbon::createFromDate($from->year, $from->month, $from->day)->toDateTimeString() < Carbon::createFromDate(Carbon::now()->year, Carbon::now()->month, Carbon::now()->day)->toDateTimeString()){
+            $iteration = true;
         }
-        return $value;
+        return $iteration;
     }
 
     /**
@@ -41,17 +35,17 @@ class SalesController extends Controller
      */
     public function index()
     {
-        $firstApplicant = Applicant::first();
+        $firstData = Borrower::all()->first();
         $row = array();
-        if($firstApplicant){
-            $firstDate = $firstApplicant->created_at;
-            $nextDate = $firstApplicant->created_at->addDays(7);
+        if($firstData){
+            $firstDate = $firstData->created_at;
+            $nextDate = $firstData->created_at->addDays(7);
             if($this->parsingDateFromRange($firstDate, $nextDate)){
                 while($this->parsingDateFromRange($firstDate, $nextDate)){
                     $item = array();
-                    $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
+                    $item['week'] = $firstDate->format('d/m/y').' - '.$nextDate->format('d/m/y');
                     $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
-                    $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get());
+                    $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
                     $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
                     $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
                     $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=","pending")->get());
@@ -59,14 +53,14 @@ class SalesController extends Controller
         
                     $row[] = $item;
         
-                    $firstDate = $nextDate;
+                    $firstDate = Carbon::createFromDate($nextDate->year, $nextDate->month, $nextDate->day);
                     $nextDate = $nextDate->addDays(7);
                 }
             }else {
                 $item = array();
-                $item['week'] = $firstDate->toFormattedDateString().' - '.$nextDate->toFormattedDateString();
+                $item['week'] = $firstDate->format('d/m/y').' - '.$nextDate->format('d/m/y');
                 $item['total_applications'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
-                $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get());
+                $item['total_loan_applied'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "pending")->get()) + count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
                 $item['total_loan_approve'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->get());
                 $item['total_loan_rejected'] = count(Applicant::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "canceled")->get());
                 $item['total_loan_disbursed'] = count(Borrower::whereBetween("created_at", [$firstDate->addDays(-1), $nextDate])->where("status", "!=", "pending")->get());
@@ -75,7 +69,7 @@ class SalesController extends Controller
                 $row[] = $item;
             }
         }
-        return view('sales.index', ['data' => $row]);
+        return view('sales.index', compact('row'));
     }
 
     /**

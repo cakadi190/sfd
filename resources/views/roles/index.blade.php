@@ -102,7 +102,7 @@
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
+                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][1] == 'management') ? 'checked' : '' }}>
                                 </div>
                             </td>
                         @elseif(count($user['roles']) == 1)

@@ -3,8 +3,9 @@
 @section('title', 'Login | ' . config('app.name'))
 
 @section('header')
+{!! RecaptchaV3::initJs() !!}
 <style>
-.grecaptcha-badge { visibility: hidden !important; }
+/* .grecaptcha-badge { visibility: hidden !important; } */
 #mainhead {
     display: flex;
     justify-content: center;

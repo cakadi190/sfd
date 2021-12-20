@@ -30,8 +30,9 @@
                     <th class="border-top-0">Total Bad Debt (RM)</th>
                 </thead>
                 <tbody>
-                    <tr>
-                        @forelse ($data as $d)
+                    @if($row)
+                        @foreach ($row as $d)
+                        <tr>
                             <td class="text-center">{{ $d['week'] }}</td>
                             <td class="text-center">{{ $d['total_applications'] }}</td>
                             <td class="text-center">{{ $d['total_loan_applied'] }}</td>
@@ -39,10 +40,11 @@
                             <td class="text-center">{{ $d['total_loan_rejected'] }}</td>
                             <td class="text-center">{{ $d['total_loan_disbursed'] }}</td>
                             <td class="text-center">{{ $d['total_bad_debt'] }}</td>
-                        @empty
-                            <td colspan="7" class="text-center">No Data Available Now</td>
-                        @endforelse
-                    </tr>
+                        </tr>
+                        @endforeach
+                    @else
+                        <td colspan="7" class="text-center">No Data Available Now</td>
+                    @endif
                 </tbody>
             </table>
         </div>
