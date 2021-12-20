@@ -48,30 +48,30 @@
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="header" class="h6">Status</label>
             <div class="d-flex flex-row">
-                    <div>
-                        <input type="radio" name="status" id="active" value="1">
-                        <label for="active">Active</label>
-                    </div>
-                    <div class="ml-2">
-                        <input type="radio" name="status" id="inactive" value="0">
-                        <label for="inactive">Inactive</label>
-                    </div>
+                <div class="custom-control custom-radio">
+                    <input type="radio" name="status" id="active" value="1" class="custom-control-input">
+                    <label class="custom-control-label" for="active">Active</label>
+                </div>
+                <div class="custom-control custom-radio ml-2">
+                    <input type="radio" name="status" id="inactive" value="0" class="custom-control-input">
+                    <label class="custom-control-label" for="inactive">Inactive</label>
+                </div>
             </div>
         </div>
         <div class="d-flex flex-column justify-content-start mt-4">
             <label for="state" class="h6">Roles</label>
                 <div class="d-flex flex-row justify-content-start">
-                    <div>
-                        <input type="checkbox" id="finance" class="align-self-center" aria-label="Checkbox for following text input" name="finance" value="finance" >
-                        <label for="finance" class="align-self-center">Finance</label>
+                    <div class="custom-control custom-checkbox align-self-center">
+                        <input type="checkbox" class="custom-control-input" id="finance" name="finance" value="finance">
+                        <label class="custom-control-label" for="finance">Finance</label>
                     </div>
-                    <div class="ml-2">
-                        <input type="checkbox" id="sales" class="align-self-center" aria-label="Checkbox for following text input" name="sales" value="sales" >
-                        <label for="sales" class="align-self-center">Sales</label>
+                    <div class="custom-control custom-checkbox align-self-center ml-2">
+                        <input type="checkbox" class="custom-control-input" id="sales" name="sales" value="sales">
+                        <label class="custom-control-label" for="sales">Sales</label>
                     </div>
-                    <div class="ml-2">
-                        <input type="checkbox" class="align-self-center" id="management" aria-label="Checkbox for following text input" name="management" value="management" >
-                        <label for="management" class="align-self-center">Management</label>
+                    <div class="custom-control custom-checkbox align-self-center ml-2">
+                        <input type="checkbox" class="custom-control-input" id="management" name="management" value="management">
+                        <label class="custom-control-label" for="management">Management</label>
                     </div>
                 </div>
         </div>
