@@ -76,65 +76,101 @@
                         @if(count($user['roles']) == 3)
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div> 
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][2] == 'management') ? 'checked' : '' }}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="Management" onclick="return false;" value="management" {{ ($user['roles'][2] == 'management') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                         @elseif(count($user['roles']) == 2)
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][1] == 'sales') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div> 
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][1] == 'management') ? 'checked' : '' }}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="Management" onclick="return false;" value="management" {{ ($user['roles'][1] == 'management') ? 'checked' : '' }}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                         @elseif(count($user['roles']) == 1)
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="finance" {{ ($user['roles'][0] == 'finance') ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][0] == 'sales') ? 'checked' : ''}}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;" value="sales" {{ ($user['roles'][0] == 'sales') ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div> 
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;" value="management" {{ ($user['roles'][0] == 'management') ? 'checked' : ''}}>
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="Management" onclick="return false;" value="management" {{ ($user['roles'][0] == 'management') ? 'checked' : ''}}>
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                         @else
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;">
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="finance" onclick="return false;">
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="finance" onclick="return false;">
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="sales" onclick="return false;">
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div> 
                             </td>
                             <td>
                                 <div class="d-flex flex-row justify-content-center mt-1">
-                                    <input type="checkbox" class="align-self-center" aria-label="Checkbox for following text input" name="Management" onclick="return false;">
+                                    <div class="custom-control custom-checkbox align-self-center">
+                                        <input type="checkbox" class="custom-control-input" id="customCheck1" name="Management" onclick="return false;">
+                                        <label class="custom-control-label" for="customCheck1"></label>
+                                    </div>
                                 </div>
                             </td>
                         @endif

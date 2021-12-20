@@ -47,7 +47,7 @@ class RegisterBorrowerController extends Controller
 
     # Process the data
     $data['email']            = htmlspecialchars(strip_tags($request->email));
-    $data['loan_id']          = uniqid('loan-');
+    $data['loan_id']          = uniqid();
     $data['finance_amount']   = (int) htmlspecialchars(strip_tags($request->finance_amount));
     $data['period']           = htmlspecialchars(strip_tags($request->period));
     $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));

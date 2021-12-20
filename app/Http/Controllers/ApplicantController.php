@@ -36,7 +36,7 @@ class ApplicantController extends Controller
   public function index()
   {
     $applicants = Applicant::all();
-    return view('applicant.index')->withApplicants($applicants);
+    return view('applicant.index', compact('applicants'));
   }
 
   /**
@@ -77,7 +77,7 @@ class ApplicantController extends Controller
       "g-recaptcha-response" => "required|recaptchav3:register,0.5"
     ]);
 
-    $data['loan_id']          = uniqid('loan-');
+    $data['loan_id']          = uniqid();
     $data['finance_ammount']  = htmlspecialchars(strip_tags($request->finance_ammount));
     $data['period']           = htmlspecialchars(strip_tags($request->period));
     $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));
