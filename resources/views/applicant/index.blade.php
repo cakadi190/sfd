@@ -37,40 +37,42 @@
           </thead>
           <tbody>
             @forelse ($applicants as $applicant)
-              <tr>
-                <td>{{ $applicant->loan_id }}</td>
-                <td>RM {{ $applicant->finance_amount }}</td>
-                <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
-                <td>
-                  @if ($applicant->status == 'canceled')
-                    <div class="bg-danger box-custom d-flex flex-column p-1 justify-content-center">
-                      <div class="text-light align-self-center">Canceled</div>
-                    </div>
-                  @else
-                    <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
-                      <div class="text-dark align-self-center">Pending</div>
-                    </div>
-                  @endif
-                </td>
-                <td colspan="3">
-                  <div class="d-flex flex-row justify-content-around">
-                    <a href="#" class="btn btn-primary font-mini btn-detail" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $applicant->id }}">Detail</a>
-                    <div class="btn-group ml-1" role="group" aria-label="Button group with nested dropdown">
-                      <div class="btn-group" role="group">
-                        <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                          More..
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          @if($applicant->status != "canceled")
-                          <a class="dropdown-item font-mini btn-approve pointer" data-toggle="modal" data-target="#modalAlertApprove" data-id="{{ $applicant->id }}">Approve</a>
-                          @endif
-                            <a class="dropdown-item font-mini btn-reject pointer" data-toggle="modal" data-target="#modalRejection" data-id="{{ $applicant->id }}">Reject</a>
+              @if($applicant->status != "applied")
+                <tr>
+                  <td>{{ $applicant->loan_id }}</td>
+                  <td>RM {{ $applicant->finance_amount }}</td>
+                  <td>{{ $applicant->created_at->toFormattedDateString() }}</td>
+                  <td>
+                    @if ($applicant->status == 'canceled')
+                      <div class="bg-danger box-custom d-flex flex-column p-1 justify-content-center">
+                        <div class="text-light align-self-center">Canceled</div>
+                      </div>
+                    @else
+                      <div class="bg-warning box-custom d-flex flex-column p-1 justify-content-center">
+                        <div class="text-dark align-self-center">Pending</div>
+                      </div>
+                    @endif
+                  </td>
+                  <td colspan="3">
+                    <div class="d-flex flex-row justify-content-around">
+                      <a href="#" class="btn btn-primary font-mini btn-detail" data-toggle="modal" data-target="#modalDetailData" data-id="{{ $applicant->id }}">Detail</a>
+                      <div class="btn-group ml-1" role="group" aria-label="Button group with nested dropdown">
+                        <div class="btn-group" role="group">
+                          <button id="btnGroupDrop1" type="button" class="btn btn-primary font-mini dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                            More..
+                          </button>
+                          <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            @if($applicant->status != "canceled")
+                            <a class="dropdown-item font-mini btn-approve pointer" data-toggle="modal" data-target="#modalAlertApprove" data-id="{{ $applicant->id }}">Approve</a>
+                            @endif
+                              <a class="dropdown-item font-mini btn-reject pointer" data-toggle="modal" data-target="#modalRejection" data-id="{{ $applicant->id }}">Reject</a>
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                </td>
-              </tr>
+                  </td>
+                </tr>
+              @endif
             @empty
               <td colspan="10" class="text-center">No Data Available Now</td>
             @endforelse

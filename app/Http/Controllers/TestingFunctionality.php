@@ -98,7 +98,7 @@ class TestingFunctionality extends Controller
         $borrower->due_date = $due_date;
         $borrower->save();
 
-        $is_overdue = $this->checkForOverdue($payment_seq->due_date);
+        $is_overdue = $this->checkForOverdue($payment_seq->due_date, true);
         $payment_seq->paid_at = Carbon::now();
         $payment_seq->payment_method = 'Bank Transfer';
         $payment_seq->status = ($is_overdue) ? "overdue" : "paid";

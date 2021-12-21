@@ -8,26 +8,9 @@ use App\Models\PaymentSequence;
 use App\Models\Borrower;
 use Illuminate\Http\Request;
 use App\Notifications\BorrowerRejectionNotification;
-use App\Notifications\EMandateEmailNotification;
 
 class ApplicantController extends Controller
 {
-
-  /* ===== Email Notification Funtion ===== */
-  private function activatingEMandate($applicant){
-    $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
-    // $receiver = $applicant->email; // Code for mail production
-    $mailData = [
-        'fullName' => $applicant->fullname,
-        'loanAmount' => $applicant->finance_amount,
-        'urlAuthorized' => 'https://www.quora.com/',
-        'urlRegister' => 'https://www.quora.com/',
-        'phoneNumber' => $applicant->phone,
-    ];
-
-    $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
-  }
-
   /**
    * Display a listing of the resource.
    *
@@ -174,6 +157,7 @@ class ApplicantController extends Controller
   public function approveApplicant($id){
     //Storing selected applicant data into 'borrowers' table
     $applicant = Applicant::findOrFail($id);
+
     $data_borrower = [
       'email' => $applicant->email,
       'loan_id' => $applicant->loan_id,
@@ -213,13 +197,25 @@ class ApplicantController extends Controller
     ];
     PaymentSequence::create($payment_seq_data);
 
-    $this->activatingEMandate($applicant);
+    $receiver = "rakha.rozaqtama@gmail.com"; // Code for mail testing
+    // $receiver = $applicant->email; // Code for mail production
+    $mailData = [
+        'fullName' => $applicant->fullname,
+        'loanAmount' => $applicant->finance_amount,
+        'urlAuthorized' => 'https://www.quora.com/',
+        'urlRegister' => 'https://www.quora.com/',
+        'phoneNumber' => $applicant->phone,
+    ];
+    // dd($mailData, $receiver);
+    $applicant->notify(new \App\Notifications\EMandateEmailNotification($mailData, $receiver));
 
     // Destroy selected applicant from 'applicants' table
-    $deleteStatus = $applicant->delete();
+    // $deleteStatus = $applicant->delete();
+    $applicant->status = "applied";
+    $state = $applicant->save();
 
     // Build particular message based on database condition
-    if($deleteStatus) {
+    if($state) {
       $sessionMsg = 'Selected Applicant Successfuly Approved';
     }else {
       $sessionMsg = 'Error Approving Data. Check Your Connection & Try Again.';
@@ -273,11 +269,7 @@ class ApplicantController extends Controller
     $data_db['reject_reason'] = $mailData['body_email'];
     $data_db['reject_status'] = $mailData['subject_email'];
     RejectedApplicant::create($data_db); 
-    
-    // Sending Email Notification using Laravel Queues
-    // dispatch(function() use ($mailData, $receiver, $applicant) {
-    //   $applicant->notify(new App\Notifications\BorrowerRejectionNotification($mailData, $receiver));
-    // });
+  
 
     $sessionMsg = 'Selected Applicant has been rejected';
 

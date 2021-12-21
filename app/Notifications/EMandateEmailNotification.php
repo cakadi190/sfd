@@ -7,6 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\EMandateEmail;
+use Illuminate\Support\Facades\Log;
 
 class EMandateEmailNotification extends Notification implements ShouldQueue
 {
@@ -44,6 +45,7 @@ class EMandateEmailNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
+        Log::debug('Notifications Sent');
         return (new EMandateEmail($this->mailData))->to($this->receiver);
     }
 

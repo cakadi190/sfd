@@ -258,35 +258,35 @@ class BorrowerController extends Controller
         //
     }
 
-    public function sendConfirmationEmail($id){
-        $userBorrower = Borrower::findOrFail($id);
-        // $receiver = $userBorrower->email;
-        $receiver = 'officialcakadi@gmail.com';
-        $mailData = [
-            'fullName' => $userBorrower->fullname,
-            'loanAmount' => '3000',
-            'timeEstimation' => '48'
-        ];
+    // public function sendConfirmationEmail($id){
+    //     $userBorrower = Borrower::findOrFail($id);
+    //     // $receiver = $userBorrower->email;
+    //     $receiver = 'officialcakadi@gmail.com';
+    //     $mailData = [
+    //         'fullName' => $userBorrower->fullname,
+    //         'loanAmount' => '3000',
+    //         'timeEstimation' => '48'
+    //     ];
 
-        dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
-        });
-    }
+    //     dispatch(function() use ($mailData, $receiver, $userBorrower){
+    //         $userBorrower->notify(new App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
+    //     });
+    // }
 
-    public function followUpEmail($id){
-        $userBorrower = Borrower::findOrFail($id);
-        $receiver = $userBorrower->email;
-        $phoneNumber = '088899228123';
-        $mailData = [
-            'fullName' => $userBorrower->fullname,
-            'url' => url('/'),
-            'phoneNumber' => $phoneNumber,
-        ];
+    // public function followUpEmail($id){
+    //     $userBorrower = Borrower::findOrFail($id);
+    //     $receiver = $userBorrower->email;
+    //     $phoneNumber = '088899228123';
+    //     $mailData = [
+    //         'fullName' => $userBorrower->fullname,
+    //         'url' => url('/'),
+    //         'phoneNumber' => $phoneNumber,
+    //     ];
 
-        dispatch(function() use ($mailData, $receiver, $userBorrower){
-            $userBorrower->notify(new App\Notifications\FollowUpEmailNotification($mailData, $receiver));
-        });
-    }
+    //     dispatch(function() use ($mailData, $receiver, $userBorrower){
+    //         $userBorrower->notify(new App\Notifications\FollowUpEmailNotification($mailData, $receiver));
+    //     });
+    // }
 
 
     /* ====== Disbursement Feature ====== */
@@ -366,9 +366,10 @@ class BorrowerController extends Controller
 
     public function blacklistBorrower($id){
         $userBorrower = Borrower::findOrFail($id);
-        $receiver = $userBorrower->email;
+        $receiver = 'rakha.rozaqtama@gmail.com';
+        // $receiver = $userBorrower->email;
         $mailData = [
-            'fullname' => $userBorrower->fullname,
+            'fullName' => $userBorrower->fullname,
             'loanReferenceNumber' => $userBorrower->loan_id,
             'loanAmmount' => $userBorrower->loan_amount,
             'phoneNumber' => $userBorrower->phone,

@@ -61,7 +61,7 @@ class LoginController extends Controller
         $request->validate([
             $this->username() => 'required|string',
             'password' => 'required|string',
-            'g-recaptcha-response' => 'required|recaptchav3:login,0.5'
+            'g-recaptcha-response' => 'required|recaptchav3:register,0.5'
         ]);
     }
 }

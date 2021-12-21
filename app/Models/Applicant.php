@@ -9,13 +9,32 @@ use App\Models\RejectedApplicant;
 
 class Applicant extends Model
 {
-  use HasFactory, Notifiable;
+    use HasFactory, Notifiable;
 
-  protected $table= "applicants";
+    protected $table = "applicants";
 
-  protected $guarded = [];
+    protected $fillable = [
+        'loan_id',
+        'finance_amount',
+        'period',
+        'fullname',
+        'nric',
+        'email',
+        'phone',
+        'birthdate',
+        'dependants',
+        'employment',
+        'id_front',
+        'id_back',
+        'salary_slip',
+        'bank_statement',
+        'utilities_slip',
+        'status'
+    ];
 
-  public function rejected_applicants(){
-    return $this->hasOne(RejectedApplicant::class, 'applicants_id', 'id');
-  }
+    protected $guarded = [];
+
+    public function rejected_applicants(){
+        return $this->hasOne(RejectedApplicant::class, 'applicants_id', 'id');
+    }
 }

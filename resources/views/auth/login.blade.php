@@ -160,7 +160,7 @@
                 </div>
               </div>
             </div>
-            {!! RecaptchaV3::field('login', $name='g-recaptcha-response') !!}
+            {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
           </form>
         </div>
       </section>

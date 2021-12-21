@@ -214,10 +214,10 @@ const profitSum = document.getElementById('profit-summary');
 const profitSummary = new Chart(profitSum, {
   type: 'bar',
   data: {
-    labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7'],
+    labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10', 'Data 11', 'Data 12'],
     datasets: [{
       label: '# Loan(s)',
-      data: [1,2,3,4,5,6,7],
+      data: [100,200,300,400,5,6,7,8,9,10,11,12],
       backgroundColor: 'rgba(21,40,96, 1)',
     }]
   },
