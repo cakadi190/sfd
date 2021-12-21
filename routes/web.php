@@ -3,28 +3,10 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BorrowerController;
-use App\Models\Applicant;
-use App\Notifications\EMandateEmailNotification;
 
 Route::get('/testing-functionality', [App\Http\Controllers\TestingFunctionality::class, 'index']);
 Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'success']);
 Route::get('/testing-overdue/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'overdue']);
-
-// Route::get('/send-email', function(){
-//   $applicant = Applicant::findOrFail(4);
-
-//     $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
-//     // $receiver = $applicant->email; // Code for mail production
-//     $mailData = [
-//         'fullName' => $applicant->fullname,
-//         'loanAmount' => $applicant->finance_amount,
-//         'urlAuthorized' => 'https://www.quora.com/',
-//         'urlRegister' => 'https://www.quora.com/',
-//         'phoneNumber' => $applicant->phone,
-//     ];
-//   $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
-// });
-Route::get('/send-email/{id}', [App\Http\Controllers\ApplicantController::class, 'approveApplicant']);
 /*
   New Routes
 */
@@ -66,6 +48,9 @@ Route::prefix('register')->group(function () {
  */
 Route::prefix('dashboard')->group(function () {
   Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('dashboard.home');
+  Route::get('/getDataPieToday', [App\Http\Controllers\HomeController::class, 'getDataPieToday']);
+  Route::get('/getDataPieThisMonth', [App\Http\Controllers\HomeController::class, 'getDataPieThisMonth']);
+  Route::get('/getDataPieLastMonth', [App\Http\Controllers\HomeController::class, 'getDataPieLastMonth']);
 
   Route::post('reject-applicant/{id}', [App\Http\Controllers\ApplicantController::class, 'sendRejectionEmail'])->name('dashboard.reject-applicant');
   Route::get('approve-applicant/{id}', [App\Http\Controllers\ApplicantController::class, 'approveApplicant'])->name('dashboard.approve-applicant');

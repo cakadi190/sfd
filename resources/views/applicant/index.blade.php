@@ -63,7 +63,7 @@
                           </button>
                           <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                             @if($applicant->status != "canceled")
-                            <a class="dropdown-item font-mini btn-approve pointer" data-toggle="modal" data-target="#modalAlertApprove" data-id="{{ $applicant->id }}">Approve</a>
+                              <a class="dropdown-item font-mini btn-approve pointer" data-toggle="modal" data-target="#modalAlertApprove" data-id="{{ $applicant->id }}">Approve</a>
                             @endif
                               <a class="dropdown-item font-mini btn-reject pointer" data-toggle="modal" data-target="#modalRejection" data-id="{{ $applicant->id }}">Reject</a>
                           </div>
@@ -74,7 +74,9 @@
                 </tr>
               @endif
             @empty
-              <td colspan="10" class="text-center">No Data Available Now</td>
+                <tr>
+                  <td colspan="10" class="text-center">No Data Available Now</td>
+                </tr>
             @endforelse
           </tbody>
         </table>

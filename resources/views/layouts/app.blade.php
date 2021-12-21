@@ -26,7 +26,6 @@
   </title>
 
   <!-- Styles -->
-  {{-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> --}}
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
   <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
@@ -156,7 +155,7 @@
       @endguest
     </header>
 
-    <main id="content-wrapper" @auth class="py-3 container mt-3" @endauth>
+    <main id="content-wrapper" @auth class="py-3 container mt-5" @endauth>
       @auth
       <div class="row">
         <div class="col-md-3 d-none d-md-none d-lg-inline">

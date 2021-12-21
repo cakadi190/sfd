@@ -97,10 +97,9 @@
                 <div class="sr-only">More</div>
               </button>
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item active" data-retrive="today" href="#">Load Today</a>
-                <a class="dropdown-item" data-retrive="t_month" href="#">Load This Month</a>
-                <a class="dropdown-item" data-retrive="l_month" href="#">Load Last Month</a>
-                <a class="dropdown-item" data-retrive="year" href="#">Something else here</a>
+                <a class="dropdown-item active" id="btn-pie-today">Load Today</a>
+                <a class="dropdown-item" id="btn-pie-this-month">Load This Month</a>
+                <a class="dropdown-item" id="btn-pie-last-month">Load Last Month</a>
               </div>
             </div>
           </div>
@@ -143,19 +142,19 @@
           <tbody>
             <tr>
               <td>Borrower(s)</td>
-              <td>{{ $counter_borrow_day }} borrower(s)</td>
-              <td>{{ $counter_borrow_week }} borrower(s)</td>
-              <td>{{ $counter_borrow_month }} borrower(s)</td>
-              <td>{{ $counter_borrow_year }} borrower(s)</td>
-              <td>{{ $counter_borrow_all }} borrower(s)</td>
+              <td>{{ json_decode($data, true)['table']['borrower']['day'] }} borrower(s)</td>
+              <td>{{ json_decode($data, true)['table']['borrower']['week'] }} borrower(s)</td>
+              <td>{{ json_decode($data, true)['table']['borrower']['month'] }} borrower(s)</td>
+              <td>{{ json_decode($data, true)['table']['borrower']['year'] }} borrower(s)</td>
+              <td>{{ json_decode($data, true)['table']['borrower']['all']  }} borrower(s)</td>
             </tr>
             <tr>
               <td>Applicant(s)</td>
-              <td>{{ $counter_apply_day }} loan(s)</td>
-              <td>{{ $counter_apply_week }} loan(s)</td>
-              <td>{{ $counter_apply_month }} loan(s)</td>
-              <td>{{ $counter_apply_year }} loan(s)</td>
-              <td>{{ $counter_apply_all }} loan(s)</td>
+              <td>{{  json_decode($data, true)['table']['applicant']['day']  }} loan(s)</td>
+              <td>{{ json_decode($data, true)['table']['applicant']['week'] }} loan(s)</td>
+              <td>{{  json_decode($data, true)['table']['applicant']['month'] }} loan(s)</td>
+              <td>{{ json_decode($data, true)['table']['applicant']['year'] }} loan(s)</td>
+              <td>{{  json_decode($data, true)['table']['applicant']['all']  }} loan(s)</td>
             </tr>
           </tbody>
         </table>
@@ -169,82 +168,251 @@
 @section('footer')
 <script src="{{ asset('vendor/chartjs/chart.min.js') }}"></script>
 <script>
-// Default
-const chartSum = document.getElementById('loan-summary');
-const chartSummary = new Chart(chartSum, {
-  type: 'doughnut',
-  data: {
-    labels: ['Loan Applied', 'Loan Approved', 'Loan Rejected'],
-    datasets: [{
-      label: 'The Loan',
-      data: [126, 555, 1667],
-      backgroundColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      borderColor: [
-        'rgb(255, 99, 132)',
-        'rgb(54, 162, 235)',
-        'rgb(255, 205, 86)'
-      ],
-      borderWidth: 2
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      legend: {
-        display: false,
-      }
+$(document).ready(function(){
+  // Default
+  const data_pie = JSON.parse(`<?= $data ?>`);
+  let chartSum = document.getElementById('loan-summary');
+  let chartSummary = new Chart(chartSum, {
+    type: 'doughnut',
+    data: {
+      labels: ['Loan Applied', 'Loan Approved', 'Loan Rejected'],
+      datasets: [{
+        label: 'The Loan',
+        data: [
+          data_pie.pie.loan_applied,
+          data_pie.pie.loan_approved,
+          data_pie.pie.loan_rejected
+        ],
+        backgroundColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        borderColor: [
+          'rgb(255, 99, 132)',
+          'rgb(54, 162, 235)',
+          'rgb(255, 205, 86)'
+        ],
+        borderWidth: 2
+      }]
     },
-    scales: {
-      y: {
-        beginAtZero: true,
-        display: false,
-      },
-      x: {
-        display: false,
-      }
-    }
-  }
-});
-
-const profitSum = document.getElementById('profit-summary');
-const profitSummary = new Chart(profitSum, {
-  type: 'bar',
-  data: {
-    labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10', 'Data 11', 'Data 12'],
-    datasets: [{
-      label: '# Loan(s)',
-      data: [100,200,300,400,5,6,7,8,9,10,11,12],
-      backgroundColor: 'rgba(21,40,96, 1)',
-    }]
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      tooltip: {
-        callbacks: {
-          label: function(context) {
-            return context.parsed.y + ' loan(s)';
-          }
+    options: {
+      responsive: true,
+      plugins: {
+        legend: {
+          display: false,
         }
       },
-      legend: {
-        display: false,
-      }
-    },
-    scales: {
-      y: {
-        beginAtZero: true,
-        display: false,
-      },
-      x: {
-        display: false,
+      scales: {
+        y: {
+          beginAtZero: true,
+          display: false,
+        },
+        x: {
+          display: false,
+        }
       }
     }
-  }
+  });
+
+  const profitSum = document.getElementById('profit-summary');
+  const profitSummary = new Chart(profitSum, {
+    type: 'bar',
+    data: {
+      labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10', 'Data 11', 'Data 12'],
+      datasets: [{
+        label: '# Loan(s)',
+        data: [100,200,300,400,5,6,7,8,9,10,11,12],
+        backgroundColor: 'rgba(21,40,96, 1)',
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: {
+        tooltip: {
+          callbacks: {
+            label: function(context) {
+              return context.parsed.y + ' loan(s)';
+            }
+          }
+        },
+        legend: {
+          display: false,
+        }
+      },
+      scales: {
+        y: {
+          beginAtZero: true,
+          display: false,
+        },
+        x: {
+          display: false,
+        }
+      }
+    }
+  });
+
+  $('#btn-pie-today').on('click', function(){
+    chartSummary.destroy();
+    $.ajax({
+      url: '/dashboard/getDataPieToday',
+      type: 'GET',
+      success: function(data){
+        const data_pie = JSON.parse(data);
+        chartSum = document.getElementById('loan-summary');
+        chartSummary = new Chart(chartSum, {
+          type: 'doughnut',
+          data: {
+            labels: ['Loan Applied', 'Loan Approved', 'Loan Rejected'],
+            datasets: [{
+              label: 'The Loan',
+              data: [
+                data_pie.loan_applied,
+                data_pie.loan_approved,
+                data_pie.loan_rejected
+              ],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false,
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display: false,
+              }
+            }
+          }
+        });
+      }
+    });
+  });
+
+  $('#btn-pie-this-month').on('click', function(){
+    chartSummary.destroy();
+    $.ajax({
+      url: '/dashboard/getDataPieThisMonth',
+      type: 'GET',
+      success: function(data){
+        const data_pie = JSON.parse(data);
+        chartSum = document.getElementById('loan-summary');
+        chartSummary = new Chart(chartSum, {
+          type: 'doughnut',
+          data: {
+            labels: ['Loan Applied', 'Loan Approved', 'Loan Rejected'],
+            datasets: [{
+              label: 'The Loan',
+              data: [
+                data_pie.loan_applied,
+                data_pie.loan_approved,
+                data_pie.loan_rejected
+              ],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false,
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display: false,
+              }
+            }
+          }
+        });
+      }
+    });
+  });
+
+  $('#btn-pie-last-month').on('click', function(){
+    chartSummary.destroy();
+    $.ajax({
+      url: '/dashboard/getDataPieLastMonth',
+      type: 'GET',
+      success: function(data){
+        const data_pie = JSON.parse(data);
+        chartSum = document.getElementById('loan-summary');
+        chartSummary = new Chart(chartSum, {
+          type: 'doughnut',
+          data: {
+            labels: ['Loan Applied', 'Loan Approved', 'Loan Rejected'],
+            datasets: [{
+              label: 'The Loan',
+              data: [
+                data_pie.loan_applied,
+                data_pie.loan_approved,
+                data_pie.loan_rejected
+              ],
+              backgroundColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderColor: [
+                'rgb(255, 99, 132)',
+                'rgb(54, 162, 235)',
+                'rgb(255, 205, 86)'
+              ],
+              borderWidth: 2
+            }]
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false,
+              }
+            },
+            scales: {
+              y: {
+                beginAtZero: true,
+                display: false,
+              },
+              x: {
+                display: false,
+              }
+            }
+          }
+        });
+      }
+    });
+  });
 });
 </script>
 @endsection
