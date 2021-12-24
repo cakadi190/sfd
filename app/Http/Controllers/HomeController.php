@@ -47,14 +47,14 @@ class HomeController extends Controller
         $lastLimit2 = $lastPayment->paid_at->subMonth(2);
         $lastLimit3 = $lastPayment->paid_at->subMonth(3);
         $lastLimit4 = $lastPayment->paid_at->subMonth(4);
-        $firstMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit4->subMonth(), $lastLimit4])->get());
+        $lastLimit5 = $lastPayment->paid_at->subMonth(5);
+        $firstMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit5, $lastLimit4])->get());
         $secondMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit4, $lastLimit3])->get());
         $thirdMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit3, $lastLimit2])->get());
         $fourthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit2, $lastLimit1])->get());
         $fifthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit1, $lastPayment->paid_at])->get());
         $data_tiles = [$firstMonth, $secondMonth, $thirdMonth, $fourthMonth, $fifthMonth];
       }
-
 
       # Data Pie Chart
       # Today
