@@ -216,13 +216,20 @@ $(document).ready(function(){
   });
 
   const profitSum = document.getElementById('profit-summary');
+  const data_tiles = JSON.parse(`<?= $data ?>`);
   const profitSummary = new Chart(profitSum, {
     type: 'bar',
     data: {
-      labels: ['Data 1', 'Data 2', 'Data 3', 'Data 4', 'Data 5', 'Data 6', 'Data 7', 'Data 8', 'Data 9', 'Data 10', 'Data 11', 'Data 12'],
+      labels: ['Month 1', 'Month 2', 'Month 3', 'Month 4', 'Month 5'],
       datasets: [{
         label: '# Loan(s)',
-        data: [100,200,300,400,5,6,7,8,9,10,11,12],
+        data: [
+          data_tiles.tiles[0],
+          data_tiles.tiles[1],
+          data_tiles.tiles[2],
+          data_tiles.tiles[3],
+          data_tiles.tiles[4],
+        ],
         backgroundColor: 'rgba(21,40,96, 1)',
       }]
     },

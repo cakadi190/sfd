@@ -263,10 +263,10 @@
 
                 <div class="text-center tab-content mb-2 py-5">
                   <div class="tab-pane fade active show" id="pill-monthly-1">
-                    <h3 class="m-0 h1" id="calc-1">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-1">MYR 0</h3>
                   </div>
                   <div class="tab-pane fade" id="pill-total-1">
-                    <h3 class="m-0 h1" id="calc-total-1">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-total-1">MYR 0</h3>
                   </div>
                 </div>
 
@@ -367,10 +367,10 @@
 
                 <div class="text-center tab-content mb-2 py-5">
                   <div class="tab-pane fade active show" id="pill-monthly-2">
-                    <h3 class="m-0 h1" id="calc-2">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-2">MYR 0</h3>
                   </div>
                   <div class="tab-pane fade" id="pill-total-2">
-                    <h3 class="m-0 h1" id="calc-total-2">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-total-2">MYR 0</h3>
                   </div>
                 </div>
 
@@ -410,8 +410,9 @@
                 <div class="input-group">
                   <select name="phone_prefix" id="phone_prefix" class="form-control w-25">
                     <option selected disabled>Choose One</option>
-                    <option value="+65">Singapore (+65)</option>
-                    <option value="+60">Singapore (+60)</option>
+                    @foreach ($country as $c)
+                      <option value="{{ $c->country_code }}">{{ $c->country_name_init }} ({{ $c->country_code }})</option>  
+                    @endforeach
                   </select>
                   <input type="text" class="form-control w-75" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" />
                 </div>
@@ -462,10 +463,10 @@
 
                 <div class="text-center tab-content mb-2 py-5">
                   <div class="tab-pane fade active show" id="pill-monthly-3">
-                    <h3 class="m-0 h1" id="calc-3">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-3">MYR 0</h3>
                   </div>
                   <div class="tab-pane fade" id="pill-total-3">
-                    <h3 class="m-0 h1" id="calc-total-3">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-total-3">MYR 0</h3>
                   </div>
                 </div>
 
@@ -529,10 +530,10 @@
 
                 <div class="text-center tab-content mb-2 py-5">
                   <div class="tab-pane fade active show" id="pill-monthly-4">
-                    <h3 class="m-0 h1" id="calc-4">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-4">MYR 0</h3>
                   </div>
                   <div class="tab-pane fade" id="pill-total-4">
-                    <h3 class="m-0 h1" id="calc-total-4">SGD 0</h3>
+                    <h3 class="m-0 h1" id="calc-total-4">MYR 0</h3>
                   </div>
                 </div>
 
@@ -558,8 +559,17 @@
               </div>
 
               <div class="form-group mb-5">
-                <label><span class="font-weight-bold">Salary Slip</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="salary_slip" class="dropify" data-height="70" />
+                <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="pay_slips" class="dropify" data-height="70" multiple="multiple"/>
+
+                @error('salary_slip')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+              </div>
+
+              <div class="form-group mb-5">
+                <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="bank_statements" class="dropify" data-height="70" multiple="multiple"/>
 
                 @error('salary_slip')
                 <div class="text-danger">{{ $message }}</div>
@@ -611,10 +621,10 @@
 
           <div class="text-center tab-content mb-2 py-5">
             <div class="tab-pane fade active show" id="pill-monthly-5">
-              <h3 class="m-0 h1" id="calc-5">SGD 0</h3>
+              <h3 class="m-0 h1" id="calc-5">MYR 0</h3>
             </div>
             <div class="tab-pane fade" id="pill-total-5">
-              <h3 class="m-0 h1" id="calc-total-5">SGD 0</h3>
+              <h3 class="m-0 h1" id="calc-total-5">MYR 0</h3>
             </div>
           </div>
 
@@ -675,7 +685,7 @@
   // Loan Calculator
   var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
-    currency: 'SGD',
+    currency: 'MYR',
   });
   function loanCalc() {
     let num = +$('#finance_amount').val();

@@ -258,36 +258,6 @@ class BorrowerController extends Controller
         //
     }
 
-    // public function sendConfirmationEmail($id){
-    //     $userBorrower = Borrower::findOrFail($id);
-    //     // $receiver = $userBorrower->email;
-    //     $receiver = 'officialcakadi@gmail.com';
-    //     $mailData = [
-    //         'fullName' => $userBorrower->fullname,
-    //         'loanAmount' => '3000',
-    //         'timeEstimation' => '48'
-    //     ];
-
-    //     dispatch(function() use ($mailData, $receiver, $userBorrower){
-    //         $userBorrower->notify(new App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
-    //     });
-    // }
-
-    // public function followUpEmail($id){
-    //     $userBorrower = Borrower::findOrFail($id);
-    //     $receiver = $userBorrower->email;
-    //     $phoneNumber = '088899228123';
-    //     $mailData = [
-    //         'fullName' => $userBorrower->fullname,
-    //         'url' => url('/'),
-    //         'phoneNumber' => $phoneNumber,
-    //     ];
-
-    //     dispatch(function() use ($mailData, $receiver, $userBorrower){
-    //         $userBorrower->notify(new App\Notifications\FollowUpEmailNotification($mailData, $receiver));
-    //     });
-    // }
-
 
     /* ====== Disbursement Feature ====== */
     public function getDataModalDisbursement($id){
@@ -446,7 +416,11 @@ class BorrowerController extends Controller
             $new_payment_seq = PaymentSequence::create($data_new_payment_seq);
         }
 
-        $msg = 'Current Condition Successfuly Saved';
+        if($new_payment_seq){
+            $msg = 'Current Condition Successfuly Saved';
+        }else {
+            $msg = 'Failed to save current condition. Check your connectivity and try again!';
+        }
         return redirect('/dashboard/borrower')->with('message', $msg);
     }
 }

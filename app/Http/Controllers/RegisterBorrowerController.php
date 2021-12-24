@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use Illuminate\Http\Request;
+use App\Models\CountryDetail;
 
 class RegisterBorrowerController extends Controller
 {
@@ -14,7 +15,8 @@ class RegisterBorrowerController extends Controller
    */
   public function register()
   {
-    return view('auth.register');
+    $country = CountryDetail::all();
+    return view('auth.register', compact('country'));
   }
 
   /**
@@ -40,7 +42,8 @@ class RegisterBorrowerController extends Controller
       "dependants"      => ["required"],
       "id_front"        => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "id_back"         => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
-      "salary_slip"     => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      "pay_slips" => ["required", "file", "max: 10240", "mimes:jpg,png,jpeg,pdf"],
+      "bank_statements" => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "utilities_slip"  => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       'g-recaptcha-response' => 'required|recaptchav3:register,0.5',
     ]);

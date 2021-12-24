@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Applicant;
 use App\Models\Borrower;
+use App\Models\PaymentSequence;
 use Carbon\Carbon;
 
 class HomeController extends Controller
@@ -23,10 +24,30 @@ class HomeController extends Controller
    *
    * @return \Illuminate\Contracts\Support\Renderable
    */
+
+  public function countProfit($data){
+    $profit = 0;
+    foreach($data as $d){
+      $profit += (($d->ammount * 18) / 100);
+    }
+    return $profit;
+  }
+
   public function index(){
       $apply  = new Applicant();
       $borrow = new Borrower();
       $time   = new Carbon();
+
+      # Data Tiles Chart
+      # Today
+      $firstPayment = PaymentSequence::all()->first();
+      $firstDate = $firstPayment->paid_at;
+      $monthOne = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
+      $monthTwo = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(2), $firstDate->addMonth(3)])->get());
+      $monthThree = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(4), $firstDate->addMonth(5)])->get());
+      $monthFour = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(6), $firstDate->addMonth(7)])->get());
+      $monthFive = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(8), $firstDate->addMonth(9)])->get());
+      $data_tiles = [$monthOne, $monthTwo, $monthThree, $monthFour, $monthFive];
 
       # Data Pie Chart
       # Today
@@ -42,7 +63,7 @@ class HomeController extends Controller
         'loan_rejected' => $loan_rejected
       ];
 
-      # Apply List
+      // # Apply List
       $apply_today                  = $apply->whereDate('created_at', $time->today());
       $apply_week                   = $apply->whereBetween('created_at', [$time->today()->startOfWeek(), $time->today()->endOfWeek()]);
       $apply_month                  = $apply->whereBetween('created_at', [$time->today()->startOfMonth(), $time->today()->endOfMonth()]);
@@ -53,7 +74,7 @@ class HomeController extends Controller
       $data['counter_apply_year']   = $apply_year->count();
       $data['counter_apply_all']    = $apply->all()->count();
 
-      # Borrower List
+      // # Borrower List
       $borrow_today                  = $borrow->whereDate('created_at', $time->today());
       $borrow_week                   = $borrow->whereBetween('created_at', [$time->today()->startOfWeek(), $time->today()->endOfWeek()]);
       $borrow_month                  = $borrow->whereBetween('created_at', [$time->today()->startOfMonth(), $time->today()->endOfMonth()]);
@@ -82,6 +103,7 @@ class HomeController extends Controller
             'all' => $data['counter_borrow_all']
           ],
         ],
+        'tiles' => $data_tiles,
       ];
       return view('dashboard', ['data' => json_encode($data)]);
   }

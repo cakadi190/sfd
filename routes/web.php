@@ -7,6 +7,7 @@ use App\Http\Controllers\BorrowerController;
 Route::get('/testing-functionality', [App\Http\Controllers\TestingFunctionality::class, 'index']);
 Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'success']);
 Route::get('/testing-overdue/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'overdue']);
+
 /*
   New Routes
 */
