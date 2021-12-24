@@ -39,7 +39,7 @@ class HomeController extends Controller
       $time   = new Carbon();
 
       # Data Tiles Chart
-      # Today
+      # 5 months tiles chart
       $lastPayment = PaymentSequence::all()->last();
       $lastLimit1 = $lastPayment->paid_at->subMonth();
       $lastLimit2 = $lastPayment->paid_at->subMonth(2);
@@ -51,7 +51,7 @@ class HomeController extends Controller
       $fourthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit2, $lastLimit1])->get());
       $fifthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit1, $lastPayment->paid_at])->get());
       $data_tiles = [$firstMonth, $secondMonth, $thirdMonth, $fourthMonth, $fifthMonth];
-      
+
 
       # Data Pie Chart
       # Today
