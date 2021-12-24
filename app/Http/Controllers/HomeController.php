@@ -43,11 +43,12 @@ class HomeController extends Controller
       $firstPayment = PaymentSequence::all()->first();
       $firstDate = $firstPayment->paid_at;
       $monthOne = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
-      $monthTwo = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(2), $firstDate->addMonth(3)])->get());
-      $monthThree = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(4), $firstDate->addMonth(5)])->get());
-      $monthFour = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(6), $firstDate->addMonth(7)])->get());
-      $monthFive = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->addMonth(8), $firstDate->addMonth(9)])->get());
+      $monthTwo = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
+      $monthThree = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
+      $monthFour = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
+      $monthFive = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
       $data_tiles = [$monthOne, $monthTwo, $monthThree, $monthFour, $monthFive];
+      dd($monthOne, $monthTwo, $monthThree, $monthFour, $monthFive, $data_tiles);
 
       # Data Pie Chart
       # Today
