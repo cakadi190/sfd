@@ -239,7 +239,7 @@ $(document).ready(function(){
         tooltip: {
           callbacks: {
             label: function(context) {
-              return context.parsed.y + ' loan(s)';
+              return context.parsed.y + ' MYR';
             }
           }
         },

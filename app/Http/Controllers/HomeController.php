@@ -40,14 +40,17 @@ class HomeController extends Controller
 
       # Data Tiles Chart
       # Today
-      $firstPayment = PaymentSequence::all()->first();
-      $firstDate = $firstPayment->paid_at;
-      $monthOne = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->subMonth(1), $firstDate->addMonth()])->get());
-      $monthTwo = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
-      $monthThree = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
-      $monthFour = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
-      $monthFive = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
-      $data_tiles = [$monthOne, $monthTwo, $monthThree, $monthFour, $monthFive];
+      $lastPayment = PaymentSequence::all()->last();
+      $lastLimit1 = $lastPayment->paid_at->subMonth();
+      $lastLimit2 = $lastPayment->paid_at->subMonth(2);
+      $lastLimit3 = $lastPayment->paid_at->subMonth(3);
+      $lastLimit4 = $lastPayment->paid_at->subMonth(4);
+      $firstMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit4->subMonth(), $lastLimit4])->get());
+      $secondMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit4, $lastLimit3])->get());
+      $thirdMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit3, $lastLimit2])->get());
+      $fourthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit2, $lastLimit1])->get());
+      $fifthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit1, $lastPayment->paid_at])->get());
+      $data_tiles = [$firstMonth, $secondMonth, $thirdMonth, $fourthMonth, $fifthMonth];
 
       # Data Pie Chart
       # Today
