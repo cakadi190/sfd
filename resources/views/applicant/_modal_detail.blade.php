@@ -102,7 +102,16 @@
       <p class="col-sm-5">Salary Slip</p>
       <p class="col-sm-1">:</p>
       <p class="col-sm-6">
-        <a href="{{ asset($applicant->salary_slip) }}" download="{{ $applicant->fullname }}-SalarySlip">Download File Data</a>
+        <a href="{{ asset(explode(",", $applicant->salary_slip)[0]) }}" download="{{ $applicant->fullname }}-SalarySlip">Download File Data</a>
+      </p>
+    </div>
+  </div>
+  <div class="container ml-2">
+    <div class="row">
+      <p class="col-sm-5">Bank Statement</p>
+      <p class="col-sm-1">:</p>
+      <p class="col-sm-6">
+        <a href="{{ asset(explode(",", $applicant->bank_statement)[0]) }}" download="{{ $applicant->fullname }}-SalarySlip">Download File Data</a>
       </p>
     </div>
   </div>
