@@ -42,13 +42,12 @@ class HomeController extends Controller
       # Today
       $firstPayment = PaymentSequence::all()->first();
       $firstDate = $firstPayment->paid_at;
-      $monthOne = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
+      $monthOne = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate->subMonth(1), $firstDate->addMonth()])->get());
       $monthTwo = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
       $monthThree = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
       $monthFour = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
       $monthFive = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$firstDate, $firstDate->addMonth()])->get());
       $data_tiles = [$monthOne, $monthTwo, $monthThree, $monthFour, $monthFive];
-      dd($monthOne, $monthTwo, $monthThree, $monthFour, $monthFive, $data_tiles);
 
       # Data Pie Chart
       # Today
