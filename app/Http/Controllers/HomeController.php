@@ -41,6 +41,7 @@ class HomeController extends Controller
       # Data Tiles Chart
       # 5 months tiles chart
       $lastPayment = PaymentSequence::all()->last();
+      $data_tiles = null;
       if($lastPayment){
         $lastLimit1 = $lastPayment->paid_at->subMonth();
         $lastLimit2 = $lastPayment->paid_at->subMonth(2);
@@ -52,8 +53,6 @@ class HomeController extends Controller
         $fourthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit2, $lastLimit1])->get());
         $fifthMonth = $this->countProfit(PaymentSequence::whereBetween("paid_at", [$lastLimit1, $lastPayment->paid_at])->get());
         $data_tiles = [$firstMonth, $secondMonth, $thirdMonth, $fourthMonth, $fifthMonth];
-      }else{
-        $data_tiles = null;
       }
 
 

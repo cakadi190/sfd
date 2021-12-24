@@ -42,9 +42,11 @@ class RegisterBorrowerController extends Controller
       "dependants"      => ["required"],
       "id_front"        => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "id_back"         => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
-      "pay_slips" => ["required", "file", "max: 10240", "mimes:jpg,png,jpeg,pdf"],
-      "bank_statements" => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
-      "utilities_slip"  => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
+      "pay_slips" => ["array", "required"],
+      "pay_slips.*" => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
+      "bank_statements" => ["array", "required"],
+      "bank_statements.*" => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
+      "utilities_slip"  => ["required", "file", 'max: 10240', 'mimes:jpg,png,jpeg,pdf'],
       'g-recaptcha-response' => 'required|recaptchav3:register,0.5',
     ]);
 
@@ -59,7 +61,6 @@ class RegisterBorrowerController extends Controller
     $data['dependants']       = htmlspecialchars(strip_tags($request->dependants));
     $data['employment']       = htmlspecialchars(strip_tags($request->employment));
     $data['phone']            = htmlspecialchars(strip_tags($request->phone_prefix)) . htmlspecialchars(strip_tags($request->phone));
-    // dd($data);
 
     $utilities = $request->utilities_slip;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
@@ -73,9 +74,31 @@ class RegisterBorrowerController extends Controller
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['id_front']         = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
 
-    $utilities = $request->salary_slip;
-    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
-    $data['salary_slip']      = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
+    if($request->has('pay_slips')){
+      $data['salary_slip'] = "";
+      $count = 0;
+      foreach($request->file('pay_slips') as $file){
+        $file->move(public_path('upload'), time().'_'.md5(now()).'.'.$file->getClientOriginalExtension());
+        $data['salary_slip'] .= 'upload/'.time().'_'.md5(now()).'.'.$file->getClientOriginalExtension();
+        if($count < 2){
+          $data['salary_slip'] .= ',';  
+        }
+        $count += 1;
+      }
+    }
+
+    if($request->has('bank_statements')){
+      $data['bank_statement'] = "";
+      $count = 0;
+      foreach($request->file('bank_statements') as $file){
+        $file->move(public_path('upload'), time().'_'.md5(now()).'.'.$file->getClientOriginalExtension());
+        $data['bank_statement'] .= 'upload/'.time().'_'.md5(now()).'.'.$file->getClientOriginalExtension();
+        if($count < 2){
+          $data['bank_statement'] .= ',';
+        }
+        $count += 1;
+      }
+    }
 
     # Insert it to database
     $data = Applicant::create($data);

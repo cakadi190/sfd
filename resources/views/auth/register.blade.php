@@ -19,7 +19,7 @@
     padding: 0.5rem 1rem;
   }
 
-  .grecaptcha-badge { visibility: hidden !important; }
+  /* .grecaptcha-badge { visibility: hidden !important; } */
   /* Navbar */
   .navbar .btn-primary {
     padding: 0.5rem 1.25rem;
@@ -560,7 +560,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="pay_slips" class="dropify" data-height="70" multiple="multiple"/>
+                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple/>  
 
                 @error('salary_slip')
                 <div class="text-danger">{{ $message }}</div>
@@ -569,7 +569,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements" class="dropify" data-height="70" multiple="multiple"/>
+                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple/>
 
                 @error('salary_slip')
                 <div class="text-danger">{{ $message }}</div>
