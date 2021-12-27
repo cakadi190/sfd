@@ -294,7 +294,12 @@ class BorrowerController extends Controller
     /* ===== Detail Borrower Feature ===== */
     public function getDataModalDetail($id){
         $userBorrower = Borrower::findOrFail($id);
-        return view('borrower._modal_detail', compact('userBorrower'));
+        $data = array();
+        $item = array();
+        $item['borrower'] = $userBorrower;
+        $item['salary_slip'] = explode(",", $userBorrower->salary_slip);
+        $data[] = $item;
+        return view('borrower._modal_detail', ['userBorrower' => $data]);
     }
 
 

@@ -144,7 +144,15 @@ class ApplicantController extends Controller
   /* ===== Detail Applicant Feature ===== */
   public function getDataModalDetail($id){
     $applicant = Applicant::findOrFail($id);
-    return view('applicant._modal_detail', compact('applicant'));
+    $item = array();
+    $data = array();
+    $arr_salary = explode(",", $applicant->salary_slip);
+    $arr_bank = explode(",", $applicant->bank_statement);
+    $item['applicant'] = $applicant;
+    $item['salary_slip'] = $arr_salary;
+    $item['bank_statement'] = $arr_bank;
+    $data[] = $item;
+    return view('applicant._modal_detail', ['applicant' => $data]);
   }
 
 
