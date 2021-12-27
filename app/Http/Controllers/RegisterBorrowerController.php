@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
-use Illuminate\Http\Request;
 use App\Models\CountryDetail;
+use App\Notifications\BorrowerConfirmationNotification;
+use Illuminate\Http\Request;
 
 class RegisterBorrowerController extends Controller
 {
@@ -129,9 +130,7 @@ class RegisterBorrowerController extends Controller
       'phoneNumber'     => $phoneNumber,
     ];
     
-    dispatch(function() use ($mailData, $receiver, $data){
-      $data->notify(new \App\Notifications\BorrowerConfirmationNotification($mailData, $receiver));
-    });
+    $data->notify(new BorrowerConfirmationNotification($mailData, $receiver));
 
     # Redirect to success onboarding
     return redirect()->route('register.success');
