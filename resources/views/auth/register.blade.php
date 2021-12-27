@@ -662,6 +662,7 @@
       }
     })
   }
+  
   function nextStep(targetElement) {
     $(`.nav-stepper a[href="#${targetElement}"]`).removeClass('disabled');
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');

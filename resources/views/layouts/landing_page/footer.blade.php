@@ -42,8 +42,10 @@
       <h5 class="font-type-tertiary font-footer-secondary cl-secondary">© 2020 All rights reserved.</h5>
       <h5 class="font-type-tertiary font-footer-secondary cl-quaternary">Smartfunding Pte. Ltd</h5>
     </div>
-    <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Privacy policy</h5>
-    <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Terms of use</h5>
+    <div class="d-flex flex-row justify-content-center">
+      <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Privacy policy</h5>
+      <h5 class="font-type-tertiary font-footer-secondary cl-octonary ml-3">Terms of use</h5>
+    </div>
   </div>
 </div>
 
@@ -91,7 +93,7 @@
 
 <!--Tablet Footer-->
 <div id="footer-tablet">
-  <div class="d-flex flex-column justify-content-around bg-cl-secondary p-5">
+  <div class="d-flex flex-column justify-content-between bg-cl-secondary p-5">
     <img src="{{ asset('images/logo/sfd-wh.svg') }}" alt="Logo" class="image-fluid img-small-footer-px align-self-start">
     <div class="d-flex flex-row justify-content-between align-self-start mt-5">
       <div class="d-flex flex-column justify-content-around">
@@ -108,14 +110,13 @@
       </div>
       <div class="d-flex flex-column justify-content-start pl-responsive">
         <div class="d-flex flex-column justify-content-start">
-          <h4 class="font-type-tertiary font-footer-primary cl-quaternary align-self-center mt-3">Hotline</h4>
-          <p class="width-container-super-mini-px cl-secondary font-type-tertiary font-footer-secondary align-self-center text-center">
+          <h4 class="font-type-tertiary font-footer-primary cl-quaternary mt-3">Hotline</h4>
+          <p class="width-container-super-mini-px cl-secondary font-type-tertiary font-footer-secondary">
             +60 9111 3111</p>
         </div>
         <div class="d-flex flex-column justify-content-start">
-          <h4 class="font-type-tertiary font-footer-primary cl-quaternary mt-3 align-self-center">Email</h4>
-          <p class="width-container-super-mini-px cl-secondary font-type-tertiary font-footer-secondary align-self-center text-center">
-          hi@smartfunding.sg</p>
+          <h4 class="font-type-tertiary font-footer-primary cl-quaternary mt-3">Email</h4>
+          <p class="width-container-super-mini-px cl-secondary font-type-tertiary font-footer-secondary">hi@smartfunding.sg</p>
         </div>
         <div class="d-flex flex-row justify-content-center mt-4">
           <img src="{{ asset('assets/Facebook.svg') }}" alt="Facebook" class="image-fluid img-icon-mini">
@@ -131,8 +132,10 @@
       <h5 class="font-type-tertiary font-footer-secondary cl-secondary">© 2020 All rights reserved.</h5>
       <h5 class="font-type-tertiary font-footer-secondary cl-quaternary">Smartfunding Pte. Ltd</h5>
     </div>
-    <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Privacy policy</h5>
-    <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Terms of use</h5>
+    <div class="d-flex flex-row justify-content-center">
+      <h5 class="font-type-tertiary font-footer-secondary cl-octonary">Privacy policy</h5>
+      <h5 class="font-type-tertiary font-footer-secondary cl-octonary ml-3">Terms of use</h5>
+    </div>
   </div>
 </div>
 
