@@ -29,11 +29,13 @@
       <div class="table-responsive card p-3">
           <table class="table table-striped table-bordered display" id="tableid">
               <thead>
-                <th>Loan ID</th>
-                <th>Finance Ammount</th>
-                <th>Application Date</th>
-                <th>Status</th>
-                <th>Action</th>
+                  <tr>  
+                    <th>Loan ID</th>
+                    <th>Finance Ammount</th>
+                    <th>Application Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
               </thead>
               <tbody>
                 @forelse($borrowers as $borrower)

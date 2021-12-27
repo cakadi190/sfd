@@ -8,6 +8,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {!! RecaptchaV3::initJs() !!}
 <style>
+  #phone_prefix{
+    width: 35% !important;
+  }
+  #phone{
+    width: 65% !important;
+  }
   .input-group > .select2-container--bootstrap4 {
     width: auto;
     flex: 1 1 auto;
@@ -275,7 +281,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
-                <input type="number" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" />
+                <input type="number" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" required/>
 
                 @error('finance_amount')
                 <div class="text-danger">{{ $message }}</div>
@@ -287,23 +293,23 @@
 
                 <div class="period-selector">
                   <div class="period-wrapper">
-                    <input type="radio" data-period="1" checked onchange="loanCalc()" name="period"{{ old('period') == 'annually' ? ' checked' : '' }} id="annually" value="annually" />
+                    <input type="radio" data-period="1" checked onchange="loanCalc()" name="period"{{ old('period') == 'annually' ? ' checked' : '' }} id="annually" value="annually" required/>
                     <label for="annually">1</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" data-period="2" onchange="loanCalc()" name="period"{{ old('period') == 'binneally' ? ' checked' : '' }} id="binneally" value="binneally" />
+                    <input type="radio" data-period="2" onchange="loanCalc()" name="period"{{ old('period') == 'binneally' ? ' checked' : '' }} id="binneally" value="binneally" required/>
                     <label for="binneally">2</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" data-period="3" onchange="loanCalc()" name="period"{{ old('period') == 'trienally' ? ' checked' : '' }} id="trienally" value="trienally" />
+                    <input type="radio" data-period="3" onchange="loanCalc()" name="period"{{ old('period') == 'trienally' ? ' checked' : '' }} id="trienally" value="trienally" required/>
                     <label for="trienally">3</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" data-period="4" onchange="loanCalc()" name="period"{{ old('period') == 'quadrennially' ? ' checked' : '' }} id="quadrennially" value="quadrennially" />
+                    <input type="radio" data-period="4" onchange="loanCalc()" name="period"{{ old('period') == 'quadrennially' ? ' checked' : '' }} id="quadrennially" value="quadrennially" required/>
                     <label for="quadrennially">4</label>
                   </div>
                   <div class="period-wrapper">
-                    <input type="radio" data-period="5" onchange="loanCalc()" name="period"{{ old('period') == 'quinquenially' ? ' checked' : '' }} id="quinquenially" value="quinquenially" />
+                    <input type="radio" data-period="5" onchange="loanCalc()" name="period"{{ old('period') == 'quinquenially' ? ' checked' : '' }} id="quinquenially" value="quinquenially" required/>
                     <label for="quinquenially">5</label>
                   </div>
                 </div>
@@ -315,7 +321,7 @@
 
               <div class="form-group">
                 <label class="font-weight-bold d-flex" for="purpose">Purpose <div class="text-danger">*</div></label>
-                <select name="purpose" id="purpose" class="form-control selecting">
+                <select name="purpose" id="purpose" class="form-control selecting" required>
                   <option disabled selected="selected">Select</option>
                   <option value="Business Venture" {{old('purpose')=='Business Venture'?'selected':''}}>01 - Business Venture</option>
                   <option value="Debt Consolidation" {{old('purpose')=='Debt Consolidation'?'selected':''}}>02 - Debt Consolidation</option>
@@ -388,7 +394,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="nric">NRIC No <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" value="{{ old('nric') }}" id="nric" name="nric" placeholder="Enter your NRIC" />
+                <input type="text" class="form-control" value="{{ old('nric') }}" id="nric" name="nric" placeholder="Enter your NRIC" required/>
 
                 @error('nric')
                 <div class="text-danger">{{ $message }}</div>
@@ -397,7 +403,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="email">E-Mail <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" value="{{ old('email') }}" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" />
+                <input type="text" class="form-control" value="{{ old('email') }}" value="{{ old('email') }}" id="email" name="email" placeholder="Enter your Email" required />
 
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
@@ -408,20 +414,21 @@
                 <label class="font-weight-bold d-flex">Contact No <span class="text-danger">*</span></label>
 
                 <div class="input-group">
-                  <select name="phone_prefix" id="phone_prefix" class="form-control w-25">
+                  <select name="phone_prefix" id="phone_prefix" class="form-control" required>
                     <option selected disabled>Choose One</option>
-                    @foreach ($country as $c)
-                      <option value="{{ $c->country_code }}">{{ $c->country_name_init }} ({{ $c->country_code }})</option>  
-                    @endforeach
+                    <option value="{{ old('phone_prefix') }}"> SGP (+65)</option>
+                    <option value="{{ old('phone_prefix') }}"> MY (+60)</option>
+                    <option value="{{ old('phone_prefix') }}"> IDN (+62)</option>
+                    <option value="{{ old('phone_prefix') }}"> THAI (+66)</option>
                   </select>
-                  <input type="text" class="form-control w-75" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" />
+                  <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" required/>
                 </div>
               </div>
 
               <div class="form-group calendar">
                 <label class="font-weight-bold d-flex" for="birth_date">Date of Birth <span class="text-danger">*</span></label>
                 <div class="datepicker">
-                  <input type="text" class="form-control" value="{{ old('birth_date') }}" id="birth_date" name="birth_date" placeholder="Enter your Birth Date" />
+                  <input type="text" class="form-control" value="{{ old('birth_date') }}" id="birth_date" name="birth_date" placeholder="Enter your Birth Date" required />
                   <div class="calendar-icon">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M1.75 8.25C1.34 8.25 1 8.59 1 9C1 9.41 1.34 9.75 1.75 9.75C2.16 9.75 2.5 9.41 2.5 9C2.5 8.59 2.16 8.25 1.75 8.25Z" fill="#001E44"/>
@@ -475,7 +482,7 @@
 
               <div class="form-group mb-5">
                 <label for="tax">Annual Pre-Tax Income</label>
-                <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" value="{{old('tax')}}" />
+                <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" value="{{old('tax')}}" required/>
 
                 @error('tax')
                 <div class="text-danger">{{ $message }}</div>
@@ -484,7 +491,7 @@
 
               <div class="form-group mb-5">
                 <label for="employment">Employment Status</label>
-                <select name="employment" id="employment" class="form-control selecting w-100">
+                <select name="employment" id="employment" class="form-control selecting w-100" required>
                   <option disabled>--[ Choose One ]--</option>
                   <option value="employed" {{old('employment')=='employed'?'selected':''}}>Employed</option>
                   <option value="unemployed" {{old('employment')=='unemployed'?'selected':''}}>Unemployed</option>
@@ -497,7 +504,7 @@
 
               <div class="form-group">
                 <label for="dependants">Number of Dependants</label>
-                <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" value="{{ old('dependants') }}" />
+                <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" value="{{ old('dependants') }}" required/>
 
                 @error('dependants')
                 <div class="text-danger">{{ $message }}</div>
@@ -542,7 +549,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Front</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="id_front" class="dropify" data-height="70" />
+                <input type="file" name="id_front" class="dropify" data-height="70" required/>
 
                 @error('id_front')
                 <div class="text-danger">{{ $message }}</div>
@@ -551,7 +558,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Back</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="id_back" class="dropify" data-height="70" />
+                <input type="file" name="id_back" class="dropify" data-height="70" required/>
 
                 @error('id_back')
                 <div class="text-danger">{{ $message }}</div>
@@ -560,7 +567,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple/>  
+                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>  
 
                 @error('salary_slip')
                 <div class="text-danger">{{ $message }}</div>
@@ -569,7 +576,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple/>
+                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple required/>
 
                 @error('salary_slip')
                 <div class="text-danger">{{ $message }}</div>
@@ -578,7 +585,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Salary of Public Lifeline/Utilities</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="utilities_slip" class="dropify" data-height="70" />
+                <input type="file" name="utilities_slip" class="dropify" data-height="70" required />
 
                 @error('utilities_slip')
                 <div class="text-danger">{{ $message }}</div>
@@ -586,7 +593,7 @@
               </div>
 
               <div class="custom-control mb-3 custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" />
+                <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" required/>
                 <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
 
                 @error('agree')

@@ -95,6 +95,9 @@
 <div id="footer-tablet">
   <div class="d-flex flex-column justify-content-between bg-cl-secondary p-5">
     <img src="{{ asset('images/logo/sfd-wh.svg') }}" alt="Logo" class="image-fluid img-small-footer-px align-self-start">
+    {{-- <div class="d-flex flex-row justify-content-between align-self-start mt-5">
+      
+    </div> --}}
     <div class="d-flex flex-row justify-content-between align-self-start mt-5">
       <div class="d-flex flex-column justify-content-around">
         <h4 class="font-type-tertiary font-footer-primary mt-3 cl-quaternary align-self-start">License</h4>
