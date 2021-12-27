@@ -415,11 +415,11 @@
 
                 <div class="input-group">
                   <select name="phone_prefix" id="phone_prefix" class="form-control" required>
-                    <option selected disabled>Choose One</option>
-                    <option value="{{ old('phone_prefix') }}"> SGP (+65)</option>
-                    <option value="{{ old('phone_prefix') }}"> MY (+60)</option>
-                    <option value="{{ old('phone_prefix') }}"> IDN (+62)</option>
-                    <option value="{{ old('phone_prefix') }}"> THAI (+66)</option>
+                    <option {{ (!old('phone_prefix')) ? "selected" : "" }} disabled>Choose One</option>
+                    <option value="+65" {{ (old('phone_prefix') == "+65") ? "selected" : "" }}> SGP (+65)</option>
+                    <option value="+60" {{ (old('phone_prefix') == "+60") ? "selected" : "" }}> MY (+60)</option>
+                    <option value="+62" {{ (old('phone_prefix') == "+62") ? "selected" : "" }}> IDN (+62)</option>
+                    <option value="+66" {{ (old('phone_prefix') == "+66") ? "selected" : "" }}> THAI (+66)</option>
                   </select>
                   <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" required/>
                 </div>
@@ -569,16 +569,16 @@
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
                 <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>  
 
-                @error('salary_slip')
+                @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple required/>
+                <input type="file" name="bank_statements[]" class="dropify" se data-height="70" multiple required/>
 
-                @error('salary_slip')
+                @error('bank_statements')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
@@ -700,7 +700,6 @@
     let selectedPeriod = +$('[name="period"]:checked').data('period');
     let calc;
 
-    // calc = (num * 0.18 * selectedPeriod) + (num / (selectedPeriod*12));
     calc = ((num * 0.18) + num) / (12 * selectedPeriod);
 
     $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);

@@ -42,9 +42,9 @@ class RegisterBorrowerController extends Controller
       "dependants"      => ["required"],
       "id_front"        => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
       "id_back"         => ["required", 'file', 'max:10240', 'mimes:jpg,png,jpeg,pdf'],
-      "pay_slips" => ["array", "required"],
+      "pay_slips" => ["array", "required", "min:3", "max:3"],
       "pay_slips.*" => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
-      "bank_statements" => ["array", "required"],
+      "bank_statements" => ["array", "required", "min:3", "max:3"],
       "bank_statements.*" => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
       "utilities_slip"  => ["required", "file", 'max: 10240', 'mimes:jpg,png,jpeg,pdf'],
       'g-recaptcha-response' => 'required|recaptchav3:register,0.5',
@@ -65,15 +65,18 @@ class RegisterBorrowerController extends Controller
     $utilities = $request->utilities_slip;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['utilities_slip']   = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
+    session(['utilities_slip' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
 
     $utilities = $request->id_back;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['id_back']          = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
+    session(['id_back' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
 
     $utilities = $request->id_front;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['id_front']         = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-
+    session(['id_front' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
+    
     if($request->has('pay_slips')){
       $data['salary_slip'] = "";
       $count = 0;
@@ -85,6 +88,7 @@ class RegisterBorrowerController extends Controller
         }
         $count += 1;
       }
+      session(['salary_slip' => $data['salary_slip']]);
     }
 
     if($request->has('bank_statements')){
@@ -98,6 +102,7 @@ class RegisterBorrowerController extends Controller
         }
         $count += 1;
       }
+      session(['bank_statement' => $data['bank_statement']]);
     }
 
     # Insert it to database
