@@ -293,6 +293,8 @@
                 @error('finance_amount')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -324,6 +326,8 @@
                 @error('periode')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group">
@@ -352,6 +356,8 @@
                 @error('purpose')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
             </div>
 
@@ -397,6 +403,8 @@
                 @error('fullname')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -406,6 +414,8 @@
                 @error('nric')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -415,6 +425,8 @@
                 @error('email')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -430,6 +442,8 @@
                   </select>
                   <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" required/>
                 </div>
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group calendar">
@@ -444,6 +458,8 @@
                       <path d="M17.25 1.25V6.25" stroke="#001E44" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                   </div>
+
+                  <div class="error-message"></div>
                 </div>
 
                 @error('birth_date')
@@ -494,6 +510,8 @@
                 @error('tax')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -507,6 +525,8 @@
                 @error('employment')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group">
@@ -516,6 +536,8 @@
                 @error('dependants')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
             </div>
 
@@ -561,6 +583,8 @@
                 @error('id_front')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -570,6 +594,8 @@
                 @error('id_back')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -579,6 +605,8 @@
                 @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -588,6 +616,8 @@
                 @error('bank_statements')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
               <div class="form-group mb-5">
@@ -597,15 +627,19 @@
                 @error('utilities_slip')
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
 
-              <div class="custom-control mb-3 custom-checkbox">
+              <div class="custom-control form-group mb-3 custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" required/>
                 <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
 
                 @error('agree')
                 <div class="text-danger">You must accept the privacy notice!</div>
                 @enderror
+
+                <div class="error-message"></div>
               </div>
             </div>
             {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
@@ -662,10 +696,12 @@
 
 <script>
   /** Jquery Validation */
-  $('form').validation({
+  $('form').validate({
+    ignore: [],
     rules: {
       finance_amount: {
         required: true,
+        number: true,
       },
       period: {
         required: true,
@@ -696,6 +732,7 @@
       },
       tax: {
         required: true,
+        number: true,
       },
       employment: {
         required: true,
@@ -744,15 +781,19 @@
     errorPlacement: function (error, element) {
       $(element).parents('.form-group').find(".error-message").append(error);
     },
+    invalidHandler(error, element) {
+      let invalid = $('form').find('.is-invalid');
+      let parent  = $(invalid[0]).parents('.tab-pane').attr('id');
+      $(`.nav-stepper a[href="#${parent}"]`).tab('show');
+    },
 
-    submitHandler(form) {
+    submitHandler(form, element) {
       form.submit();
     }
   });
 
   /** Previous Stepper */
   function prevStep(targetElement, anchorEl) {
-    console.log($(`.nav-stepper #${anchorEl}`));
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');
 
