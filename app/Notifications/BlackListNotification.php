@@ -12,17 +12,15 @@ class BlackListNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
-    private $receiver;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($mailData, $receiver)
+    public function __construct($mailData)
     {
         $this->mailData = $mailData;
-        $this->receiver = $receiver;
     }
 
     /**
@@ -44,7 +42,15 @@ class BlackListNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new BlacklistNotificationEmail($this->mailData))->to($this->receiver);
+        // return (new BlacklistNotificationEmail($this->mailData))->to($this->receiver);
+        return (new MailMessage)
+                ->from("SFDirect@smartfunding.sg", "SmartFunding Direct")
+                ->subject("Blacklist Email from SmartFunding Direct")
+                ->greeting("Hello ".$this->mailData['fullName'])
+                ->line("Loan reference number : ".$this->mailData['loanReferenceNumber'])
+                ->line("You have a total of RM ".number_format($this->mailData['loanAmmount'], 2)." overdue amount, which is accumulated over three months.")
+                ->line("We strongly urge you to make immediate payment. Otherwise, other collection methos will take effect including uploading the records to CCRIS & CTOS.")
+                ->line("Should you require any assistance, please whatsapp ".$this->mailData['phoneNumber'].".");
     }
 
     /**

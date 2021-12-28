@@ -12,7 +12,7 @@
     <p>Thank you for choosing SF Direct! 
 
     <br/>
-    We have received your loan application of RM {{ $mailData['loanAmount'] }} and our team will be in touch with you within {{ $mailData['timeEstimation'] }} should there be any additional documents required.  
+    We have received your loan application of RM {{ number_format($mailData['loanAmount'], 2) }} and our team will be in touch with you within {{ $mailData['timeEstimation'] }} should there be any additional documents required.  
     <br/>
     Thank you.
     

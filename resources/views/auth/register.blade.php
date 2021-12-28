@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('dropify_multiple/dropify_multiple.min.css') }}">
 {!! RecaptchaV3::initJs() !!}
 <style>
 
@@ -26,7 +27,7 @@
     padding: 0.5rem 1rem;
   }
 
-  /* .grecaptcha-badge { visibility: hidden !important; } */
+  .grecaptcha-badge { visibility: hidden !important; }
   /* Navbar */
   .navbar .btn-primary {
     padding: 0.5rem 1.25rem;
@@ -254,7 +255,7 @@
     <div class="row justify-content-lg-between pb-3">
       <div class="col-lg-6 col-md-7 order-2 order-lg-1">
 
-        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
+        <form class="tab-content" method="POST" enctype="multipart/form-data" novalidate action="{{ route('register.process') }}">
           @csrf
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
             <div class="tab-container pb-4 pt-1 px-3">
@@ -398,7 +399,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" value="{{ old('fullname') }}" id="fullname" name="fullname" placeholder="Enter your name" />
+                <input type="text" class="form-control" value="{{ old('fullname') }}" id="fullname" name="fullname" placeholder="Enter your name" required/>
 
                 @error('fullname')
                 <div class="text-danger">{{ $message }}</div>
@@ -600,7 +601,13 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
+<<<<<<< HEAD
                 <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>
+=======
+                  <div class="file-upload-wrapper">
+                    <input type="file" name="pay_slips[]" data-height="70" class="dropify" multiple required/>
+                  </div>
+>>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
 
                 @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
@@ -611,7 +618,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements[]" class="dropify" se data-height="70" multiple required/>
+                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple required/>
 
                 @error('bank_statements')
                 <div class="text-danger">{{ $message }}</div>
@@ -645,7 +652,7 @@
             {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
             <div class="d-flex px-3 pt-2">
               <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <button class="btn btn-info btn-next btn-lg" type="submit">Submit</button>
+              <button class="btn btn-info btn-next btn-lg" id="submitButton" type="submit">Submit</button>
             </div>
           </div>
         </form>
@@ -688,13 +695,18 @@
 
 @section('footer')
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
+<<<<<<< HEAD
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
+=======
+<script src="{{ asset('dropify_multiple/dropify_multiple.min.js') }}"></script>
+>>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
+<<<<<<< HEAD
   /** Jquery Validation */
   $('form').validate({
     ignore: [],
@@ -793,6 +805,9 @@
   });
 
   /** Previous Stepper */
+=======
+
+>>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
   function prevStep(targetElement, anchorEl) {
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');
@@ -835,7 +850,10 @@
     style: 'currency',
     currency: 'MYR',
   });
+
   function loanCalc() {
+    window.sessionStorage.removeItem("loan_amount");
+    window.sessionStorage.removeItem("selected_period");
     let num = +$('#finance_amount').val();
     let selectedPeriod = +$('[name="period"]:checked').data('period');
     let calc;
@@ -844,6 +862,9 @@
 
     $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
     $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
+
+    window.sessionStorage.setItem('loan_amount', calc);
+    window.sessionStorage.setItem('selected_period', selectedPeriod);
   }
 
   // Date
@@ -860,5 +881,14 @@
       message: '<div class="dropify-message" style="font-size: 1.25rem"><i class="fa-solid mr-2 fa-link"></i> <strong>Drag & Drop or <u class="text-info">Browse</u></strong></div>',
     }
   });
+
+  const calcOld = window.sessionStorage.getItem("loan_amount");
+  const selectedPeriodOld = window.sessionStorage.getItem('selected_period');
+  if(calcOld){
+    if(selectedPeriodOld){
+      $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calcOld)}`);
+      $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calcOld * (12 * selectedPeriodOld))}`);
+    }
+  }
 </script>
 @endsection

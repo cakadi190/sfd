@@ -9,7 +9,7 @@
 <body>
     <h1>Hi {{ $mailData['fullName'] }},</h1>
 
-    <p>Good day! Your loan application has been approved at RM {{ $mailData['loanAmount'] }}</p>
+    <p>Good day! Your loan application has been approved at RM {{ number_format($mailData['loanAmount'], 2) }}</p>
     <p>We will need you to complete the  E-Mandate process before the cash disbursement.</p>
     <br/>
     <p>Please click on the below url to authorize the e-mandate process: </p>

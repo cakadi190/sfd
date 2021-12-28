@@ -12,17 +12,15 @@ class BorrowerRejectionNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
-    private $receiver;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($mailData, $receiver)
+    public function __construct($mailData)
     {
         $this->mailData = $mailData;
-        $this->receiver = $receiver;
     }
 
     /**
@@ -44,7 +42,12 @@ class BorrowerRejectionNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new BorrowerRejectionEmail($this->mailData))->to($this->receiver);
+        // return (new BorrowerRejectionEmail($this->mailData))->to($this->receiver);
+        return (new MailMessage)
+                ->from("SFDirect@smartfunding.sg", "SmartFunding Direct")
+                ->subject($this->mailData['subject_email'])
+                ->greeting("Hello ".$this->mailData['fullname'])
+                ->line($this->mailData['body_email']);
     }
 
     /**

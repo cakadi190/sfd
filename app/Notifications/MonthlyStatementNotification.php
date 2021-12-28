@@ -12,17 +12,15 @@ class MonthlyStatementNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
-    private $receiver;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($mailData, $receiver)
+    public function __construct($mailData)
     {
         $this->mailData = $mailData;
-        $this->receiver = $receiver;
     }
 
     /**
@@ -44,7 +42,19 @@ class MonthlyStatementNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MonthlyStatementEmail($this->mailData))->to($this->receiver);
+        // return (new MonthlyStatementEmail($this->mailData))->to($this->receiver);
+        return (new MailMessage)
+                ->from("SFDirect@smartfunding.sg", "SmartFunding Direct")
+                ->subject("Monthly Statement Reminder")
+                ->greeting("Hello ".$this->mailData['fullName'])
+                ->line("Attached is your loan statement for the period of ".$this->mailData['period'].".")
+                ->line("To view, please follow the instruction below :")
+                ->line("Step 1: Open the attachment")
+                ->line("Step 2: Enter your password (last 4 digits of your IC)")
+                ->attach($this->mailData['attachment'], [
+                    'as' => "MonthlyReminder.pdf",
+                    'mime' => "application/pdf",
+                    ]);
     }
 
     /**

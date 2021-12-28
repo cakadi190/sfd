@@ -312,7 +312,7 @@ class BorrowerController extends Controller
     public function sendMonthlyEmail($id){
         $borrower = Borrower::findOrFail($id);
         // $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
-        $receiver = $userBorrower->email; // Code for mail production
+        $receiver = $borrower->email; // Code for mail production
 
         $direktori = request()->attachmentFile;
         $filename = $borrower->fullname.'-AttachmentReminder'.'-Payment Sequence_'.request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
@@ -321,7 +321,7 @@ class BorrowerController extends Controller
         $mailData = [
             'fullName' => $borrower->fullname,
             'period' => request()->paymentSeq,
-            'attachment' => $filename,
+            'attachment' => public_path('upload/'.$filename),
             'subjectEmail' => request()->subjectEmail,
         ];
 
@@ -352,7 +352,7 @@ class BorrowerController extends Controller
         $userBorrower->status = 'blacklist';
         $userBorrower->save();
         
-        $userBorrower->notify(new BlackListNotification($mailData, $receiver));
+        $userBorrower->notify(new BlackListNotification($mailData));
 
         $sessionMsg = 'Email Blacklist has been Sent';
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);

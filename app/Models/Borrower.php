@@ -11,6 +11,19 @@ class Borrower extends Model
 {
     use HasFactory, Notifiable;
 
+	/**
+     * Route notifications for the mail channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return array|string
+     */
+    public function routeNotificationForMail($notification)
+    {
+        // Return email address only...
+        // return $this->email;
+		return "rakha.rozaqtama@gmail.com";
+    }
+
     protected $table = "borrowers";
 
     protected $fillable = [

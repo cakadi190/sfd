@@ -7,7 +7,6 @@ use App\Models\Borrower;
 use App\Models\PaymentSequence;
 use App\Models\RejectedApplicant;
 use App\Notifications\BorrowerRejectionNotification;
-use App\Notifications\EMandateEmailNotification;
 use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
@@ -147,6 +146,8 @@ class ApplicantController extends Controller
     $applicant = Applicant::findOrFail($id);
     $item = array();
     $data = array();
+
+    
     $arr_salary = explode(",", $applicant->salary_slip);
     $arr_bank = explode(",", $applicant->bank_statement);
     $item['applicant'] = $applicant;
@@ -206,8 +207,6 @@ class ApplicantController extends Controller
     ];
     PaymentSequence::create($payment_seq_data);
 
-    // $receiver = "rakha.rozaqtama@gmail.com"; // Code for mail testing
-    $receiver = $applicant->email; // Code for mail production
     $mailData = [
         'fullName' => $applicant->fullname,
         'loanAmount' => $applicant->finance_amount,
@@ -216,7 +215,7 @@ class ApplicantController extends Controller
         'phoneNumber' => $applicant->phone,
     ];
     // dd($mailData, $receiver);
-    $applicant->notify(new EMandateEmailNotification($mailData, $receiver));
+    $applicant->notify(new \App\Notifications\EMandateEmailNotification($mailData));
 
     // Destroy selected applicant from 'applicants' table
     // $deleteStatus = $applicant->delete();
