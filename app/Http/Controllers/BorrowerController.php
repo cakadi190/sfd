@@ -274,8 +274,8 @@ class BorrowerController extends Controller
         $userBorrower->status = 'disbursed';
         $userBorrower->disbursed_at = $current_date;
         $userBorrower->due_date = $due_date;
-        // $receiver = $userBorrower->email;
-        $receiver = 'rakha.rozaqtama@gmail.com';
+        $receiver = $userBorrower->email;
+        // $receiver = 'rakha.rozaqtama@gmail.com';
         $mailData = [
           'fullName' => $userBorrower->fullname,
           'ammount' => $userBorrower->finance_amount,
@@ -311,8 +311,8 @@ class BorrowerController extends Controller
 
     public function sendMonthlyEmail($id){
         $borrower = Borrower::findOrFail($id);
-        $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
-        // $receiver = $userBorrower->email; Code for mail production
+        // $receiver = 'rakha.rozaqtama@gmail.com'; // Code for mail testing
+        $receiver = $borrower->email; // Code for mail production
 
         $direktori = request()->attachmentFile;
         $filename = $borrower->fullname.'-AttachmentReminder'.'-Payment Sequence_'.request()->sequenceNumber.'-'.time().'.'.$direktori->extension();
@@ -341,8 +341,8 @@ class BorrowerController extends Controller
 
     public function blacklistBorrower($id){
         $userBorrower = Borrower::findOrFail($id);
-        $receiver = 'rakha.rozaqtama@gmail.com';
-        // $receiver = $userBorrower->email;
+        // $receiver = 'rakha.rozaqtama@gmail.com';
+        $receiver = $userBorrower->email;
         $mailData = [
             'fullName' => $userBorrower->fullname,
             'loanReferenceNumber' => $userBorrower->loan_id,

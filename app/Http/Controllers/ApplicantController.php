@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Applicant;
-use App\Models\RejectedApplicant;
-use App\Models\PaymentSequence;
 use App\Models\Borrower;
-use Illuminate\Http\Request;
+use App\Models\PaymentSequence;
+use App\Models\RejectedApplicant;
 use App\Notifications\BorrowerRejectionNotification;
+use Illuminate\Http\Request;
 
 class ApplicantController extends Controller
 {
@@ -207,8 +207,6 @@ class ApplicantController extends Controller
     ];
     PaymentSequence::create($payment_seq_data);
 
-    // $receiver = "rakha.rozaqtama@gmail.com"; // Code for mail testing
-    // $receiver = $applicant->email; // Code for mail production
     $mailData = [
         'fullName' => $applicant->fullname,
         'loanAmount' => $applicant->finance_amount,
@@ -264,8 +262,8 @@ class ApplicantController extends Controller
     // Find selected applicant based on 'id', then update the status
     $applicant = Applicant::findOrFail($id);
     $applicant->status = 'canceled';
-    // $receiver = $applicant->email; // Line code for production
-    $receiver = 'rakha.rozaqtama@gmail.com'; // Line code for testing
+    $receiver = $applicant->email; // Line code for production
+    // $receiver = 'rakha.rozaqtama@gmail.com'; // Line code for testing
     $mailData = [
       'fullname' => $applicant->fullname,
       'subject_email' => htmlspecialchars(strip_tags($request->subjectEmail)),
