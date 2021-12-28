@@ -696,6 +696,15 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
+  if (window.performance) {
+    console.info("window.performance works fine on this browser");
+  }
+  console.info(performance.navigation.type);
+  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+    window.sessionStorage.removeItem("loan_amount");
+    window.sessionStorage.removeItem("selected_period");
+  }
+  
   /** Jquery Validation */
   $('form').validate({
     ignore: [],
