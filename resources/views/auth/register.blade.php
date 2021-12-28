@@ -702,6 +702,8 @@
   });
 
   function loanCalc() {
+    window.sessionStorage.removeItem("loan_amount");
+    window.sessionStorage.removeItem("selected_period");
     let num = +$('#finance_amount').val();
     let selectedPeriod = +$('[name="period"]:checked').data('period');
     let calc;
