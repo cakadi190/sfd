@@ -607,7 +607,7 @@
             {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
             <div class="d-flex px-3 pt-2">
               <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <button class="btn btn-info btn-next btn-lg" type="submit">Submit</button>
+              <button class="btn btn-info btn-next btn-lg" id="submitButton" type="submit">Submit</button>
             </div>
           </div>
         </form>
@@ -657,6 +657,7 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
+
   function prevStep(targetElement, anchorEl) {
     console.log($(`.nav-stepper #${anchorEl}`));
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
@@ -699,6 +700,7 @@
     style: 'currency',
     currency: 'MYR',
   });
+
   function loanCalc() {
     let num = +$('#finance_amount').val();
     let selectedPeriod = +$('[name="period"]:checked').data('period');
@@ -708,6 +710,9 @@
 
     $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
     $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
+
+    window.sessionStorage.setItem('loan_amount', calc);
+    window.sessionStorage.setItem('selected_period', selectedPeriod);
   }
 
   // Date
@@ -724,5 +729,14 @@
       message: '<div class="dropify-message" style="font-size: 1.25rem"><i class="fa-solid mr-2 fa-link"></i> <strong>Drag & Drop or <u class="text-info">Browse</u></strong></div>',
     }
   });
+
+  const calcOld = window.sessionStorage.getItem("loan_amount");
+  const selectedPeriodOld = window.sessionStorage.getItem('selected_period');
+  if(calcOld){
+    if(selectedPeriodOld){
+      $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calcOld)}`);
+      $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calcOld * (12 * selectedPeriodOld))}`);
+    }
+  }
 </script>
 @endsection
