@@ -601,13 +601,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-<<<<<<< HEAD
                 <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>
-=======
-                  <div class="file-upload-wrapper">
-                    <input type="file" name="pay_slips[]" data-height="70" class="dropify" multiple required/>
-                  </div>
->>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
 
                 @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
