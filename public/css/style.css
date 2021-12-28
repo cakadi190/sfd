@@ -70,7 +70,7 @@ nav#nav-mobile {
   padding: 3vmin;
   position: absolute;
   z-index: 1;
-  top: 420px;
+  top: 440px;
   left: 0;
   right: 0;
   margin-left: auto;
@@ -675,7 +675,7 @@ a.menu-item:hover{
 
   #hero {
     padding-top: 70px;
-    height: 490px;
+    height: 580px;
     margin: 0px;
   }
 
@@ -799,6 +799,10 @@ a.menu-item:hover{
     width: 35vmax;
   }
 
+  #logo{
+    margin-left: 10px !important;
+  }
+
   #navbarNav {
     float: right;
     position: absolute;
@@ -844,7 +848,7 @@ a.menu-item:hover{
     padding: 3vmin;
     position: absolute;
     z-index: 2;
-    top: 450px;
+    top: 470px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -859,7 +863,7 @@ a.menu-item:hover{
   }
 
   #hero {
-    height: 450px;
+    height: 550px;
     margin: 0px;
   }
 
@@ -1035,10 +1039,14 @@ a.menu-item:hover{
   .width-container-small-footer {
     width: 35vmax;
   }
+
+  #logo{
+    margin-left: 40px !important;
+  }
   #navbarNav {
     float: right;
     position: absolute;
-    right: 2vw;
+    right: 5vw;
   }
   
   #responsive-nav button.navbar-toggler {
@@ -1080,7 +1088,7 @@ a.menu-item:hover{
     padding: 3vmin;
     position: absolute;
     z-index: 2;
-    top: 450px;
+    top: 470px;
     left: 0;
     right: 0;
     margin-left: auto;
@@ -1094,7 +1102,7 @@ a.menu-item:hover{
   }
 
   #hero {
-    height: 460px !important;
+    height: 550px !important;
     margin: 0px;
   }
 
@@ -1236,10 +1244,14 @@ a.menu-item:hover{
     margin-top: -15vh !important;
   }
 
+  #logo{
+    margin-left: 95px !important;
+  }
+
   #navbarNav {
     float: right;
     position: absolute;
-    right: 5vw;
+    right: 7vw;
   }
 
   div#responsive-mobile {
@@ -1255,7 +1267,7 @@ a.menu-item:hover{
   }
 
   #hero {
-    height: 445px !important;
+    height: 520px !important;
     margin: 0px;
   }
 
@@ -1281,7 +1293,7 @@ a.menu-item:hover{
     padding: 3vmin !important;
     position: absolute !important;
     z-index: 2 !important;
-    top: 440px !important;
+    top: 460px !important;
     left: 0 !important;
     right: 0 !important;
     margin-left: auto !important;
@@ -1504,6 +1516,7 @@ a.menu-item:hover{
     padding-bottom: 10px;
     width: 220px;
   }
+
   .img-small-footer {
     width: 40vmin;
   }
@@ -1521,10 +1534,13 @@ a.menu-item:hover{
     margin-top: -15vh !important;
   }
 
+  #logo{
+    margin-left: 125px !important;
+  }
   #navbarNav {
     float: right;
     position: absolute;
-    right: 5vw;
+    right: 7vw;
   }
 
   div#responsive-mobile {
@@ -1540,7 +1556,7 @@ a.menu-item:hover{
   }
 
   #hero {
-    height: 445px !important;
+    height: 550px !important;
     margin: 0px;
   }
 
@@ -1566,7 +1582,7 @@ a.menu-item:hover{
     padding: 3vmin !important;
     position: absolute !important;
     z-index: 2 !important;
-    top: 440px !important;
+    top: 490px !important;
     left: 0 !important;
     right: 0 !important;
     margin-left: auto !important;
@@ -1743,8 +1759,8 @@ a.menu-item:hover{
     img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-    top: 840px;
+    top: 950px;
     width: 250px;
-    left: 15vmax;
+    left: 30vmax;
   }
 }
