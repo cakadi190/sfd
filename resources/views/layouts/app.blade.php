@@ -26,7 +26,7 @@
   </title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet" />
   <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet" />
   <link href="{{ asset('vendor/fontawesome-v6/css/all.min.css') }}" rel="stylesheet" />
@@ -199,13 +199,13 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="https://www.google.com/recaptcha/api.js"></script>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
-  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
-  <script src="https://cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
+  <script src="//www.google.com/recaptcha/api.js"></script>
+  <link rel="stylesheet" href="//cdn.datatables.net/1.11.3/css/dataTables.bootstrap4.min.css">
+  <script src="//code.jquery.com/jquery-3.5.1.js"></script>
+  <script src="//cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+  <script src="//cdn.datatables.net/1.11.3/js/dataTables.bootstrap4.min.js"></script>
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
 
   <!--Modal-->
   @yield('modal')

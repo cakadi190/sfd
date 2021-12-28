@@ -4,8 +4,8 @@
 
 @section('header')
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <style>
   /* Navbar */
@@ -231,7 +231,7 @@
       <div class="text-center p-2 mb-2">
         <h3>Congratulations!</h3>
 
-        <svg width="100%" height="329" class="my-5" viewBox="0 0 305 329" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg width="100%" height="329" class="my-5" viewBox="0 0 305 329" fill="none" xmlns="//www.w3.org/2000/svg">
           <path d="M192.479 29.0093C193.525 29.8145 195.1 29.887 195.997 29.1714C196.893 28.4557 196.772 27.2229 195.727 26.4178C194.681 25.6126 193.106 25.5401 192.209 26.2557C191.313 26.9713 191.434 28.2042 192.479 29.0093Z" fill="#003366"/>
           <path d="M100.864 37.3975C101.91 38.2026 103.485 38.2752 104.381 37.5595C105.278 36.8439 105.157 35.611 104.111 34.8059C103.066 34.0008 101.491 33.9282 100.594 34.6439C99.6974 35.3595 99.8183 36.5923 100.864 37.3975Z" fill="#003366"/>
           <path d="M93.0141 57.3211C94.0599 58.1262 95.6346 58.1988 96.5313 57.4831C97.428 56.7675 97.3072 55.5347 96.2613 54.7295C95.2155 53.9244 93.6408 53.8518 92.744 54.5675C91.8473 55.2831 91.9682 56.516 93.0141 57.3211Z" fill="#81007F"/>

@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <img src="{{ Gravatar::src(Auth::user()->email, 200) }}" class="img-fluid d-block mx-auto mb-3" />
 
-                    <p>You can change your profile photo using Gravatar. <a href="https://wordpress.com/log-in?redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D8c8a14e2beddf65a9f25d8b1271df5342785e224c6ffda35ebc48f81d008f218%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token">Click here</a> to go there to change your profile photo.</p>
+                    <p>You can change your profile photo using Gravatar. <a href="//wordpress.com/log-in?redirect_to=https%3A%2F%2Fpublic-api.wordpress.com%2Foauth2%2Fauthorize%3Fclient_id%3D1854%26response_type%3Dcode%26blog_id%3D0%26state%3D8c8a14e2beddf65a9f25d8b1271df5342785e224c6ffda35ebc48f81d008f218%26redirect_uri%3Dhttps%253A%252F%252Fen.gravatar.com%252Fconnect%252F%253Faction%253Drequest_access_token">Click here</a> to go there to change your profile photo.</p>
                 </div>
             </div>
         </div>
