@@ -20,6 +20,9 @@
         <li class="nav-item align-self-center">
           <a href="/register" class="nav-link pt-2 pb-2 pr-4 pl-4 btn-nav bg-cl-secondary cl-secondary font-type-secondary font-size-septenary align-items-center" id="btn-responsive-mobile">Apply Loan</a>
         </li>
+        {{--  <li class="nav-item align-self-center">
+          <a href="//app.sf-direct.tri-niche.com/" class="nav-link pt-2 pb-2 btn-paynow cl-paynow font-type-primary font-size-septenary align-self-center text-center" id="btn-responsive-mobile">Pay Now</a>
+        </li>  --}}
         <li class="nav-item align-self-center">
           <a href="//app.sf-direct.tri-niche.com/" class="nav-link pt-2 pb-2 btn-paynow cl-paynow font-type-primary font-size-septenary align-self-center text-center" id="btn-responsive-mobile">Pay Now</a>
         </li>
