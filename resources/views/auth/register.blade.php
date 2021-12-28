@@ -897,8 +897,14 @@
     return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
   };
 
-  $('#finance_amount').change(function(){
-    $(this).val(((+$(this).val()).format(0, 3, ',', '.')).toString());
+  $("#finance_amount").focus(function(){
+    let value = $(this).val().replace(",","");
+    $(this).val(value);
+  });
+
+  $("#finance_amount").focusout(function(){
+      let value = +$(this).val();
+      $(this).val(value.format(0, 3, ",", "."));
   });
 
 </script>
