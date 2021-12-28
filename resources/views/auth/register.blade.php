@@ -914,5 +914,15 @@
       $(this).val(value.format(0, 3, ",", "."));
   });
 
+  $("#tax").focus(function(){
+    let value = $(this).val().replace(",","");
+    $(this).val(value);
+  });
+
+  $("#tax").focusout(function(){
+    let value = +$(this).val();
+      $(this).val(value.format(0, 3, ",", "."));
+  });
+
 </script>
 @endsection
