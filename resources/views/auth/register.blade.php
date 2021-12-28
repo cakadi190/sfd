@@ -697,14 +697,12 @@
 
 <script>
   if (window.performance) {
-    console.info("window.performance works fine on this browser");
+    if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
+      window.sessionStorage.removeItem("loan_amount");
+      window.sessionStorage.removeItem("selected_period");
+    }
   }
-  console.info(performance.navigation.type);
-  if (performance.navigation.type == performance.navigation.TYPE_RELOAD) {
-    window.sessionStorage.removeItem("loan_amount");
-    window.sessionStorage.removeItem("selected_period");
-  }
-  
+
   /** Jquery Validation */
   $('form').validate({
     ignore: [],
