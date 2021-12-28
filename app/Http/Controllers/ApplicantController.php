@@ -146,6 +146,8 @@ class ApplicantController extends Controller
     $applicant = Applicant::findOrFail($id);
     $item = array();
     $data = array();
+
+    
     $arr_salary = explode(",", $applicant->salary_slip);
     $arr_bank = explode(",", $applicant->bank_statement);
     $item['applicant'] = $applicant;
@@ -205,7 +207,7 @@ class ApplicantController extends Controller
     ];
     PaymentSequence::create($payment_seq_data);
 
-    $receiver = "rakha.rozaqtama@gmail.com"; // Code for mail testing
+    // $receiver = "rakha.rozaqtama@gmail.com"; // Code for mail testing
     // $receiver = $applicant->email; // Code for mail production
     $mailData = [
         'fullName' => $applicant->fullname,
@@ -215,7 +217,7 @@ class ApplicantController extends Controller
         'phoneNumber' => $applicant->phone,
     ];
     // dd($mailData, $receiver);
-    $applicant->notify(new \App\Notifications\EMandateEmailNotification($mailData, $receiver));
+    $applicant->notify(new \App\Notifications\EMandateEmailNotification($mailData));
 
     // Destroy selected applicant from 'applicants' table
     // $deleteStatus = $applicant->delete();

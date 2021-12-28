@@ -321,7 +321,7 @@ class BorrowerController extends Controller
         $mailData = [
             'fullName' => $borrower->fullname,
             'period' => request()->paymentSeq,
-            'attachment' => $filename,
+            'attachment' => public_path('upload/'.$filename),
             'subjectEmail' => request()->subjectEmail,
         ];
 
@@ -352,7 +352,7 @@ class BorrowerController extends Controller
         $userBorrower->status = 'blacklist';
         $userBorrower->save();
         
-        $userBorrower->notify(new BlackListNotification($mailData, $receiver));
+        $userBorrower->notify(new BlackListNotification($mailData));
 
         $sessionMsg = 'Email Blacklist has been Sent';
         return redirect('/dashboard/borrower')->with('message', $sessionMsg);

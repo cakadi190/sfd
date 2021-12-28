@@ -12,17 +12,15 @@ class LoanDisbursementNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
-    private $receiver;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($mailData, $receiver)
+    public function __construct($mailData)
     {
         $this->mailData = $mailData;
-        $this->receiver = $receiver;
     }
 
     /**
@@ -44,7 +42,14 @@ class LoanDisbursementNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new LoanDisbursementEmail($this->mailData))->to($this->receiver);
+        // return (new LoanDisbursementEmail($this->mailData))->to($this->receiver);
+        return (new MailMessage)
+                ->from("SFDirect@smartfunding.sg", "SmartFunding Direct")
+                ->subject("Loan Disbursement from SmartFunding Direct")
+                ->greeting("Hello ".$this->mailData['fullName'])
+                ->line("We have transferred the RM ".number_format($this->mailData['ammount'], 2)." to your preffered bank account.")
+                ->line("Have a nice day!");
+
     }
 
     /**

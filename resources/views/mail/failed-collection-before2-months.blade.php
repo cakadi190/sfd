@@ -11,7 +11,7 @@
 
     <p>Loan Reference Number: {{ $mailData['loanReferenceNumber'] }}</p>
     <br/>
-    <p>Total Due: RM {{ $mailData['totalOutstandingAmount'] }}</p>
+    <p>Total Due: RM {{ number_format($mailData['totalOutstandingAmount'], 2) }}</p>
     <br/>
     <p>Due Date: {{ $mailData['dueDate'] }}</p>
     <br/>

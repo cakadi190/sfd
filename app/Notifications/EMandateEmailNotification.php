@@ -7,23 +7,20 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use App\Mail\EMandateEmail;
-use Illuminate\Support\Facades\Log;
 
 class EMandateEmailNotification extends Notification implements ShouldQueue
 {
     use Queueable;
     private $mailData;
-    private $receiver;
 
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct($mailData, $receiver)
+    public function __construct($mailData)
     {
         $this->mailData = $mailData;
-        $this->receiver = $receiver;
     }
 
     /**
@@ -45,8 +42,17 @@ class EMandateEmailNotification extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        Log::debug('Notifications Sent');
-        return (new EMandateEmail($this->mailData))->to($this->receiver);
+        // return (new EMandateEmail($this->mailData))->to($this->receiver);
+        return (new MailMessage)
+                    ->from("SFDirect@smartfunding.sg", "SmartFunding Direct")
+                    ->subject("E-Mandate Email Notification")
+                    ->greeting("Hello"." ".$this->mailData['fullName'])
+                    ->line("Good day! Your loan application has been approved at RM ".number_format($this->mailData['loanAmount'], 2))
+                    ->line("We will need you to complete the E-Mandate Process before the cash disbursement.")
+                    ->line("")
+                    ->line("Please click on the below URL to authorize the E-Mandate process :")
+                    ->action('Authorize E-Mandate', $this->mailData['urlAuthorized'])
+                    ->line("Should you require any assistance, please whatsapp ".$this->mailData['phoneNumber'].".");
     }
 
     /**

@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="{{ asset('vendor/dropify/css/dropify.min.css') }}" type="text/css" />
 <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('dropify_multiple/dropify_multiple.min.css') }}">
 {!! RecaptchaV3::initJs() !!}
 <style>
   #phone_prefix{
@@ -25,7 +26,7 @@
     padding: 0.5rem 1rem;
   }
 
-  /* .grecaptcha-badge { visibility: hidden !important; } */
+  .grecaptcha-badge { visibility: hidden !important; }
   /* Navbar */
   .navbar .btn-primary {
     padding: 0.5rem 1.25rem;
@@ -247,7 +248,7 @@
     <div class="row justify-content-lg-between pb-3">
       <div class="col-md-6 order-2 order-lg-1">
 
-        <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
+        <form class="tab-content" method="POST" enctype="multipart/form-data" novalidate action="{{ route('register.process') }}">
           @csrf
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
             <div class="tab-container pb-4 pt-1 px-3">
@@ -385,7 +386,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" value="{{ old('fullname') }}" id="fullname" name="fullname" placeholder="Enter your name" />
+                <input type="text" class="form-control" value="{{ old('fullname') }}" id="fullname" name="fullname" placeholder="Enter your name" required/>
 
                 @error('fullname')
                 <div class="text-danger">{{ $message }}</div>
@@ -567,7 +568,9 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>  
+                  <div class="file-upload-wrapper">
+                    <input type="file" name="pay_slips[]" data-height="70" class="dropify" multiple required/>
+                  </div>
 
                 @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
@@ -576,7 +579,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements[]" class="dropify" se data-height="70" multiple required/>
+                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple required/>
 
                 @error('bank_statements')
                 <div class="text-danger">{{ $message }}</div>
@@ -647,6 +650,7 @@
 
 @section('footer')
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
+<script src="{{ asset('dropify_multiple/dropify_multiple.min.js') }}"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
