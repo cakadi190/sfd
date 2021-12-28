@@ -510,3 +510,24 @@
 #49 C:\\laragon\\www\\smartfunding\\public\\index.php(52): Illuminate\\Foundation\\Http\\Kernel->handle(Object(Illuminate\\Http\\Request))
 #50 {main}
 "} 
+[2021-12-28 07:28:42] laravel.EMERGENCY: Unable to create configured logger. Using emergency logger. {"exception":"[object] (InvalidArgumentException(code: 0): Log [] is not defined. at E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php:207)
+[stacktrace]
+#0 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(132): Illuminate\\Log\\LogManager->resolve(NULL, NULL)
+#1 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(111): Illuminate\\Log\\LogManager->get(NULL)
+#2 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Log\\LogManager.php(583): Illuminate\\Log\\LogManager->driver()
+#3 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Exceptions\\Handler.php(252): Illuminate\\Log\\LogManager->error('Class \"Symfony\\\\...', Array)
+#4 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(366): Illuminate\\Foundation\\Exceptions\\Handler->report(Object(Error))
+#5 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(131): Illuminate\\Foundation\\Console\\Kernel->reportException(Object(Error))
+#6 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#7 {main}
+"} 
+[2021-12-28 07:28:42] laravel.ERROR: Class "Symfony\Component\Finder\Finder" not found {"exception":"[object] (Error(code: 0): Class \"Symfony\\Component\\Finder\\Finder\" not found at E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php:88)
+[stacktrace]
+#0 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(65): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->getConfigurationFiles(Object(Illuminate\\Foundation\\Application))
+#1 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Bootstrap\\LoadConfiguration.php(39): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->loadConfigurationFiles(Object(Illuminate\\Foundation\\Application), Object(Illuminate\\Config\\Repository))
+#2 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Application.php(237): Illuminate\\Foundation\\Bootstrap\\LoadConfiguration->bootstrap(Object(Illuminate\\Foundation\\Application))
+#3 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(310): Illuminate\\Foundation\\Application->bootstrapWith(Array)
+#4 E:\\Kerja\\sf_direct_terbaru\\smartfunding-sg\\vendor\\laravel\\framework\\src\\Illuminate\\Foundation\\Console\\Kernel.php(127): Illuminate\\Foundation\\Console\\Kernel->bootstrap()
+#5 Command line code(1): Illuminate\\Foundation\\Console\\Kernel->handle(Object(Symfony\\Component\\Console\\Input\\ArgvInput), Object(Symfony\\Component\\Console\\Output\\ConsoleOutput))
+#6 {main}
+"} 

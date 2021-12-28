@@ -289,7 +289,7 @@
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
-                <input type="number" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" required/>
+                <input type="text" class="form-control" onkeyup="loanCalc()" value="{{ old('finance_amount') }}" placeholder="Enter the loan amount" id="finance_amount" name="finance_amount" required/>
 
                 @error('finance_amount')
                 <div class="text-danger">{{ $message }}</div>
@@ -689,18 +689,13 @@
 
 @section('footer')
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
-<<<<<<< HEAD
 <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
-=======
-<script src="{{ asset('dropify_multiple/dropify_multiple.min.js') }}"></script>
->>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
-<<<<<<< HEAD
   /** Jquery Validation */
   $('form').validate({
     ignore: [],
@@ -799,9 +794,6 @@
   });
 
   /** Previous Stepper */
-=======
-
->>>>>>> 9970c5b41d7e9f0667feb9e755a37b8e9d3395d4
   function prevStep(targetElement, anchorEl) {
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');
@@ -848,17 +840,30 @@
   function loanCalc() {
     window.sessionStorage.removeItem("loan_amount");
     window.sessionStorage.removeItem("selected_period");
-    let num = +$('#finance_amount').val();
-    let selectedPeriod = +$('[name="period"]:checked').data('period');
-    let calc;
+    if($("#finance_amount").val()){
+      let num = (+($("#finance_amount").val()).replace(",", ""));
+      let selectedPeriod = +$('[name="period"]:checked').data('period');
+      let calc;
 
-    calc = ((num * 0.18) + num) / (12 * selectedPeriod);
+      calc = ((num * 0.18) + num) / (12 * selectedPeriod);
 
-    $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
-    $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
+      $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
+      $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
 
-    window.sessionStorage.setItem('loan_amount', calc);
-    window.sessionStorage.setItem('selected_period', selectedPeriod);
+      window.sessionStorage.setItem('loan_amount', calc);
+      window.sessionStorage.setItem('selected_period', selectedPeriod);
+    }else{
+      let selectedPeriod = 0;
+      let calc;
+
+      calc = 0;
+
+      $('#calc-1, #calc-2, #calc-3, #calc-4, #calc-5').text(`${formatter.format(calc)}`);
+      $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calc * (12 * selectedPeriod))}`);
+
+      window.sessionStorage.setItem('loan_amount', calc);
+      window.sessionStorage.setItem('selected_period', selectedPeriod);
+    }
   }
 
   // Date
@@ -884,5 +889,17 @@
       $('#calc-total-1, #calc-total-2, #calc-total-3, #calc-total-4, #calc-total-5').text(`${formatter.format(calcOld * (12 * selectedPeriodOld))}`);
     }
   }
+
+  Number.prototype.format = function(n, x, s, c) {
+    var re = '\\d(?=(\\d{' + (x || 3) + '})+' + (n > 0 ? '\\D' : '$') + ')',
+        num = this.toFixed(Math.max(0, ~~n));
+
+    return (c ? num.replace('.', c) : num).replace(new RegExp(re, 'g'), '$&' + (s || ','));
+  };
+
+  $('#finance_amount').change(function(){
+    $(this).val(((+$(this).val()).format(0, 3, ',', '.')).toString());
+  });
+
 </script>
 @endsection
