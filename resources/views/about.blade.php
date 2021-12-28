@@ -29,6 +29,9 @@
           <li class="align-self-center mt-4">
             <a href="/register" class="cl-white-mobile font-type-secondary font-size-navigation">Apply Loan</a>
           </li>
+          <li class="align-self-center mt-4">
+            <a href="//app.sf-direct.tri-niche.com/" class="cl-white-mobile font-type-secondary font-size-navigation">Pay Now</a>
+          </li>
         </ul>
       </div>
     

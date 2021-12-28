@@ -242,6 +242,9 @@ div#footer-mobile {
   padding-top: 10vh;
 }
 /*===== Color Styling =====*/
+.bg-cl-transparent{
+  background-color: transparent !important;
+}
 .bg-cl-primary {
   background-image: linear-gradient(#E9F7FF, #F9F6FF);
 }
@@ -288,6 +291,10 @@ div#footer-mobile {
 
 .cl-octonary {
   color: #809696;
+}
+
+.cl-paynow{
+  color: #100c2e;
 }
 
 /*===== Font Styling ====*/
@@ -494,6 +501,9 @@ div#footer-mobile {
 .mt-90px{
   margin-top: 90px;
 }
+.mt-120px{
+  margin-top: 120px;
+}
 .mb-25px{
   margin-bottom: 25px;
 }
@@ -506,8 +516,14 @@ div#footer-mobile {
 .mb-70px{
   margin-bottom: 70px;
 }
+.mb-90px{
+  margin-bottom: 90px;
+}
 .mb-100px{
   margin-bottom: 100px;
+}
+.mb-120px{
+  margin-bottom: 120px;
 }
 .ml-70px{
   margin-left: 70px;
@@ -516,7 +532,16 @@ div#footer-mobile {
   margin-left: 90px;
 }
 
-
+.btn-paynow{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 100px;
+  border-radius: 30px;
+  border: 3px solid #003366;
+}
 .border-bottom-quarter {
   border-bottom: 0.5vmin solid #19CDFA;
   padding-bottom: 0.8vmin;
@@ -776,7 +801,7 @@ a.menu-item:hover{
   #navbarNav {
     float: right;
     position: absolute;
-    right: 5vw;
+    right: 2vw;
   }
   
   #responsive-nav button.navbar-toggler {
@@ -869,7 +894,7 @@ a.menu-item:hover{
     position: absolute;
     width: 30vmin;
     right: 0;
-    top: 170vh;
+    top: 150vh;
   }
 
   .custom-img {
@@ -1012,7 +1037,7 @@ a.menu-item:hover{
   #navbarNav {
     float: right;
     position: absolute;
-    right: 5vw;
+    right: 2vw;
   }
   
   #responsive-nav button.navbar-toggler {
@@ -1421,9 +1446,9 @@ a.menu-item:hover{
   .float-img-desktop-right-1 {
     float: right;
     position: absolute;
-    width: 240px;
-    left: 75vw;
-    top: 1520px;
+    width: 320px;
+    left: 65vw;
+    top: 1420px;
   }
 }
 

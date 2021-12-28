@@ -114,6 +114,9 @@
         <li class="align-self-center mt-4">
           <a href="/register" class="cl-white-mobile font-type-secondary font-size-navigation menu-item">Apply Loan</a>
         </li>
+        <li class="align-self-center mt-4">
+          <a href="//app.sf-direct.tri-niche.com/" class="cl-white-mobile font-type-secondary font-size-navigation menu-item">Pay Now</a>
+        </li>
       </ul>
     </div>
 
@@ -207,7 +210,7 @@
 
     <!--========================== SECTION "PERSONAL MICROLOANS" ================================================-->
     <!--Mobile Section 4-->
-    <div class="container d-flex flex-column justify-content-around mt-5" id="section4-mobile">
+    <div class="container d-flex flex-column justify-content-around mt-5 mb-5" id="section4-mobile">
       <h3 class="align-self-center font-type-primary font-size-secondary cl-quinary">Personal Microloans</h3>
       <div class="border-bottom-half-px align-self-center"></div>
       <h4 class="font-type-primary font-size-tertiary mt-4 align-self-center cl-quinary">Term Financing</h4>
@@ -241,7 +244,7 @@
     </div>
     <!--Desktop Section 4-->
     <div id="section4-desktop">
-      <div class="d-flex flex-row justify-content-center mt-70px">
+      <div class="d-flex flex-row justify-content-center mt-120px mb-120px">
         <img src="{{asset('assets/Group_3301.svg')}}" alt="Image" class="image-fluid img-med">
         <div class="ml-5">
           <h3 class="font-type-primary font-size-secondary cl-quinary">Personal Microloans</h3>
@@ -282,7 +285,7 @@
     
     <!--Tablet Section 4-->
     <div id="section4-tablet">
-      <div class="d-flex flex-column justify-content-around mt-90px ml-5">
+      <div class="d-flex flex-column justify-content-around mt-90px mb-90px ml-5">
         <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center">Personal Microloans</h3>
         <div class="border-bottom-quarter align-self-center"></div>
         <div class="d-flex flex-row justify-content-around mt-5 pl-25px">
@@ -320,157 +323,6 @@
           </div>
             <img src="{{ asset('../assets/Group_3301.svg') }}" alt="image" class="image-fluid img-unique">
         </div>
-      </div>
-    </div>
-
-    <!--=================== SECTION "WHY CHOOSE TERM FINANCING FROM SMARTFUNDING DIRECT" ===================================================-->
-    <!--Mobile Section 5-->
-    <div id="section5-mobile">
-      <div class="d-flex flex-column justify-content-center">
-        <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center">Why Choose Term</h3>
-        <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center">Financing from</h3>
-        <h3 class="font-type-primary font-size-secondary cl-quaternary align-self-center">SmartFunding Direct</h3>
-        <div class="border-bottom-half align-self-center"></div>
-      </div>
-      <div class="d-flex flex-column justify-content-around mt-5 mb-5">
-        <img src="{{asset('assets/review_1.svg')}}" alt="image" class="image-fluid img-mini-mobile align-self-center">
-        <h4 class="mt-10px font-type-primary font-size-tertiary cl-quinary align-self-center">Full Transparency</h4>
-        <p
-          class="mr-4 ml-4 mt-10px width-container-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
-          We will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
-
-        <img src="{{asset('assets/review_3.svg')}}" alt="image"
-          class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="font-type-primary mt-12px font-size-tertiary cl-quinary align-self-center text-center">Easy and Seamless
-        </h4>
-        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
-        <p
-          class="mr-4 ml-4 mt-10px width-container-inter1-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
-          Our online application saves you the hassle of leaving the comfort of home or work.</p>
-
-        <img src="{{asset('assets/review_2.svg')}}" alt="image"
-          class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="font-type-primary mt-12px font-size-tertiary cl-quinary align-self-center text-center">costs-Effective &
-        </h4>
-        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Flexible Repayment
-        </h4>
-        <p
-          class="mr-4 ml-4 mt-10px width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
-          Enjoy low-interest rates and flexible repayment tenures of up to 12 months, with multiple repayment options.
-        </p>
-
-        <img src="{{asset('assets/review_4.svg')}}" alt="image"
-          class="image-fluid img-mini-mobile align-self-center mt-5">
-        <h4 class="mt-12px font-type-primary font-size-tertiary cl-quinary align-self-center text-center">No Collateral</h4>
-        <h4 class="font-type-primary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
-        <p
-          class="mr-4 ml-4 mt-10px width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med align-self-center text-center">
-          We focus on your business potential and want to help you grow.
-        </p>
-        <a href="/register"
-          class="btn btn-hero font-size-septenary bg-cl-tertiary font-type-primary cl-secondary mb-25px mt-25px align-self-center">Apply Now</a>
-      </div>
-    </div>
-
-    <!--Desktop Section 5-->
-    <div id="section5-desktop">
-      <div class="d-flex flex-column justify-content-evenly pos-relative pb-5" id="section5-bigscreen">
-        <img src="{{asset('assets/Polygon_6.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-left-2"
-          id="img-hide">
-        <div class="d-flex flex-column justify-content-start ml-5 pt-3">
-          <h3 class="font-type-primary font-size-secondary cl-quinary">Why Choose Term Financing</h3>
-          <div class="d-flex flex-row justify-content-start">
-            <h3 class="font-type-primary font-size-secondary cl-quinary">from</h3>
-            <div>
-              <h3 class="ml-2 font-type-primary font-size-secondary cl-quaternary">SmartFunding</h3>
-              <div class="border-bottom-full-bold pl-2"></div>
-            </div>
-            <h3 class="ml-2 font-type-primary font-size-secondary cl-quaternary">Direct</h3>
-          </div>
-        </div>
-        <div class="d-flex flex-row justify-content-beetwen mt-5 ml-5">
-          <img src="{{asset('assets/review_1.svg')}}" alt="image" class="image-fluid img-mini">
-          <div class="d-flex flex-column justify-content-center ml-2 pt-4">
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary">Full Transparency</h4>
-            <p class="width-container-super-mini-px font-type-tertiary font-size-septenary font-line-height-med">We will disclose the costs and fees
-              involved upfront, with no hidden fees for you to worry about.</p>
-          </div>
-          <img src="{{asset('assets/review_2.svg')}}" alt="image" class="image-fluid img-mini ml-5">
-          <div class="d-flex flex-column justify-content-center ml-2 mt-5 pt-3">
-            <div class="d-flex flex-column justify-content-start">
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">Costs-Effective &</h4>
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">Flexible Repayment</h4>
-            </div>
-            <p class="width-container-super-mini-px font-type-tertiary font-size-septenary">Enjoy low-interest rates and
-              flexible repayment tenures of up to 12 months, with multiple repayment options.</p>
-          </div>
-        </div>
-        <div class="d-flex flex-row justify-content-beetwen mt-5 ml-5">
-          <img src="{{asset('assets/review_3.svg')}}" alt="image" class="image-fluid img-mini">
-          <div class="d-flex flex-column justify-content-center ml-2 pt-6">
-            <div class="d-flex flex-column justify-content-start">
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">Easy and Seamless</h4>
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">Application</h4>
-            </div>
-            <p class="width-container-super-mini-px font-type-tertiary font-size-septenary">Our online application saves you the hassle of leaving the comfort of home or work.</p>
-          </div>
-          <img src="{{asset('assets/review_4.svg')}}" alt="image" class="image-fluid img-mini ml-5">
-          <div class="d-flex flex-column justify-content-center ml-2 pt-5">
-            <div class="d-flex flex-column justify-content-start">
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">No Collateral</h4>
-              <h4 class="font-type-secondary font-size-tertiary cl-quinary">Financing</h4>
-            </div>
-            <p class="width-container-super-mini-px font-type-tertiary font-size-septenary">We focus on your business potential and want to help you grow.</p>
-          </div>
-        </div>
-        <a href="/register" class="btn btn-hero btn-med font-type-primary cl-secondary bg-cl-tertiary ml-5 mt-5">Apply now</a>
-        <img src="{{asset('assets/Group.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-right-2" id="img-hide">
-      </div>
-    </div>
-    
-    <!--Tablet Section 5-->
-    <div id="section5-tablet">
-      <div class="d-flex flex-column justify-content-around mt-90px mb-5" id="tablet-bg">
-        <h3 class="font-type-primary font-size-secondary cl-quinary align-self-center">Why Choose Term Financing from
-        </h3>
-        <h3 class="ml-2 font-type-primary font-size-secondary cl-quaternary align-self-center">SmartFunding Direct</h3>
-        <div class="border-bottom-quarter align-self-center"></div>
-        <div class="d-flex flex-row justify-content-around mt-5">
-          <div class="d-flex flex-column justify-content-start">
-            <img src="{{asset('assets/review_1.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class=" mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Full
-              Transparency</h4>
-            <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">We
-              will disclose the costs and fees involved upfront, with no hidden fees for you to worry about.</p>
-          </div>
-          <div class="d-flex flex-column justify-content-start">
-            <img src="{{asset('assets/review_3.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Easy and
-              Seamless</h4>
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Application</h4>
-            <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">Our online application saves you the hassle of leaving the comfort of home or work.</p>
-          </div>
-        </div>
-        <div class="d-flex flex-row justify-content-around mt-5">
-          <div class="d-flex flex-column justify-content-start">
-            <img src="{{asset('assets/review_2.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">costs-Effective
-              &</h4>
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Flexible
-              Repayment</h4>
-            <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">Enjoy
-              low-interest rates and flexible repayment tenures of up to 12 months, with multiple repayment options.</p>
-          </div>
-          <div class="d-flex flex-column justify-content-start">
-            <img src="{{asset('assets/review_4.svg')}}" alt="image" class="image-fluid img-mini align-self-center">
-            <h4 class="mt-20px font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">No Collateral
-            </h4>
-            <h4 class="font-type-secondary font-size-tertiary cl-quinary align-self-center text-center">Financing</h4>
-            <p class="width-container-mini-inter1-px font-type-tertiary font-size-quaternary align-self-center text-center">We focus on your business potential and want to help you grow.</p>
-          </div>
-        </div>
-        <a href="/register"
-          class="btn btn-hero btn-med cl-secondary bg-cl-tertiary ml-5 mt-5 font-type-primary align-self-center">Apply now</a>
       </div>
     </div>
   </main>

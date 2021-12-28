@@ -1,7 +1,7 @@
 <header id="responsive-header-desktop">
   <nav class="navbar navbar-light bg-cl-primary navbar-expand-md" id="responsive-nav">
     <a class="navbar-brand" href="/">
-      <img class="img-fluid ml-5 logo-size mt-1 mb-1" id="logo" src="{{ asset('images/logo/sfd-bl.svg') }}" height="50px" alt="logo-brand" />
+      <img class="img-fluid ml-3 logo-size mt-1 mb-1" id="logo" src="{{ asset('images/logo/sfd-bl.svg') }}" height="50px" alt="logo-brand" />
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,6 +19,9 @@
         </li>
         <li class="nav-item align-self-center">
           <a href="/register" class="nav-link pt-2 pb-2 pr-4 pl-4 btn-nav bg-cl-secondary cl-secondary font-type-secondary font-size-septenary align-items-center" id="btn-responsive-mobile">Apply Loan</a>
+        </li>
+        <li class="nav-item align-self-center">
+          <a href="//app.sf-direct.tri-niche.com/" class="nav-link pt-2 pb-2 btn-paynow cl-paynow font-type-primary font-size-septenary align-self-center text-center" id="btn-responsive-mobile">Pay Now</a>
         </li>
       </ul>
     </div>
