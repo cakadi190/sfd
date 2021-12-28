@@ -90,7 +90,7 @@
 
   @include('layouts.landing_page.footer')
 
-  <script src="{{ asset('js/home.js') }}"></script>
+  <script src="{{ asset('js/app.js') }}"></script>
   @yield('footer')
 </body>
 </html>

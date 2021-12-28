@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 {!! RecaptchaV3::initJs() !!}
 <style>
+
   #phone_prefix{
     width: 35% !important;
   }
@@ -31,7 +32,7 @@
     padding: 0.5rem 1.25rem;
     border-radius: 50rem;
   }
-  @media screen and (min-width: 768px) {
+  @media  screen and (min-width: 768px) {
     .navbar .btn-primary {
       margin-left: 1rem;
     }
@@ -61,7 +62,7 @@
     border-radius: 50rem;
     font-weight: 600;
   }
-  @media screen and (max-width: 992px) {
+  @media  screen and (max-width: 992px) {
     .btn-prev, .btn-next {
       font-size: 1rem;
     }
@@ -82,9 +83,9 @@
     display: flex;
   }
   .period-selector .period-wrapper {
-    flex: 1;
     align-items: center;
     display: flex;
+    justify-content: center;
   }
   .period-selector input {
     display: none;
@@ -97,11 +98,12 @@
     justify-content: center;
     font-weight: bold;
     font-size: 1.5rem;
-    padding: .5rem 1rem;
+    padding: 0;
     margin: 0;
     cursor: pointer;
     transition: all .2s;
-    width: 100%;
+    width: 60px;
+    height: 60px;
   }
   .period-selector input:checked ~ label {
     background: #27BEFF;
@@ -141,7 +143,7 @@
     color: #1D2C62;
     background: linear-gradient(-180deg, rgba(185, 199, 214, .5), rgba(185, 199, 214, 1));
   }
-  @media screen and (max-width: 993px) {
+  @media  screen and (max-width: 993px) {
     .nav-stepper .nav-link .nav-content {
       display: none;
     }
@@ -169,6 +171,11 @@
     padding: .25rem;
     border-radius: 5rem;
   }
+  @media  screen and (max-width: 768px) {
+    .counter-tab {
+      border-radius: 1.5rem;
+    }
+  }
 
   .counter-tab .nav-item {
     flex: 1;
@@ -194,7 +201,7 @@
   }
 
   /* Card */
-  @media screen and (min-width: 992px) {
+  @media  screen and (min-width: 992px) {
     .card.card-body:not(.none) {
       padding: 4rem;
     }
@@ -245,7 +252,7 @@
 
   <div class="card card-body">
     <div class="row justify-content-lg-between pb-3">
-      <div class="col-md-6 order-2 order-lg-1">
+      <div class="col-lg-6 col-md-7 order-2 order-lg-1">
 
         <form class="tab-content" method="POST" enctype="multipart/form-data" action="{{ route('register.process') }}">
           @csrf
@@ -567,7 +574,7 @@
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>  
+                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>
 
                 @error('salary_slips')
                 <div class="text-danger">{{ $message }}</div>
@@ -647,12 +654,103 @@
 
 @section('footer')
 <script src="{{ asset('vendor/dropify/js/dropify.min.js') }}"></script>
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 
 <script>
+  /** Jquery Validation */
+  $('form').validation({
+    rules: {
+      finance_amount: {
+        required: true,
+      },
+      period: {
+        required: true,
+      },
+      purpose: {
+        required: true,
+      },
+      fullname: {
+        required: true,
+      },
+      nric: {
+        required: true,
+      },
+      email: {
+        required: true,
+      },
+      phone_prefix: {
+        required: true,
+      },
+      phone: {
+        required: true,
+      },
+      agree: {
+        required: true,
+      },
+      birth_date: {
+        required: true,
+      },
+      tax: {
+        required: true,
+      },
+      employment: {
+        required: true,
+      },
+      dependants: {
+        required: true,
+      },
+      id_front: {
+        required: true,
+      },
+      id_back: {
+        required: true,
+      },
+      pay_slips: {
+        required: true,
+      },
+      pay_slips: {
+        required: true,
+      },
+      bank_statements: {
+        required: true,
+      },
+      bank_statements: {
+        required: true,
+      },
+      utilities_slip: {
+        required: true,
+      },
+    },
+
+    onfocusout: function (e) {
+      this.element(e);
+    },
+
+    highlight: function (element) {
+      jQuery(element).closest('.form-control').addClass('is-invalid');
+      jQuery(element).closest('.form-control').removeClass('is-valid');
+    },
+    unhighlight: function (element) {
+      jQuery(element).closest('.form-control').removeClass('is-invalid');
+      jQuery(element).closest('.form-control').addClass('is-valid');
+    },
+
+    errorElement: 'div',
+    errorClass: 'invalid-feedback',
+    errorPlacement: function (error, element) {
+      $(element).parents('.form-group').find(".error-message").append(error);
+    },
+
+    submitHandler(form) {
+      form.submit();
+    }
+  });
+
+  /** Previous Stepper */
   function prevStep(targetElement, anchorEl) {
     console.log($(`.nav-stepper #${anchorEl}`));
     $(`.nav-stepper #${anchorEl}`).addClass('disabled');
@@ -669,7 +767,8 @@
       }
     })
   }
-  
+
+  /** Next Stepper */
   function nextStep(targetElement) {
     $(`.nav-stepper a[href="#${targetElement}"]`).removeClass('disabled');
     $(`.nav-stepper a[href="#${targetElement}"]`).tab('show');
