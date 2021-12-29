@@ -1,0 +1,300 @@
+/* =========== General Styling ==============*/
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+div#outer-layout{
+    background-color: blueviolet;
+    width: 100%;
+    display: block;
+}
+
+/* ========== Color & Background Color Styling ===========*/
+.bg-cl-transparent{
+    background-color: transparent !important;
+}
+.bg-cl-primary{
+    background-image: linear-gradient(#E9F7FF, #F9F6FF);
+}
+.bg-cl-secondary{
+    background-color: #003366;
+}
+.bg-cl-tertiary{
+    background-color: #19CDFA;
+}
+.bg-cl-footer-copyright{
+    background-color: #032c55;
+}
+.cl-primary{
+    color: #1B4476;
+}
+.cl-secondary{
+    color: white;
+}
+.cl-tertiary{
+    color: darkblue;
+}
+.cl-quaternary{
+    color: #19CDFA;
+}
+.cl-quinary{
+    color: #003366;
+}
+.cl-senary{
+    color: #1D2C62;
+}
+.cl-septenary{
+    color: #000572;
+}
+.cl-octonary{
+    color: #809696;
+}
+
+/* ========== General Font Styling =============*/
+.font-type-primary {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+}
+  
+.font-type-secondary{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+  
+.font-type-tertiary{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+  
+.font-type-quaternary{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
+}
+  
+.font-size-primary{
+    font-size: 1.9rem;
+}
+
+.font-size-secondary{
+    font-size: 1.7rem;
+}
+
+.font-size-tertiary{
+    font-size: 1.4rem;
+}
+
+.font-size-quaternary{
+    font-size: 1.1rem;
+}
+
+.font-size-septenary{
+    font-size: 0.8rem;
+}
+
+.line-height-1{
+    line-height: 38px;
+}
+.line-height-2{
+    line-height: 25px;
+}
+.line-height-3{
+    line-height: 18px;
+}
+.line-height-4{
+    line-height: 14px;
+}
+
+/* ========== General Styling for margin & padding =========*/
+.mt-50px{
+    margin-top: 50px !important;
+}
+.mt-80px{
+    margin-top: 80px !important;
+}
+.pt-50px{
+    padding-top: 50px !important;
+}
+.pt-70px{
+    padding-top: 70px !important;
+}
+.pt-80px{
+    padding-top: 80px !important;
+}
+.pt-90px{
+    padding-top: 90px !important;
+}
+.pt-100px{
+    padding-top: 100px !important;
+}
+.pt-150px{
+    padding-top: 150px !important;
+}
+.pl-10px{
+    padding-left: 10px !important;
+}
+.pl-25px{
+    padding-left: 25px !important;
+}
+.pr-10px{
+    padding-right: 10px !important;
+}
+.pr-25px{
+    padding-right: 25px !important;
+}
+
+/* ========== Hero Component Mobile ============*/
+.bg-hero{
+    background-image: url('../assets/new_redesign/hero-mobile-new.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+/* ========== Sizing Image ===============*/
+.img-size-med-mobile{
+    width: 50%;
+}
+.img-size-half-med-mobile{
+    width: 40%;
+}
+.img-size-mini-mobile{
+    width: 8%;
+}
+.img-size-med-main{
+    width: 30%;
+}
+
+/* ========== General Styling for Mobile ============*/
+header#header-mobile{
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+
+div.hero-style{
+    height: 93vmax;
+}
+
+div#card-mobile{
+    width: 95%;
+    margin: auto;
+    background-color: white;
+    padding: 3vmin;
+    position: absolute;
+    z-index: 1;
+    top: 70vmax;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 20px;
+}
+
+.jumbotron{
+    margin-bottom: 0px !important;
+}
+
+/* ========== General Styling for IMG Width ===========*/
+.img-width-super-super-mini-mobile{
+    width: 7vmin;
+}
+.img-width-mini-mobile{
+    width: 15vmin;
+}
+.img-with-med-mobile{
+    width: 40vmax;
+}
+.img-icon-mini{
+    width: 8vmin;
+}
+
+/* ========== General Styling for Button ==============*/
+.btn-med{
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ============== General Border Styling ==============*/
+.border-bottom-full{
+    border-bottom: 3px solid #19CDFA;
+    width: 100%;
+}
+.border-bottom-mini{
+    border-bottom: 3px solid #19CDFA;
+    width: 30%;
+}
+
+/* ============== General Styling for Container =============*/
+.width-container-mini{
+    width: 200px;
+}
+.width-container-med{
+    width: 260px;
+}
+.width-container-big{
+    width: 320px;
+}
+
+/* ============== Responsive Styling ================== */
+@media only screen and (min-width: 321px) and (max-width: 376px){
+    div.hero-style{
+        height: 94vmax;
+    }
+    
+    div#card-mobile{
+        width: 95%;
+        margin: auto;
+        background-color: white;
+        padding: 3vmin;
+        position: absolute;
+        z-index: 1;
+        top: 68vmax;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 550px){
+    div.hero-style{
+        height: 80vmax;
+    }
+    
+    div#card-mobile{
+        width: 95%;
+        margin: auto;
+        background-color: white;
+        padding: 3vmin;
+        position: absolute;
+        z-index: 1;
+        top: 58vmax;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        border-radius: 20px;
+    }   
+}
+
+@media only screen and (min-width: 550px){
+    header#header-mobile{
+        display: none;
+    }
+    header#header-main{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        height: 10vh;
+    }
+}

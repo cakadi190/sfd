@@ -202,6 +202,9 @@ div#footer-mobile {
   display: block !important;
 }
 
+.img-mini-small-footer-px{
+  width: 180px;
+}
 .img-small-footer-px{
   width: 250px;
 }
@@ -574,6 +577,15 @@ a.menu-item:hover{
 }
 /*DONE*/
 @media only screen and (max-width: 600px){
+  .btn-med{
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
   #toggler-menu{
     cursor: pointer;
   }
@@ -684,7 +696,7 @@ a.menu-item:hover{
   }
 
   div#section3-mobile {
-    padding-top: 220px;
+    padding-top: 160px;
     position: relative;
     top: 0px;
   }
@@ -760,13 +772,14 @@ a.menu-item:hover{
     width: 45vmax !important;
   }
 
-  .btn-med {
-    width: 25vmin;
-  }
-
-  .btn-hero {
-    border-radius: 25vmin;
-    padding: 1.7vmax 2.3vmax 1.7vmax 2.3vmax; 
+  .btn-med{
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .font-size-septenary{
@@ -873,7 +886,7 @@ a.menu-item:hover{
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 300px;
+    padding-top: 170px !important;
   }
 
   #section3-header {
@@ -1009,7 +1022,13 @@ a.menu-item:hover{
     width: 45vmax !important;
   }
   .btn-med {
-    width: 25vmin;
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
   .btn-hero {
     border-radius: 25vmin !important;
@@ -1112,7 +1131,7 @@ a.menu-item:hover{
 
   div#section3-desktop {
     display: block !important;
-    padding-top: 30vh;
+    padding-top: 30vh !important;
   }
 
   #section3-header {
@@ -1129,7 +1148,7 @@ a.menu-item:hover{
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-    width: 35vmin;
+    width: 50vmin;
     top: 780px;
     left: -10vw;
   }
@@ -1137,9 +1156,10 @@ a.menu-item:hover{
   .float-img-desktop-right-1 {
     float: right;
     position: absolute;
-    width: 25vmin;
-    left: 75vw;
-    top: 180vh;
+    width: 45vmin;
+    /* left: 75vw; */
+    right: 0;
+    top: 280vh;
   }
 
   .custom-img {
@@ -1319,7 +1339,7 @@ a.menu-item:hover{
     justify-content: space-around !important;
     align-items: center !important;
     align-content: center !important;
-    padding-top: 250px !important;
+    padding-top: 150px !important;
   }
 
   div#section3-main {
@@ -1332,7 +1352,7 @@ a.menu-item:hover{
   img.float-img-desktop-left-1 {
     float: left;
     position: absolute;
-    top: 880px;
+    top: 800px;
     width: 250px;
     left: 35px;
   }
@@ -1359,7 +1379,7 @@ a.menu-item:hover{
     position: absolute;
     width: 240px;
     left: 75vw;
-    top: 1450px;
+    top: 1280px;
   }
 
   .width-btn {
@@ -1381,7 +1401,13 @@ a.menu-item:hover{
   }
 
   .btn-med {
-    width: 19vmin !important;
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-hero {
@@ -1461,7 +1487,7 @@ a.menu-item:hover{
     position: absolute;
     width: 320px;
     left: 65vw;
-    top: 1420px;
+    top: 1300px;
   }
 }
 
@@ -1670,7 +1696,13 @@ a.menu-item:hover{
   }
 
   .btn-med {
-    width: 19vmin !important;
+    border-radius: 40px;
+    width: 120px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .btn-hero {

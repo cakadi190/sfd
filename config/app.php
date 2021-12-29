@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Celest'),
+    'name' => env('APP_NAME', 'SmartFunding Direct'),
 
     /*
     |--------------------------------------------------------------------------

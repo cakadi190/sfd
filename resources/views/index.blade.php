@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="//stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  <link rel="stylesheet" href="{{ asset('css/landing-page.css') }}">
   <script src="{{asset('js/style.js')}}" type="application/javascript" defer></script>
   <title>SMARTFUNDING Direct</title>
 </head>
@@ -27,7 +28,7 @@
         <p class="text-center cl-secondary font-type-tertiary font-size-subtitle width-container-mini-px align-self-center font-line-height-mini-px mt-4">Whether it's
           furnishing your newly purchased home, saving up for a new car, or planning a surprise vacation for your spouse
           to the stunning Santorini. In just three steps, you can apply for a quick loan today.</p>
-        <a href="/register" class="btn btn-hero btn-med align-self-center font-type-primary cl-secondary mt-4 bg-cl-tertiary font-size-septenary">Get Loans</a>
+        <a href="/register" class="btn btn-med align-self-center font-type-primary cl-secondary mt-2 bg-cl-tertiary font-size-septenary">Get Loans</a>
       </div>
     </div>
 
@@ -123,7 +124,7 @@
     <!--================================= SECTION "HOW TO GET FUNDING IN 3 SIMPLE STEPS" ===========================================-->
     <!--Mobile Section 3-->
     <div class="d-flex flex-column justify-content-around bg-cl-primary" id="section3-mobile">
-      <h3 class="cl-quinary font-type-primary font-size-tertiary width-container-inter1-px pt-3 text-center align-self-center">
+      <h3 class="cl-quinary font-type-primary font-size-tertiary width-container-inter1-px text-center align-self-center">
         How To Get Funding in 3 Simple Steps</h3>
       <div class="border-bottom-half-px align-self-center"></div>
       <div class="d-flex flex-column justify-content-around mt-5">
@@ -157,7 +158,7 @@
           class="align-self-center font-type-tertiary font-line-height-mini-px font-size-septenary cl-septenary width-container-super-mini-px text-center">
           If funding is successful, the funds will be disbursed to you within two days.</h4>
       </div>
-      <a href="/register" class="btn btn-hero font-type-primary align-self-center cl-secondary mt-5 mb-50px bg-cl-tertiary font-size-septenary">Get Loans</a>
+      <a href="/register" class="btn btn-med font-type-primary align-self-center cl-secondary mt-5 mb-50px bg-cl-tertiary font-size-septenary">Get Loans</a>
     </div>
     
     <!--Desktop Section 3-->
@@ -203,7 +204,7 @@
       </div>
       <div class="d-flex flex-column justify-content-around">
         <a href="/register"
-          class="btn btn-hero btn-med mb-70px align-self-center font-type-primary font-size-septenary cl-secondary mt-70px bg-cl-tertiary">Get Loans</a>
+          class="btn btn-med mb-70px align-self-center font-type-primary font-size-septenary cl-secondary mt-70px bg-cl-tertiary">Get Loans</a>
         <img src="{{asset('assets/Polygon_5.svg')}}" alt="LOGO" class="img-fluid float-img-desktop-right-1">
       </div>
     </div>
@@ -240,7 +241,7 @@
           <p class="align-self-center pt-3 pl-2 font-type-tertiary font-size-septenary">No lock-in period</p>
         </div>
       </div>
-      <a href="/register" class="btn btn-hero font-size-septenary font-type-primary mt-50px cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
+      <a href="/register" class="btn btn-med font-size-septenary font-type-primary mt-50px cl-secondary bg-cl-tertiary align-self-center">Apply Now</a>
     </div>
     <!--Desktop Section 4-->
     <div id="section4-desktop">
@@ -276,7 +277,7 @@
                 class="img-fluid img-sm align-self-center pt-3 pl-2">
               <p class="align-self-center pt-1 big-screen font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
             </div>
-            <a href="/register" class="btn btn-hero font-type-primary bg-cl-tertiary cl-secondary ml-2 mt-3">Apply
+            <a href="/register" class="btn btn-med font-type-primary bg-cl-tertiary cl-secondary ml-2 mt-3">Apply
               Now</a>
           </div>
         </div>
@@ -317,7 +318,7 @@
                   class="img-fluid img-sm align-self-center">
                 <p class="align-self-center pt-3 font-type-tertiary font-size-septenary pl-2">No lock-in period</p>
               </div>
-              <a href="/register" class="btn btn-hero btn-med font-type-primary font-size-septenary bg-cl-tertiary cl-secondary ml-2 mt-25px">Apply
+              <a href="/register" class="btn btn-med font-type-primary font-size-septenary bg-cl-tertiary cl-secondary ml-2 mt-25px">Apply
                 Now</a>
             </div>
           </div>

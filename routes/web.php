@@ -9,6 +9,11 @@ Route::get('/testing-success/{loan_id}', [App\Http\Controllers\TestingFunctional
 Route::get('/testing-overdue/{loan_id}', [App\Http\Controllers\TestingFunctionality::class, 'overdue']);
 
 /*
+  Redesign Route
+ */
+Route::view('/index-new', 'index-new');
+Route::view('/about-new', 'about-new');
+/*
   New Routes
 */
 Route::view('/', 'index')->name('home');
