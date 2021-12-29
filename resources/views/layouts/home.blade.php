@@ -78,6 +78,9 @@
             <li class="nav-item"><a href="{{ url('/') }}" class="nav-link">Home </a></li>
             <li class="nav-item"><a href="{{ url('/about') }}" class="nav-link">About</a></li>
             <li class="nav-item"><a href="{{ url('/register') }}" class="btn btn-primary">Apply Loan</a></li>
+            <li class="nav-item align-self-center">
+              <a href="//app.sf-direct.tri-niche.com/" class="nav-link pt-2 pb-2 btn-paynow cl-paynow font-type-primary font-size-septenary align-self-center text-center" id="responsive-mobile">Pay Now</a>
+            </li>
           </ul>
         </div>
       </div>

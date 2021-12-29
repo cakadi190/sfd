@@ -33,6 +33,7 @@ class Applicant extends Model
         'nric',
         'email',
         'phone',
+        'purpose',
         'birthdate',
         'dependants',
         'employment',
@@ -41,6 +42,7 @@ class Applicant extends Model
         'salary_slip',
         'bank_statement',
         'utilities_slip',
+        'tax_declaration',
         'status'
     ];
 

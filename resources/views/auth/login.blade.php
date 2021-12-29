@@ -104,7 +104,7 @@
 
           <!-- Login Section -->
           <form method="POST" action="{{ route('login') }}" class="col-md-12" id="form-login">
-            @csrf
+            {{--  @csrf  --}}{{ csrf_field() }}
 
             <div class="p-2">
               <div class="text-center">

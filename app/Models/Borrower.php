@@ -37,6 +37,7 @@ class Borrower extends Model
 		'dependants',
 		'employment',
 		'phone',
+		'purpose',
 		'utilities_slip',
 		'id_back',
 		'id_front',

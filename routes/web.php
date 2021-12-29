@@ -108,4 +108,16 @@ Route::prefix('dashboard')->group(function () {
     Route::post('editDataUser/{id}', [App\Http\Controllers\UserRolesController::class, 'editDataUserDetail']);
     Route::post('addDataUser', [App\Http\Controllers\UserRolesController::class, 'addNewUser']);
   });
+
+  Route::prefix('repayment')->group(function(){
+    Route::prefix('subscription')->group(function(){
+      Route::get('/add-subscription', [App\Http\Controllers\RepaymentController::class, 'addSubscription']);
+    });
+    Route::prefix('subscribers')->group(function(){
+      Route::get('/add-subscriber', [App\Http\Controllers\RepaymentController::class, 'addSubscriber']);
+      Route::get('/subscriber-callback', [App\Http\Controllers\RepaymentController::class, 'subscriberCallback']);
+      Route::get('/callback-success', [App\Http\Controllers\RepaymentController::class, 'subscriberCallbackSuccess']);
+      Route::get('/callback-failure', [App\Http\Controllers\RepaymentController::class, 'subscriberCallbackFailure']);
+    });
+  });
 });

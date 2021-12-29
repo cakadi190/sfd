@@ -8,6 +8,8 @@ use App\Models\PaymentSequence;
 use App\Models\RejectedApplicant;
 use App\Notifications\BorrowerRejectionNotification;
 use Illuminate\Http\Request;
+use App\Http\Controllers\RepaymentController;
+use Exception;
 
 class ApplicantController extends Controller
 {
@@ -167,10 +169,11 @@ class ApplicantController extends Controller
   public function approveApplicant($id){
     //Storing selected applicant data into 'borrowers' table
     $applicant = Applicant::findOrFail($id);
-
+    $subscription_package_id = uniqid();
     $data_borrower = [
       'email' => $applicant->email,
       'loan_id' => $applicant->loan_id,
+      'subscription_package_id' => $subscription_package_id,
       'finance_amount' => $applicant->finance_amount,
       'period' => $applicant->period,
       'fullname' => $applicant->fullname,
@@ -179,13 +182,13 @@ class ApplicantController extends Controller
       'dependants' => $applicant->dependants,
       'employment' => $applicant->employment,
       'phone' => $applicant->phone,
+      'purpose' => $applicant->purpose,
       'utilities_slip' => $applicant->utilities_slip,
       'id_back' => $applicant->id_back,
       'id_front' => $applicant->id_front,
       'salary_slip' => $applicant->salary_slip,
       'status' => 'pending',
     ];
-    Borrower::create($data_borrower);
 
     if($data_borrower['period'] == 'annually'){
       $max_payment = 1 * 12;
@@ -198,14 +201,30 @@ class ApplicantController extends Controller
     }else{
       $max_payment = 5 * 12;
     }
+    
+    $all_payment_seq = array();
+    for($i = 1; $i <= $max_payment; $i++){
+      $item['borrower_loan_id'] = $applicant->loan_id;
+      $item['current_payment_seq'] = $i;
+      $item['max_payment_seq'] = $max_payment;
+      $item['ammount'] = round((($applicant->finance_amount) + ($applicant->finance_amount * 0.18)) / $max_payment, 2);
 
-    $payment_seq_data = [
-      'borrower_loan_id'    => $applicant->loan_id,
-      'current_payment_seq' => 1,
-      'max_payment_seq' => $max_payment,
-      'ammount' => round((($applicant->finance_amount) + ($applicant->finance_amount * 0.18)) / $max_payment, 2),
-    ];
-    PaymentSequence::create($payment_seq_data);
+      $all_payment_seq[] = $item;
+    }
+
+    try{
+      $add_subcription = new RepaymentController();
+      $data_response = $add_subcription->addSubscription($applicant->purpose, $subscription_package_id, $all_payment_seq);
+
+      if($data_response['http_response_code'] != 200){
+        throw new Exception("Something went wrong while connecting to BetterPay! Try again.");
+      }
+    }catch(Exception $err){
+      $sessionMsg = $err->getMessage();
+      return redirect('/dashboard/applicant')->with('message', $sessionMsg);
+    }
+    Borrower::create($data_borrower);
+    PaymentSequence::insert($all_payment_seq);
 
     $mailData = [
         'fullName' => $applicant->fullname,
@@ -214,11 +233,8 @@ class ApplicantController extends Controller
         'urlRegister' => 'https://www.quora.com/',
         'phoneNumber' => $applicant->phone,
     ];
-    // dd($mailData, $receiver);
     $applicant->notify(new \App\Notifications\EMandateEmailNotification($mailData));
 
-    // Destroy selected applicant from 'applicants' table
-    // $deleteStatus = $applicant->delete();
     $applicant->status = "applied";
     $state = $applicant->save();
 
@@ -263,7 +279,6 @@ class ApplicantController extends Controller
     $applicant = Applicant::findOrFail($id);
     $applicant->status = 'canceled';
     $receiver = $applicant->email; // Line code for production
-    // $receiver = 'rakha.rozaqtama@gmail.com'; // Line code for testing
     $mailData = [
       'fullname' => $applicant->fullname,
       'subject_email' => htmlspecialchars(strip_tags($request->subjectEmail)),
