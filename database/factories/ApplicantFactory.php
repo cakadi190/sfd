@@ -16,7 +16,7 @@ class ApplicantFactory extends Factory
         return [
             'created_at' => $this->faker->dateTimeThisMonth(),
             'updated_at' => $this->faker->dateTimeThisMonth(),
-            'loan_id' => $this->faker->unique()->word(),
+            'loan_id' => uniqid(),
             'finance_amount' => $this->faker->randomNumber(5, true),
             'period' => $this->faker->dateTimeInInterval('1 days','3 week'),
             'fullname' => $this->faker->userName(),
@@ -28,9 +28,9 @@ class ApplicantFactory extends Factory
             'employment' => 'employeed',
             'id_front' => $this->faker->word(),
             'id_back' => $this->faker->word(),
-            'salary_slip' => $this->faker->randomNumber(5,true),
-            'utilities_slip' =>$this->faker->randomNumber(5,true),
-            'status' => 'waiting',
+            'salary_slip'     => $this->faker->randomNumber(5,true),
+            'utilities_slip'  =>$this->faker->randomNumber(5,true),
+            'status'          => 'pending',
         ];
     }
 }
