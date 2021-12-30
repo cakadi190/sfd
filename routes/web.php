@@ -27,6 +27,14 @@ Auth::routes([
   'register'  => false,
 ]);
 
+/**
+ * PayNow Controller
+ */
+Route::prefix('pay-now')->group(function () {
+  Route::view('/', 'paynow-index')->name('pay.now');
+  Route::post('/check', [\App\Http\Controllers\PayNowController::class, 'check'])->name('pay.checking');
+});
+
 /*
   Uji Coba Notification Email
  */
@@ -63,7 +71,7 @@ Route::prefix('dashboard')->group(function () {
   Route::get('getModalApprove/{id}', [App\Http\Controllers\ApplicantController::class,'getDataModalApprove'])->name('dashboard.modal-approve');
   Route::get('getModalDetail/{id}', [App\Http\Controllers\ApplicantController::class, 'getDataModalDetail'])->name('dashboard.modal-detail');
   Route::get('getModalReject/{id}', [App\Http\Controllers\ApplicantController::class, 'getDataModalReject'])->name('dashboard.modal-reject');
-  
+
   Route::get('getModalDisbursement/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalDisbursement'])->name('dashboard.modal-disbursement');
   Route::get('loan-disburse/{id}', [App\Http\Controllers\BorrowerController::class, 'loanDisbursementConfirm'])->name('dashboard.loan-disbursement');
   Route::get('getModalDetailBorrower/{id}', [App\Http\Controllers\BorrowerController::class, 'getDataModalDetail'])->name('dashboard.modal-detail-borrower');
