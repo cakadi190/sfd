@@ -202,9 +202,6 @@ div#footer-mobile {
   display: block !important;
 }
 
-.img-mini-small-footer-px{
-  width: 180px;
-}
 .img-small-footer-px{
   width: 250px;
 }
@@ -1487,7 +1484,7 @@ a.menu-item:hover{
     position: absolute;
     width: 320px;
     left: 65vw;
-    top: 1300px;
+    top: 1420px;
   }
 }
 

@@ -160,4 +160,13 @@
       </p>
     </div>
   </div>
+  <div class="container ml-2">
+    <div class="row">
+      <p class="col-sm-5">Tax Declaration</p>
+      <p class="col-sm-1">:</p>
+      <p class="col-sm-6">
+        <a href="{{ asset($applicant[0]['applicant']->tax_declaration) }}" download="{{ $applicant[0]['applicant']->fullname }}-TaxDeclaration">Download File Data</a>
+      </p>
+    </div>
+  </div>
 </div>

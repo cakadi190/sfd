@@ -26,6 +26,7 @@ return array(
     'App\\Http\\Controllers\\LateChangeController' => $baseDir . '/app/Http/Controllers/LateChangeController.php',
     'App\\Http\\Controllers\\OverdueInstallmentController' => $baseDir . '/app/Http/Controllers/OverdueInstallmentController.php',
     'App\\Http\\Controllers\\RegisterBorrowerController' => $baseDir . '/app/Http/Controllers/RegisterBorrowerController.php',
+    'App\\Http\\Controllers\\RepaymentController' => $baseDir . '/app/Http/Controllers/RepaymentController.php',
     'App\\Http\\Controllers\\SalesController' => $baseDir . '/app/Http/Controllers/SalesController.php',
     'App\\Http\\Controllers\\TestingFunctionality' => $baseDir . '/app/Http/Controllers/TestingFunctionality.php',
     'App\\Http\\Controllers\\UserDataController' => $baseDir . '/app/Http/Controllers/UserDataController.php',

@@ -671,6 +671,7 @@ class ComposerStaticInit5cde45b1402a615f3105e0bd5beeb2b8
         'App\\Http\\Controllers\\LateChangeController' => __DIR__ . '/../..' . '/app/Http/Controllers/LateChangeController.php',
         'App\\Http\\Controllers\\OverdueInstallmentController' => __DIR__ . '/../..' . '/app/Http/Controllers/OverdueInstallmentController.php',
         'App\\Http\\Controllers\\RegisterBorrowerController' => __DIR__ . '/../..' . '/app/Http/Controllers/RegisterBorrowerController.php',
+        'App\\Http\\Controllers\\RepaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/RepaymentController.php',
         'App\\Http\\Controllers\\SalesController' => __DIR__ . '/../..' . '/app/Http/Controllers/SalesController.php',
         'App\\Http\\Controllers\\TestingFunctionality' => __DIR__ . '/../..' . '/app/Http/Controllers/TestingFunctionality.php',
         'App\\Http\\Controllers\\UserDataController' => __DIR__ . '/../..' . '/app/Http/Controllers/UserDataController.php',

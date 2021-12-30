@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Borrower;
 use App\Models\PaymentSequence;
 use Illuminate\Http\Request;
-use App\Notifications\BorrowerConfirmationNotification;
-use App\Notifications\FollowUpEmailNotification;
 use App\Notifications\BlackListNotification;
 use App\Notifications\MonthlyStatementNotification;
 use App\Notifications\LoanDisbursementNotification;

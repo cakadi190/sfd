@@ -48,13 +48,14 @@ class RegisterBorrowerController extends Controller
       "bank_statements" => ["array", "required", "min:3", "max:3"],
       "bank_statements.*" => 'mimes:doc,docx,PDF,pdf,jpg,jpeg,png|max:2000',
       "utilities_slip"  => ["required", "file", 'max: 10240', 'mimes:jpg,png,jpeg,pdf'],
+      "tax_declaration" => ["required", "file", "max:10240", "mimes:jpg,png,jpeg,pdf"],
       'g-recaptcha-response' => 'required|recaptchav3:register,0.5',
     ]);
 
     # Process the data
     $data['email']            = htmlspecialchars(strip_tags($request->email));
     $data['loan_id']          = uniqid();
-    $data['finance_amount']   = (int) htmlspecialchars(strip_tags($request->finance_amount));
+    $data['finance_amount']   = (int) (str_replace(",", "", $request->finance_amount));
     $data['period']           = htmlspecialchars(strip_tags($request->period));
     $data['fullname']         = htmlspecialchars(strip_tags($request->fullname));
     $data['nric']             = htmlspecialchars(strip_tags($request->nric));
@@ -62,21 +63,23 @@ class RegisterBorrowerController extends Controller
     $data['dependants']       = htmlspecialchars(strip_tags($request->dependants));
     $data['employment']       = htmlspecialchars(strip_tags($request->employment));
     $data['phone']            = htmlspecialchars(strip_tags($request->phone_prefix)) . htmlspecialchars(strip_tags($request->phone));
+    $data['purpose']          = htmlspecialchars(strip_tags($request->purpose));
+
+    $utilities = $request->tax_declaration;
+    $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
+    $data['tax_declaration'] = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
 
     $utilities = $request->utilities_slip;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['utilities_slip']   = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-    session(['utilities_slip' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
 
     $utilities = $request->id_back;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['id_back']          = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-    session(['id_back' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
 
     $utilities = $request->id_front;
     $utilities->move(public_path('upload'), time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension());
     $data['id_front']         = 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension();
-    session(['id_front' => 'upload/' . time() . '_' . md5(now()) . '.' . $utilities->getClientOriginalExtension()]);
     
     if($request->has('pay_slips')){
       $data['salary_slip'] = "";
@@ -89,7 +92,6 @@ class RegisterBorrowerController extends Controller
         }
         $count += 1;
       }
-      session(['salary_slip' => $data['salary_slip']]);
     }
 
     if($request->has('bank_statements')){
@@ -103,7 +105,6 @@ class RegisterBorrowerController extends Controller
         }
         $count += 1;
       }
-      session(['bank_statement' => $data['bank_statement']]);
     }
 
     # Insert it to database

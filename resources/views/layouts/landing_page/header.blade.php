@@ -15,7 +15,7 @@
             href="/">Home<span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item active align-self-center">
-          <a class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile" href="/about">About
+          <a href="//sf-direct.tri-niche.com/about" class="nav-link cl-primary font-type-secondary font-size-septenary cl-white-mobile">About
             Us</a>
         </li>
         <li class="nav-item align-self-center">

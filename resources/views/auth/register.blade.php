@@ -27,7 +27,7 @@
     padding: 0.5rem 1rem;
   }
 
-  .grecaptcha-badge { visibility: hidden !important; }
+  /* .grecaptcha-badge { visibility: hidden !important; } */
   /* Navbar */
   .navbar .btn-primary {
     padding: 0.5rem 1.25rem;
@@ -257,6 +257,7 @@
 
         <form class="tab-content" method="POST" enctype="multipart/form-data" novalidate action="{{ route('register.process') }}">
           @csrf
+          {{--  {{ csrf_field() }}  --}}
           <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
             <div class="tab-container pb-4 pt-1 px-3">
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>
@@ -632,6 +633,17 @@
                 <div class="error-message"></div>
               </div>
 
+              <div class="form-group mb-5">
+                <label><span class="font-weight-bold">Tax Declaration</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
+                <input type="file" name="tax_declaration" class="dropify" data-height="70" required />
+
+                @error('tax_declaration')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+
+                <div class="error-message"></div>
+              </div>
+
               <div class="custom-control form-group mb-3 custom-checkbox">
                 <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" required/>
                 <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
@@ -757,18 +769,15 @@
       pay_slips: {
         required: true,
       },
-      pay_slips: {
-        required: true,
-      },
-      bank_statements: {
-        required: true,
-      },
       bank_statements: {
         required: true,
       },
       utilities_slip: {
         required: true,
       },
+      tax_declaration: {
+        required: true,
+      }
     },
 
     onfocusout: function (e) {
