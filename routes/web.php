@@ -129,3 +129,5 @@ Route::prefix('dashboard')->group(function () {
     });
   });
 });
+
+Route::view('/debug/api', 'debug.testing');
