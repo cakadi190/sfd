@@ -5,18 +5,18 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '830c94bfb2154feea35358606c28d3dc72c34712',
+        'reference' => 'b54ea5b761b4c2ed4f8437babd0b2cfafb186165',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
     'versions' => array(
         'asm89/stack-cors' => array(
-            'pretty_version' => 'v2.0.3',
-            'version' => '2.0.3.0',
+            'pretty_version' => 'v2.0.5',
+            'version' => '2.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../asm89/stack-cors',
             'aliases' => array(),
-            'reference' => '9cb795bf30988e8c96dd3c40623c48a877bc6714',
+            'reference' => '7a198ec737e926eab15d29368fc6fff66772b0e2',
             'dev_requirement' => false,
         ),
         'brick/math' => array(
@@ -149,12 +149,12 @@
             'dev_requirement' => true,
         ),
         'fruitcake/laravel-cors' => array(
-            'pretty_version' => 'v2.0.4',
-            'version' => '2.0.4.0',
+            'pretty_version' => 'v2.0.5',
+            'version' => '2.0.5.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../fruitcake/laravel-cors',
             'aliases' => array(),
-            'reference' => 'a8ccedc7ca95189ead0e407c43b530dc17791d6a',
+            'reference' => '3a066e5cac32e2d1cdaacd6b961692778f37b5fc',
             'dev_requirement' => false,
         ),
         'graham-campbell/result-type' => array(
@@ -418,7 +418,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '830c94bfb2154feea35358606c28d3dc72c34712',
+            'reference' => 'b54ea5b761b4c2ed4f8437babd0b2cfafb186165',
             'dev_requirement' => false,
         ),
         'laravel/sail' => array(

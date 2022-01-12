@@ -39,7 +39,7 @@ Route::prefix('pay-now')->group(function () {
   Uji Coba Notification Email
  */
 Route::get('/sendBorrowerNotification/{id}', [BorrowerController::class, 'sendConfirmationEmail']);
-Route::get('/followUpMailNotif/{id}',[BorrowerController::class, 'followUpEmail']);
+Route::get('/followUpMailNotif/{id}', [BorrowerController::class, 'followUpEmail']);
 Route::get('/activatingEMandate/{id}', [BorrowerController::class, 'activatingEMandate']);
 
 /**
@@ -130,4 +130,7 @@ Route::prefix('dashboard')->group(function () {
   });
 });
 
-Route::view('/debug/api', 'debug.testing');
+Route::prefix('debug')->group(function () {
+  Route::get('/', [\App\Http\Controllers\EkycController::class, 'home']);
+  Route::post('/', [\App\Http\Controllers\EkycController::class, 'process']);
+});

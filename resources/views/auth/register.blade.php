@@ -8,8 +8,8 @@
 <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" integrity="sha512-nMNlpuaDPrqlEls3IX/Q56H36qvBASwb3ipuo3MxeWbsQB1881ox0cRv7UPTgBlriqoynt35KjEwgGUeUXIPnw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link rel="stylesheet" href="{{ asset('dropify_multiple/dropify_multiple.min.css') }}">
 {!! RecaptchaV3::initJs() !!}
-<style>
 
+<style>
   #phone_prefix{
     width: 35% !important;
   }
@@ -33,7 +33,7 @@
     padding: 0.5rem 1.25rem;
     border-radius: 50rem;
   }
-  @media  screen and (min-width: 768px) {
+  @media    screen and (min-width: 768px) {
     .navbar .btn-primary {
       margin-left: 1rem;
     }
@@ -56,14 +56,15 @@
     padding: 1rem 2rem;
     border-radius: 50rem;
     font-weight: 600;
+    background: #27BEFF;
   }
   .btn-prev {
-    border: 1px solid var(--info);
+    border: 1px solid #27BEFF;
     padding: 1rem 2rem;
     border-radius: 50rem;
     font-weight: 600;
   }
-  @media  screen and (max-width: 992px) {
+  @media    screen and (max-width: 992px) {
     .btn-prev, .btn-next {
       font-size: 1rem;
     }
@@ -107,7 +108,8 @@
     height: 60px;
   }
   .period-selector input:checked ~ label {
-    background: #27BEFF;
+    background: #003366;
+    color: white;
   }
 
   /* Navgiasi */
@@ -144,7 +146,7 @@
     color: #1D2C62;
     background: linear-gradient(-180deg, rgba(185, 199, 214, .5), rgba(185, 199, 214, 1));
   }
-  @media  screen and (max-width: 993px) {
+  @media    screen and (max-width: 993px) {
     .nav-stepper .nav-link .nav-content {
       display: none;
     }
@@ -172,7 +174,7 @@
     padding: .25rem;
     border-radius: 5rem;
   }
-  @media  screen and (max-width: 768px) {
+  @media    screen and (max-width: 768px) {
     .counter-tab {
       border-radius: 1.5rem;
     }
@@ -201,8 +203,32 @@
     padding: 1.75rem 0;
   }
 
+  div#upload-wrapper {
+    padding: 0 2rem;
+    background: rgba(0, 0, 0, .03);
+    border: 2px dashed #152860;
+    border-radius: .5rem;
+  }
+
+  #upload-wrapper .dropify-wrapper {
+    border: 0;
+    background: transparent;
+    padding: 0 !important;
+    border-radius: 0;
+  }
+
+  #upload-wrapper .dropify-message {
+    padding: 1.5rem 0;
+    margin: 0;
+    border-bottom: 1px solid #CFCFCF;
+  }
+
+  #upload-wrapper .dropify-wrapper:last-child .dropify-message {
+    border-bottom: 0;
+  }
+
   /* Card */
-  @media  screen and (min-width: 992px) {
+  @media    screen and (min-width: 992px) {
     .card.card-body:not(.none) {
       padding: 4rem;
     }
@@ -215,6 +241,32 @@
     padding-top: 2.5rem;
   }
 </style>
+
+<style>
+  .footer #footer-top {
+    background: #003366;
+    color: white;
+    padding: 2rem 0;
+  }
+
+  .footer #footer-bottom {
+    background: #002E5C;
+    color: white;
+    padding: 1rem 0;
+  }
+
+  .social-media .nav-link {
+    background: white;
+    border-radius: 50px;
+    width: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: .5rem;
+    height: 2.5rem;
+  }
+</style>
+
 @endsection
 
 @section('content')
@@ -252,41 +304,18 @@
   </ul>
 
   <div class="card card-body">
-    <div class="row justify-content-lg-between pb-3">
-      <div class="col-lg-6 col-md-7 order-2 order-lg-1">
 
-        <form class="tab-content" method="POST" enctype="multipart/form-data" novalidate action="{{ route('register.process') }}">
-          @csrf
-          {{--  {{ csrf_field() }}  --}}
-          <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
-            <div class="tab-container pb-4 pt-1 px-3">
+    <form class="tab-content" method="POST" enctype="multipart/form-data" novalidate action="{{ route('register.process') }}">
+      @csrf
+
+      <!-- Tab Pertama -->
+      <div class="tab-pane fade show active" id="pills-one" role="tabpanel" aria-labelledby="pills-one-tab">
+        <div class="tab-container pb-4 pt-1 px-3">
+
+          <div class="row justify-content-between">
+            <div class="col-md-6">
+
               <h3 class="heading h4 mb-3 mb-md-5">Loan Details</h3>
-
-              <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
-
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-10">
-
-                    <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly-1" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total-1" data-toggle="pill" class="nav-link">Total</a></li>
-                    </ul>
-
-                  </div>
-                </div>
-
-                <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly-1">
-                    <h3 class="m-0 h1" id="calc-1">MYR 0</h3>
-                  </div>
-                  <div class="tab-pane fade" id="pill-total-1">
-                    <h3 class="m-0 h1" id="calc-total-1">MYR 0</h3>
-                  </div>
-                </div>
-
-                <p class="text-center">Interest rate 18% p.a.</p>
-              </div>
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="finance_amount">Loan Amount <div class="text-danger">*</div></label>
@@ -361,42 +390,56 @@
 
                 <div class="error-message"></div>
               </div>
+
             </div>
+            <div class="col-md-5">
 
-            <div class="d-flex px-3 pt-2">
-              <a href="javascript:nextStep('pills-two')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
-            </div>
-
-          </div>
-          <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
-            <div class="tab-container pb-5 pt-1 px-3">
-              <h3 class="heading h4 mb-3 mb-md-5">Personal Details</h3>
-
-              <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
+              <div class="card none card-body mr-0 mr-lg-4 bg-primary text-white text-center">
                 <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
 
                 <div class="row justify-content-center">
                   <div class="col-12 col-md-10">
 
                     <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly-2" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total-2" data-toggle="pill" class="nav-link">Total</a></li>
+                      <li class="nav-item"><a href="#pill-monthly-5" data-toggle="pill" class="nav-link active">Monthly</a></li>
+                      <li class="nav-item"><a href="#pill-total-5" data-toggle="pill" class="nav-link">Total</a></li>
                     </ul>
 
                   </div>
                 </div>
 
                 <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly-2">
-                    <h3 class="m-0 h1" id="calc-2">MYR 0</h3>
+                  <div class="tab-pane fade active show" id="pill-monthly-5">
+                    <h3 class="m-0 h1" id="calc-5">MYR 0</h3>
                   </div>
-                  <div class="tab-pane fade" id="pill-total-2">
-                    <h3 class="m-0 h1" id="calc-total-2">MYR 0</h3>
+                  <div class="tab-pane fade" id="pill-total-5">
+                    <h3 class="m-0 h1" id="calc-total-5">MYR 0</h3>
                   </div>
                 </div>
 
                 <p class="text-center">Interest rate 18% p.a.</p>
               </div>
+
+            </div>
+            <div class="col-lg-12">
+
+              <div class="d-flex mr-3 mb-n3 justify-content-end">
+                <a href="javascript:nextStep('pills-two')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Tab Kedua -->
+      <div class="tab-pane fade" id="pills-two" role="tabpanel" aria-labelledby="pills-two-tab">
+        <div class="tab-container pb-3 pt-1 px-3">
+          <h3 class="heading h4 mb-3 mb-md-5">Personal Details</h3>
+
+          <div class="row justify-content-between">
+            <div class="col-md-6">
 
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex" for="fullname">Name as NRIC <span class="text-danger">*</span></label>
@@ -431,18 +474,21 @@
                 <div class="error-message"></div>
               </div>
 
+            </div>
+            <div class="col-md-5">
+
               <div class="form-group mb-5">
                 <label class="font-weight-bold d-flex">Contact No <span class="text-danger">*</span></label>
 
                 <div class="input-group">
                   <select name="phone_prefix" id="phone_prefix" class="form-control" required>
                     <option {{ (!old('phone_prefix')) ? "selected" : "" }} disabled>Choose One</option>
-                    <option value="+65" {{ (old('phone_prefix') == "+65") ? "selected" : "" }}> SGP (+65)</option>
-                    <option value="+60" {{ (old('phone_prefix') == "+60") ? "selected" : "" }}> MY (+60)</option>
-                    <option value="+62" {{ (old('phone_prefix') == "+62") ? "selected" : "" }}> IDN (+62)</option>
-                    <option value="+66" {{ (old('phone_prefix') == "+66") ? "selected" : "" }}> THAI (+66)</option>
+                    <option selected value="+65" {{ (old('phone_prefix') == "+65") ? "selected" : "" }}> (+65) SGP</option>
+                    <option value="+60" {{ (old('phone_prefix') == "+60") ? "selected" : "" }}> (+60) MYL</option>
+                    <option value="+62" {{ (old('phone_prefix') == "+62") ? "selected" : "" }}> (+62) INA</option>
+                    <option value="+66" {{ (old('phone_prefix') == "+66") ? "selected" : "" }}> (+66) PHP</option>
                   </select>
-                  <input type="text" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" required/>
+                  <input type="text" width="75%" id="phone" class="form-control" name="phone" value="{{ old('phone') }}" placeholder="Enter the number phone" required/>
                 </div>
 
                 <div class="error-message"></div>
@@ -468,43 +514,26 @@
                 <div class="text-danger">{{ $message }}</div>
                 @enderror
               </div>
-            </div>
 
-            <div class="d-flex px-3 mt-n3 pb-3">
-              <a href="javascript:prevStep('pills-one', 'pills-two')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <a href="javascript:nextStep('pills-income')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
             </div>
           </div>
-          <div class="tab-pane fade" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab">
-            <div class="tab-container pb-4 pt-1 px-3">
-              <h3 class="heading h4 mb-3 mb-md-5">Income & Employment Details</h3>
 
-              <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
+          <div class="d-flex mt-n1 justify-content-end">
+            <a href="javascript:prevStep('pills-one', 'pills-two')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+            <a href="javascript:nextStep('pills-income')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+          </div>
 
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-10">
+        </div>
+      </div>
 
-                    <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly-3" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total-3" data-toggle="pill" class="nav-link">Total</a></li>
-                    </ul>
+      <!-- Tab Ketiga -->
+      <div class="tab-pane fade" id="pills-income" role="tabpanel" aria-labelledby="pills-income-tab">
+        <div class="tab-container pb-4 pt-1 px-3">
+          <h3 class="heading h4 mb-3 mb-md-5">Income & Employment Details</h3>
 
-                  </div>
-                </div>
 
-                <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly-3">
-                    <h3 class="m-0 h1" id="calc-3">MYR 0</h3>
-                  </div>
-                  <div class="tab-pane fade" id="pill-total-3">
-                    <h3 class="m-0 h1" id="calc-total-3">MYR 0</h3>
-                  </div>
-                </div>
-
-                <p class="text-center">Interest rate 18% p.a.</p>
-              </div>
-
+          <div class="row justify-content-between">
+            <div class="col-md-5">
               <div class="form-group mb-5">
                 <label for="tax">Annual Pre-Tax Income</label>
                 <input type="text" class="form-control" id="tax" name="tax" placeholder="Enter your Tax Income" value="{{old('tax')}}" required/>
@@ -530,7 +559,8 @@
 
                 <div class="error-message"></div>
               </div>
-
+            </div>
+            <div class="col-md-6">
               <div class="form-group">
                 <label for="dependants">Number of Dependants</label>
                 <input type="text" class="form-control" id="dependants" name="dependants" placeholder="Enter your number of Dependants" value="{{ old('dependants') }}" required/>
@@ -543,44 +573,27 @@
               </div>
             </div>
 
-            <div class="d-flex px-3 pt-2">
-              <a href="javascript:prevStep('pills-two', 'pills-income')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <a href="javascript:nextStep('pills-upload')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+            <div class="col-md-12">
+              <div class="d-flex px-3 pt-2 justify-content-end">
+                <a href="javascript:prevStep('pills-two', 'pills-income')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+                <a href="javascript:nextStep('pills-upload')" class="btn btn-info btn-next btn-lg"><span class="mr-2">Next</span><i class="fa-solid fa-arrow-right"></i></a>
+              </div>
             </div>
           </div>
-          <div class="tab-pane fade" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
-            <div class="tab-container pb-4 pt-1 px-3">
-              <h3 class="heading h4 mb-3 mb-md-5">Upload the Documents & Submit</h3>
+        </div>
+      </div>
 
-              <div class="card d-md-none my-5 none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-                <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
+      <!-- Tab Keempat -->
+      <div class="tab-pane fade" id="pills-upload" role="tabpanel" aria-labelledby="pills-upload-tab">
+        <div class="tab-container pb-4 pt-1 px-3">
+          <h3 class="heading h4 mb-3 mb-md-5">Upload the Documents & Submit</h3>
 
-                <div class="row justify-content-center">
-                  <div class="col-12 col-md-10">
-
-                    <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                      <li class="nav-item"><a href="#pill-monthly-4" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                      <li class="nav-item"><a href="#pill-total-4" data-toggle="pill" class="nav-link">Total</a></li>
-                    </ul>
-
-                  </div>
-                </div>
-
-                <div class="text-center tab-content mb-2 py-5">
-                  <div class="tab-pane fade active show" id="pill-monthly-4">
-                    <h3 class="m-0 h1" id="calc-4">MYR 0</h3>
-                  </div>
-                  <div class="tab-pane fade" id="pill-total-4">
-                    <h3 class="m-0 h1" id="calc-total-4">MYR 0</h3>
-                  </div>
-                </div>
-
-                <p class="text-center">Interest rate 18% p.a.</p>
-              </div>
+          <div class="row justify-content-between">
+            <div class="col-md-6">
 
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Front</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="id_front" class="dropify" data-height="70" required/>
+                <input type="file" name="id_front" id="single-drop" class="dropify" data-height="70" required/>
 
                 @error('id_front')
                 <div class="text-danger">{{ $message }}</div>
@@ -589,9 +602,21 @@
                 <div class="error-message"></div>
               </div>
 
+            </div>
+            <div class="col-md-5">
+              <label><strong>Latest 3 Months’ Pay Slip</strong> (Max size: 5MB)</label>
+
+              <div id="upload-wrapper">
+                <input type="file" name="pay_slip[1]" class="dropify" />
+                <input type="file" name="pay_slip[2]" class="dropify" />
+                <input type="file" name="pay_slip[3]" class="dropify" />
+              </div>
+            </div>
+            <div class="col-md-6 mt-4">
+
               <div class="form-group mb-5">
                 <label><span class="font-weight-bold">Identity Card - Back</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="id_back" class="dropify" data-height="70" required/>
+                <input type="file" name="id_back" id="single-drop" class="dropify" data-height="70" required/>
 
                 @error('id_back')
                 <div class="text-danger">{{ $message }}</div>
@@ -600,100 +625,36 @@
                 <div class="error-message"></div>
               </div>
 
-              <div class="form-group mb-5">
-                <label><span class="font-weight-bold">Latest 3 Months Pay Slips (1 File per Month)<br/></span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="pay_slips[]" class="dropify" data-height="70" multiple required/>
-
-                @error('salary_slips')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-                <div class="error-message"></div>
-              </div>
-
-              <div class="form-group mb-5">
-                <label><span class="font-weight-bold">Latest 3 Months Bank Statements (1 File per Month)</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="bank_statements[]" class="dropify" data-height="70" multiple required/>
-
-                @error('bank_statements')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-                <div class="error-message"></div>
-              </div>
-
-              <div class="form-group mb-5">
-                <label><span class="font-weight-bold">Salary of Public Lifeline/Utilities</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="utilities_slip" class="dropify" data-height="70" required />
-
-                @error('utilities_slip')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-                <div class="error-message"></div>
-              </div>
-
-              <div class="form-group mb-5">
-                <label><span class="font-weight-bold">Tax Declaration</span> (Max Size: 5MB) <span class="text-danger">*</span></label>
-                <input type="file" name="tax_declaration" class="dropify" data-height="70" required />
-
-                @error('tax_declaration')
-                <div class="text-danger">{{ $message }}</div>
-                @enderror
-
-                <div class="error-message"></div>
-              </div>
-
-              <div class="custom-control form-group mb-3 custom-checkbox">
-                <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" required/>
-                <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
-
-                @error('agree')
-                <div class="text-danger">You must accept the privacy notice!</div>
-                @enderror
-
-                <div class="error-message"></div>
-              </div>
             </div>
-            {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
-            <div class="d-flex px-3 pt-2">
-              <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
-              <button class="btn btn-info btn-next btn-lg" id="submitButton" type="submit">Submit</button>
-            </div>
-          </div>
-        </form>
+            <div class="col-md-5 mt-4">
+              <label><strong>Latest 3 Months’ Bank Statement</strong> (Max size: 5MB)</label>
 
-      </div>
-      <div class="col-md-5 mt-3 mt-md-5 d-none d-sm-none d-md-inline order-1 order-lg-2">
-
-        <div class="card none card-body mr-0 mr-lg-4 mt-0 mt-md-4 bg-primary text-white text-center">
-          <h5 class="h6 mb-4 font-weight-normal">Estimated Payment</h5>
-
-          <div class="row justify-content-center">
-            <div class="col-12 col-md-10">
-
-              <ul class="nav nav-pills counter-tab justify-content-center text-center mb-3">
-                <li class="nav-item"><a href="#pill-monthly-5" data-toggle="pill" class="nav-link active">Monthly</a></li>
-                <li class="nav-item"><a href="#pill-total-5" data-toggle="pill" class="nav-link">Total</a></li>
-              </ul>
-
+              <div id="upload-wrapper">
+                <input type="file" name="bank_statement[1]" class="dropify" />
+                <input type="file" name="bank_statement[2]" class="dropify" />
+                <input type="file" name="bank_statement[3]" class="dropify" />
+              </div>
             </div>
           </div>
 
-          <div class="text-center tab-content mb-2 py-5">
-            <div class="tab-pane fade active show" id="pill-monthly-5">
-              <h3 class="m-0 h1" id="calc-5">MYR 0</h3>
-            </div>
-            <div class="tab-pane fade" id="pill-total-5">
-              <h3 class="m-0 h1" id="calc-total-5">MYR 0</h3>
-            </div>
-          </div>
+          <div class="custom-control form-group mb-3 custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="agree" name="agree" value="true" required/>
+            <label class="custom-control-label" for="agree">I have read and agreed to provide my content, as written above in privacy notice, for the processing of the application.</label>
 
-          <p class="text-center">Interest rate 18% p.a.</p>
+            @error('agree')
+            <div class="text-danger">You must accept the privacy notice!</div>
+            @enderror
+
+            <div class="error-message"></div>
+          </div>
         </div>
-
+        {!! RecaptchaV3::field('register', $name='g-recaptcha-response') !!}
+        <div class="d-flex pt-2 justify-content-end mt-3">
+          <a href="javascript:prevStep('pills-income', 'pills-upload')" class="btn mr-2 btn-prev btn-lg"><i class="fa-solid fa-arrow-left"></i><span class="ml-2">Back</span></a>
+          <button class="btn btn-info btn-next btn-lg" id="submitButton" type="submit">Submit</button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 
 </div>
